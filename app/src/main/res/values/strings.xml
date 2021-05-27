@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">HomeLayout</string>
+    <string name="title_home">Thuis</string>
+    <string name="title_workshops">Workshops</string>
+    <string name="title_culture_day">Cultuurdag</string>
+    <string name="title_contact">Contact</string>
+    <string name="title_more">Meer</string>
+    <string name="title_login">Aanmelden</string>
+    <string name="title_register">Registreren</string>
+</resources>

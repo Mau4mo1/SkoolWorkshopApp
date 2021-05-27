@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/navigation_home"
+        android:icon="@drawable/ic_home_black_24dp"
+        android:title="@string/title_home" />
+
+    <item
+        android:id="@+id/navigation_workshops"
+        android:icon="@drawable/ic_workshops"
+        android:title="@string/title_workshops" />
+
+    <item
+        android:id="@+id/navigation_culture_day"
+        android:icon="@drawable/ic_culture_day"
+        android:title="@string/title_culture_day" />
+
+    <item
+        android:id="@+id/navigation_contact"
+        android:icon="@drawable/ic_contact"
+        android:title="@string/title_contact" />
+
+    <item
+        android:id="@+id/navigation_more"
+        android:icon="@drawable/ic_more"
+        android:title="@string/title_more" />
+
+</menu>
