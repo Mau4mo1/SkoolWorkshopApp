@@ -83,7 +83,7 @@
                     android:gravity="right"
                     android:hint="Email"
                     android:background="@color/white"
-                    android:id="@+id/txtPublisher"
+                    android:id="@+id/email_input"
                     android:layout_width="10dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.80"
@@ -106,9 +106,9 @@
                 </TextView>
                 <EditText
                     android:gravity="right"
-                    android:hint="Email"
+                    android:hint="Telefoon"
                     android:background="@color/white"
-                    android:id="@+id/email_input"
+                    android:id="@+id/phone_input"
                     android:layout_width="10dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.80"
@@ -250,8 +250,6 @@
                     android:layout_height="50dp"
                     android:src="@mipmap/ic_launcher_r_foreground"
                     ></ImageView>
-
-
                 <TextView
                     android:paddingTop="10dp"
                     android:gravity="center"
@@ -266,13 +264,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
-
                 <ImageView
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:src="@mipmap/ic_launcher_id_foreground" />
-
-
                 <TextView
                     android:paddingTop="10dp"
                     android:gravity="center"
@@ -285,9 +280,5 @@
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
-
    </ScrollView>
-
-
-
 </LinearLayout>
