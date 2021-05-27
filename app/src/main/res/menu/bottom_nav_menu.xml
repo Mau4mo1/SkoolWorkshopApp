@@ -21,7 +21,6 @@
         android:id="@+id/navigation_contact"
         android:icon="@drawable/ic_contact"
         android:title="@string/title_contact" />
-
     <item
         android:id="@+id/navigation_more"
         android:icon="@drawable/ic_more"
