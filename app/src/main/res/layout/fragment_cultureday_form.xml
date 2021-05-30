@@ -97,7 +97,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="Aantal workshops per workshopronde *"
+            android:text="Aantal minuten per workshopronde *"
             android:textColor="@color/text_grey"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
