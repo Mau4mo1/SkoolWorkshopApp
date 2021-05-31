@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.contact.ContactFragment">
+
+   <ScrollView
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:paddingBottom="50dp">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/text_contact"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:textColor="@color/orange"
+            android:textSize="46dp"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:gravity="center_horizontal"
+            android:padding="10dp"
+            android:text="Neem contact op voor al je vragen. Bel/mail of vul de onderstaande contactformulier in."
+            android:textSize="20dp"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="20dp"
+            >
+
+            <LinearLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="75dp"
+                android:orientation="horizontal"
+                android:background="@color/orange"
+                android:padding="20dp">
+                <TextView
+                    android:paddingEnd="20dp"
+                    android:layout_width="140dp"
+                    android:layout_height="match_parent"
+                    android:text="Naam"
+                    android:textSize="23sp">
+
+                </TextView>
+                <EditText
+                    android:gravity="right"
+                    android:hint="Naam"
+                    android:background="@color/white"
+                    android:id="@+id/name_input"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.80"
+                    android:ems="10"
+                    android:paddingEnd="10dp"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="75dp"
+                android:orientation="horizontal"
+                android:background="@color/orange"
+                android:padding="20dp">
+                <TextView
+                    android:paddingEnd="20dp"
+                    android:layout_width="140dp"
+                    android:layout_height="match_parent"
+                    android:text="Email"
+                    android:textSize="23sp">
+
+                </TextView>
+                <EditText
+                    android:gravity="right"
+                    android:hint="Email"
+                    android:background="@color/white"
+                    android:id="@+id/email_input"
+                    android:layout_width="10dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.80"
+                    android:ems="10"
+                    android:paddingEnd="10dp"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="75dp"
+                android:orientation="horizontal"
+                android:background="@color/orange"
+                android:padding="23sp">
+                <TextView
+                    android:paddingEnd="20dp"
+                    android:layout_width="140dp"
+                    android:layout_height="match_parent"
+                    android:text="Telefoon"
+                    android:textSize="23sp">
+
+                </TextView>
+                <EditText
+                    android:gravity="right"
+                    android:hint="Telefoon"
+                    android:background="@color/white"
+                    android:id="@+id/phone_input"
+                    android:layout_width="10dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.80"
+                    android:ems="10"
+                    android:paddingEnd="10dp"/>
+            </LinearLayout>
+            <LinearLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="75dp"
+                android:orientation="horizontal"
+                android:background="@color/orange"
+                android:padding="20dp">
+                <TextView
+                    android:paddingEnd="20dp"
+                    android:layout_width="140dp"
+                    android:layout_height="match_parent"
+                    android:text="Onderwerp"
+                    android:textSize="23sp">
+
+                </TextView>
+                <EditText
+                    android:gravity="right"
+                    android:hint="Naam"
+                    android:background="@color/white"
+                    android:id="@+id/subject_input"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.80"
+                    android:ems="10"
+                    android:paddingEnd="10dp"/>
+            </LinearLayout>
+            <LinearLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@color/orange"
+                android:padding="20dp">
+                <TextView
+                    android:paddingEnd="20dp"
+                    android:layout_width="140dp"
+                    android:layout_height="match_parent"
+                    android:text="Bericht"
+                    android:textSize="23sp">
+
+                </TextView>
+                <EditText
+                    android:inputType="textCapSentences|textMultiLine"
+                    android:maxLength="100"
+                    android:maxLines="10"
+                    android:lines="6"
+                    android:gravity="right"
+                    android:hint="Bericht"
+                    android:background="@color/white"
+                    android:id="@+id/message_input"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.80"
+                    android:paddingEnd="10dp"/>
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:paddingTop="12dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@mipmap/ic_launcher_maps_foreground"
+                    ></ImageView>
+
+
+                <TextView
+                    android:paddingTop="10dp"
+                    android:gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Adres: Veilingkade 15, Breda    "
+                    android:textColor="@color/black"
+                    android:textSize="20dp">
+                </TextView>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@mipmap/ic_launcher_phone_foreground"
+                    ></ImageView>
+
+
+                <TextView
+                    android:paddingTop="10dp"
+                    android:gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Telefoon: 085 – 0653 923        "
+                    android:textColor="@color/black"
+                    android:textSize="20dp">
+                </TextView>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@mipmap/ic_launcher_mail_foreground"
+                    ></ImageView>
+
+
+                <TextView
+                    android:paddingTop="10dp"
+                    android:gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="E-mail: info@skoolworkshop.nl"
+                    android:textColor="@color/black"
+                    android:textSize="20dp">
+                </TextView>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@mipmap/ic_launcher_r_foreground"
+                    ></ImageView>
+                <TextView
+                    android:paddingTop="10dp"
+                    android:gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Kamer van Koophandel: 51371146"
+                    android:textColor="@color/black"
+                    android:textSize="20dp">
+                </TextView>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@mipmap/ic_launcher_id_foreground" />
+                <TextView
+                    android:paddingTop="10dp"
+                    android:gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="BTW-id: NL001143882B36       "
+                    android:textColor="@color/black"
+                    android:textSize="20dp">
+                </TextView>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+   </ScrollView>
+</LinearLayout>
