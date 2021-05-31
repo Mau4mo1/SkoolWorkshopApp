@@ -16,20 +16,8 @@ import com.example.homelayout.R;
 
 public class WorkshopsFragment extends Fragment {
 
-    private WorkshopsViewModel dashboardViewModel;
-
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        dashboardViewModel =
-                new ViewModelProvider(this).get(WorkshopsViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_workshops, container, false);
-        final TextView textView = root.findViewById(R.id.text_dashboard);
-        dashboardViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
-            }
-        });
-        return root;
+        return inflater.inflate(R.layout.fragment_workshops, container, false);
     }
 }
