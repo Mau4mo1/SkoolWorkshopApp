@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/b_cultureday_form_select_workshop_select_workshop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="deze button kan ook inplaats van een text view gebruikt worden, waardoor de workshop niet eerst verwijderd hoeft te worden"
+        android:textSize="14sp"/>
+</androidx.cardview.widget.CardView>
