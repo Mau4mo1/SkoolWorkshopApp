@@ -15,20 +15,8 @@ import androidx.lifecycle.ViewModelProvider;
 import com.example.homelayout.R;
 
 public class culturedayFormFragment extends Fragment {
-    private CulturedayFormViewModel formViewModel;
-
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        formViewModel =
-                new ViewModelProvider(this).get(CulturedayFormViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_home, container, false);
-        final TextView textView = root.findViewById(R.id.text_home);
-        formViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
-            }
-        });
-        return root;
+        return inflater.inflate(R.layout.fragment_cultureday_form, container, false);
     }
 }
