@@ -85,7 +85,7 @@
                     android:gravity="right"
                     android:hint="Email"
                     android:background="@color/white"
-                    android:id="@+id/email_input"
+                    android:id="@+id/mailID"
                     android:layout_width="10dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.80"
@@ -136,7 +136,7 @@
                     android:gravity="right"
                     android:hint="Naam"
                     android:background="@color/white"
-                    android:id="@+id/subject_input"
+                    android:id="@+id/subjectID"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.80"
@@ -166,11 +166,18 @@
                     android:gravity="right"
                     android:hint="Bericht"
                     android:background="@color/white"
-                    android:id="@+id/message_input"
+                    android:id="@+id/messageID"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.80"
                     android:paddingEnd="10dp"/>
+                <Button
+                    android:id="@+id/sendBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Send"
+                    android:background="@color/white"
+                    android:textColor="@color/black"/>
             </LinearLayout>
 
 
