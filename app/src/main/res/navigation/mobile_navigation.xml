@@ -13,9 +13,9 @@
 
     <fragment
         android:id="@+id/navigation_dashboard"
-        android:name="com.example.homelayout.ui.dashboard.WorkshopsFragment"
+        android:name="com.example.homelayout.ui.workshops.WorkshopsFragment"
         android:label="@string/title_workshops"
-        tools:layout="@layout/fragment_workshops" />
+        tools:layout="@layout/fragment_category_workshops" />
 
     <fragment
         android:id="@+id/navigation_notifications"

@@ -1,15 +1,16 @@
-package com.example.homelayout.ui.Cultureday.MainPage;
+package com.example.homelayout.ui.workshops;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class CulturedayMainViewModel extends ViewModel {
+public class WorkshopsViewModel extends ViewModel {
+
     private MutableLiveData<String> mText;
 
-    public CulturedayMainViewModel() {
+    public WorkshopsViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("This is dashboard fragment");
+        mText.setValue("");
     }
 
     public LiveData<String> getText() {

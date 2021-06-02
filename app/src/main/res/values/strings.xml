@@ -6,8 +6,25 @@
     <string name="title_contact">Contact</string>
     <string name="title_more">Meer</string>
     <string name="title_login">Aanmelden</string>
+    <string name="title_logout">Uitloggen</string>
     <string name="title_register">Registreren</string>
     <string name="lorem_ipsum">Lorem ipsum blablabla</string>
+    <string name="title_loyalty_points">Spaarpunten</string>
+    <string name="title_newsletter">Nieuwsbrief</string>
+    <string name="greeting">Goedemorgen</string>
+    <string name="txt_book_workshop">Boek Workshop</string>
+    <string name="txt_book_culture_day">Boek Cultuurdag</string>
+    <string name="iv_newsletter_content">Nieuwsletter afbeelding</string>
+    <string name="iv_loyalty_points_content">Spaarpunten afbeelding</string>
+    <string name="title_popular_workshops">Populaire Workshops</string>
+    <string name="iv_popular_workshops_content">Populaire workshops afbeelding</string>
+    <string name="title_graffiti">Graffiti</string>
+    <string name="title_rap">Rap</string>
+    <string name="title_vlogging">Vloggen</string>
+    <string name="title_hiphop">Hiphop</string>
+    <string name="title_ghetto_drums">Ghetto Drums</string>
+    <string name="title_book_workshop">Boek Workshop</string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
