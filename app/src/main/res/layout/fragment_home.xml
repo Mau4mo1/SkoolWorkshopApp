@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/fragment_home"
-    tools:context=".ui.home.HomeFragment">
+    tools:context=".ui.Home.HomeFragment">
 
     <RelativeLayout
         app:layout_constraintTop_toTopOf="parent"

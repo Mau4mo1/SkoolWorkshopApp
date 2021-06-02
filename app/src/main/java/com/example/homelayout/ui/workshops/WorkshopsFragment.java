@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+<<<<<<< HEAD
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -11,11 +12,17 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+=======
+
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+>>>>>>> feature-logic-SK-22
 
 import com.example.homelayout.R;
 
 public class WorkshopsFragment extends Fragment {
 
+<<<<<<< HEAD
     private WorkshopsViewModel dashboardViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -30,5 +37,10 @@ public class WorkshopsFragment extends Fragment {
             }
         });
         return root;
+=======
+    public View onCreateView(@NonNull LayoutInflater inflater,
+                             ViewGroup container, Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.fragment_workshops, container, false);
+>>>>>>> feature-logic-SK-22
     }
 }
