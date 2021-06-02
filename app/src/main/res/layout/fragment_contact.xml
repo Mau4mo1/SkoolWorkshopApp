@@ -33,7 +33,7 @@
             android:gravity="center_horizontal"
             android:layout_margin="10sp"
             android:text="Neem contact op voor al je vragen. Bel/mail of vul de onderstaande contactformulier in."
-            android:textSize="20dp"
+            android:textSize="17sp"
             />
 
         <LinearLayout
@@ -55,7 +55,7 @@
                 >
 
                 <TextView
-                    android:layout_width="140dp"
+                    android:layout_width="140sp"
                     android:layout_height="match_parent"
                     android:paddingEnd="20sp"
                     android:text="Naam"
@@ -84,9 +84,9 @@
                 android:padding="10sp">
 
                 <TextView
-                    android:layout_width="140dp"
+                    android:layout_width="140sp"
                     android:layout_height="match_parent"
-                    android:paddingEnd="20dp"
+                    android:paddingEnd="20sp"
                     android:text="Email"
                     android:textSize="23sp"></TextView>
 
@@ -139,7 +139,7 @@
                 android:padding="10sp">
 
                 <TextView
-                    android:layout_width="140dp"
+                    android:layout_width="140sp"
                     android:layout_height="match_parent"
                     android:paddingEnd="20sp"
                     android:text="Onderwerp"
@@ -290,7 +290,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:paddingTop="10dp"
+                android:paddingTop="10sp"
                 android:text="Kamer van Koophandel: 51371146"
                 android:textColor="@color/black"
                 android:textSize="20sp"></TextView>
@@ -316,7 +316,7 @@
                 android:paddingTop="10sp"
                 android:text="BTW-id: NL001143882B36       "
                 android:textColor="@color/black"
-                android:textSize="20dp"></TextView>
+                android:textSize="20sp"></TextView>
         </LinearLayout>
     </LinearLayout>
    </ScrollView>
