@@ -4,11 +4,10 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-
 import com.example.homelayout.ui.Cultureday.MainPage.CulturedayMainFragment;
+import com.example.homelayout.ui.Home.HomeFragment;
 import com.example.homelayout.ui.contact.ContactFragment;
 import com.example.homelayout.ui.workshops.WorkshopsFragment;
-import com.example.homelayout.ui.home.HomeFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.annotation.NonNull;
