@@ -16,12 +16,8 @@ import com.example.homelayout.R;
 
 public class WorkshopsFragment extends Fragment {
 
-    private WorkshopsViewModel dashboardViewModel;
-
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_category_workshops, container, false);
-
-
         return root;
     }
 }
