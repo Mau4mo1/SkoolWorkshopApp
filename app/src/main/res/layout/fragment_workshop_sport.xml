@@ -52,7 +52,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:paddingRight="40dp">
+                    android:paddingRight="40sp">
                     <TextView
                         android:id="@+id/tv_workshop_bootcamp_title"
                         android:layout_width="wrap_content"
@@ -75,7 +75,7 @@
                     android:src="@drawable/ic_baseline_info_24"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="70dp" />
+                    android:layout_marginTop="70sp" />
             </LinearLayout>
         </LinearLayout>
 
@@ -105,7 +105,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:paddingRight="40dp">
+                    android:paddingRight="40sp">
 
                     <TextView
                         android:id="@+id/tv_workshop_capoeira_title"
@@ -129,7 +129,7 @@
                     android:src="@drawable/ic_baseline_info_24"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="70dp" />
+                    android:layout_marginTop="70sp" />
             </LinearLayout>
         </LinearLayout>
 
@@ -159,7 +159,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:paddingRight="40dp">
+                    android:paddingRight="40sp">
 
                     <TextView
                         android:id="@+id/tv_workshop_freerunning_title"
@@ -183,7 +183,7 @@
                     android:src="@drawable/ic_baseline_info_24"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="70dp" />
+                    android:layout_marginTop="70sp" />
             </LinearLayout>
         </LinearLayout>
 
@@ -214,7 +214,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:paddingRight="40dp">
+                    android:paddingRight="40sp">
 
                     <TextView
                         android:id="@+id/tv_workshop_kickboxen_title"
@@ -238,7 +238,7 @@
                     android:src="@drawable/ic_baseline_info_24"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="70dp" />
+                    android:layout_marginTop="70sp" />
             </LinearLayout>
         </LinearLayout>
 
@@ -268,7 +268,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:paddingRight="40dp">
+                    android:paddingRight="40sp">
 
                     <TextView
                         android:id="@+id/tv_workshop_panna_football_title"
@@ -292,7 +292,7 @@
                     android:src="@drawable/ic_baseline_info_24"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="70dp" />
+                    android:layout_marginTop="70sp" />
             </LinearLayout>
         </LinearLayout>
 
@@ -322,7 +322,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:paddingRight="40dp">
+                    android:paddingRight="40sp">
 
                     <TextView
                         android:id="@+id/tv_workshop_selfdefence_title"
@@ -346,7 +346,7 @@
                     android:src="@drawable/ic_baseline_info_24"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="70dp" />
+                    android:layout_marginTop="70sp" />
             </LinearLayout>
         </LinearLayout>
 
