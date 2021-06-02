@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:background="@drawable/layout_bg_workshop"
+    >
+
+    <ImageView
+        android:id="@+id/iv_workshop_box"
+        android:layout_width="300px"
+        android:layout_height="300px"
+        android:background="@drawable/home_image_border"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingRight="40dp"
+        >
+        <TextView
+            android:id="@+id/tv_workshop_box_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Meldingen"
+            android:layout_margin="10dp"
+            android:textSize="22sp"/>
+
+        <TextView
+            android:id="@+id/tv_workhop_box_descripion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Lorem ipsem blablabla"
+            android:layout_margin="10dp"
+            android:textSize="18sp"/>
+
+    </LinearLayout>
+    <ImageButton
+        android:background="@drawable/layout_bg"
+        android:src="@drawable/ic_baseline_info_24"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="70dp" />
+</LinearLayout>
