@@ -18,6 +18,7 @@ import com.example.homelayout.R;
 import com.example.homelayout.ui.Cultureday.Form.culturedayFormFragment;
 import com.example.homelayout.ui.Cultureday.MainPage.CulturedayMainFragment;
 import com.example.homelayout.ui.contact.ContactFragment;
+import com.example.homelayout.ui.workshops.WorkshopsForm;
 import com.example.homelayout.ui.workshops.WorkshopsFragment;
 import com.example.homelayout.ui.workshops.WorkshopsPopular;
 
@@ -54,7 +55,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                 getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new culturedayFormFragment()).commit();
                 break;
             case R.id.home_item_popular_workshops:
-                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new WorkshopsPopular()).commit();
+                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new WorkshopsForm()).commit();
                 break;
         }
     }

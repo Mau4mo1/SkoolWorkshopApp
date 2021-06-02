@@ -24,7 +24,14 @@
     <string name="title_hiphop">Hiphop</string>
     <string name="title_ghetto_drums">Ghetto Drums</string>
     <string name="title_book_workshop">Boek Workshop</string>
+    <string name="title_participants">Totale aantal deelnemers * (+€7,50)</string>
+    <string name="title_rounds">Aantal workshoprondes</string>
+    <string name="title_minutes">Aantal minuten per workshopronde</string>
+    <string name="title_timetable">Tijdschema</string>
+    <string name="title_learning_level">Leerniveau</string>
+    <string name="subtotal">Subtotaal</string>
+    <string name="book_now">BOEK NU</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
+
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
