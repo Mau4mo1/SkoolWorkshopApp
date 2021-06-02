@@ -44,10 +44,10 @@
             <LinearLayout
 
                 android:layout_width="match_parent"
-                android:layout_height="75dp"
-                android:orientation="horizontal"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
                 android:background="@color/orange"
-                android:padding="20dp">
+                android:padding="10dp">
                 <TextView
                     android:paddingEnd="20dp"
                     android:layout_width="140dp"
@@ -56,48 +56,49 @@
                     android:textSize="23sp">
 
                 </TextView>
+
                 <EditText
+                    android:backgroundTint="@color/white"
+                    android:id="@+id/name_input"
+                    android:layout_width="match_parent"
+                    android:layout_height="30sp"
+                    android:layout_weight="0.80"
+                    android:background="@color/white"
+                    android:ems="10"
                     android:gravity="right"
                     android:hint="Naam"
-                    android:background="@color/white"
-                    android:id="@+id/name_input"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.80"
-                    android:ems="10"
-                    android:paddingEnd="10dp"/>
+                    android:paddingEnd="10dp" />
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="75dp"
-                android:orientation="horizontal"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
                 android:background="@color/orange"
-                android:padding="20dp">
+                android:padding="10dp">
                 <TextView
                     android:paddingEnd="20dp"
                     android:layout_width="140dp"
                     android:layout_height="match_parent"
                     android:text="Email"
                     android:textSize="23sp">
-
                 </TextView>
                 <EditText
                     android:gravity="right"
                     android:hint="Email"
                     android:background="@color/white"
                     android:id="@+id/mailID"
-                    android:layout_width="10dp"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="30sp"
                     android:layout_weight="0.80"
                     android:ems="10"
                     android:paddingEnd="10dp"/>
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="75dp"
-                android:orientation="horizontal"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
                 android:background="@color/orange"
-                android:padding="23sp">
+                android:padding="10sp">
                 <TextView
                     android:paddingEnd="20dp"
                     android:layout_width="140dp"
@@ -111,8 +112,8 @@
                     android:hint="Telefoon"
                     android:background="@color/white"
                     android:id="@+id/phone_input"
-                    android:layout_width="10dp"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="30sp"
                     android:layout_weight="0.80"
                     android:ems="10"
                     android:paddingEnd="10dp"/>
@@ -120,10 +121,10 @@
             <LinearLayout
 
                 android:layout_width="match_parent"
-                android:layout_height="75dp"
-                android:orientation="horizontal"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
                 android:background="@color/orange"
-                android:padding="20dp">
+                android:padding="10sp">
                 <TextView
                     android:paddingEnd="20dp"
                     android:layout_width="140dp"
@@ -134,11 +135,11 @@
                 </TextView>
                 <EditText
                     android:gravity="right"
-                    android:hint="Naam"
+                    android:hint="Onderwerp"
                     android:background="@color/white"
                     android:id="@+id/subjectID"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="30sp"
                     android:layout_weight="0.80"
                     android:ems="10"
                     android:paddingEnd="10dp"/>
@@ -147,11 +148,11 @@
 
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
+                android:orientation="vertical"
                 android:background="@color/orange"
                 android:padding="20dp">
                 <TextView
-                    android:paddingEnd="20dp"
+                    android:paddingEnd="0sp"
                     android:layout_width="140dp"
                     android:layout_height="match_parent"
                     android:text="Bericht"
@@ -167,7 +168,7 @@
                     android:hint="Bericht"
                     android:background="@color/white"
                     android:id="@+id/messageID"
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.80"
                     android:paddingEnd="10dp"/>
