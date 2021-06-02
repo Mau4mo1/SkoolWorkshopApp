@@ -1,6 +1,9 @@
 include ':Module'
+<<<<<<< HEAD
 include ':SkoolWorkshop'
 include ':mylibrary2'
+=======
+>>>>>>> feature-logic-SK-79
 include ':mylibrary'
 include ':app'
 rootProject.name = "HomeLayout"
