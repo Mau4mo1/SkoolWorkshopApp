@@ -221,12 +221,14 @@
 
 
             <TextView
+
+                android:id="@+id/mapsID"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:paddingTop="10sp"
                 android:text="Adres: Veilingkade 15, Breda    "
-                android:textColor="@color/black"
+                android:textColor="co"
                 android:textSize="20sp"></TextView>
         </LinearLayout>
 
