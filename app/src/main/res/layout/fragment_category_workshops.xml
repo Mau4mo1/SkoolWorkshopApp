@@ -2,10 +2,9 @@
 
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:layout_width="match_parent"
-    android:id="@+id/sv_category_workshops"
-    android:layout_marginBottom="100dp">
+    android:id="@+id/sv_category_workshops">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
@@ -13,7 +12,8 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.workshops.WorkshopsFragment">
+        tools:context=".ui.workshops.WorkshopsFragment"
+        android:layout_marginBottom="20dp">
 
         <TextView
             android:id="@+id/tv_workshops_title"
