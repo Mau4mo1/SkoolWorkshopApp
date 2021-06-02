@@ -1,4 +1,4 @@
-package com.example.homelayout.ui.Cultureday.MainPage;
+package com.example.homelayout.ui.workshops;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,9 +10,10 @@ import androidx.fragment.app.Fragment;
 
 import com.example.homelayout.R;
 
-public class CulturedayMainFragment extends Fragment {
+public class WorkshopsFragment extends Fragment {
+
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_cultureday, container, false);
+        return inflater.inflate(R.layout.fragment_workshops, container, false);
     }
 }

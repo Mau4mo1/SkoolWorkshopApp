@@ -5,6 +5,7 @@ import com.example.homelayout.domain.Workshops;
 import java.util.HashMap;
 
 public class Main {
+
     public static void main(String[] args) {
         CalculatePrices calculate = new CalculatePrices();
         Workshops workshop = null;
