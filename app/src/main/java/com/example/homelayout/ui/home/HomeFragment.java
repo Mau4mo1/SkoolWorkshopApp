@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -13,23 +14,24 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.homelayout.R;
+import com.example.homelayout.ui.contact.ContactFragment;
 
 public class HomeFragment extends Fragment {
 
-    private HomeViewModel homeViewModel;
-
+    private Button btnBookWorkshop;
+    private Button btnBookCultureDay;
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        homeViewModel =
-                new ViewModelProvider(this).get(HomeViewModel.class);
         View root = inflater.inflate(R.layout.fragment_home, container, false);
-        final TextView textView = root.findViewById(R.id.text_home);
-        homeViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
+        btnBookCultureDay = root.findViewById(R.id.register_button);
+        btnBookCultureDay.setClickable(true);
+        btnBookCultureDay.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
+            public void onClick(View v) {
+                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new ContactFragment()).commit();
             }
         });
         return root;
     }
+
 }
