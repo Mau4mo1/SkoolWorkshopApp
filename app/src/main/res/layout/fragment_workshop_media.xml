@@ -71,6 +71,7 @@
 
                 </LinearLayout>
                 <ImageButton
+                    android:id="@+id/photoshop_info"
                     android:background="@drawable/layout_bg"
                     android:src="@drawable/ic_baseline_info_24"
                     android:layout_width="wrap_content"
@@ -125,6 +126,7 @@
 
                 </LinearLayout>
                 <ImageButton
+                    android:id="@+id/vlogging_info"
                     android:background="@drawable/layout_bg"
                     android:src="@drawable/ic_baseline_info_24"
                     android:layout_width="wrap_content"
@@ -179,6 +181,7 @@
 
                 </LinearLayout>
                 <ImageButton
+                    android:id="@+id/smartphone_photography_info"
                     android:background="@drawable/layout_bg"
                     android:src="@drawable/ic_baseline_info_24"
                     android:layout_width="wrap_content"
@@ -234,6 +237,7 @@
 
                 </LinearLayout>
                 <ImageButton
+                    android:id="@+id/videoclip_info"
                     android:background="@drawable/layout_bg"
                     android:src="@drawable/ic_baseline_info_24"
                     android:layout_width="wrap_content"
