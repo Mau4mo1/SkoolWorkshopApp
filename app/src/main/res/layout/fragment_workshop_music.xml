@@ -41,8 +41,8 @@
 
             <ImageView
                 android:id="@+id/iv_workshop_caribbean_drums"
-                android:layout_width="300px"
-                android:layout_height="300px"
+                android:layout_width="110sp"
+                android:layout_height="110sp"
                 android:background="@drawable/home_image_border"/>
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -94,8 +94,8 @@
 
             <ImageView
                 android:id="@+id/iv_workshop_ghetto_drums"
-                android:layout_width="300px"
-                android:layout_height="300px"
+                android:layout_width="110sp"
+                android:layout_height="110sp"
                 android:background="@drawable/home_image_border"/>
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -147,8 +147,8 @@
 
             <ImageView
                 android:id="@+id/iv_workshop_live_looping"
-                android:layout_width="300px"
-                android:layout_height="300px"
+                android:layout_width="110sp"
+                android:layout_height="110sp"
                 android:background="@drawable/home_image_border"/>
 
             <LinearLayout
@@ -202,8 +202,8 @@
 
             <ImageView
                 android:id="@+id/iv_workshop_percussie"
-                android:layout_width="300px"
-                android:layout_height="300px"
+                android:layout_width="110sp"
+                android:layout_height="110sp"
                 android:background="@drawable/home_image_border"/>
 
             <LinearLayout
@@ -256,8 +256,8 @@
 
             <ImageView
                 android:id="@+id/iv_workshop_popstar"
-                android:layout_width="300px"
-                android:layout_height="300px"
+                android:layout_width="110sp"
+                android:layout_height="110sp"
                 android:background="@drawable/home_image_border"/>
 
             <LinearLayout
@@ -310,8 +310,8 @@
 
             <ImageView
                 android:id="@+id/iv_workshop_rap"
-                android:layout_width="300px"
-                android:layout_height="300px"
+                android:layout_width="110sp"
+                android:layout_height="110sp"
                 android:background="@drawable/home_image_border"/>
 
             <LinearLayout

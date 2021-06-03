@@ -41,8 +41,8 @@
 
             <ImageView
                 android:id="@+id/iv_workshop_photoshop"
-                android:layout_width="300px"
-                android:layout_height="300px"
+                android:layout_width="110sp"
+                android:layout_height="110sp"
                 android:background="@drawable/home_image_border"/>
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -94,8 +94,8 @@
 
             <ImageView
                 android:id="@+id/iv_workshop_vlogging"
-                android:layout_width="300px"
-                android:layout_height="300px"
+                android:layout_width="110sp"
+                android:layout_height="110sp"
                 android:background="@drawable/home_image_border"/>
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -147,8 +147,8 @@
 
             <ImageView
                 android:id="@+id/iv_workshop_smartphone_photography"
-                android:layout_width="300px"
-                android:layout_height="300px"
+                android:layout_width="110sp"
+                android:layout_height="110sp"
                 android:background="@drawable/home_image_border"/>
 
             <LinearLayout
@@ -202,8 +202,8 @@
 
             <ImageView
                 android:id="@+id/iv_workshop_videoclip"
-                android:layout_width="300px"
-                android:layout_height="300px"
+                android:layout_width="110sp"
+                android:layout_height="110sp"
                 android:background="@drawable/home_image_border"/>
 
             <LinearLayout

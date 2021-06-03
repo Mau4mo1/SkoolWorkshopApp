@@ -41,8 +41,8 @@
 
             <ImageView
                 android:id="@+id/iv_workshop_soap_acting"
-                android:layout_width="300px"
-                android:layout_height="300px"
+                android:layout_width="110sp"
+                android:layout_height="110sp"
                 android:background="@drawable/home_image_border"/>
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -94,8 +94,8 @@
 
             <ImageView
                 android:id="@+id/iv_workshop_stage_fighting"
-                android:layout_width="300px"
-                android:layout_height="300px"
+                android:layout_width="110sp"
+                android:layout_height="110sp"
                 android:background="@drawable/home_image_border"/>
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -147,8 +147,8 @@
 
             <ImageView
                 android:id="@+id/iv_workshop_freerunning"
-                android:layout_width="300px"
-                android:layout_height="300px"
+                android:layout_width="110sp"
+                android:layout_height="110sp"
                 android:background="@drawable/home_image_border"/>
 
             <LinearLayout
