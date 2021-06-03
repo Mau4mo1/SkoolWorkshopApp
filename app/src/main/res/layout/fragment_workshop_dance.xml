@@ -71,6 +71,7 @@
 
                 </LinearLayout>
                 <ImageButton
+                    android:id="@+id/breakdance_info"
                     android:background="@drawable/layout_bg"
                     android:src="@drawable/ic_baseline_info_24"
                     android:layout_width="wrap_content"
@@ -125,6 +126,7 @@
 
                 </LinearLayout>
                 <ImageButton
+                    android:id="@+id/dance_fit_info"
                     android:background="@drawable/layout_bg"
                     android:src="@drawable/ic_baseline_info_24"
                     android:layout_width="wrap_content"
@@ -179,6 +181,7 @@
 
                 </LinearLayout>
                 <ImageButton
+                    android:id="@+id/flashmob_info"
                     android:background="@drawable/layout_bg"
                     android:src="@drawable/ic_baseline_info_24"
                     android:layout_width="wrap_content"
@@ -233,6 +236,7 @@
 
                 </LinearLayout>
                 <ImageButton
+                    android:id="@+id/hiphop_info"
                     android:background="@drawable/layout_bg"
                     android:src="@drawable/ic_baseline_info_24"
                     android:layout_width="wrap_content"
@@ -287,6 +291,7 @@
 
                 </LinearLayout>
                 <ImageButton
+                    android:id="@+id/modern_dance_info"
                     android:background="@drawable/layout_bg"
                     android:src="@drawable/ic_baseline_info_24"
                     android:layout_width="wrap_content"
@@ -342,6 +347,7 @@
 
                 </LinearLayout>
                 <ImageButton
+                    android:id="@+id/stepping_info"
                     android:background="@drawable/layout_bg"
                     android:src="@drawable/ic_baseline_info_24"
                     android:layout_width="wrap_content"
@@ -397,6 +403,7 @@
 
                 </LinearLayout>
                 <ImageButton
+                    android:id="@+id/streetdance_info"
                     android:background="@drawable/layout_bg"
                     android:src="@drawable/ic_baseline_info_24"
                     android:layout_width="wrap_content"
