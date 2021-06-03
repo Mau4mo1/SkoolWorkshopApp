@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">HomeLayout</string>
+    <string name="app_name">Skool Workshops</string>
     <string name="title_home">Thuis</string>
     <string name="title_workshop">Workshop</string>
     <string name="title_workshops">Workshops</string>
@@ -9,7 +9,6 @@
     <string name="title_light_graffiti">Light Graffiti</string>
     <string name="title_stop_motion">Stop Motion</string>
     <string name="title_tshirt_design">T-shirt Ontwerpen</string>
-
     <string name="title_workshop_dance">Dans</string>
     <string name="title_breakdance">Breakdance</string>
     <string name="title_dance_fit">Dance-Fit</string>
@@ -18,13 +17,11 @@
     <string name="title_modern_dance">Moderne Dans</string>
     <string name="title_stepping">Stepping</string>
     <string name="title_streetdance">Streetdance</string>
-
     <string name="title_workshop_media">Media</string>
     <string name="title_photoshop">Photoshop</string>
     <string name="title_vlogging">Vloggen</string>
     <string name="title_smartphone_photography">Smartphone Fotografie</string>
     <string name="title_videoclip">Video Clip maken</string>
-
     <string name="title_workshop_music">Muziek</string>
     <string name="title_caribbean_drums">Caribbean Drums</string>
     <string name="title_ghetto_drums">Ghetto Drums</string>
@@ -32,7 +29,6 @@
     <string name="title_percussie">Percussie</string>
     <string name="title_popstar">Popstar</string>
     <string name="title_rap">Rap</string>
-
     <string name="title_workshop_sport">Sport</string>
     <string name="title_bootcamp">Bootcamp</string>
     <string name="title_capoeira">Capoeira</string>
@@ -40,7 +36,6 @@
     <string name="title_kickboxen">Kickboxen</string>
     <string name="title_panna_football">Panna Voetbal</string>
     <string name="title_selfdefence">Zelfverdediging</string>
-
     <string name="title_workshop_theatre">Theater</string>
     <string name="title_soap_acting">Soap Acteren</string>
     <string name="title_stage_fighting">Stage Fighting</string>

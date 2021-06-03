@@ -2,8 +2,9 @@
 
 <ScrollView
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    android:layout_height="match_parent"
+    android:id="@+id/fragment_home"
+    tools:context=".ui.Home.HomeFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         xmlns:app="http://schemas.android.com/apk/res-auto"
