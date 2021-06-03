@@ -10,7 +10,7 @@
     <item
         android:id="@+id/navigation_workshops"
         android:icon="@drawable/ic_workshops"
-        android:title="@string/title_workshops" />
+        android:title="@string/title_workshops_navbar" />
 
     <item
         android:id="@+id/navigation_culture_day"
