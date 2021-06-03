@@ -1,12 +1,14 @@
 <resources>
     <string name="app_name">HomeLayout</string>
     <string name="title_home">Thuis</string>
-    <string name="title_workshops">Workshop Categorieën</string>
+    <string name="title_workshop">Workshop</string>
+    <string name="title_workshops">Workshops</string>
+    <string name="title_workshops_categories">Workshop Categorieën</string>
     <string name="title_workshop_visual_arts">Beeldende Kunst</string>
     <string name="title_graffiti">Graffiti</string>
     <string name="title_light_graffiti">Light Graffiti</string>
     <string name="title_stop_motion">Stop Motion</string>
-    <string name="title_tshirt_design">T-shit Ontwerpen</string>
+    <string name="title_tshirt_design">T-shirt Ontwerpen</string>
 
     <string name="title_workshop_dance">Dans</string>
     <string name="title_breakdance">Breakdance</string>
@@ -60,11 +62,6 @@
     <string name="iv_loyalty_points_content">Spaarpunten afbeelding</string>
     <string name="title_popular_workshops">Populaire Workshops</string>
     <string name="iv_popular_workshops_content">Populaire workshops afbeelding</string>
-    <string name="title_graffiti">Graffiti</string>
-    <string name="title_rap">Rap</string>
-    <string name="title_vlogging">Vloggen</string>
-    <string name="title_hiphop">Hiphop</string>
-    <string name="title_ghetto_drums">Ghetto Drums</string>
     <string name="title_book_workshop">Boek Workshop</string>
     <string name="title_participants">Totale aantal deelnemers * (+€7,50)</string>
     <string name="title_rounds">Aantal workshoprondes</string>

@@ -21,7 +21,7 @@
             android:layout_height="wrap_content"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
-            android:text="@string/title_workshops"
+            android:text="@string/title_workshops_categories"
             android:textSize="32sp"
             android:textAlignment="center"
             android:layout_marginTop="20dp"
