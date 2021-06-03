@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:layout_width="match_parent"
     android:id="@+id/sv_category_workshops"
-    android:layout_marginBottom="100dp">
+    android:layout_marginBottom="100sp">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -23,8 +23,8 @@
             android:text="@string/title_workshop_dance"
             android:textSize="32sp"
             android:textAlignment="center"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="20dp"
+            android:layout_marginTop="20sp"
+            android:layout_marginBottom="20sp"
             tools:ignore="MissingConstraints" />
 
         <LinearLayout
@@ -35,7 +35,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:background="@drawable/layout_bg_workshop"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="40sp"
             android:layout_marginLeft="10sp"
             android:layout_marginRight="10sp">
 
@@ -58,7 +58,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/title_breakdance"
-                        android:layout_margin="10dp"
+                        android:layout_margin="10sp"
                         android:textSize="22sp"/>
 
                     <TextView
@@ -66,7 +66,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Lorem ipsem blablabla"
-                        android:layout_margin="10dp"
+                        android:layout_margin="10sp"
                         android:textSize="18sp"/>
 
                 </LinearLayout>
@@ -88,9 +88,9 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:background="@drawable/layout_bg_workshop"
-            android:layout_marginTop="3dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp">
+            android:layout_marginTop="3sp"
+            android:layout_marginLeft="10sp"
+            android:layout_marginRight="10sp">
 
             <ImageView
                 android:id="@+id/iv_workshop_dance_fit"
@@ -112,7 +112,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/title_dance_fit"
-                        android:layout_margin="10dp"
+                        android:layout_margin="10sp"
                         android:textSize="22sp"/>
 
                     <TextView
@@ -120,7 +120,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Lorem ipsem blablabla"
-                        android:layout_margin="10dp"
+                        android:layout_margin="10sp"
                         android:textSize="18sp"/>
 
                 </LinearLayout>
@@ -141,9 +141,9 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:background="@drawable/layout_bg_workshop"
-            android:layout_marginTop="3dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp">
+            android:layout_marginTop="3sp"
+            android:layout_marginLeft="10sp"
+            android:layout_marginRight="10sp">
 
             <ImageView
                 android:id="@+id/iv_workshop_flashmob"
