@@ -1,4 +1,4 @@
-package com.example.homelayout.ui.Home;
+package com.example.homelayout.ui.home;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
