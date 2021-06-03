@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_height="match_parent"
     android:layout_width="match_parent"
-    android:id="@+id/sv_category_workshops">
-
+    android:id="@+id/sv_category_workshops"
+    android:layout_marginBottom="70sp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -19,7 +18,7 @@
             android:layout_height="wrap_content"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
-            android:text="@string/title_workshop_media"
+            android:text="@string/title_workshop_sport"
             android:textSize="32sp"
             android:textAlignment="center"
             android:layout_marginTop="20sp"
@@ -27,334 +26,323 @@
             tools:ignore="MissingConstraints" />
 
         <LinearLayout
-            android:id="@+id/layout_workshop_bootcamp"
-            xmlns:android="http://schemas.android.com/apk/res/android"
-            app:layout_constraintTop_toBottomOf="@+id/title_workshop_sport"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:background="@drawable/layout_bg_workshop"
+            android:orientation="vertical"
+            app:layout_constraintTop_toBottomOf="@+id/title_workshop_sport"
             android:layout_marginTop="40sp"
             android:layout_marginLeft="10sp"
             android:layout_marginRight="10sp">
 
-            <ImageView
-                android:id="@+id/iv_workshop_bootcamp"
-                android:layout_width="110sp"
-                android:layout_height="110sp"
-                android:background="@drawable/home_image_border"/>
             <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
+                android:id="@+id/layout_workshop_bootcamp"
+                app:layout_constraintTop_toBottomOf="@+id/title_workshop_sport"
+                android:background="@drawable/layout_bg_workshop"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="3sp"
+                android:layout_marginLeft="10sp"
+                android:layout_marginRight="10sp">
+
+                <ImageView
+                    android:id="@+id/iv_workshop_bootcamp"
+                    android:layout_width="110sp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/home_image_border"/>
                 <LinearLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:paddingRight="40sp">
-                    <TextView
-                        android:id="@+id/tv_workshop_bootcamp_title"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+                    <LinearLayout
+                        android:layout_width="200sp"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <TextView
+                            android:id="@+id/tv_workshop_bootcamp_title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/title_bootcamp"
+                            android:layout_margin="10sp"
+                            android:textSize="22sp"/>
+
+                        <TextView
+                            android:id="@+id/tv_workhop_bootcamp_description"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Lorem ipsem blablabla"
+                            android:layout_margin="10sp"
+                            android:textSize="18sp"/>
+
+                    </LinearLayout>
+                    <ImageButton
+                        android:id="@+id/bootcamp_info"
+                        android:background="@drawable/layout_bg"
+                        android:src="@drawable/ic_baseline_info_24"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/title_bootcamp"
-                        android:layout_margin="10sp"
-                        android:textSize="22sp"/>
-
-                    <TextView
-                        android:id="@+id/tv_workhop_bootcamp_description"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Lorem ipsem blablabla"
-                        android:layout_margin="10sp"
-                        android:textSize="18sp"/>
-
+                        android:layout_marginTop="70sp" />
                 </LinearLayout>
-                <ImageButton
-                    android:id="@+id/bootcamp_info"
-                    android:background="@drawable/layout_bg"
-                    android:src="@drawable/ic_baseline_info_24"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="70sp" />
             </LinearLayout>
-        </LinearLayout>
 
-
-        <LinearLayout
-            android:id="@+id/layout_workshop_capoeira"
-            xmlns:android="http://schemas.android.com/apk/res/android"
-            app:layout_constraintTop_toBottomOf="@+id/layout_workshop_bootcamp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:background="@drawable/layout_bg_workshop"
-            android:layout_marginTop="3sp"
-            android:layout_marginLeft="10sp"
-            android:layout_marginRight="10sp">
-
-            <ImageView
-                android:id="@+id/iv_workshop_capoeira"
-                android:layout_width="110sp"
-                android:layout_height="110sp"
-                android:background="@drawable/home_image_border"/>
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:paddingRight="40sp">
-
-                    <TextView
-                        android:id="@+id/tv_workshop_capoeira_title"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/title_capoeira"
-                        android:layout_margin="10sp"
-                        android:textSize="22sp"/>
-
-                    <TextView
-                        android:id="@+id/tv_workshop_capoeira_description"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Lorem ipsem blablabla"
-                        android:layout_margin="10sp"
-                        android:textSize="18sp"/>
-
-                </LinearLayout>
-                <ImageButton
-                    android:id="@+id/capoeira_info"
-                    android:background="@drawable/layout_bg"
-                    android:src="@drawable/ic_baseline_info_24"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="70sp" />
-            </LinearLayout>
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/layout_workshop_freerunning"
-            xmlns:android="http://schemas.android.com/apk/res/android"
-            app:layout_constraintTop_toBottomOf="@+id/layout_workshop_capoeira"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:background="@drawable/layout_bg_workshop"
-            android:layout_marginTop="3sp"
-            android:layout_marginLeft="10sp"
-            android:layout_marginRight="10sp">
-
-            <ImageView
-                android:id="@+id/iv_workshop_freerunning"
-                android:layout_width="110sp"
-                android:layout_height="110sp"
-                android:background="@drawable/home_image_border"/>
 
             <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
+                android:id="@+id/layout_workshop_capoeira"
+                app:layout_constraintTop_toBottomOf="@+id/layout_workshop_bootcamp"
+                android:background="@drawable/layout_bg_workshop"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="3sp"
+                android:layout_marginLeft="10sp"
+                android:layout_marginRight="10sp">
+
+                <ImageView
+                    android:id="@+id/iv_workshop_capoeira"
+                    android:layout_width="110sp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/home_image_border"/>
                 <LinearLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:paddingRight="40sp">
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+                    <LinearLayout
+                        android:layout_width="200sp"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
 
-                    <TextView
-                        android:id="@+id/tv_workshop_freerunning_title"
+                        <TextView
+                            android:id="@+id/tv_workshop_capoeira_title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/title_capoeira"
+                            android:layout_margin="10sp"
+                            android:textSize="22sp"/>
+
+                        <TextView
+                            android:id="@+id/tv_workshop_capoeira_description"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Lorem ipsem blablabla"
+                            android:layout_margin="10sp"
+                            android:textSize="18sp"/>
+
+                    </LinearLayout>
+                    <ImageButton
+                        android:id="@+id/capoeira_info"
+                        android:background="@drawable/layout_bg"
+                        android:src="@drawable/ic_baseline_info_24"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/title_freerunning"
-                        android:layout_margin="10sp"
-                        android:textSize="22sp"/>
-
-                    <TextView
-                        android:id="@+id/tv_workshop_freerunning_description"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Lorem ipsem blablabla"
-                        android:layout_margin="10sp"
-                        android:textSize="18sp"/>
-
+                        android:layout_marginTop="70sp" />
                 </LinearLayout>
-                <ImageButton
-                    android:id="@+id/freerunning_info"
-                    android:background="@drawable/layout_bg"
-                    android:src="@drawable/ic_baseline_info_24"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="70sp" />
             </LinearLayout>
-        </LinearLayout>
-
-
-        <LinearLayout
-            android:id="@+id/layout_workshop_kickboxen"
-            xmlns:android="http://schemas.android.com/apk/res/android"
-            app:layout_constraintTop_toBottomOf="@+id/layout_workshop_freerunning"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:background="@drawable/layout_bg_workshop"
-            android:layout_marginLeft="10sp"
-            android:layout_marginTop="3sp"
-            android:layout_marginRight="10dp">
-
-            <ImageView
-                android:id="@+id/iv_workshop_kickboxen"
-                android:layout_width="110sp"
-                android:layout_height="110sp"
-                android:background="@drawable/home_image_border"/>
 
             <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
+                android:id="@+id/layout_workshop_freerunning"
+                app:layout_constraintTop_toBottomOf="@+id/layout_workshop_capoeira"
+                android:background="@drawable/layout_bg_workshop"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="3sp"
+                android:layout_marginLeft="10sp"
+                android:layout_marginRight="10sp">
+
+                <ImageView
+                    android:id="@+id/iv_workshop_freerunning"
+                    android:layout_width="110sp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/home_image_border"/>
                 <LinearLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:paddingRight="40sp">
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+                    <LinearLayout
+                        android:layout_width="200sp"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <TextView
+                            android:id="@+id/tv_workshop_freerunning_title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/title_freerunning"
+                            android:layout_margin="10sp"
+                            android:textSize="22sp"/>
 
-                    <TextView
-                        android:id="@+id/tv_workshop_kickboxen_title"
+                        <TextView
+                            android:id="@+id/tv_workshop_freerunning_description"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Lorem ipsem blablabla"
+                            android:layout_margin="10sp"
+                            android:textSize="18sp"/>
+
+                    </LinearLayout>
+                    <ImageButton
+                        android:id="@+id/freerunning_info"
+                        android:background="@drawable/layout_bg"
+                        android:src="@drawable/ic_baseline_info_24"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/title_kickboxen"
-                        android:layout_margin="10dp"
-                        android:textSize="22sp"/>
-
-                    <TextView
-                        android:id="@+id/tv_workhop_kickboxen_description"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Lorem ipsem blablabla"
-                        android:layout_margin="10dp"
-                        android:textSize="18sp"/>
-
+                        android:layout_marginTop="70sp" />
                 </LinearLayout>
-                <ImageButton
-                    android:id="@+id/kickboxen_info"
-                    android:background="@drawable/layout_bg"
-                    android:src="@drawable/ic_baseline_info_24"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="70sp" />
             </LinearLayout>
-        </LinearLayout>
 
-        <LinearLayout
-            android:id="@+id/layout_workshop_panna_football"
-            xmlns:android="http://schemas.android.com/apk/res/android"
-            app:layout_constraintTop_toBottomOf="@+id/layout_workshop_kickboxen"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:background="@drawable/layout_bg_workshop"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="3dp"
-            android:layout_marginRight="10dp">
-
-            <ImageView
-                android:id="@+id/iv_workshop_panna_football"
-                android:layout_width="110sp"
-                android:layout_height="110sp"
-                android:background="@drawable/home_image_border"/>
 
             <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
+                android:id="@+id/layout_workshop_kickboxen"
+                app:layout_constraintTop_toBottomOf="@+id/layout_workshop_freerunning"
+                android:background="@drawable/layout_bg_workshop"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="3sp"
+                android:layout_marginLeft="10sp"
+                android:layout_marginRight="10sp">
+
+                <ImageView
+                    android:id="@+id/iv_workshop_kickboxen"
+                    android:layout_width="110sp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/home_image_border"/>
                 <LinearLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:paddingRight="40sp">
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+                    <LinearLayout
+                        android:layout_width="200sp"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <TextView
+                            android:id="@+id/tv_workshop_kickboxen_title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/title_kickboxen"
+                            android:layout_margin="10dp"
+                            android:textSize="22sp"/>
 
-                    <TextView
-                        android:id="@+id/tv_workshop_panna_football_title"
+                        <TextView
+                            android:id="@+id/tv_workhop_kickboxen_description"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Lorem ipsem blablabla"
+                            android:layout_margin="10dp"
+                            android:textSize="18sp"/>
+
+                    </LinearLayout>
+                    <ImageButton
+                        android:id="@+id/kickboxen_info"
+                        android:background="@drawable/layout_bg"
+                        android:src="@drawable/ic_baseline_info_24"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/title_panna_football"
-                        android:layout_margin="10dp"
-                        android:textSize="22sp"/>
-
-                    <TextView
-                        android:id="@+id/tv_workhop_panna_football_description"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Lorem ipsem blablabla"
-                        android:layout_margin="10dp"
-                        android:textSize="18sp"/>
-
+                        android:layout_marginTop="70sp" />
                 </LinearLayout>
-                <ImageButton
-                    android:id="@+id/panna_football_info"
-                    android:background="@drawable/layout_bg"
-                    android:src="@drawable/ic_baseline_info_24"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="70sp" />
             </LinearLayout>
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/layout_workshop_selfdefence"
-            xmlns:android="http://schemas.android.com/apk/res/android"
-            app:layout_constraintTop_toBottomOf="@+id/layout_workshop_panna_football"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:background="@drawable/layout_bg_workshop"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="3dp"
-            android:layout_marginRight="10dp">
-
-            <ImageView
-                android:id="@+id/iv_workshop_selfdefence"
-                android:layout_width="110sp"
-                android:layout_height="110sp"
-                android:background="@drawable/home_image_border"/>
 
             <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
+                android:id="@+id/layout_workshop_panna_football"
+                app:layout_constraintTop_toBottomOf="@+id/layout_workshop_kickboxen"
+                android:background="@drawable/layout_bg_workshop"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="3sp"
+                android:layout_marginLeft="10sp"
+                android:layout_marginRight="10sp">
+
+                <ImageView
+                    android:id="@+id/iv_workshop_panna_football"
+                    android:layout_width="110sp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/home_image_border"/>
                 <LinearLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:paddingRight="40sp">
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+                    <LinearLayout
+                        android:layout_width="200sp"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <TextView
+                            android:id="@+id/tv_workshop_panna_football_title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/title_panna_football"
+                            android:layout_margin="10dp"
+                            android:textSize="22sp"/>
 
-                    <TextView
-                        android:id="@+id/tv_workshop_selfdefence_title"
+                        <TextView
+                            android:id="@+id/tv_workhop_panna_football_description"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Lorem ipsem blablabla"
+                            android:layout_margin="10dp"
+                            android:textSize="18sp"/>
+
+                    </LinearLayout>
+                    <ImageButton
+                        android:id="@+id/panna_football_info"
+                        android:background="@drawable/layout_bg"
+                        android:src="@drawable/ic_baseline_info_24"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/title_selfdefence"
-                        android:layout_margin="10dp"
-                        android:textSize="22sp"/>
-
-                    <TextView
-                        android:id="@+id/tv_workhop_selfdefence_description"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Lorem ipsem blablabla"
-                        android:layout_margin="10dp"
-                        android:textSize="18sp"/>
-
+                        android:layout_marginTop="70sp" />
                 </LinearLayout>
-                <ImageButton
-                    android:id="@+id/selfdefence_info"
-                    android:background="@drawable/layout_bg"
-                    android:src="@drawable/ic_baseline_info_24"
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_workshop_selfdefence"
+                app:layout_constraintTop_toBottomOf="@+id/layout_workshop_panna_football"
+                android:background="@drawable/layout_bg_workshop"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="3sp"
+                android:layout_marginLeft="10sp"
+                android:layout_marginRight="10sp">
+
+                <ImageView
+                    android:id="@+id/iv_workshop_selfdefence"
+                    android:layout_width="110sp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/home_image_border"/>
+                <LinearLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="70sp" />
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+                    <LinearLayout
+                        android:layout_width="200sp"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <TextView
+                            android:id="@+id/tv_workshop_selfdefence_title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/title_selfdefence"
+                            android:layout_margin="10dp"
+                            android:textSize="22sp"/>
+
+                        <TextView
+                            android:id="@+id/tv_workhop_selfdefence_description"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Lorem ipsem blablabla"
+                            android:layout_margin="10dp"
+                            android:textSize="18sp"/>
+
+                    </LinearLayout>
+                    <ImageButton
+                        android:id="@+id/selfdefence_info"
+                        android:background="@drawable/layout_bg"
+                        android:src="@drawable/ic_baseline_info_24"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="70sp" />
+                </LinearLayout>
             </LinearLayout>
         </LinearLayout>
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
