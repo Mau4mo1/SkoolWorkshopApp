@@ -14,7 +14,7 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
 public class JavaMailAPI extends AsyncTask<Void,Void,Void>  {
-
+//help
     //Add those line in dependencies
     //implementation files('libs/activation.jar')
     //implementation files('libs/additionnal.jar')
