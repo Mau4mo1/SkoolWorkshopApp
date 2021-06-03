@@ -47,7 +47,7 @@
                 <ImageView
                     android:id="@+id/iv_workshop_caribbean_drums"
                     android:layout_width="110sp"
-                    android:layout_height="110sp"
+                    android:layout_height="match_parent"
                     android:background="@drawable/home_image_border"/>
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -75,11 +75,13 @@
 
                     </LinearLayout>
                     <ImageButton
+                        android:id="@+id/caribbean_drums_info"
                         android:background="@drawable/layout_bg"
                         android:src="@drawable/ic_baseline_info_24"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="70sp" />
+                        android:layout_marginTop="70sp"
+                        android:layout_marginRight="10sp"/>
                 </LinearLayout>
             </LinearLayout>
 
@@ -126,11 +128,13 @@
 
                     </LinearLayout>
                     <ImageButton
+                        android:id="@+id/ghetto_drums_info"
                         android:background="@drawable/layout_bg"
                         android:src="@drawable/ic_baseline_info_24"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="70sp" />
+                        android:layout_marginTop="70sp"
+                        android:layout_marginRight="10sp"/>
                 </LinearLayout>
             </LinearLayout>
 
@@ -177,11 +181,13 @@
 
                     </LinearLayout>
                     <ImageButton
+                        android:id="@+id/live_looping_info"
                         android:background="@drawable/layout_bg"
                         android:src="@drawable/ic_baseline_info_24"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="70sp" />
+                        android:layout_marginTop="70sp"
+                        android:layout_marginRight="10sp"/>
                 </LinearLayout>
             </LinearLayout>
 
@@ -230,11 +236,13 @@
 
                     </LinearLayout>
                     <ImageButton
+                        android:id="@+id/percussion_info"
                         android:background="@drawable/layout_bg"
                         android:src="@drawable/ic_baseline_info_24"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="70sp" />
+                        android:layout_marginTop="70sp"
+                        android:layout_marginRight="10sp"/>
                 </LinearLayout>
             </LinearLayout>
 
@@ -282,11 +290,13 @@
 
                     </LinearLayout>
                     <ImageButton
+                        android:id="@+id/popstar_info"
                         android:background="@drawable/layout_bg"
                         android:src="@drawable/ic_baseline_info_24"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="70sp" />
+                        android:layout_marginTop="70sp"
+                        android:layout_marginRight="10sp"/>
                 </LinearLayout>
             </LinearLayout>
 
@@ -333,11 +343,13 @@
                             android:textSize="18sp"/>
                     </LinearLayout>
                     <ImageButton
+                        android:id="@+id/rap_info"
                         android:background="@drawable/layout_bg"
                         android:src="@drawable/ic_baseline_info_24"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="70sp" />
+                        android:layout_marginTop="70sp"
+                        android:layout_marginRight="10sp"/>
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>

@@ -44,7 +44,6 @@
                 android:layout_marginTop="3sp"
                 android:layout_marginLeft="10sp"
                 android:layout_marginRight="10sp">
-
                 <ImageView
                     android:id="@+id/iv_workshop_soap_acting"
                     android:layout_width="110sp"
@@ -65,7 +64,6 @@
                             android:text="@string/title_soap_acting"
                             android:layout_margin="10dp"
                             android:textSize="22sp"/>
-
                         <TextView
                             android:id="@+id/tv_workhop_soap_acting_description"
                             android:layout_width="wrap_content"
@@ -73,9 +71,9 @@
                             android:text="Lorem ipsem blablabla"
                             android:layout_margin="10dp"
                             android:textSize="18sp"/>
-
                     </LinearLayout>
                     <ImageButton
+                        android:id="@+id/soap_acting_info"
                         android:background="@drawable/layout_bg"
                         android:src="@drawable/ic_baseline_info_24"
                         android:layout_width="wrap_content"
@@ -128,6 +126,7 @@
 
                     </LinearLayout>
                     <ImageButton
+                        android:id="@+id/stage_fighting_info"
                         android:background="@drawable/layout_bg"
                         android:src="@drawable/ic_baseline_info_24"
                         android:layout_width="wrap_content"
@@ -179,6 +178,7 @@
 
                     </LinearLayout>
                     <ImageButton
+                        android:id="@+id/theatre_sport_info"
                         android:background="@drawable/layout_bg"
                         android:src="@drawable/ic_baseline_info_24"
                         android:layout_width="wrap_content"
