@@ -71,6 +71,7 @@
 
                 </LinearLayout>
                 <ImageButton
+                    android:id="@+id/bootcamp_info"
                     android:background="@drawable/layout_bg"
                     android:src="@drawable/ic_baseline_info_24"
                     android:layout_width="wrap_content"
@@ -125,6 +126,7 @@
 
                 </LinearLayout>
                 <ImageButton
+                    android:id="@+id/capoeira_info"
                     android:background="@drawable/layout_bg"
                     android:src="@drawable/ic_baseline_info_24"
                     android:layout_width="wrap_content"
@@ -179,6 +181,7 @@
 
                 </LinearLayout>
                 <ImageButton
+                    android:id="@+id/freerunning_info"
                     android:background="@drawable/layout_bg"
                     android:src="@drawable/ic_baseline_info_24"
                     android:layout_width="wrap_content"
@@ -234,6 +237,7 @@
 
                 </LinearLayout>
                 <ImageButton
+                    android:id="@+id/kickboxen_info"
                     android:background="@drawable/layout_bg"
                     android:src="@drawable/ic_baseline_info_24"
                     android:layout_width="wrap_content"
@@ -288,6 +292,7 @@
 
                 </LinearLayout>
                 <ImageButton
+                    android:id="@+id/panna_football_info"
                     android:background="@drawable/layout_bg"
                     android:src="@drawable/ic_baseline_info_24"
                     android:layout_width="wrap_content"
@@ -342,6 +347,7 @@
 
                 </LinearLayout>
                 <ImageButton
+                    android:id="@+id/selfdefence_info"
                     android:background="@drawable/layout_bg"
                     android:src="@drawable/ic_baseline_info_24"
                     android:layout_width="wrap_content"
