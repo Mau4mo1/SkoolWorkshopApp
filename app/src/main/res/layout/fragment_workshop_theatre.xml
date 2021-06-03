@@ -136,7 +136,7 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/layout_workshop_freerunning"
+                android:id="@+id/layout_workshop_theatre_sport"
                 xmlns:android="http://schemas.android.com/apk/res/android"
                 app:layout_constraintTop_toBottomOf="@+id/layout_workshop_stage_fighting"
                 android:background="@drawable/layout_bg_workshop"
@@ -148,7 +148,7 @@
                 android:layout_marginRight="10sp">
 
                 <ImageView
-                    android:id="@+id/iv_workshop_freerunning"
+                    android:id="@+id/iv_workshop_theatre_sport"
                     android:layout_width="110sp"
                     android:layout_height="match_parent"
                     android:background="@drawable/home_image_border"/>
@@ -161,15 +161,15 @@
                         android:layout_height="wrap_content"
                         android:orientation="vertical">
                         <TextView
-                            android:id="@+id/tv_workshop_freerunning_title"
+                            android:id="@+id/tv_workshop_theatre_sport_title"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/title_freerunning"
+                            android:text="@string/title_theatersport"
                             android:layout_margin="10dp"
                             android:textSize="22sp"/>
 
                         <TextView
-                            android:id="@+id/tv_workshop_freerunning_description"
+                            android:id="@+id/tv_workshop_theatre_sport_description"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Lorem ipsem blablabla"
