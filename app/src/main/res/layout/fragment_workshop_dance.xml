@@ -1,0 +1,468 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:id="@+id/sv_category_workshops"
+    android:layout_marginBottom="50sp">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/tv_workshops_dance_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:text="@string/title_workshop_dance"
+            android:textSize="32sp"
+            android:textAlignment="center"
+            android:layout_marginTop="20sp"
+            android:layout_marginBottom="20sp"
+            tools:ignore="MissingConstraints" />
+
+
+        <LinearLayout
+
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintTop_toBottomOf="@+id/tv_workshops_dance_title"
+            android:layout_marginTop="40sp"
+            android:layout_marginLeft="10sp"
+            android:layout_marginRight="10sp" >
+            <LinearLayout
+                android:id="@+id/layout_workshop_breakdance"
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                android:background="@drawable/layout_bg_workshop"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginLeft="10sp"
+                android:layout_marginRight="10sp">
+
+                <ImageView
+                    android:id="@+id/iv_workshop_breakdance"
+                    android:layout_width="110sp"
+                    android:layout_height="110sp"
+                    android:background="@drawable/home_image_border"/>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:paddingRight="10sp">
+                        <TextView
+                            android:id="@+id/tv_workshop_breakdance_title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/title_breakdance"
+                            android:layout_margin="10sp"
+                            android:textSize="22sp"/>
+
+                        <TextView
+                            android:id="@+id/tv_workshop_breakdance_description"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Lorem ipsem blablabla"
+                            android:layout_margin="10sp"
+                            android:textSize="18sp"/>
+
+                    </LinearLayout>
+                    <ImageButton
+                        android:background="@drawable/layout_bg"
+                        android:src="@drawable/ic_baseline_info_24"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="70sp" />
+                </LinearLayout>
+                <ImageButton
+                    android:id="@+id/breakdance_info"
+                    android:background="@drawable/layout_bg"
+                    android:src="@drawable/ic_baseline_info_24"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="70sp" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/layout_workshop_dance_fit"
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                app:layout_constraintTop_toBottomOf="@+id/layout_workshop_breakdance"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@drawable/layout_bg_workshop"
+                android:layout_marginTop="3sp"
+                android:layout_marginLeft="10sp"
+                android:layout_marginRight="10sp">
+
+                <ImageView
+                    android:id="@+id/iv_workshop_dance_fit"
+                    android:layout_width="110sp"
+                    android:layout_height="110sp"
+                    android:background="@drawable/home_image_border"/>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:paddingRight="10sp">
+
+                        <TextView
+                            android:id="@+id/tv_workshop_dance_fit_title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/title_dance_fit"
+                            android:layout_margin="10sp"
+                            android:textSize="22sp"/>
+
+                        <TextView
+                            android:id="@+id/tv_workshop_dance_fit_description"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Lorem ipsem blablabla"
+                            android:layout_margin="10sp"
+                            android:textSize="18sp"/>
+
+                    </LinearLayout>
+                    <ImageButton
+                        android:background="@drawable/layout_bg"
+                        android:src="@drawable/ic_baseline_info_24"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="70sp" />
+                </LinearLayout>
+                <ImageButton
+                    android:id="@+id/dance_fit_info"
+                    android:background="@drawable/layout_bg"
+                    android:src="@drawable/ic_baseline_info_24"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="70sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_workshop_flashmob"
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                app:layout_constraintTop_toBottomOf="@+id/layout_workshop_dance_fit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@drawable/layout_bg_workshop"
+                android:layout_marginTop="3sp"
+                android:layout_marginLeft="10sp"
+                android:layout_marginRight="10sp">
+
+                <ImageView
+                    android:id="@+id/iv_workshop_flashmob"
+                    android:layout_width="110sp"
+                    android:layout_height="110sp"
+                    android:background="@drawable/home_image_border"/>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:paddingRight="10sp">
+
+                        <TextView
+                            android:id="@+id/tv_workshop_flashmob_title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/title_flashmob"
+                            android:layout_margin="10dp"
+                            android:textSize="22sp"/>
+
+                        <TextView
+                            android:id="@+id/tv_workshop_flashmob_description"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Lorem ipsem blablabla"
+                            android:layout_margin="10dp"
+                            android:textSize="18sp"/>
+
+                    </LinearLayout>
+                    <ImageButton
+                        android:background="@drawable/layout_bg"
+                        android:src="@drawable/ic_baseline_info_24"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="70sp" />
+                </LinearLayout>
+                <ImageButton
+                    android:id="@+id/flashmob_info"
+                    android:background="@drawable/layout_bg"
+                    android:src="@drawable/ic_baseline_info_24"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="70sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_workshop_hiphop"
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                app:layout_constraintTop_toBottomOf="@+id/layout_workshop_flashmob"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@drawable/layout_bg_workshop"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="3dp"
+                android:layout_marginRight="10dp">
+
+                <ImageView
+                    android:id="@+id/iv_workshop_hiphop_design"
+                    android:layout_width="110sp"
+                    android:layout_height="110sp"
+                    android:background="@drawable/home_image_border"/>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:paddingRight="10sp">
+
+                        <TextView
+                            android:id="@+id/tv_workshop_hiphop_title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/title_hiphop"
+                            android:layout_margin="10dp"
+                            android:textSize="22sp"/>
+
+                        <TextView
+                            android:id="@+id/tv_workshop_hiphop_description"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Lorem ipsem blablabla"
+                            android:layout_margin="10dp"
+                            android:textSize="18sp"/>
+
+                    </LinearLayout>
+                    <ImageButton
+                        android:background="@drawable/layout_bg"
+                        android:src="@drawable/ic_baseline_info_24"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="70sp" />
+                </LinearLayout>
+                <ImageButton
+                    android:id="@+id/hiphop_info"
+                    android:background="@drawable/layout_bg"
+                    android:src="@drawable/ic_baseline_info_24"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="70sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_workshop_modern_dance"
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                app:layout_constraintTop_toBottomOf="@+id/layout_workshop_hiphop"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@drawable/layout_bg_workshop"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="3dp"
+                android:layout_marginRight="10dp">
+
+                <ImageView
+                    android:id="@+id/iv_workshop_modern_dance"
+                    android:layout_width="110sp"
+                    android:layout_height="110sp"
+                    android:background="@drawable/home_image_border"/>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:paddingRight="10sp">
+
+                        <TextView
+                            android:id="@+id/tv_workshop_modern_dance_title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/title_modern_dance"
+                            android:layout_margin="10dp"
+                            android:textSize="22sp"/>
+
+                        <TextView
+                            android:id="@+id/tv_workshop_modern_dance_description"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Lorem ipsem blablabla"
+                            android:layout_margin="10dp"
+                            android:textSize="18sp"/>
+
+                    </LinearLayout>
+                    <ImageButton
+                        android:background="@drawable/layout_bg"
+                        android:src="@drawable/ic_baseline_info_24"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="70sp" />
+                </LinearLayout>
+                <ImageButton
+                    android:id="@+id/modern_dance_info"
+                    android:background="@drawable/layout_bg"
+                    android:src="@drawable/ic_baseline_info_24"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="70sp" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/layout_workshop_stepping"
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                app:layout_constraintTop_toBottomOf="@+id/layout_workshop_modern_dance"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@drawable/layout_bg_workshop"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="3dp"
+                android:layout_marginRight="10dp">
+
+                <ImageView
+                    android:id="@+id/iv_workshop_stepping"
+                    android:layout_width="110sp"
+                    android:layout_height="110sp"
+                    android:background="@drawable/home_image_border"/>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:paddingRight="10sp">
+
+                        <TextView
+                            android:id="@+id/tv_workshop_stepping_title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/title_stepping"
+                            android:layout_margin="10dp"
+                            android:textSize="22sp"/>
+
+                        <TextView
+                            android:id="@+id/tv_workshop_stepping_description"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Lorem ipsem blablabla"
+                            android:layout_margin="10dp"
+                            android:textSize="18sp"/>
+
+                    </LinearLayout>
+                    <ImageButton
+                        android:background="@drawable/layout_bg"
+                        android:src="@drawable/ic_baseline_info_24"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="70sp" />
+                </LinearLayout>
+                <ImageButton
+                    android:id="@+id/stepping_info"
+                    android:background="@drawable/layout_bg"
+                    android:src="@drawable/ic_baseline_info_24"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="70sp" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/layout_workshop_streetdance"
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                app:layout_constraintTop_toBottomOf="@+id/layout_workshop_stepping"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@drawable/layout_bg_workshop"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="3dp"
+                android:layout_marginRight="10dp">
+
+                <ImageView
+                    android:id="@+id/iv_workshop_streetdance"
+                    android:layout_width="110sp"
+                    android:layout_height="110sp"
+                    android:background="@drawable/home_image_border"/>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:paddingRight="10sp">
+
+                        <TextView
+                            android:id="@+id/tv_workshop_streetdance_title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/title_streetdance"
+                            android:layout_margin="10dp"
+                            android:textSize="22sp"/>
+
+                        <TextView
+                            android:id="@+id/tv_workshop_streetdance_description"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Lorem ipsem blablabla"
+                            android:layout_margin="10dp"
+                            android:textSize="18sp"/>
+
+                    </LinearLayout>
+                    <ImageButton
+                        android:background="@drawable/layout_bg"
+                        android:src="@drawable/ic_baseline_info_24"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="70sp" />
+                </LinearLayout>
+                <ImageButton
+                    android:id="@+id/streetdance_info"
+                    android:background="@drawable/layout_bg"
+                    android:src="@drawable/ic_baseline_info_24"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="70sp" />
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

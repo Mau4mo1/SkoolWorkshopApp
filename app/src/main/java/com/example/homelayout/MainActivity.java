@@ -24,8 +24,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
-
-
+        // voor de verandering
 
         BottomNavigationView bottomNav = findViewById(R.id.nav_view);
         bottomNav.setOnNavigationItemSelectedListener(navListener);
