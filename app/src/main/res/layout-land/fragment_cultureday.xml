@@ -36,7 +36,7 @@
             android:layout_marginTop="20sp">
 
             <Button
-                android:id="@+id/button_meer_informatie_cd"
+                android:id="@+id/button_more_info_cd"
                 android:layout_width="5sp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -44,7 +44,7 @@
                 />
 
             <Button
-                android:id="@+id/button_boek_nu_cd"
+                android:id="@+id/button_book_now_cd"
                 android:layout_width="5sp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
