@@ -7,6 +7,7 @@ import android.widget.Button;
 
 import com.example.homelayout.ui.Cultureday.MainPage.CulturedayMainFragment;
 import com.example.homelayout.ui.contact.ContactFragment;
+import com.example.homelayout.ui.workshops.WorkshopsForm;
 import com.example.homelayout.ui.workshops.WorkshopsFragment;
 import com.example.homelayout.ui.home.HomeFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;

@@ -6,10 +6,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModel;
 
 public class WorkshopsVisualArts extends Fragment {
-
     public WorkshopsVisualArts(){
 
     }
-    
-
 }
