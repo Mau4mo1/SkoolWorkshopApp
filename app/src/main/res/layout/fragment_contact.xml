@@ -33,29 +33,28 @@
             android:gravity="center_horizontal"
             android:layout_margin="10sp"
             android:text="Neem contact op voor al je vragen. Bel/mail of vul de onderstaande contactformulier in."
-            android:textSize="20dp"
+            android:textSize="19sp"
             />
 
         <LinearLayout
-            android:layout_margin="20sp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
-       android:background="@drawable/contact_background"
-           >
+            android:layout_margin="20sp"
+            android:background="@drawable/contact_background"
+            android:orientation="vertical">
 
             <LinearLayout
 
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
 
+                android:layout_margin="13sp"
                 android:orientation="vertical"
-                android:padding="10dp"
 
                 >
 
                 <TextView
-                    android:layout_width="140dp"
+                    android:layout_width="140sp"
                     android:layout_height="match_parent"
                     android:paddingEnd="20sp"
                     android:text="Naam"
@@ -64,12 +63,13 @@
                 </TextView>
 
                 <EditText
+                    android:inputType="textCapSentences"
+                    android:maxLines="1"
                     android:id="@+id/name_input"
                     android:layout_width="match_parent"
                     android:layout_height="30sp"
                     android:layout_weight="0.80"
-                    android:background="@color/white"
-                    android:backgroundTint="@color/white"
+                    android:background="@drawable/form_background_rounded"
                     android:ems="10"
                     android:gravity="right"
                     android:hint="Naam"
@@ -79,23 +79,24 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/orange"
                 android:orientation="vertical"
                 android:padding="10sp">
 
                 <TextView
-                    android:layout_width="140dp"
+                    android:layout_width="120sp"
                     android:layout_height="match_parent"
-                    android:paddingEnd="20dp"
+                    android:paddingEnd="20sp"
                     android:text="Email"
                     android:textSize="23sp"></TextView>
 
                 <EditText
+                    android:inputType="textCapSentences"
+                    android:maxLines="1"
                     android:id="@+id/mailID"
                     android:layout_width="match_parent"
                     android:layout_height="30sp"
                     android:layout_weight="0.80"
-                    android:background="@color/white"
+                    android:background="@drawable/form_background_rounded"
                     android:ems="10"
                     android:gravity="right"
                     android:hint="Email"
@@ -105,7 +106,6 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/orange"
                 android:orientation="vertical"
                 android:padding="10sp">
 
@@ -119,11 +119,13 @@
                 </TextView>
 
                 <EditText
+                    android:inputType="textCapSentences"
+                    android:maxLines="1"
                     android:id="@+id/phone_input"
                     android:layout_width="match_parent"
                     android:layout_height="30sp"
                     android:layout_weight="0.80"
-                    android:background="@color/white"
+                    android:background="@drawable/form_background_rounded"
                     android:ems="10"
                     android:gravity="right"
                     android:hint="Telefoon"
@@ -134,25 +136,27 @@
 
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/orange"
                 android:orientation="vertical"
                 android:padding="10sp">
 
                 <TextView
-                    android:layout_width="140dp"
+                    android:layout_width="140sp"
                     android:layout_height="match_parent"
-                    android:paddingEnd="20sp"
+
                     android:text="Onderwerp"
                     android:textSize="23sp">
 
                 </TextView>
 
                 <EditText
+                    android:inputType="textCapSentences"
+                    android:maxLines="1"
+                    android:background="@drawable/form_background_rounded"
                     android:id="@+id/subjectID"
                     android:layout_width="match_parent"
                     android:layout_height="30sp"
                     android:layout_weight="0.80"
-                    android:background="@color/white"
+
                     android:ems="10"
                     android:gravity="right"
                     android:hint="Onderwerp"
@@ -160,12 +164,12 @@
             </LinearLayout>
 
             <LinearLayout
-
+                android:paddingBottom="20sp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-
                 android:orientation="vertical"
-                android:padding="20sp">
+                android:paddingLeft="10sp"
+                android:paddingRight="10sp">
 
                 <TextView
                     android:layout_width="140sp"
@@ -180,7 +184,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.80"
-                    android:background="@color/white"
+                    android:background="@drawable/form_background_rounded"
                     android:gravity="right"
                     android:hint="Bericht"
                     android:inputType="textCapSentences|textMultiLine"
@@ -193,8 +197,8 @@
             </LinearLayout>
 
 
-
         </LinearLayout>
+
         <Button
             android:layout_margin="20sp"
             android:id="@+id/sendBtn"
@@ -217,12 +221,14 @@
 
 
             <TextView
+
+                android:id="@+id/mapsID"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:paddingTop="10sp"
                 android:text="Adres: Veilingkade 15, Breda    "
-                android:textColor="@color/black"
+                android:textColor="@color/blue"
                 android:textSize="20sp"></TextView>
         </LinearLayout>
 
@@ -290,7 +296,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:paddingTop="10dp"
+                android:paddingTop="10sp"
                 android:text="Kamer van Koophandel: 51371146"
                 android:textColor="@color/black"
                 android:textSize="20sp"></TextView>
@@ -316,7 +322,7 @@
                 android:paddingTop="10sp"
                 android:text="BTW-id: NL001143882B36       "
                 android:textColor="@color/black"
-                android:textSize="20dp"></TextView>
+                android:textSize="20sp"></TextView>
         </LinearLayout>
     </LinearLayout>
    </ScrollView>

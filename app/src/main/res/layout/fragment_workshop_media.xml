@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:layout_width="match_parent"
     android:id="@+id/sv_category_workshops"
-    android:layout_marginBottom="100dp">
+    android:layout_marginBottom="100sp">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -23,8 +23,8 @@
             android:text="@string/title_workshop_media"
             android:textSize="32sp"
             android:textAlignment="center"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="20dp"
+            android:layout_marginTop="20sp"
+            android:layout_marginBottom="20sp"
             tools:ignore="MissingConstraints" />
 
         <LinearLayout
@@ -36,13 +36,13 @@
             android:orientation="horizontal"
             android:background="@drawable/layout_bg_workshop"
             android:layout_marginTop="40sp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp">
+            android:layout_marginLeft="10sp"
+            android:layout_marginRight="10sp">
 
             <ImageView
                 android:id="@+id/iv_workshop_photoshop"
-                android:layout_width="300px"
-                android:layout_height="300px"
+                android:layout_width="110sp"
+                android:layout_height="110sp"
                 android:background="@drawable/home_image_border"/>
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -52,13 +52,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:paddingRight="40dp">
+                    android:paddingRight="40sp">
                     <TextView
                         android:id="@+id/tv_workshop_photoshop"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/title_photoshop"
-                        android:layout_margin="10dp"
+                        android:layout_margin="10sp"
                         android:textSize="22sp"/>
 
                     <TextView
@@ -94,8 +94,8 @@
 
             <ImageView
                 android:id="@+id/iv_workshop_vlogging"
-                android:layout_width="300px"
-                android:layout_height="300px"
+                android:layout_width="110sp"
+                android:layout_height="110sp"
                 android:background="@drawable/home_image_border"/>
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -147,8 +147,8 @@
 
             <ImageView
                 android:id="@+id/iv_workshop_smartphone_photography"
-                android:layout_width="300px"
-                android:layout_height="300px"
+                android:layout_width="110sp"
+                android:layout_height="110sp"
                 android:background="@drawable/home_image_border"/>
 
             <LinearLayout
@@ -202,8 +202,8 @@
 
             <ImageView
                 android:id="@+id/iv_workshop_videoclip"
-                android:layout_width="300px"
-                android:layout_height="300px"
+                android:layout_width="110sp"
+                android:layout_height="110sp"
                 android:background="@drawable/home_image_border"/>
 
             <LinearLayout
