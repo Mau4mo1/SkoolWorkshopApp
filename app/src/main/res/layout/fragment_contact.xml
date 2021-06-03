@@ -12,7 +12,7 @@
    <ScrollView
        android:layout_width="match_parent"
        android:layout_height="wrap_content"
-       android:paddingBottom="50sp">
+       >
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -308,7 +308,7 @@
             android:orientation="horizontal"
             android:paddingLeft="4sp"
             android:paddingRight="4sp"
-            android:paddingBottom="15sp">
+            >
 
             <ImageView
                 android:layout_width="50sp"
