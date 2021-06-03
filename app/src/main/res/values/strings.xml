@@ -1,12 +1,13 @@
 <resources>
-    <string name="app_name">HomeLayout</string>
+    <string name="app_name">Skool Workshops</string>
     <string name="title_home">Thuis</string>
     <string name="title_workshops">Workshop Categorieën</string>
+    <string name="title_workshops_navbar">Workshops</string>
     <string name="title_workshop_visual_arts">Beeldende Kunst</string>
     <string name="title_graffiti">Graffiti</string>
     <string name="title_light_graffiti">Light Graffiti</string>
     <string name="title_stop_motion">Stop Motion</string>
-    <string name="title_tshirt_design">T-shit Ontwerpen</string>
+    <string name="title_tshirt_design">T-shirt Ontwerpen</string>
     <string name="title_workshop_dance">Dans</string>
     <string name="title_breakdance">Breakdance</string>
     <string name="title_dance_fit">Dance-Fit</string>
