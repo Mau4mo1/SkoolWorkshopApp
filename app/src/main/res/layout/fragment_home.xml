@@ -1,238 +1,147 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<ScrollView
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    android:layout_height="match_parent"
+    android:id="@+id/fragment_home"
+    tools:context=".ui.Home.HomeFragment">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
+    <RelativeLayout
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:id="@+id/home_relative_layout"
         android:layout_height="wrap_content"
-        android:id="@+id/fragment_home"
-        tools:context=".ui.home.HomeFragment"
-        android:layout_marginBottom="20dp">
+        android:layout_width="match_parent">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            android:id="@+id/cl_login_buttons"
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            android:layout_marginEnd="15dp">
-
-            <Button
-                android:id="@+id/login_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:backgroundTint="@color/orange"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintRight_toLeftOf="@id/register_button"
-                android:layout_margin="5dp"
-                android:textSize="12sp"
-                android:text="@string/title_login"
-                android:visibility="visible"/>
-
-            <Button
-                android:id="@+id/register_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:backgroundTint="@color/orange"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                android:layout_marginTop="5dp"
-                android:layout_marginStart="5dp"
-                android:text="@string/title_register"
-                android:textSize="12sp"
-                android:visibility="visible"/>
-
-            <Button
-                android:id="@+id/logout_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:backgroundTint="@color/orange"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                android:layout_margin="5dp"
-                android:text="@string/title_logout"
-                android:textSize="12sp"
-                android:visibility="gone"/>
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <TextView
-            android:id="@+id/text_view_greeting"
-            app:layout_constraintTop_toBottomOf="@+id/cl_login_buttons"
-            app:layout_constraintLeft_toLeftOf="parent"
+        <Button
+            android:id="@+id/login_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/greeting"
-            android:layout_marginTop="18dp"
-            android:layout_marginStart="12dp"
-            android:textSize="25sp"/>
+            android:backgroundTint="@color/orange"
+            android:layout_toLeftOf="@+id/register_button"
+            android:layout_margin="5dp"
+            android:textSize="12sp"
+            android:text="@string/title_login"/>
 
         <Button
-            android:id="@+id/button_book_workshop"
-            android:layout_width="160sp"
-            android:layout_height="80sp"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/text_view_greeting"
-            android:layout_marginTop="40dp"
-            android:layout_marginStart="15dp"
-            android:text="@string/txt_book_workshop"/>
-
-        <Button
-            android:id="@+id/button_book_culture_day"
-            android:layout_width="160sp"
-            android:layout_height="80sp"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/text_view_greeting"
-            android:layout_marginTop="40dp"
-            android:layout_marginEnd="15dp"
-            android:text="@string/txt_book_culture_day"/>
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:background="@drawable/home_item_border"
-            android:id="@+id/home_item_loyalty_points"
-            android:layout_width="match_parent"
+            android:id="@+id/register_button"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:backgroundTint="@color/orange"
+            android:layout_alignParentRight="true"
+            android:layout_margin="5dp"
+            android:text="@string/title_register"
+            android:textSize="12sp"/>
+
+    </RelativeLayout>>
+
+    <TextView
+        android:id="@+id/text_view_greeting"
+        app:layout_constraintTop_toBottomOf="@+id/home_relative_layout"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hello There"
+        android:layout_marginTop="18dp"
+        android:layout_marginLeft="12dp"
+        android:textSize="25sp"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:background="@drawable/home_item_border"
+        android:id="@+id/home_item_notifications"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_view_greeting"
+        android:layout_marginTop="40dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp">
+
+        <ImageView
+            android:id="@+id/home_item_notifications_image"
+            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/button_book_workshop"
-            android:layout_marginTop="40dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp">
+            android:layout_width="300px"
+            android:layout_height="300px"
+            android:background="@drawable/home_image_border"/>
 
-            <ImageView
-                android:contentDescription="@string/iv_loyalty_points_content"
-                android:id="@+id/home_item_loyalty_points_image"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintLeft_toLeftOf="parent"
-                android:layout_width="115dp"
-                android:layout_height="115dp"
-                android:background="@drawable/home_image_border"/>
-
-            <TextView
-                android:id="@+id/home_item_loyalty_points_head"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintLeft_toRightOf="@+id/home_item_loyalty_points_image"
-                app:layout_constraintTop_toTopOf="parent"
-                android:text="@string/title_loyalty_points"
-                android:layout_margin="10dp"
-                android:textSize="22sp"/>
-
-            <TextView
-                android:id="@+id/home_item_loyalty_points_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintLeft_toRightOf="@+id/home_item_loyalty_points_image"
-                app:layout_constraintTop_toBottomOf="@+id/home_item_loyalty_points_head"
-                android:text="@string/lorem_ipsum"
-                android:layout_margin="10dp"
-                android:textSize="18sp"/>
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:background="@drawable/home_item_border"
-            android:id="@+id/home_item_popular_workshops"
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/home_item_notifications_head"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/home_item_loyalty_points"
-            android:layout_marginTop="20dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp">
+            app:layout_constraintLeft_toRightOf="@+id/home_item_notifications_image"
+            app:layout_constraintTop_toTopOf="parent"
+            android:text="Meldingen"
+            android:layout_margin="10dp"
+            android:textSize="22sp"/>
 
-            <ImageView
-                android:contentDescription="@string/iv_popular_workshops_content"
-                android:id="@+id/home_item_popular_workshops_image"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintLeft_toLeftOf="parent"
-                android:layout_width="115dp"
-                android:layout_height="115dp"
-                android:background="@drawable/home_image_border"/>
-
-            <TextView
-                android:id="@+id/home_item_popular_workshops_head"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintLeft_toRightOf="@+id/home_item_popular_workshops_image"
-                app:layout_constraintTop_toTopOf="parent"
-                android:text="@string/title_popular_workshops"
-                android:layout_margin="10dp"
-                android:textSize="22sp"/>
-
-            <TextView
-                android:id="@+id/home_item_popular_workshops_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintLeft_toRightOf="@+id/home_item_popular_workshops_image"
-                app:layout_constraintTop_toBottomOf="@+id/home_item_popular_workshops_head"
-                android:text="@string/lorem_ipsum"
-                android:layout_margin="10dp"
-                android:textSize="18sp"/>
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:background="@drawable/home_item_border"
-            android:id="@+id/home_item_newsletter"
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/home_item_notifications_text"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/home_item_popular_workshops"
-            android:layout_marginTop="20dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
-            android:layout_marginBottom="30dp">
-
-            <ImageView
-                android:contentDescription="@string/iv_newsletter_content"
-                android:id="@+id/home_item_newsletter_image"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintLeft_toLeftOf="parent"
-                android:layout_width="115dp"
-                android:layout_height="115dp"
-                android:background="@drawable/home_image_border"/>
-
-            <TextView
-                android:id="@+id/home_item_newsletter_head"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintLeft_toRightOf="@+id/home_item_newsletter_image"
-                app:layout_constraintTop_toTopOf="parent"
-                android:text="@string/title_newsletter"
-                android:layout_margin="10dp"
-                android:textSize="22sp"/>
-
-            <TextView
-                android:id="@+id/home_item_newsletter_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintLeft_toRightOf="@+id/home_item_newsletter_image"
-                app:layout_constraintTop_toBottomOf="@+id/home_item_newsletter_head"
-                android:text="@string/lorem_ipsum"
-                android:layout_margin="10dp"
-                android:textSize="18sp"/>
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <!--<TextView
-            android:id="@+id/text_home"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:textAlignment="center"
-            android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />-->
+            app:layout_constraintLeft_toRightOf="@+id/home_item_notifications_image"
+            app:layout_constraintTop_toBottomOf="@+id/home_item_notifications_head"
+            android:text="Lorem ipsem blablabla"
+            android:layout_margin="10dp"
+            android:textSize="18sp"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-</ScrollView>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:background="@drawable/home_item_border"
+        android:id="@+id/home_item_loyalty_points"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/home_item_notifications"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp">
+
+        <ImageView
+            android:id="@+id/home_item_loyalty_points_image"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_width="300px"
+            android:layout_height="300px"
+            android:background="@drawable/home_image_border"/>
+
+        <TextView
+            android:id="@+id/home_item_loyalty_points_head"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toRightOf="@+id/home_item_loyalty_points_image"
+            app:layout_constraintTop_toTopOf="parent"
+            android:text="Spaarpunten"
+            android:layout_margin="10dp"
+            android:textSize="22sp"/>
+
+        <TextView
+            android:id="@+id/home_item_loyalty_points_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toRightOf="@+id/home_item_loyalty_points_image"
+            app:layout_constraintTop_toBottomOf="@+id/home_item_loyalty_points_head"
+            android:text="Lorem ipsem blablabla"
+            android:layout_margin="10dp"
+            android:textSize="18sp"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/text_home"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
