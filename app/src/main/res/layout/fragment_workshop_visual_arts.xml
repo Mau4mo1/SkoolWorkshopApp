@@ -71,7 +71,7 @@
 
                 </LinearLayout>
                 <ImageButton
-                    android:id="@+id/graffiti_Info"
+                    android:id="@+id/graffiti_info"
                     android:background="@drawable/layout_bg"
                     android:src="@drawable/ic_baseline_info_24"
                     android:layout_width="wrap_content"
@@ -126,6 +126,7 @@
 
                 </LinearLayout>
                 <ImageButton
+                    android:id="@+id/graffiti_light_info"
                     android:background="@drawable/layout_bg"
                     android:src="@drawable/ic_baseline_info_24"
                     android:layout_width="wrap_content"
@@ -180,6 +181,7 @@
 
                 </LinearLayout>
                 <ImageButton
+                    android:id="@+id/stop_motion_info"
                     android:background="@drawable/layout_bg"
                     android:src="@drawable/ic_baseline_info_24"
                     android:layout_width="wrap_content"
@@ -235,6 +237,7 @@
 
                 </LinearLayout>
                 <ImageButton
+                    android:id="@+id/tshirt_design_info"
                     android:background="@drawable/layout_bg"
                     android:src="@drawable/ic_baseline_info_24"
                     android:layout_width="wrap_content"
