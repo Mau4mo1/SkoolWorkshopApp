@@ -21,7 +21,7 @@ public class WorkshopTheatreFragment extends Fragment implements View.OnClickLis
     private ImageButton mButtonTheatreSport;
     LinearLayout llSoapActing;
     LinearLayout llStageFighting;
-    LinearLayout llFreeRunning;
+    LinearLayout llTheatreSport;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_workshop_theatre, container, false);
@@ -56,11 +56,11 @@ public class WorkshopTheatreFragment extends Fragment implements View.OnClickLis
 
         llSoapActing = root.findViewById(R.id.layout_workshop_soap_acting);
         llStageFighting = root.findViewById(R.id.layout_workshop_stage_fighting);
-        llFreeRunning = root.findViewById(R.id.layout_workshop_freerunning);
+        llTheatreSport = root.findViewById(R.id.layout_workshop_theatre_sport);
 
         llSoapActing.setOnClickListener(this);
         llStageFighting.setOnClickListener(this);
-        llFreeRunning.setOnClickListener(this);
+        llTheatreSport.setOnClickListener(this);
 
         return root;
     }
@@ -74,7 +74,7 @@ public class WorkshopTheatreFragment extends Fragment implements View.OnClickLis
             case R.id.layout_workshop_stage_fighting:
                 getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new WorkshopsForm()).commit();
                 break;
-            case R.id.layout_workshop_freerunning:
+            case R.id.layout_workshop_theatre_sport:
                 getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new WorkshopsForm()).commit();
                 break;
         }
