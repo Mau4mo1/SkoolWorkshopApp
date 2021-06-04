@@ -12,9 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import com.example.homelayout.R;
-import com.example.homelayout.ui.Cultureday.Form.culturedayFormFragment;
-import com.example.homelayout.ui.contact.ContactFragment;
-import com.example.homelayout.ui.workshops.WorkshopsFragment;
+import com.example.homelayout.ui.Cultureday.Form.CulturedayFormFragment;
 
 public class CulturedayMainFragment extends Fragment {
     private Button btn_meer_informatie_cd;
@@ -25,6 +23,7 @@ public class CulturedayMainFragment extends Fragment {
         btn_meer_informatie_cd = root.findViewById(R.id.button_meer_informatie_cd);
         btn_meer_informatie_cd.setClickable(true);
         btn_meer_informatie_cd.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
                 Uri uri = Uri.parse("https://www.skoolworkshop.nl/workshops/cultuurdag/"); // missing 'http://' will cause crashed
@@ -38,7 +37,7 @@ public class CulturedayMainFragment extends Fragment {
         btn_boek_nu_cd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new culturedayFormFragment()).commit();
+                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new CulturedayFormFragment()).commit();
             }
         });
         return root;
