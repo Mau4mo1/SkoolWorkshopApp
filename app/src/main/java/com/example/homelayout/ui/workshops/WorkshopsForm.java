@@ -66,6 +66,7 @@ public class WorkshopsForm extends Fragment {
         mTextViewWorkshopsParticipants = (TextView) root.findViewById(R.id.tv_workshops_participants);
         mTextViewWorkshopFormTitle = (TextView) root.findViewById(R.id.tv_workshops_form_title);
         mTextViewWorkshopFormTitle.setText("Workshop " + this.workshop);
+
         switch (workshop){
             case Graffiti:
             case TshirtOntwerpen:
@@ -106,16 +107,6 @@ public class WorkshopsForm extends Fragment {
             }
         });
 
-        this.mEditTextWorkshopParticipants.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-
-            @Override
-            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                values.put("participants", Integer.valueOf(String.valueOf(mEditTextWorkshopParticipants.getText())));
-                updateSubtotal();
-                return false;
-            }
-        });
-
         this.mEditTextWorkshopRounds = (EditText) root.findViewById(R.id.et_workshop_rounds);
         this.mEditTextWorkshopRounds.addTextChangedListener(new TextWatcher() {
 
@@ -135,16 +126,6 @@ public class WorkshopsForm extends Fragment {
                     values.put("rounds", rounds);
                     updateSubtotal();
                 }
-            }
-        });
-        this.mEditTextWorkshopRounds.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-
-            @Override
-            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                rounds = Integer.parseInt(String.valueOf(mEditTextWorkshopRounds.getText()));
-                values.put("rounds", rounds);
-                updateSubtotal();
-                return false;
             }
         });
 
@@ -172,17 +153,6 @@ public class WorkshopsForm extends Fragment {
             }
         });
 
-        this.mEditTextWorkshopMinutes.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-
-            @Override
-            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                minutes = Integer.valueOf(String.valueOf(mEditTextWorkshopMinutes.getText()));
-                values.put("minutes", minutes);
-                mTextViewWorkshopTotalMinutes.setText("Totaal aantal minuten: " + rounds * minutes);
-                updateSubtotal();
-                return false;
-            }
-        });
         this.mTextViewWorkshopTimetable = (TextView) root.findViewById(R.id.tv_workshops_timetable);
         this.mEditTextWorkshopTimetable = (EditText) root.findViewById(R.id.et_workshop_timetable);
         this.mTextViewWorkshopLearningLevel = (TextView) root.findViewById(R.id.tv_workshops_learning_level);
