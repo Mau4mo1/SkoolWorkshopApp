@@ -24,7 +24,6 @@ public class CalculatePrices {
     public CalculatePrices() {
 
     }
-
     public double getWorkshopCalc(Workshops workshop, HashMap<String, Integer> values) {
         switch (workshop) {
             case Graffiti:
@@ -100,15 +99,17 @@ public class CalculatePrices {
         return totalAmount;
     }
 
-    private double calculateCultureday(HashMap values, ArrayList<Workshops> workshops){
+    public double calculateCultureday(HashMap values, ArrayList<Workshops> workshops){
         double totalAmount = 0;
-        amountOfWorkshops = workshops.size();
 
         Iterator it = values.entrySet().iterator();
         while (it.hasNext()) {
             Map.Entry pair = (Map.Entry) it.next();
             if(pair.getKey().equals("participants")){
                 participants = (int) pair.getValue();
+            }
+            if(pair.getKey().equals("workshops")){
+                amountOfWorkshops = (int) pair.getValue();
             }
             if(pair.getKey().equals("participantsGraffitiOrTshirtDesign")){
                 participantsGraffitiOrTshirtDesign = (int) pair.getValue();
