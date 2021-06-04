@@ -6,14 +6,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.Home.HomeFragment">
+    tools:context=".ui.home.HomeFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/fragment_home"
         tools:context=".ui.home.HomeFragment"
-        android:layout_marginBottom="20dp">
+        android:layout_marginBottom="20sp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             app:layout_constraintTop_toTopOf="parent"
@@ -21,7 +21,7 @@
             android:id="@+id/cl_login_buttons"
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
-            android:layout_marginEnd="15dp">
+            android:layout_marginEnd="15sp">
 
             <Button
                 android:id="@+id/login_button"
@@ -30,7 +30,7 @@
                 android:backgroundTint="@color/orange"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintRight_toLeftOf="@id/register_button"
-                android:layout_margin="5dp"
+                android:layout_margin="5sp"
                 android:textSize="12sp"
                 android:text="@string/title_login"
                 android:visibility="visible"/>
@@ -42,8 +42,8 @@
                 android:backgroundTint="@color/orange"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                android:layout_marginTop="5dp"
-                android:layout_marginStart="5dp"
+                android:layout_marginTop="5sp"
+                android:layout_marginStart="5sp"
                 android:text="@string/title_register"
                 android:textSize="12sp"
                 android:visibility="visible"/>
@@ -55,7 +55,7 @@
                 android:backgroundTint="@color/orange"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                android:layout_margin="5dp"
+                android:layout_margin="5sp"
                 android:text="@string/title_logout"
                 android:textSize="12sp"
                 android:visibility="gone"/>
@@ -69,7 +69,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/greeting"
-            android:layout_marginTop="18dp"
+            android:layout_marginTop="18sp"
             android:layout_marginStart="12dp"
             android:textSize="25sp"/>
 
@@ -79,8 +79,8 @@
             android:layout_height="80sp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@id/text_view_greeting"
-            android:layout_marginTop="40dp"
-            android:layout_marginStart="15dp"
+            android:layout_marginTop="40sp"
+            android:layout_marginStart="15sp"
             android:text="@string/txt_book_workshop"/>
 
         <Button
@@ -89,8 +89,8 @@
             android:layout_height="80sp"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/text_view_greeting"
-            android:layout_marginTop="40dp"
-            android:layout_marginEnd="15dp"
+            android:layout_marginTop="40sp"
+            android:layout_marginEnd="15sp"
             android:text="@string/txt_book_culture_day"/>
 
         <androidx.constraintlayout.widget.ConstraintLayout

@@ -22,7 +22,7 @@ public class WorkshopTheatreFragment extends Fragment implements View.OnClickLis
     private ImageButton mButtonTheatreSport;
     LinearLayout llSoapActing;
     LinearLayout llStageFighting;
-    LinearLayout llFreeTheatersport;
+    LinearLayout llTheatreSport;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_workshop_theatre, container, false);
@@ -57,11 +57,11 @@ public class WorkshopTheatreFragment extends Fragment implements View.OnClickLis
 
         llSoapActing = root.findViewById(R.id.layout_workshop_soap_acting);
         llStageFighting = root.findViewById(R.id.layout_workshop_stage_fighting);
-        llFreeTheatersport = root.findViewById(R.id.layout_workshop_theatre_sport);
+        llTheatreSport = root.findViewById(R.id.layout_workshop_theatre_sport);
 
         llSoapActing.setOnClickListener(this);
         llStageFighting.setOnClickListener(this);
-        llFreeTheatersport.setOnClickListener(this);
+        llTheatreSport.setOnClickListener(this);
 
         return root;
     }
