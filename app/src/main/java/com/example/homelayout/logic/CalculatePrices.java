@@ -47,7 +47,7 @@ public class CalculatePrices {
             }
         }
         totalAmount = (int) (START_FEE + rounds * (minutes * COST_PER_MINUTE));
-        System.out.println(totalAmount);
+        // Log.d(TAG, "The total amount is: " + totalAmount);
         return totalAmount;
     }
 
@@ -63,8 +63,11 @@ public class CalculatePrices {
                 this.minutes = (int) pair.getValue();
             }
         }
-        totalAmount = (int) (START_FEE + this.rounds * (this.minutes * COST_PER_MINUTE) + this.participants * MATERIAL_COST);
+        totalAmount = (int) (START_FEE + this.rounds * (this.minutes * COST_PER_MINUTE));
         System.out.println(totalAmount);
+        if(checkIfTotalAmountIsAboveMinimalTwoHundredFifty(totalAmount)){
+            // Log.d(TAG, "The total amount is above 175");
+        }
         return totalAmount;
     }
 
@@ -86,7 +89,7 @@ public class CalculatePrices {
         totalAmount = (int) (START_FEE + this.rounds * (this.minutes * COST_PER_MINUTE) + this.participants * MATERIAL_COST);
         System.out.println(totalAmount);
         if(checkIfTotalAmountIsAboveMinimalOneHundredSeventyFive(totalAmount)){
-            Log.d(TAG, "The total amount is above 175");
+            // Log.d(TAG, "The total amount is above 175");
         }
         return totalAmount;
     }
@@ -95,14 +98,14 @@ public class CalculatePrices {
         if(totalAmount >= 175){
             return true;
         }
-        Log.d(TAG, "The total amount should be at least 175");
+        // Log.d(TAG, "The total amount should be at least 175");
         return false;
     }
     private boolean checkIfTotalAmountIsAboveMinimalTwoHundredFifty(int totalAmount){
         if(totalAmount >= 250){
             return true;
         }
-        Log.d(TAG, "The total amount should be at least 250");
+        // Log.d(TAG, "The total amount should be at least 250");
         return false;
     }
 }
