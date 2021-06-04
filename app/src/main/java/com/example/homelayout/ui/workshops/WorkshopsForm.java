@@ -1,5 +1,6 @@
 package com.example.homelayout.ui.workshops;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Build;
 import android.os.Bundle;
@@ -54,6 +55,7 @@ public class WorkshopsForm extends Fragment {
         this.workshop = workshop;
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -62,7 +64,8 @@ public class WorkshopsForm extends Fragment {
         View root = inflater.inflate(R.layout.fragment_workshops_form, container, false);
         thisContext = container.getContext();
         mTextViewWorkshopsParticipants = (TextView) root.findViewById(R.id.tv_workshops_participants);
-
+        mTextViewWorkshopFormTitle = (TextView) root.findViewById(R.id.tv_workshops_form_title);
+        mTextViewWorkshopFormTitle.setText("Workshop " + this.workshop);
         switch (workshop){
             case Graffiti:
             case TshirtOntwerpen:
