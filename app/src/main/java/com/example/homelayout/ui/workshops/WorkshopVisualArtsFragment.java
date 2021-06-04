@@ -20,11 +20,10 @@ public class WorkshopVisualArtsFragment extends Fragment implements View.OnClick
     private ImageButton mButtonGraffitiLight;
     private ImageButton mButtonStopMotion;
     private ImageButton mButtonTshirt;
-
-    LinearLayout llGraffiti;
-    LinearLayout llLightGraffiti;
-    LinearLayout llStopMotion;
-    LinearLayout llTShirt;
+    private LinearLayout llGraffiti;
+    private LinearLayout llLightGraffiti;
+    private LinearLayout llStopMotion;
+    private LinearLayout llTShirt;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_workshop_visual_arts, container, false);

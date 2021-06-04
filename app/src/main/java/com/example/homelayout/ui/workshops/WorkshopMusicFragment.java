@@ -16,12 +16,12 @@ import com.example.homelayout.R;
 
 public class WorkshopMusicFragment extends Fragment implements View.OnClickListener {
 
-    LinearLayout llCaribeanDrums;
-    LinearLayout llGhettoDrums;
-    LinearLayout llLiveLooping;
-    LinearLayout llPercussie;
-    LinearLayout llPopstar;
-    LinearLayout llRap;
+    private LinearLayout llCaribeanDrums;
+    private LinearLayout llGhettoDrums;
+    private LinearLayout llLiveLooping;
+    private LinearLayout llPercussie;
+    private LinearLayout llPopstar;
+    private LinearLayout llRap;
     private ImageButton mButtonCaribbeanDrums;
     private ImageButton mButtonGhettoDrums;
     private ImageButton mButtonLiveLooping;

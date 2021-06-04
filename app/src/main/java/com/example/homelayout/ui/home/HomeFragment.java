@@ -25,6 +25,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     private Button btnBookCultureDay;
     private ConstraintLayout clPopularWorkshops;
 
+
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_home, container, false);
