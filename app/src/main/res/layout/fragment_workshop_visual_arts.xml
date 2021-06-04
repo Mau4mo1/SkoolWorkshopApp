@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:id="@+id/sv_category_workshops"
+    android:layout_marginBottom="70sp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tv_workshops_visual_arts_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:text="@string/title_workshop_visual_arts"
+            android:textSize="32sp"
+            android:textAlignment="center"
+            android:layout_marginTop="20sp"
+            android:layout_marginBottom="20sp"
+            tools:ignore="MissingConstraints" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintTop_toBottomOf="@+id/tv_workshops_visual_arts_title"
+            android:layout_marginTop="40sp"
+            android:layout_marginLeft="10sp"
+            android:layout_marginRight="10sp" >
+            <LinearLayout
+                android:id="@+id/layout_workshop_graffiti"
+                app:layout_constraintTop_toBottomOf="@+id/tv_workshops_visual_arts_title"
+                android:background="@drawable/layout_bg_workshop"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="3sp"
+                android:layout_marginLeft="10sp"
+                android:layout_marginRight="10sp">
+
+                <ImageView
+                    android:id="@+id/iv_workshop_graffiti"
+                    android:layout_width="110sp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/home_image_border"/>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <LinearLayout
+                        android:layout_width="200sp"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <TextView
+                            android:id="@+id/tv_workshop_graffiti_title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/title_graffiti"
+                            android:layout_margin="10sp"
+                            android:textSize="22sp"/>
+
+                        <TextView
+                            android:id="@+id/tv_workhop_graffiti_description"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Lorem ipsem blablabla"
+                            android:layout_margin="10sp"
+                            android:textSize="18sp"/>
+
+                    </LinearLayout>
+                    <ImageButton
+                        android:id="@+id/graffiti_info"
+                        android:background="@drawable/layout_bg"
+                        android:src="@drawable/ic_baseline_info_24"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="70sp" />
+                </LinearLayout>
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/layout_workshop_light_graffiti"
+                app:layout_constraintTop_toBottomOf="@+id/layout_workshop_graffiti"
+                android:background="@drawable/layout_bg_workshop"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="3sp"
+                android:layout_marginLeft="10sp"
+                android:layout_marginRight="10sp">
+
+                <ImageView
+                    android:id="@+id/iv_workshop_light_graffiti"
+                    android:layout_width="110sp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/home_image_border"/>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <LinearLayout
+                        android:layout_width="200sp"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tv_workshop_light_graffiti_title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/title_light_graffiti"
+                            android:layout_margin="10dp"
+                            android:textSize="22sp"/>
+
+                        <TextView
+                            android:id="@+id/tv_workhop_light_graffiti_description"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Lorem ipsem blablabla"
+                            android:layout_margin="10dp"
+                            android:textSize="18sp"/>
+
+                    </LinearLayout>
+                    <ImageButton
+                        android:id="@+id/graffiti_light_info"
+                        android:background="@drawable/layout_bg"
+                        android:src="@drawable/ic_baseline_info_24"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="70sp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_workshop_stop_motion"
+                app:layout_constraintTop_toBottomOf="@+id/layout_workshop_light_graffiti"
+                android:background="@drawable/layout_bg_workshop"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="3sp"
+                android:layout_marginLeft="10sp"
+                android:layout_marginRight="10sp">
+
+                <ImageView
+                    android:id="@+id/iv_workshop_stop_motion"
+                    android:layout_width="110sp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/home_image_border"/>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <LinearLayout
+                        android:layout_width="200sp"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tv_workshop_stop_motion_title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/title_stop_motion"
+                            android:layout_margin="10dp"
+                            android:textSize="22sp"/>
+
+                        <TextView
+                            android:id="@+id/tv_workhop_stop_motion_description"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Lorem ipsem blablabla"
+                            android:layout_margin="10dp"
+                            android:textSize="18sp"/>
+
+                    </LinearLayout>
+                    <ImageButton
+                        android:id="@+id/stop_motion_info"
+                        android:background="@drawable/layout_bg"
+                        android:src="@drawable/ic_baseline_info_24"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="70sp" />
+                </LinearLayout>
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/layout_workshop_tshirt_design"
+                app:layout_constraintTop_toBottomOf="@+id/layout_workshop_stop_motion"
+                android:background="@drawable/layout_bg_workshop"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="3sp"
+                android:layout_marginLeft="10sp"
+                android:layout_marginRight="10sp">
+                <ImageView
+                    android:id="@+id/iv_workshop_tshirt_design"
+                    android:layout_width="110sp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/home_image_border"/>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <LinearLayout
+                        android:layout_width="200sp"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tv_workshop_tshirt_design_title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/title_tshirt_design"
+                            android:layout_margin="10dp"
+                            android:textSize="22sp"/>
+
+                        <TextView
+                            android:id="@+id/tv_workhop_tshirt_design_description"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Lorem ipsem blablabla"
+                            android:layout_margin="10dp"
+                            android:textSize="18sp"/>
+
+                    </LinearLayout>
+                    <ImageButton
+                        android:id="@+id/tshirt_design_info"
+                        android:background="@drawable/layout_bg"
+                        android:src="@drawable/ic_baseline_info_24"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="70sp" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

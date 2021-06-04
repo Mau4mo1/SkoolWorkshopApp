@@ -263,7 +263,7 @@
             android:ems="10"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_cultureday_form_learninglevel_description"
+            app:layout_constraintTop_toBottomOf="@id/tv_cultureday_form_learninglevel_description"/>
 
         <TextView
             android:id="@+id/tv_cultureday_form_cost_text"
@@ -302,6 +302,7 @@
             app:layout_constraintTop_toBottomOf="@id/tv_cultureday_form_cost_price"/>
 
         <Button
+            android:id="@+id/button_boek_nu_cdf"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="BOEK NU"
