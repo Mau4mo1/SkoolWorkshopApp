@@ -57,7 +57,7 @@
 
                 <TextView
                     android:textSize="22sp"
-                    android:paddingLeft="8sp"
+                    android:paddingLeft="4sp"
                     android:paddingBottom="5sp"
                     android:layout_width="140sp"
                     android:layout_height="match_parent"
@@ -92,7 +92,7 @@
 
                 <TextView
                     android:textSize="22sp"
-                    android:paddingLeft="8sp"
+                    android:paddingLeft="4sp"
                     android:layout_width="120sp"
                     android:layout_height="match_parent"
                     android:text="Email"
@@ -123,11 +123,12 @@
                 android:paddingLeft="10sp">
 
                 <TextView
+                    android:paddingLeft="4sp"
                     android:layout_width="140sp"
                     android:layout_height="match_parent"
                     android:text="Telefoon"
                     android:textSize="22sp"
-                    android:paddingLeft="8sp">
+                    >
 
                 </TextView>
 
@@ -159,10 +160,10 @@
                 <TextView
                     android:layout_width="140sp"
                     android:layout_height="match_parent"
-
+                    android:paddingLeft="4sp"
                     android:text="Onderwerp"
                     android:textSize="22sp"
-                    android:paddingLeft="8sp">
+                    >
 
                 </TextView>
 
@@ -193,11 +194,12 @@
                 android:paddingLeft="12sp">
 
                 <TextView
+                    android:paddingLeft="4sp"
                     android:layout_width="140sp"
                     android:layout_height="match_parent"
                     android:text="Bericht"
                     android:textSize="22sp"
-                    android:paddingLeft="8sp">
+                    >
 
                 </TextView>
 

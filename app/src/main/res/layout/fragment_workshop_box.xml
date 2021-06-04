@@ -20,7 +20,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingRight="40dp"
+            android:paddingRight="40sp"
             >
 
             <TextView
@@ -28,7 +28,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Meldingen"
-                android:layout_margin="10dp"
+                android:layout_margin="10sp"
                 android:textSize="22sp"/>
 
             <TextView
@@ -36,7 +36,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Lorem ipsem blablabla"
-                android:layout_margin="10dp"
+                android:layout_margin="10sp"
                 android:textSize="18sp"/>
 
         </LinearLayout>
@@ -45,6 +45,6 @@
             android:src="@drawable/ic_baseline_info_24"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="70dp" />
+            android:layout_marginTop="70sp" />
     </LinearLayout>
 </LinearLayout>

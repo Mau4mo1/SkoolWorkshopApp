@@ -185,7 +185,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/title_flashmob"
-                            android:layout_margin="10dp"
+                            android:layout_margin="10sp"
                             android:textSize="22sp"/>
 
                         <TextView
@@ -196,7 +196,7 @@
                             Durven
                             Presenteren
                             Respecteren"
-                            android:layout_margin="10dp"
+                            android:layout_margin="10sp"
                             android:textSize="18sp"/>
 
                     </LinearLayout>
@@ -242,7 +242,7 @@
                             android:id="@+id/tv_workshop_hiphop_title"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_margin="10dp"
+                            android:layout_margin="10sp"
                             android:text="@string/title_hiphop"
                             android:textSize="22sp" />
 
@@ -250,7 +250,7 @@
                             android:id="@+id/tv_workshop_hiphop_description"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_margin="10dp"
+                            android:layout_margin="10sp"
                             android:text="Presenteren Improviseren Bewegen Samenwerken"
                             android:textSize="18sp" />
 
@@ -274,9 +274,9 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:background="@drawable/layout_bg_workshop"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="3dp"
-                android:layout_marginRight="10dp">
+                android:layout_marginLeft="10sp"
+                android:layout_marginTop="3sp"
+                android:layout_marginRight="10sp">
 
                 <ImageView
                     android:id="@+id/iv_workshop_modern_dance"
@@ -299,7 +299,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/title_modern_dance"
-                            android:layout_margin="10dp"
+                            android:layout_margin="10sp"
                             android:textSize="22sp"/>
 
                         <TextView
@@ -311,7 +311,7 @@
                             Ontdekken
                             Ruimtelijk inzicht
                             Presenteren"
-                            android:layout_margin="10dp"
+                            android:layout_margin="10sp"
                             android:textSize="18sp"/>
 
                     </LinearLayout>
@@ -397,9 +397,9 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:background="@drawable/layout_bg_workshop"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="3dp"
-                android:layout_marginRight="10dp">
+                android:layout_marginLeft="10sp"
+                android:layout_marginTop="3sp"
+                android:layout_marginRight="10sp">
 
                 <ImageView
                     android:id="@+id/iv_workshop_streetdance"
@@ -422,7 +422,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/title_streetdance"
-                            android:layout_margin="10dp"
+                            android:layout_margin="10sp"
                             android:textSize="22sp"/>
 
                         <TextView
@@ -434,7 +434,7 @@
                             Creëren
                             Presenteren
                             Samenwerken"
-                            android:layout_margin="10dp"
+                            android:layout_margin="10sp"
                             android:textSize="18sp"/>
 
                     </LinearLayout>

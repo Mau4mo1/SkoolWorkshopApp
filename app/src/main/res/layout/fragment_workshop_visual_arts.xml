@@ -116,7 +116,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/title_light_graffiti"
-                            android:layout_margin="10dp"
+                            android:layout_margin="10sp"
                             android:textSize="22sp"/>
 
                         <TextView
@@ -124,7 +124,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Lorem ipsem blablabla"
-                            android:layout_margin="10dp"
+                            android:layout_margin="10sp"
                             android:textSize="18sp"/>
 
                     </LinearLayout>
@@ -169,7 +169,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/title_stop_motion"
-                            android:layout_margin="10dp"
+                            android:layout_margin="10sp"
                             android:textSize="22sp"/>
 
                         <TextView
@@ -177,7 +177,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Lorem ipsem blablabla"
-                            android:layout_margin="10dp"
+                            android:layout_margin="10sp"
                             android:textSize="18sp"/>
 
                     </LinearLayout>
@@ -221,7 +221,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/title_tshirt_design"
-                            android:layout_margin="10dp"
+                            android:layout_margin="10sp"
                             android:textSize="22sp"/>
 
                         <TextView
@@ -229,7 +229,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Lorem ipsem blablabla"
-                            android:layout_margin="10dp"
+                            android:layout_margin="10sp"
                             android:textSize="18sp"/>
 
                     </LinearLayout>
