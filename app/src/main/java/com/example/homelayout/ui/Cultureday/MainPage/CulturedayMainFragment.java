@@ -17,8 +17,8 @@ import com.example.homelayout.ui.contact.ContactFragment;
 import com.example.homelayout.ui.workshops.WorkshopsFragment;
 
 public class CulturedayMainFragment extends Fragment {
-    private Button btn_more_info_cd;
-    private Button btn_book_now_cd;
+    public Button btn_more_info_cd;
+    public Button btn_book_now_cd;
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_cultureday, container, false);
@@ -27,7 +27,7 @@ public class CulturedayMainFragment extends Fragment {
         btn_more_info_cd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Uri uri = Uri.parse("https://www.skoolworkshop.nl/workshops/cultuurdag/"); // missing 'http://' will cause crashed
+                Uri uri = Uri.parse("https://www.skoolworkshop.nl/workshops/cultuurdag/");
                 Intent intent = new Intent(Intent.ACTION_VIEW, uri);
                 startActivity(intent);
             }
