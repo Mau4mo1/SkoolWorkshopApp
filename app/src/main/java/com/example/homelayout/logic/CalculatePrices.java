@@ -16,6 +16,7 @@ public class CalculatePrices {
     private int participants = 0;
     private int rounds = 0;
     private int minutes = 0;
+    private boolean firstRound = false;
 
     public CalculatePrices() {
 
@@ -30,6 +31,9 @@ public class CalculatePrices {
             case Videoclip:
             case Vloggen:
                 return minimalNinetyMinutes(values);
+            case Zelfverdedeging:
+                firstRound = true;
+                return normalCalculation(values);
             default:
                 return normalCalculation(values);
         }
@@ -37,6 +41,10 @@ public class CalculatePrices {
 
     private int normalCalculation(HashMap values) {
         int totalAmount = 0;
+        if(firstRound){
+            totalAmount =+15;
+        }
+
         Iterator it = values.entrySet().iterator();
         while (it.hasNext()) {
             Map.Entry pair = (Map.Entry) it.next();

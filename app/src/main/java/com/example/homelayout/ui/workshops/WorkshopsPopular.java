@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
 import com.example.homelayout.R;
+import com.example.homelayout.domain.Workshops;
 
 import java.util.zip.CheckedOutputStream;
 
@@ -46,19 +47,19 @@ public class WorkshopsPopular extends Fragment implements View.OnClickListener{
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.cl_popular_workshop_graffiti:
-                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new WorkshopsForm()).commit();
+                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new WorkshopsForm(Workshops.Graffiti)).commit();
                 break;
             case R.id.cl_popular_workshop_rap:
-                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new WorkshopsForm()).commit();
+                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new WorkshopsForm(Workshops.Rap)).commit();
                 break;
             case R.id.cl_popular_workshop_vlogging:
-                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new WorkshopsForm()).commit();
+                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new WorkshopsForm(Workshops.Vloggen)).commit();
                 break;
             case R.id.cl_popular_workshop_hiphop:
-                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new WorkshopsForm()).commit();
+                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new WorkshopsForm(Workshops.Hiphop)).commit();
                 break;
             case R.id.cl_popular_workshop_ghetto_drums:
-                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new WorkshopsForm()).commit();
+                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new WorkshopsForm(Workshops.GhettoDrums)).commit();
                 break;
         }
     }

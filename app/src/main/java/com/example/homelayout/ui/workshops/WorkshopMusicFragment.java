@@ -13,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import com.example.homelayout.R;
+import com.example.homelayout.domain.Workshops;
 
 public class WorkshopMusicFragment extends Fragment implements View.OnClickListener {
 
@@ -107,22 +108,22 @@ public class WorkshopMusicFragment extends Fragment implements View.OnClickListe
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.layout_workshop_caribbean_drums:
-                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new WorkshopsForm()).commit();
+                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new WorkshopsForm(Workshops.CaribbeanDrums)).commit();
                 break;
             case R.id.layout_workshop_ghetto_drums:
-                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new WorkshopsForm()).commit();
+                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new WorkshopsForm(Workshops.GhettoDrums)).commit();
                 break;
             case R.id.layout_workshop_live_looping:
-                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new WorkshopsForm()).commit();
+                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new WorkshopsForm(Workshops.LiveLooping)).commit();
                 break;
             case R.id.layout_workshop_percussie:
-                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new WorkshopsForm()).commit();
+                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new WorkshopsForm(Workshops.Percurssie)).commit();
                 break;
             case R.id.layout_workshop_popstar:
-                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new WorkshopsForm()).commit();
+                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new WorkshopsForm(Workshops.Popstar)).commit();
                 break;
             case R.id.layout_workshop_rap:
-                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new WorkshopsForm()).commit();
+                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new WorkshopsForm(Workshops.Rap)).commit();
                 break;
         }
     }

@@ -67,6 +67,7 @@
 
         <EditText
             android:id="@+id/et_workshop_rounds"
+            android:inputType="number"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@+id/tv_workshops_rounds"
@@ -88,6 +89,7 @@
 
         <EditText
             android:id="@+id/et_workshop_minutes"
+            android:inputType="number"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@+id/tv_workshops_minutes"
