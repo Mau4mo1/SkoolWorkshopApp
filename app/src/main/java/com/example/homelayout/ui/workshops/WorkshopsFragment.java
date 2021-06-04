@@ -54,6 +54,7 @@ public class WorkshopsFragment extends Fragment {
         mConstraintLayoutMusic = root.findViewById(R.id.item_music);
         mConstraintLayoutMusic.setClickable(true);
         mConstraintLayoutMusic.setOnClickListener(new View.OnClickListener(){
+
             @Override
             public void onClick(View v) {
                 getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new WorkshopMusicFragment()).commit();
@@ -77,8 +78,6 @@ public class WorkshopsFragment extends Fragment {
                 getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new WorkshopTheatreFragment()).commit();
             }
         });
-
-
         return root;
     }
 }

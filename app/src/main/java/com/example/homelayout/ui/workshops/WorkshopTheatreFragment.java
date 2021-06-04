@@ -13,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import com.example.homelayout.R;
+import com.example.homelayout.domain.Workshops;
 
 public class WorkshopTheatreFragment extends Fragment implements View.OnClickListener {
 
@@ -69,13 +70,13 @@ public class WorkshopTheatreFragment extends Fragment implements View.OnClickLis
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.layout_workshop_soap_acting:
-                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new WorkshopsForm()).commit();
+                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new WorkshopsForm(Workshops.SoapActeren)).commit();
                 break;
             case R.id.layout_workshop_stage_fighting:
-                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new WorkshopsForm()).commit();
+                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new WorkshopsForm(Workshops.StageFighting)).commit();
                 break;
             case R.id.layout_workshop_theatre_sport:
-                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new WorkshopsForm()).commit();
+                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new WorkshopsForm(Workshops.Theatersport)).commit();
                 break;
         }
     }

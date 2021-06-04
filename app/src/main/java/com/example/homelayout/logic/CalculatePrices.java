@@ -16,26 +16,35 @@ public class CalculatePrices {
     private int participants = 0;
     private int rounds = 0;
     private int minutes = 0;
+    private boolean firstRound = false;
 
-    public void getWorkshop(Workshops workshop, HashMap<String, Integer> values) {
+    public CalculatePrices() {
+
+    }
+
+    public double getWorkshopCalc(Workshops workshop, HashMap<String, Integer> values) {
         switch (workshop) {
             case Graffiti:
-                materialCostsIncluded(values);
             case TshirtOntwerpen:
-                materialCostsIncluded(values);
+                return materialCostsIncluded(values);
             case Photoshop:
-                minimalNinetyMinutes(values);
-            case Vloggen:
-                minimalNinetyMinutes(values);
             case Videoclip:
-                minimalNinetyMinutes(values);
+            case Vloggen:
+                return minimalNinetyMinutes(values);
+            case Zelfverdedeging:
+                firstRound = true;
+                return normalCalculation(values);
             default:
-                normalCalculation(values);
+                return normalCalculation(values);
         }
     }
 
     private int normalCalculation(HashMap values) {
         int totalAmount = 0;
+        if(firstRound){
+            totalAmount =+15;
+        }
+
         Iterator it = values.entrySet().iterator();
         while (it.hasNext()) {
             Map.Entry pair = (Map.Entry) it.next();
@@ -47,12 +56,12 @@ public class CalculatePrices {
             }
         }
         totalAmount = (int) (START_FEE + rounds * (minutes * COST_PER_MINUTE));
-        System.out.println(totalAmount);
+        // Log.d(TAG, "The total amount is: " + totalAmount);
         return totalAmount;
     }
 
-    private int minimalNinetyMinutes(HashMap values) {
-        int totalAmount = 0;
+    private double minimalNinetyMinutes(HashMap values) {
+        double totalAmount = 0;
         Iterator it = values.entrySet().iterator();
         while (it.hasNext()) {
             Map.Entry pair = (Map.Entry) it.next();
@@ -63,13 +72,16 @@ public class CalculatePrices {
                 this.minutes = (int) pair.getValue();
             }
         }
-        totalAmount = (int) (START_FEE + this.rounds * (this.minutes * COST_PER_MINUTE) + this.participants * MATERIAL_COST);
+        totalAmount = (double) (START_FEE + this.rounds * (this.minutes * COST_PER_MINUTE));
         System.out.println(totalAmount);
+        if(checkIfTotalAmountIsAboveMinimalTwoHundredFifty(totalAmount)){
+            // Log.d(TAG, "The total amount is above 175");
+        }
         return totalAmount;
     }
 
-    private int materialCostsIncluded(HashMap values) {
-        int totalAmount = 0;
+    private double materialCostsIncluded(HashMap values) {
+        double totalAmount = 0;
         Iterator it = values.entrySet().iterator();
         while (it.hasNext()) {
             Map.Entry pair = (Map.Entry) it.next();
@@ -83,26 +95,26 @@ public class CalculatePrices {
                 this.minutes = (int) pair.getValue();
             }
         }
-        totalAmount = (int) (START_FEE + this.rounds * (this.minutes * COST_PER_MINUTE) + this.participants * MATERIAL_COST);
+        totalAmount = (double) (START_FEE + this.rounds * (this.minutes * COST_PER_MINUTE) + this.participants * MATERIAL_COST);
         System.out.println(totalAmount);
         if(checkIfTotalAmountIsAboveMinimalOneHundredSeventyFive(totalAmount)){
-            Log.d(TAG, "The total amount is above 175");
+            // Log.d(TAG, "The total amount is above 175");
         }
         return totalAmount;
     }
 
-    private boolean checkIfTotalAmountIsAboveMinimalOneHundredSeventyFive(int totalAmount){
+    private boolean checkIfTotalAmountIsAboveMinimalOneHundredSeventyFive(double totalAmount){
         if(totalAmount >= 175){
             return true;
         }
-        Log.d(TAG, "The total amount should be at least 175");
+        // Log.d(TAG, "The total amount should be at least 175");
         return false;
     }
-    private boolean checkIfTotalAmountIsAboveMinimalTwoHundredFifty(int totalAmount){
+    private boolean checkIfTotalAmountIsAboveMinimalTwoHundredFifty(double totalAmount){
         if(totalAmount >= 250){
             return true;
         }
-        Log.d(TAG, "The total amount should be at least 250");
+        // Log.d(TAG, "The total amount should be at least 250");
         return false;
     }
 }

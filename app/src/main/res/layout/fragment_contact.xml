@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
@@ -32,17 +30,17 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
-            android:layout_margin="10sp"
+            android:padding="10dp"
             android:text="Neem contact op voor al je vragen. Bel/mail of vul de onderstaande contactformulier in."
-            android:textSize="19sp"
+            android:textSize="20dp"
             />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="20sp"
-            android:background="@drawable/contact_background"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:padding="20dp"
+            >
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -65,7 +63,6 @@
                     >
 
                 </TextView>
-
                 <EditText
                     android:inputType="textCapSentences"
                     android:maxLines="1"
@@ -75,13 +72,11 @@
                     android:layout_height="35sp"
                     android:layout_gravity="center"
                     android:layout_weight="0.80"
-                    android:background="@drawable/form_background_rounded"
                     android:ems="10"
                     android:gravity="right"
                     android:hint="Naam"
                      />
             </LinearLayout>
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -98,22 +93,20 @@
                     android:text="Email"
                     android:paddingBottom="5sp" />
 
+                </TextView>
                 <EditText
-                    android:inputType="textCapSentences"
-                    android:maxLines="1"
+                    android:gravity="right"
+                    android:hint="Email"
+                    android:background="@color/white"
                     android:id="@+id/mailID"
                     android:layout_width="match_parent"
                     android:textSize="20sp"
                     android:layout_height="35sp"
                     android:layout_gravity="center"
                     android:layout_weight="0.80"
-                    android:background="@drawable/form_background_rounded"
                     android:ems="10"
-                    android:gravity="right"
-                    android:hint="Email"
-                    android:paddingEnd="10sp" />
+                    android:paddingEnd="10dp"/>
             </LinearLayout>
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -131,23 +124,19 @@
                     >
 
                 </TextView>
-
                 <EditText
-                    android:inputType="textCapSentences"
-                    android:maxLines="1"
+                    android:gravity="right"
+                    android:hint="Telefoon"
+                    android:background="@color/white"
                     android:id="@+id/phone_input"
                     android:layout_width="match_parent"
                     android:textSize="20sp"
                     android:layout_height="35sp"
                     android:layout_gravity="center"
                     android:layout_weight="0.80"
-                    android:background="@drawable/form_background_rounded"
                     android:ems="10"
-                    android:gravity="right"
-                    android:hint="Telefoon"
-                    android:paddingEnd="10sp" />
+                    android:paddingEnd="10dp"/>
             </LinearLayout>
-
             <LinearLayout
 
                 android:layout_width="match_parent"
@@ -158,7 +147,8 @@
                 android:paddingLeft="10sp">
 
                 <TextView
-                    android:layout_width="140sp"
+                    android:paddingEnd="20dp"
+                    android:layout_width="140dp"
                     android:layout_height="match_parent"
                     android:paddingLeft="4sp"
                     android:text="Onderwerp"
@@ -166,26 +156,21 @@
                     >
 
                 </TextView>
-
                 <EditText
-                    android:inputType="textCapSentences"
-                    android:maxLines="1"
-                    android:background="@drawable/form_background_rounded"
+                    android:gravity="right"
+                    android:hint="Naam"
+                    android:background="@color/white"
                     android:id="@+id/subjectID"
                     android:layout_width="match_parent"
                     android:textSize="19sp"
                     android:layout_height="35sp"
                     android:layout_gravity="center"
                     android:layout_weight="0.80"
-
                     android:ems="10"
-                    android:gravity="right"
-                    android:hint="Onderwerp"
-                    android:paddingEnd="10sp" />
+                    android:paddingEnd="10dp"/>
             </LinearLayout>
-
             <LinearLayout
-                android:paddingBottom="20sp"
+
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
@@ -202,7 +187,6 @@
                     >
 
                 </TextView>
-
                 <EditText
                     android:textSize="20sp"
                     android:layout_gravity="center"
@@ -214,119 +198,99 @@
                     android:gravity="right"
                     android:hint="Bericht"
                     android:inputType="textCapSentences|textMultiLine"
-                    android:lines="6"
                     android:maxLength="100"
                     android:maxLines="10"
-                    android:paddingEnd="10sp" />
-
-
+                    android:lines="6"
+                    android:gravity="right"
+                    android:hint="Bericht"
+                    android:background="@color/white"
+                    android:id="@+id/messageID"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.80"
+                    android:paddingEnd="10dp"/>
+                <Button
+                    android:id="@+id/sendBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Send"
+                    android:background="@color/white"
+                    android:textColor="@color/black"/>
             </LinearLayout>
 
 
-        </LinearLayout>
-
-        <Button
-            android:layout_margin="20sp"
-            android:id="@+id/sendBtn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/contact_background"
-            android:text="Send"
-            android:textColor="@color/black" />
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:paddingLeft="4sp"
-            android:paddingRight="4sp">
-
-            <ImageView
-                android:layout_width="50sp"
-                android:layout_height="50sp"
-                android:src="@mipmap/ic_launcher_maps_foreground"></ImageView>
-
-
-            <TextView
-
-                android:id="@+id/mapsID"
+            <LinearLayout
+                android:paddingTop="12dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center"
-                android:paddingTop="10sp"
-                android:text="Adres: Veilingkade 15, Breda    "
-                android:textColor="@color/blue"
-                android:textSize="20sp"></TextView>
-        </LinearLayout>
+                android:orientation="horizontal">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:paddingLeft="4sp"
-            android:paddingRight="4sp">
-
-            <ImageView
-                android:layout_width="50sp"
-                android:layout_height="50sp"
-                android:src="@mipmap/ic_launcher_phone_foreground"></ImageView>
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@mipmap/ic_launcher_maps_foreground"
+                    ></ImageView>
 
 
-            <TextView
+                <TextView
+                    android:paddingTop="10dp"
+                    android:gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Adres: Veilingkade 15, Breda    "
+                    android:textColor="@color/black"
+                    android:textSize="20dp">
+                </TextView>
+            </LinearLayout>
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center"
-                android:paddingTop="10sp"
-                android:text="Telefoon: 085 – 0653 923        "
-                android:textColor="@color/black"
-                android:textSize="20sp"></TextView>
-        </LinearLayout>
+                android:orientation="horizontal">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:paddingLeft="4sp"
-            android:paddingRight="4sp">
-
-            <ImageView
-                android:layout_width="50sp"
-                android:layout_height="50sp"
-                android:src="@mipmap/ic_launcher_mail_foreground"></ImageView>
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@mipmap/ic_launcher_phone_foreground"
+                    ></ImageView>
 
 
-            <TextView
+                <TextView
+                    android:paddingTop="10dp"
+                    android:gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Telefoon: 085 – 0653 923        "
+                    android:textColor="@color/black"
+                    android:textSize="20dp">
+                </TextView>
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center"
-                android:paddingTop="10sp"
-                android:text="E-mail: info@skoolworkshop.nl"
-                android:textColor="@color/black"
-                android:textSize="20sp"></TextView>
-        </LinearLayout>
+                android:orientation="horizontal">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:paddingLeft="4sp"
-            android:paddingRight="4sp">
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@mipmap/ic_launcher_mail_foreground"
+                    ></ImageView>
 
-            <ImageView
-                android:layout_width="50sp"
-                android:layout_height="50sp"
-                android:src="@mipmap/ic_launcher_r_foreground"></ImageView>
 
-            <TextView
-                android:paddingLeft="4sp"
-                android:paddingRight="4sp"
+                <TextView
+                    android:paddingTop="10dp"
+                    android:gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="E-mail: info@skoolworkshop.nl"
+                    android:textColor="@color/black"
+                    android:textSize="20dp">
+                </TextView>
+            </LinearLayout>
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center"
-                android:paddingTop="10sp"
-                android:text="Kamer van Koophandel: 51371146"
-                android:textColor="@color/black"
-                android:textSize="20sp"></TextView>
-        </LinearLayout>
+                android:orientation="horizontal">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -344,11 +308,21 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center"
-                android:paddingTop="10sp"
-                android:text="BTW-id: NL001143882B36       "
-                android:textColor="@color/black"
-                android:textSize="20sp"></TextView>
+                android:orientation="horizontal">
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@mipmap/ic_launcher_id_foreground" />
+                <TextView
+                    android:paddingTop="10dp"
+                    android:gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="BTW-id: NL001143882B36       "
+                    android:textColor="@color/black"
+                    android:textSize="20dp">
+                </TextView>
+            </LinearLayout>
         </LinearLayout>
     </LinearLayout>
    </ScrollView>
