@@ -17,11 +17,17 @@ import com.example.homelayout.JavaMailAPI;
 import com.example.homelayout.R;
 
 public class ContactFragment extends Fragment {
-public EditText mEmail;
-public EditText mSubject;
-public EditText mMessage;
-public Button btnSend;
-public Context thiscontext;
+
+
+    private final String STATE_EDIT_EMAIL = "edit_email";
+    private final String STATE_EDIT_SUJECT = "edit_subject";
+    private final String STATE_EDIT_MESSAGE = "edit_message";
+
+    public EditText mEmail;
+    public EditText mSubject;
+    public EditText mMessage;
+    public Button btnSend;
+    public Context thiscontext;
 //changes
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -40,6 +46,17 @@ public Context thiscontext;
         });
         return root;
     }
+
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        outState.putString(STATE_EDIT_EMAIL,String.valueOf(mEmail.getText()));
+        outState.putString(STATE_EDIT_SUJECT,String.valueOf(mSubject.getText()));
+        outState.putString(STATE_EDIT_MESSAGE,String.valueOf(mMessage.getText()));
+
+        super.onSaveInstanceState(outState);
+    }
+
+
 
     private void sendMail(){
         String mail = mEmail.getText().toString().trim();
