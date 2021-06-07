@@ -23,6 +23,23 @@
             android:layout_marginTop="20dp"
             android:layout_marginBottom="20dp"/>
 
+        <!--<TextView
+            android:id="@+id/tv_workshops_form_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/tv_workshops_form_title"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:text="@string/lorem_ipsum_long"
+            android:textSize="20sp"
+            android:textAlignment="center"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:layout_marginBottom="20dp"
+            android:padding="8dp"
+            android:ellipsize="end"
+            android:maxLines="4"/>-->
+
         <DatePicker
             android:id="@+id/dp_workshop_form"
             android:layout_width="wrap_content"
@@ -167,7 +184,8 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             android:layout_marginTop="20dp"
-            android:text="@string/book_now"/>
+            android:text="@string/book_now"
+            android:backgroundTint="@color/orange"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
