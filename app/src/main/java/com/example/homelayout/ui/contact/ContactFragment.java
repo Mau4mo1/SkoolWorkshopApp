@@ -22,6 +22,7 @@ public EditText mSubject;
 public EditText mMessage;
 public Button btnSend;
 public Context thiscontext;
+//changes
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_contact, container, false);
