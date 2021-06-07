@@ -1,6 +1,8 @@
 include ':Module'
 include ':SkoolWorkshop'
 include ':mylibrary2'
+include ':SkoolWorkshop'
+include ':mylibrary2'
 include ':mylibrary'
 include ':app'
 rootProject.name = "HomeLayout"
