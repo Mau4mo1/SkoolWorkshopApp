@@ -13,7 +13,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.homelayout.R;
-import com.example.homelayout.ui.Cultureday.Form.CulturedayFormFragment;
+import com.example.homelayout.ui.Cultureday.Form.CulturedayBookingFormFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 
@@ -43,7 +43,7 @@ public class CulturedayMainFragment extends Fragment {
 
             @Override
             public void onClick(View v) {
-                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new CulturedayFormFragment()).commit();
+                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new CulturedayBookingFormFragment()).commit();
             }
         });
 
