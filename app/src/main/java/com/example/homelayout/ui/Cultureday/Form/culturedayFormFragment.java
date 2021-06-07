@@ -98,19 +98,14 @@ public class culturedayFormFragment extends Fragment {
                     }else if (minutes < 60) {
                         new AlertDialog.Builder(con)
                                 .setMessage("De workshops moeten 60 minuten of langer duren")
-
                                 .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialog, int which) {
                                     }
                                 });
                     }
                 }
-//           else boek cultuurdag
         });
 
         return root;
-//        Subtotaal
-//        Prijs workshops
-//        Prijs extra (grafiti)
     }
 }
