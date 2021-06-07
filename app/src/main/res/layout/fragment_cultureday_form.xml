@@ -5,29 +5,26 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_margin="20sp"
+        android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/tv_cultureday_form_title"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="TextView"
-            android:textColor="@color/text_grey"
-            android:textSize="20sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:background="@drawable/contact_background"
+            android:orientation="vertical"
+            tools:ignore="MissingConstraints">
 
         <TextView
             android:id="@+id/tv_cultureday_form_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
+            android:layout_marginStart="16sp"
             android:text="12/12/2022"
-            android:textColor="@color/text_grey"
+            android:textColor="@color/black"
             android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="@+id/b_cultureday_form_choose_date"
             app:layout_constraintStart_toStartOf="parent"
@@ -37,8 +34,8 @@
             android:id="@+id/b_cultureday_form_choose_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
+            android:layout_marginTop="16sp"
+            android:layout_marginEnd="16sp"
             android:src="@drawable/ic_calendar"
             android:text="kies datum"
             app:layout_constraintEnd_toEndOf="parent"
@@ -49,8 +46,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16sp"
-            android:text="Aantal workshoprondes *"
-            android:textColor="@color/text_grey"
+            android:text="Aantal workshoprondes"
+            android:textColor="@color/black"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -60,7 +57,7 @@
             android:id="@+id/edn_cultureday_form_rounds_field"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="12sp"
             android:ems="10"
             android:hint="3"
             android:inputType="number"
@@ -72,9 +69,9 @@
             android:id="@+id/tv_cultureday_form_workshops_per_round_description"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="Aantal workshops per workshopronde *"
-            android:textColor="@color/text_grey"
+            android:layout_marginTop="16sp"
+            android:text="Aantal workshops per workshopronde"
+            android:textColor="@color/black"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -84,7 +81,7 @@
             android:id="@+id/edn_cultureday_form_workshops_per_round_field"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="12sp"
             android:ems="10"
             android:hint="3"
             android:inputType="number"
@@ -96,9 +93,9 @@
             android:id="@+id/tv_cultureday_form_time_per_round_description"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="Aantal minuten per workshopronde *"
-            android:textColor="@color/text_grey"
+            android:layout_marginTop="16sp"
+            android:text="Aantal minuten per workshopronde"
+            android:textColor="@color/black"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -108,7 +105,7 @@
             android:id="@+id/edn_cultureday_form_time_per_round_field"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="12sp"
             android:ems="10"
             android:hint="60"
             android:inputType="number"
@@ -120,9 +117,9 @@
             android:id="@+id/tv_cultureday_form_workshops_description"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="16sp"
             android:text="workshops"
-            android:textColor="@color/text_grey"
+            android:textColor="@color/black"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -132,42 +129,62 @@
             android:id="@+id/tv_cultureday_form_workshops_subdescription"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit"
-            android:textColor="@color/text_grey"
+            android:layout_marginTop="12sp"
+            android:text="Kies je workshops"
+            android:textColor="@color/black"
             android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_cultureday_form_workshops_description" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/sv_cultureday_form_workshoplist"
+        <LinearLayout
+            android:id="@+id/linear_layout_dropdown"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="12sp"
+            android:orientation="vertical"
+            android:text="meat"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_cultureday_form_workshops_subdescription" />
+            app:layout_constraintTop_toBottomOf="@id/tv_cultureday_form_workshops_subdescription" >
+
+            <Spinner
+                android:id="@+id/sv_cultureday_form_catagorie_dropdown"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12sp"
+                android:spinnerMode="dropdown"/>
+
+            <CheckBox
+                android:id="@+id/sv_cultureday_form_workshoplist_dans"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12sp"
+                android:text="Hiphop"
+                android:visibility="gone"/>
+
+        </LinearLayout>
 
         <TextView
             android:id="@+id/tv_cultureday_form_timescheme_description"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="16sp"
             android:text="tijdschema"
-            android:textColor="@color/text_grey"
+            android:textColor="@color/black"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/sv_cultureday_form_workshoplist" />
+            app:layout_constraintTop_toBottomOf="@id/linear_layout_dropdown" />
 
         <TextView
             android:id="@+id/tv_cultureday_form_timescheme_subdescription"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit"
-            android:textColor="@color/text_grey"
+            android:layout_marginTop="16sp"
+            android:layout_marginLeft="36sp"
+            android:text="Geef hier op hoe jullie het tijdschema willen hebben (aantal rondes met eventueel pauzes)  "
+            android:textColor="@color/black"
             android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -177,7 +194,7 @@
             android:id="@+id/edm_cultureday_form_timescheme_field"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="12sp"
             android:ems="10"
             android:gravity="start|top"
             android:inputType="textMultiLine"
@@ -189,9 +206,9 @@
             android:id="@+id/tv_cultureday_form_participants_header"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="16sp"
             android:text="deelnemers"
-            android:textColor="@color/text_grey"
+            android:textColor="@color/black"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -201,7 +218,7 @@
             android:id="@+id/edn_cultureday_form_participants_field"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="12sp"
             android:ems="10"
             android:inputType="number"
             app:layout_constraintEnd_toEndOf="parent"
@@ -212,44 +229,34 @@
             android:id="@+id/tv_cultureday_form_participants_shirt_and_drums_description"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="deelnemers voor t-shirts of drums"
-            android:textColor="@color/text_grey"
+            android:layout_marginTop="16sp"
+            android:text="deelnemers voor (de workshops)"
+            android:textColor="@color/black"
             android:textSize="16sp"
+            android:visibility="visible"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/edn_cultureday_form_participants_field" />
-
-        <TextView
-            android:id="@+id/tv_cultureday_form_participants_shirt_and_drums_subdescription"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit"
-            android:textColor="@color/text_grey"
-            android:textSize="14sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_cultureday_form_participants_shirt_and_drums_description" />
 
         <EditText
             android:id="@+id/edn_cultureday_form_participants_shirt_and_drums_field"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
             android:ems="10"
             android:inputType="number"
+            android:visibility="visible"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_cultureday_form_participants_shirt_and_drums_subdescription" />
+            tools:layout_editor_absoluteY="948dp"
+            app:layout_constraintTop_toBottomOf="@id/tv_cultureday_form_participants_shirt_and_drums_description"/>
 
         <TextView
             android:id="@+id/tv_cultureday_form_learninglevel_description"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="16sp"
             android:text="leerniveau"
-            android:textColor="@color/text_grey"
+            android:textColor="@color/black"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -259,7 +266,7 @@
             android:id="@+id/edt_cultureday_form_learninglevel_field"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="12sp"
             android:ems="10"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -325,41 +332,41 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/ll_inlog_system" />
 
-        <TextView
-            android:id="@+id/tv_cultureday_form_cost_price"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="8dp"
-            android:text="kosten - 0"
-            app:layout_constraintStart_toStartOf="parent"
-            android:textSize="16dp"
-            android:textColor="@color/text_grey"
-            app:layout_constraintTop_toBottomOf="@id/tv_cultureday_form_cost_text" />
+            <TextView
+                android:id="@+id/tv_cultureday_form_cost_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24sp"
+                android:layout_marginTop="50sp"
+                android:text="kosten - 0"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:layout_editor_absoluteY="1145dp"
+                app:layout_constraintTop_toBottomOf="@id/edt_cultureday_form_learninglevel_field"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/tv_cultureday_form_subtotal"
-            android:textColor="@color/text_grey"
-            android:textSize="20sp"
-            android:text="subtotaal $0,00"
-            android:layout_marginEnd="16dp"
-            android:layout_marginTop="16dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_cultureday_form_cost_price"/>
+            <TextView
+                android:id="@+id/tv_cultureday_form_subtotal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16sp"
+                android:layout_marginEnd="24sp"
+                android:text="subtotaal $0,00"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_cultureday_form_cost_price"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <Button
+            android:id="@+id/button_book_now_cdf"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="BOEK NU"
-            android:textSize="16dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="16dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_cultureday_form_subtotal"/>
+            android:textSize="16sp"
+            android:layout_marginTop="16sp"
+            android:layout_marginBottom="70sp"
+            android:layout_gravity="center"/>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
 </ScrollView>

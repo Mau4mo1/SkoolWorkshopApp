@@ -17,12 +17,12 @@ import com.example.homelayout.domain.Workshops;
 
 public class WorkshopSportFragment extends Fragment implements View.OnClickListener {
 
-    LinearLayout llBootcamp;
-    LinearLayout llCapoeira;
-    LinearLayout llFreeRunning;
-    LinearLayout llKickboxing;
-    LinearLayout llPannaFootball;
-    LinearLayout llSelfDefence;
+    private LinearLayout llBootcamp;
+    private LinearLayout llCapoeira;
+    private LinearLayout llFreeRunning;
+    private LinearLayout llKickboxing;
+    private LinearLayout llPannaFootball;
+    private LinearLayout llSelfDefence;
     private ImageButton mButtonBootcamp;
     private ImageButton mButtonCapoeira;
     private ImageButton mButtonFreerunning;

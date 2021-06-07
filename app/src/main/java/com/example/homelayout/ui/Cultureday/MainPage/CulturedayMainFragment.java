@@ -21,12 +21,9 @@ public class CulturedayMainFragment extends Fragment {
     private Button btn_meer_informatie_cd;
     private Button btn_boek_nu_cd;
 
-
-
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_cultureday, container, false);
-
 
         btn_meer_informatie_cd = root.findViewById(R.id.b_cultureday_more_info);
         btn_meer_informatie_cd.setClickable(true);
@@ -34,7 +31,7 @@ public class CulturedayMainFragment extends Fragment {
 
             @Override
             public void onClick(View v) {
-                Uri uri = Uri.parse("https://www.skoolworkshop.nl/workshops/cultuurdag/"); // missing 'http://' will cause crashed
+                Uri uri = Uri.parse("https://www.skoolworkshop.nl/workshops/cultuurdag/");
                 Intent intent = new Intent(Intent.ACTION_VIEW, uri);
                 startActivity(intent);
             }

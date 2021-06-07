@@ -20,11 +20,11 @@ import java.util.zip.CheckedOutputStream;
 
 public class WorkshopsPopular extends Fragment implements View.OnClickListener{
 
-    ConstraintLayout clGraffiti;
-    ConstraintLayout clRap;
-    ConstraintLayout clVloggen;
-    ConstraintLayout clHiphop;
-    ConstraintLayout clGhettoDrums;
+    private ConstraintLayout clGraffiti;
+    private ConstraintLayout clRap;
+    private ConstraintLayout clVloggen;
+    private ConstraintLayout clHiphop;
+    private ConstraintLayout clGhettoDrums;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
