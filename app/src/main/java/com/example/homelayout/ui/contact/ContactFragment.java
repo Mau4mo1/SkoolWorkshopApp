@@ -27,7 +27,7 @@ public Context thiscontext;
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_contact, container, false);
         thiscontext = container.getContext();
-       mEmail = root.findViewById(R.id.mailID);
+        mEmail = root.findViewById(R.id.mailID);
         mSubject = root.findViewById(R.id.subjectID);
         mMessage = root.findViewById(R.id.messageID);
         btnSend = root.findViewById(R.id.sendBtn);

@@ -3,6 +3,7 @@ package com.example.homelayout.ui.workshops;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 
@@ -13,6 +14,7 @@ import android.widget.LinearLayout;
 
 import com.example.homelayout.R;
 import com.example.homelayout.domain.Workshops;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.zip.CheckedOutputStream;
 
@@ -62,5 +64,12 @@ public class WorkshopsPopular extends Fragment implements View.OnClickListener{
                 getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new WorkshopsForm(Workshops.GhettoDrums)).commit();
                 break;
         }
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        BottomNavigationView navigation = (BottomNavigationView) getActivity().findViewById(R.id.nav_view);
+        navigation.getMenu().getItem(1).setChecked(true);
     }
 }
