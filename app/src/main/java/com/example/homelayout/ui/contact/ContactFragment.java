@@ -47,6 +47,7 @@ public class ContactFragment extends Fragment {
         return root;
     }
 
+    //this is a test
     @Override
     public void onSaveInstanceState(@NonNull Bundle outState) {
         outState.putString(STATE_EDIT_EMAIL,String.valueOf(mEmail.getText()));
