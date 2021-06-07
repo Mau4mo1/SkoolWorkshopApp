@@ -19,6 +19,7 @@ import androidx.appcompat.app.AppCompatDelegate;
 import androidx.fragment.app.Fragment;
 
 public class MainActivity extends AppCompatActivity {
+    private BottomNavigationView bottomNav;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,10 +30,9 @@ public class MainActivity extends AppCompatActivity {
         // menu should be considered as top level destinations.
         // voor de verandering
 
-        BottomNavigationView bottomNav = findViewById(R.id.nav_view);
+        bottomNav = findViewById(R.id.nav_view);
         bottomNav.setOnNavigationItemSelectedListener(navListener);
         getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new HomeFragment()).commit();
-
 
     }
     private BottomNavigationView.OnNavigationItemSelectedListener navListener =
@@ -62,5 +62,6 @@ public class MainActivity extends AppCompatActivity {
                     return true;
                 }
             };
+
 
 }
