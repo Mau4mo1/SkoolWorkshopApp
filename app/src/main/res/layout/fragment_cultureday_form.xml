@@ -57,6 +57,7 @@
             android:layout_marginTop="10sp"
             android:textSize="16sp"/>
         <EditText
+            android:inputType="number"
             android:id="@+id/edn_cultureday_form_workshops_per_round_field"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -77,6 +78,7 @@
             android:textSize="16sp"/>
         <EditText
             android:id="@+id/edn_cultureday_form_time_per_round_field"
+            android:inputType="number"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@+id/tv_cultureday_form_time_per_round_description"
@@ -149,6 +151,7 @@
             android:layout_marginEnd="20sp"/>
         <EditText
             android:id="@+id/edn_cultureday_form_participants_field"
+            android:inputType="number"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@+id/tv_cultureday_form_participants_header"
@@ -162,17 +165,18 @@
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@+id/edn_cultureday_form_participants_field"
             app:layout_constraintLeft_toLeftOf="parent"
-            android:text="Deelnemers voor de workshops "
+            android:text="Aantal deelnemers voor Graffiti of T-shirt ontwerpen (+€7,50)"
             android:layout_marginTop="8sp"
             android:layout_marginStart="20sp"
             android:layout_marginEnd="20sp"/>
         <EditText
             android:id="@+id/edn_cultureday_form_participants_shirt_and_drums_field"
+            android:inputType="number"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@+id/tv_cultureday_form_participants_shirt_and_drums_description"
             app:layout_constraintLeft_toLeftOf="parent"
-            android:text="Deelnemers voor de workshops "
+            android:text="0"
             android:layout_marginTop="8sp"
             android:layout_marginStart="20sp"
             android:layout_marginEnd="20sp"/>
@@ -205,14 +209,34 @@
             android:layout_marginEnd="50dp"
             android:text="Subtotal"
             android:textSize="20sp"/>
+        <TextView
+            android:id="@+id/tv_cultureday_form_subtotal_amount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_cultureday_form_subtotal"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="50dp"
+            android:text="0"
+            android:textSize="20sp"/>
         <Button
             android:id="@+id/button_book_now_cdf"
             android:layout_width="350sp"
             android:layout_height="60sp"
-            app:layout_constraintTop_toBottomOf="@id/edt_cultureday_form_learninglevel_field"
+            app:layout_constraintTop_toBottomOf="@id/tv_cultureday_form_subtotal_amount"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             android:layout_marginTop="20sp"
             android:text="Boek nu"/>
+        <EditText
+            android:id="@+id/edt_cultureday_form_padding01"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/button_book_now_cdf"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:visibility="invisible"
+            android:layout_marginTop="8sp"
+            android:layout_marginStart="20sp"
+            android:layout_marginEnd="20sp"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

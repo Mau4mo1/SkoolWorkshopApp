@@ -37,17 +37,16 @@
 
             <Button
                 android:id="@+id/button_more_info_cd"
-                android:layout_width="5sp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_width="115sp"
+                android:layout_height="55sp"
+                android:layout_marginLeft="85sp"
                 android:text="Meer informatie"
                 />
 
             <Button
                 android:id="@+id/button_book_now_cd"
-                android:layout_width="5sp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_width="115sp"
+                android:layout_height="55sp"
                 android:layout_marginLeft="10sp"
                 android:text="Boek nu"
                 />

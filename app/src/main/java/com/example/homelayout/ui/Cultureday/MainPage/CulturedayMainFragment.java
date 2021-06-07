@@ -12,7 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import com.example.homelayout.R;
-import com.example.homelayout.ui.Cultureday.Form.culturedayFormFragment;
+import com.example.homelayout.ui.Cultureday.Form.CulturedayFormFragment;
 import com.example.homelayout.ui.contact.ContactFragment;
 import com.example.homelayout.ui.workshops.WorkshopsFragment;
 
@@ -38,7 +38,7 @@ public class CulturedayMainFragment extends Fragment {
         btn_book_now_cd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new culturedayFormFragment()).commit();
+                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new CulturedayFormFragment()).commit();
             }
         });
         return root;
