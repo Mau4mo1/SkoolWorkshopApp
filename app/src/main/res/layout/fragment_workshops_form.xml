@@ -170,6 +170,7 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             android:layout_marginTop="20sp"
+            android:backgroundTint="@color/orange"
             android:text="@string/book_now"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
