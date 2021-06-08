@@ -1,6 +1,8 @@
 package com.example.homelayout.ui.contact;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
@@ -9,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 
@@ -33,12 +36,15 @@ public class ContactFragment extends Fragment {
     public EditText mMessage;
     public Button btnSend;
     public Context thiscontext;
+    private TextView tvMaps;
 //changes
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         Log.d(LOG_ACTIVITY, "onCreateView is called");
         View root = inflater.inflate(R.layout.fragment_contact, container, false);
         thiscontext = container.getContext();
+        tvMaps = root.findViewById(R.id.mapsID);
+        tvMaps.setClickable(true);
         mEmail = root.findViewById(R.id.mailID);
         mSubject = root.findViewById(R.id.subjectID);
         mMessage = root.findViewById(R.id.messageID);
@@ -48,6 +54,14 @@ public class ContactFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 sendMail();
+            }
+        });
+        tvMaps.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(android.content.Intent.ACTION_VIEW,
+                        Uri.parse("https://www.google.com/maps?saddr=My+Location&daddr=Veilingkade+15+Breda"));
+                startActivity(intent);
             }
         });
         savedValues = getActivity().getSharedPreferences(STATE_TOTAL, Context.MODE_PRIVATE);

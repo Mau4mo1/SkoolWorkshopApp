@@ -15,7 +15,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.homelayout.R;
-import com.example.homelayout.ui.Cultureday.Form.CulturedayFormFragment;
+import com.example.homelayout.ui.Cultureday.Form.CulturedayBookingFormFragment;
 import com.example.homelayout.ui.login.LoginFragment;
 import com.example.homelayout.ui.register.RegisterFragment;
 import com.example.homelayout.ui.workshops.WorkshopsFragment;
