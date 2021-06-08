@@ -70,13 +70,13 @@ public class WorkshopTheatreFragment extends Fragment implements View.OnClickLis
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.layout_workshop_soap_acting:
-                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new WorkshopsForm(Workshops.SoapActeren)).commit();
+                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new WorkshopsForm(Workshops.SoapActeren)).addToBackStack(null).commit();
                 break;
             case R.id.layout_workshop_stage_fighting:
-                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new WorkshopsForm(Workshops.StageFighting)).commit();
+                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new WorkshopsForm(Workshops.StageFighting)).addToBackStack(null).commit();
                 break;
             case R.id.layout_workshop_theatre_sport:
-                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new WorkshopsForm(Workshops.Theatersport)).commit();
+                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new WorkshopsForm(Workshops.Theatersport)).addToBackStack(null).commit();
                 break;
         }
     }

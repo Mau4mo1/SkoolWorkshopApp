@@ -109,22 +109,22 @@ public class WorkshopSportFragment extends Fragment implements View.OnClickListe
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.layout_workshop_bootcamp:
-                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new WorkshopsForm(Workshops.Bootcamp)).commit();
+                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new WorkshopsForm(Workshops.Bootcamp)).addToBackStack(null).commit();
                 break;
             case R.id.layout_workshop_capoeira:
-                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new WorkshopsForm(Workshops.Capoeira)).commit();
+                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new WorkshopsForm(Workshops.Capoeira)).addToBackStack(null).commit();
                 break;
             case R.id.layout_workshop_freerunning:
-                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new WorkshopsForm(Workshops.Freeruning)).commit();
+                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new WorkshopsForm(Workshops.Freeruning)).addToBackStack(null).commit();
                 break;
             case R.id.layout_workshop_kickboxen:
-                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new WorkshopsForm(Workshops.Kickboksen)).commit();
+                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new WorkshopsForm(Workshops.Kickboksen)).addToBackStack(null).commit();
                 break;
             case R.id.layout_workshop_panna_football:
-                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new WorkshopsForm(Workshops.Pannavoetbal)).commit();
+                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new WorkshopsForm(Workshops.Pannavoetbal)).addToBackStack(null).commit();
                 break;
             case R.id.layout_workshop_selfdefence:
-                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new WorkshopsForm(Workshops.Zelfverdedeging)).commit();
+                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new WorkshopsForm(Workshops.Zelfverdedeging)).addToBackStack(null).commit();
                 break;
         }
     }
