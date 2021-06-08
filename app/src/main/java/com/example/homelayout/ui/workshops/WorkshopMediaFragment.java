@@ -17,10 +17,10 @@ import com.example.homelayout.domain.Workshops;
 
 public class WorkshopMediaFragment extends Fragment implements View.OnClickListener {
 
-    LinearLayout llPhotoshop;
-    LinearLayout llVlogging;
-    LinearLayout llSmartphonePhotography;
-    LinearLayout llVideoClip;
+    private LinearLayout llPhotoshop;
+    private LinearLayout llVlogging;
+    private LinearLayout llSmartphonePhotography;
+    private LinearLayout llVideoClip;
     private ImageButton mButtonPhotoshop;
     private ImageButton mButtonVlogging;
     private ImageButton mButtonSmartphonePhotography;
@@ -83,16 +83,16 @@ public class WorkshopMediaFragment extends Fragment implements View.OnClickListe
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.layout_workshop_photoshop:
-                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new WorkshopsForm(Workshops.Photoshop)).commit();
+                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new WorkshopsForm(Workshops.Photoshop)).addToBackStack(null).commit();
                 break;
             case R.id.layout_workshop_vlogging:
-                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new WorkshopsForm(Workshops.Vloggen)).commit();
+                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new WorkshopsForm(Workshops.Vloggen)).addToBackStack(null).commit();
                 break;
             case R.id.layout_workshop_smartphone_photography:
-                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new WorkshopsForm(Workshops.Fotografie)).commit();
+                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new WorkshopsForm(Workshops.Fotografie)).addToBackStack(null).commit();
                 break;
             case R.id.layout_workshop_videoclip:
-                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new WorkshopsForm(Workshops.Videoclip)).commit();
+                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new WorkshopsForm(Workshops.Videoclip)).addToBackStack(null).commit();
                 break;
         }
     }

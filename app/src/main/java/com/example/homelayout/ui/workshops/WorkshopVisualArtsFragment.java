@@ -14,18 +14,17 @@ import androidx.fragment.app.Fragment;
 
 import com.example.homelayout.R;
 import com.example.homelayout.domain.Workshops;
-import com.example.homelayout.ui.Cultureday.Form.CulturedayFormFragment;
+import com.example.homelayout.ui.Cultureday.Form.CulturedayBookingFormFragment;
 
 public class WorkshopVisualArtsFragment extends Fragment implements View.OnClickListener {
     private ImageButton mButtonGraffiti;
     private ImageButton mButtonGraffitiLight;
     private ImageButton mButtonStopMotion;
     private ImageButton mButtonTshirt;
-
-    LinearLayout llGraffiti;
-    LinearLayout llLightGraffiti;
-    LinearLayout llStopMotion;
-    LinearLayout llTShirt;
+    private LinearLayout llGraffiti;
+    private LinearLayout llLightGraffiti;
+    private LinearLayout llStopMotion;
+    private LinearLayout llTShirt;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_workshop_visual_arts, container, false);
@@ -87,16 +86,16 @@ public class WorkshopVisualArtsFragment extends Fragment implements View.OnClick
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.layout_workshop_graffiti:
-                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new WorkshopsForm(Workshops.Graffiti)).commit();
+                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new WorkshopsForm(Workshops.Graffiti)).addToBackStack(null).commit();
                 break;
             case R.id.layout_workshop_light_graffiti:
-                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new WorkshopsForm(Workshops.LightGraffiti)).commit();
+                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new WorkshopsForm(Workshops.LightGraffiti)).addToBackStack(null).commit();
                 break;
             case R.id.layout_workshop_stop_motion:
-                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new WorkshopsForm(Workshops.StopMotion)).commit();
+                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new WorkshopsForm(Workshops.StopMotion)).addToBackStack(null).commit();
                 break;
             case R.id.layout_workshop_tshirt_design:
-                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new WorkshopsForm(Workshops.TshirtOntwerpen)).commit();
+                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new WorkshopsForm(Workshops.TshirtOntwerpen)).addToBackStack(null).commit();
                 break;
         }
 

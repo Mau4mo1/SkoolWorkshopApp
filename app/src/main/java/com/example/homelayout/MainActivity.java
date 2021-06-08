@@ -22,6 +22,7 @@ import androidx.appcompat.app.AppCompatDelegate;
 import androidx.fragment.app.Fragment;
 
 public class MainActivity extends AppCompatActivity {
+    private BottomNavigationView bottomNav;
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater menuInflater = getMenuInflater();
@@ -38,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
         // menu should be considered as top level destinations.
         // voor de verandering
 
-        BottomNavigationView bottomNav = findViewById(R.id.nav_view);
+        bottomNav = findViewById(R.id.nav_view);
         bottomNav.setOnNavigationItemSelectedListener(navListener);
         getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new HomeFragment()).commit();
     }
@@ -76,9 +77,10 @@ public class MainActivity extends AppCompatActivity {
                             break;
 
                     }
-                    getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,selectedFragment).commit();
+                    getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,selectedFragment).addToBackStack(null).commit();
                     return true;
                 }
             };
+
 
 }

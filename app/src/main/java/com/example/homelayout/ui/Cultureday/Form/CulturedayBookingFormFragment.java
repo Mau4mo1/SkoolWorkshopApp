@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -20,14 +21,16 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.homelayout.MainActivity;
 import com.example.homelayout.R;
 import com.example.homelayout.domain.Workshops;
 import com.example.homelayout.logic.CalculatePrices;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class CulturedayFormFragment extends Fragment {
+public class CulturedayBookingFormFragment extends Fragment {
     private TextView mCulturedayFormTitle;
     private TextView mCulturedayFormDate;
     private ImageButton mCulturedayChooseDate;
@@ -47,13 +50,16 @@ public class CulturedayFormFragment extends Fragment {
     private CalculatePrices calculatePrices = new CalculatePrices();
     private HashMap<String, Integer> values = new HashMap<>();
     private ArrayList<Workshops> workshops = new ArrayList<>();
-
+    private BottomNavigationView bottomNav;
+    private MenuItem cultureItem;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
         View root = inflater.inflate(R.layout.fragment_cultureday_form, container, false);
         thisContext = container.getContext();
+
+
         this.mCulturedayFormTitle = (TextView) root.findViewById(R.id.tv_cultureday_form_title);
         this.mCulturedayFormDate = (TextView) root.findViewById(R.id.tv_cultureday_form_date);
         this.mCulturedayChooseDate = (ImageButton) root.findViewById(R.id.b_cultureday_form_choose_date);
@@ -160,6 +166,13 @@ public class CulturedayFormFragment extends Fragment {
     public void updateSubtotal() {
         String subtotal = "Subtotaal: €" + calculatePrices.calculateCultureday(values, workshops) + "0";
         mTextViewCulturedaySubtotal.setText(subtotal);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        BottomNavigationView navigation = (BottomNavigationView) getActivity().findViewById(R.id.nav_view);
+        navigation.getMenu().getItem(2).setChecked(true);
     }
 }
 

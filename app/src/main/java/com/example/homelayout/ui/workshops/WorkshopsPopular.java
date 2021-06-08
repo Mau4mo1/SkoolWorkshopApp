@@ -3,6 +3,7 @@ package com.example.homelayout.ui.workshops;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 
@@ -13,16 +14,17 @@ import android.widget.LinearLayout;
 
 import com.example.homelayout.R;
 import com.example.homelayout.domain.Workshops;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.zip.CheckedOutputStream;
 
 public class WorkshopsPopular extends Fragment implements View.OnClickListener{
 
-    ConstraintLayout clGraffiti;
-    ConstraintLayout clRap;
-    ConstraintLayout clVloggen;
-    ConstraintLayout clHiphop;
-    ConstraintLayout clGhettoDrums;
+    private ConstraintLayout clGraffiti;
+    private ConstraintLayout clRap;
+    private ConstraintLayout clVloggen;
+    private ConstraintLayout clHiphop;
+    private ConstraintLayout clGhettoDrums;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
@@ -47,20 +49,27 @@ public class WorkshopsPopular extends Fragment implements View.OnClickListener{
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.cl_popular_workshop_graffiti:
-                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new WorkshopsForm(Workshops.Graffiti)).commit();
+                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new WorkshopsForm(Workshops.Graffiti)).addToBackStack(null).commit();
                 break;
             case R.id.cl_popular_workshop_rap:
-                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new WorkshopsForm(Workshops.Rap)).commit();
+                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new WorkshopsForm(Workshops.Rap)).addToBackStack(null).commit();
                 break;
             case R.id.cl_popular_workshop_vlogging:
-                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new WorkshopsForm(Workshops.Vloggen)).commit();
+                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new WorkshopsForm(Workshops.Vloggen)).addToBackStack(null).commit();
                 break;
             case R.id.cl_popular_workshop_hiphop:
-                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new WorkshopsForm(Workshops.Hiphop)).commit();
+                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new WorkshopsForm(Workshops.Hiphop)).addToBackStack(null).commit();
                 break;
             case R.id.cl_popular_workshop_ghetto_drums:
-                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new WorkshopsForm(Workshops.GhettoDrums)).commit();
+                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new WorkshopsForm(Workshops.GhettoDrums)).addToBackStack(null).commit();
                 break;
         }
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        BottomNavigationView navigation = (BottomNavigationView) getActivity().findViewById(R.id.nav_view);
+        navigation.getMenu().getItem(1).setChecked(true);
     }
 }

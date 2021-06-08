@@ -17,14 +17,13 @@ import com.example.homelayout.domain.Workshops;
 
 public class WorkshopDanceFragment extends Fragment implements View.OnClickListener {
 
-    LinearLayout llBreakdance;
-    LinearLayout llDanceFit;
-    LinearLayout llFlashmob;
-    LinearLayout llHiphop;
-    LinearLayout llModernDance;
-    LinearLayout llStepping;
-    LinearLayout llStreetDance;
-
+    private LinearLayout llBreakdance;
+    private LinearLayout llDanceFit;
+    private LinearLayout llFlashmob;
+    private LinearLayout llHiphop;
+    private LinearLayout llModernDance;
+    private LinearLayout llStepping;
+    private LinearLayout llStreetDance;
     private ImageButton mButtonBreakdance;
     private ImageButton mButtonDanceFit;
     private ImageButton mButtonFlashmob;
@@ -123,25 +122,25 @@ public class WorkshopDanceFragment extends Fragment implements View.OnClickListe
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.layout_workshop_breakdance:
-                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new WorkshopsForm(Workshops.Breakdance)).commit();
+                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new WorkshopsForm(Workshops.Breakdance)).addToBackStack(null).commit();
                 break;
             case R.id.layout_workshop_dance_fit:
-                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new WorkshopsForm(Workshops.DanceFit)).commit();
+                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new WorkshopsForm(Workshops.DanceFit)).addToBackStack(null).commit();
                 break;
             case R.id.layout_workshop_flashmob:
-                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new WorkshopsForm(Workshops.Flashmob)).commit();
+                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new WorkshopsForm(Workshops.Flashmob)).addToBackStack(null).commit();
                 break;
             case R.id.layout_workshop_hiphop:
-                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new WorkshopsForm(Workshops.Hiphop)).commit();
+                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new WorkshopsForm(Workshops.Hiphop)).addToBackStack(null).commit();
                 break;
             case R.id.layout_workshop_modern_dance:
-                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new WorkshopsForm(Workshops.ModerneDans)).commit();
+                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new WorkshopsForm(Workshops.ModerneDans)).addToBackStack(null).commit();
                 break;
             case R.id.layout_workshop_stepping:
-                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new WorkshopsForm(Workshops.Stepping)).commit();
+                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new WorkshopsForm(Workshops.Stepping)).addToBackStack(null).commit();
                 break;
             case R.id.layout_workshop_streetdance:
-                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new WorkshopsForm(Workshops.Streetdance)).commit();
+                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new WorkshopsForm(Workshops.Streetdance)).addToBackStack(null).commit();
                 break;
         }
     }

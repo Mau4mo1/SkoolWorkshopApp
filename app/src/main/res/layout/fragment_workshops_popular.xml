@@ -57,13 +57,15 @@
 
             <TextView
                 android:id="@+id/home_item_loyalty_points_text"
-                android:layout_width="wrap_content"
+                android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 app:layout_constraintLeft_toRightOf="@+id/iv_popular_workshop_graffiti_image"
                 app:layout_constraintTop_toBottomOf="@+id/iv_popular_workshop_graffiti_head"
-                android:text="@string/lorem_ipsum"
+                android:text="@string/lorem_ipsum_long"
                 android:layout_margin="10dp"
-                android:textSize="18sp"/>
+                android:textSize="18sp"
+                android:ellipsize="end"
+                android:maxLines="2"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -74,7 +76,7 @@
             android:layout_height="wrap_content"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/cl_popular_workshop_graffiti"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp">
 
@@ -98,13 +100,15 @@
 
             <TextView
                 android:id="@+id/home_item_rap_text"
-                android:layout_width="wrap_content"
+                android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 app:layout_constraintLeft_toRightOf="@+id/iv_popular_workshop_rap_image"
                 app:layout_constraintTop_toBottomOf="@+id/iv_popular_workshop_rap_head"
-                android:text="@string/lorem_ipsum"
+                android:text="@string/lorem_ipsum_long"
                 android:layout_margin="10dp"
-                android:textSize="18sp"/>
+                android:textSize="18sp"
+                android:ellipsize="end"
+                android:maxLines="2"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -115,7 +119,7 @@
             android:layout_height="wrap_content"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@id/cl_popular_workshop_rap"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp">
 
@@ -139,13 +143,15 @@
 
             <TextView
                 android:id="@+id/home_item_vlogging_text"
-                android:layout_width="wrap_content"
+                android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 app:layout_constraintLeft_toRightOf="@+id/iv_popular_workshop_vlogging_image"
                 app:layout_constraintTop_toBottomOf="@+id/iv_popular_workshop_vlogging_head"
-                android:text="@string/lorem_ipsum"
+                android:text="@string/lorem_ipsum_long"
                 android:layout_margin="10dp"
-                android:textSize="18sp"/>
+                android:textSize="18sp"
+                android:ellipsize="end"
+                android:maxLines="2"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -156,7 +162,7 @@
             android:layout_height="wrap_content"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@id/cl_popular_workshop_vlogging"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp">
 
@@ -180,13 +186,15 @@
 
             <TextView
                 android:id="@+id/home_item_hiphop_text"
-                android:layout_width="wrap_content"
+                android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 app:layout_constraintLeft_toRightOf="@+id/iv_popular_workshop_hiphop_image"
                 app:layout_constraintTop_toBottomOf="@+id/iv_popular_workshop_hiphop_head"
-                android:text="@string/lorem_ipsum"
+                android:text="@string/lorem_ipsum_long"
                 android:layout_margin="10dp"
-                android:textSize="18sp"/>
+                android:textSize="18sp"
+                android:ellipsize="end"
+                android:maxLines="2"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -197,7 +205,7 @@
             android:layout_height="wrap_content"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@id/cl_popular_workshop_hiphop"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"
             android:layout_marginBottom="30dp">
@@ -222,13 +230,15 @@
 
             <TextView
                 android:id="@+id/home_item_ghetto_drums_text"
-                android:layout_width="wrap_content"
+                android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 app:layout_constraintLeft_toRightOf="@+id/iv_popular_workshop_ghetto_drums_image"
                 app:layout_constraintTop_toBottomOf="@+id/iv_popular_workshop_ghetto_drums_head"
-                android:text="@string/lorem_ipsum"
+                android:text="@string/lorem_ipsum_long"
                 android:layout_margin="10dp"
-                android:textSize="18sp"/>
+                android:textSize="18sp"
+                android:ellipsize="end"
+                android:maxLines="2"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

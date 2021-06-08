@@ -7,11 +7,13 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 
 import com.example.homelayout.R;
 import com.example.homelayout.ui.Cultureday.MainPage.CulturedayMainFragment;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class WorkshopsFragment extends Fragment {
 
@@ -29,7 +31,7 @@ public class WorkshopsFragment extends Fragment {
         mConstraintLayoutVisualArts.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new WorkshopVisualArtsFragment()).commit();
+                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new WorkshopVisualArtsFragment()).addToBackStack(null).commit();
             }
         });
 
@@ -38,7 +40,7 @@ public class WorkshopsFragment extends Fragment {
         mConstraintLayoutDance.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new WorkshopDanceFragment()).commit();
+                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new WorkshopDanceFragment()).addToBackStack(null).commit();
             }
         });
 
@@ -47,7 +49,7 @@ public class WorkshopsFragment extends Fragment {
         mConstraintLayoutMedia.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new WorkshopMediaFragment()).commit();
+                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new WorkshopMediaFragment()).addToBackStack(null).commit();
             }
         });
 
@@ -57,7 +59,7 @@ public class WorkshopsFragment extends Fragment {
 
             @Override
             public void onClick(View v) {
-                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new WorkshopMusicFragment()).commit();
+                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new WorkshopMusicFragment()).addToBackStack(null).commit();
             }
         });
 
@@ -66,7 +68,7 @@ public class WorkshopsFragment extends Fragment {
         mConstraintLayoutSport.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new WorkshopSportFragment()).commit();
+                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new WorkshopSportFragment()).addToBackStack(null).commit();
             }
         });
 
@@ -75,9 +77,15 @@ public class WorkshopsFragment extends Fragment {
         mConstraintLayoutTheatre.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new WorkshopTheatreFragment()).commit();
+                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new WorkshopTheatreFragment()).addToBackStack(null).commit();
             }
         });
         return root;
+    }
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        BottomNavigationView navigation = (BottomNavigationView) getActivity().findViewById(R.id.nav_view);
+        navigation.getMenu().getItem(1).setChecked(true);
     }
 }
