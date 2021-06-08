@@ -40,7 +40,7 @@
             android:inputType="textCapSentences"
             android:maxLines="1"
             android:textSize="20sp"
-            android:id="@+id/name_input"
+            android:id="@+id/email_login"
             android:layout_width="match_parent"
             android:layout_height="35sp"
             android:layout_gravity="center"
