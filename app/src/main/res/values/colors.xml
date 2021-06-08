@@ -8,6 +8,7 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="orange">#F49700</color>
+    <color name="burntorange">#CF8000</color>
     <color name="blue_grey">#171F32</color>
     <color name="text_grey">#444A55</color>
     <color name="contrast_dark">#02070F</color>
