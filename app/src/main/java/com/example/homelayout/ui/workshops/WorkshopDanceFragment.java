@@ -17,14 +17,13 @@ import com.example.homelayout.domain.Workshops;
 
 public class WorkshopDanceFragment extends Fragment implements View.OnClickListener {
 
-    LinearLayout llBreakdance;
-    LinearLayout llDanceFit;
-    LinearLayout llFlashmob;
-    LinearLayout llHiphop;
-    LinearLayout llModernDance;
-    LinearLayout llStepping;
-    LinearLayout llStreetDance;
-
+    private LinearLayout llBreakdance;
+    private LinearLayout llDanceFit;
+    private LinearLayout llFlashmob;
+    private LinearLayout llHiphop;
+    private LinearLayout llModernDance;
+    private LinearLayout llStepping;
+    private LinearLayout llStreetDance;
     private ImageButton mButtonBreakdance;
     private ImageButton mButtonDanceFit;
     private ImageButton mButtonFlashmob;

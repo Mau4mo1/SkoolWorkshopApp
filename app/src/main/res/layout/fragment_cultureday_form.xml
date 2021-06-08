@@ -92,7 +92,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_cultureday_form_workshops_per_round_description" />
 
-            <TextView
+        <TextView
             android:id="@+id/tv_cultureday_form_time_per_round_description"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -185,7 +185,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_cultureday_form_timescheme_subdescription" />
 
-            <TextView
+        <TextView
             android:id="@+id/tv_cultureday_form_participants_header"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -277,41 +277,41 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/edt_cultureday_form_learninglevel_field"/>
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:id="@+id/ll_inlog_system"
-        android:gravity="center"
-        android:orientation="horizontal"
-        app:layout_constraintTop_toBottomOf="@+id/tv_cultureday_form_inlog_system"
-        android:paddingLeft="50sp"
-        tools:ignore="MissingConstraints">
-
-        <RadioGroup
+        <LinearLayout
             android:layout_width="wrap_content"
-            android:id="@+id/rg_cultureday_form_inlogsystem"
-            android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_cultureday_form_inlog_system">
-            <RadioButton
-                android:id="@+id/rb_cultureday_form_inlogsystem_yes"
+            android:layout_height="match_parent"
+            android:id="@+id/ll_inlog_system"
+            android:gravity="center"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@+id/tv_cultureday_form_inlog_system"
+            android:paddingLeft="50sp"
+            tools:ignore="MissingConstraints">
+
+            <RadioGroup
                 android:layout_width="wrap_content"
+                android:id="@+id/rg_cultureday_form_inlogsystem"
                 android:layout_height="wrap_content"
-                android:onClick="onRadioButtonClicked"
-                android:text="Ja"
-                tools:layout_editor_absoluteX="0dp"
-                tools:layout_editor_absoluteY="71dp" />
-            <RadioButton
-                android:id="@+id/rb_cultureday_form_inlogsystem_no"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="onRadioButtonClicked"
-                android:text="Nee"
-                tools:layout_editor_absoluteX="0dp"
-                tools:layout_editor_absoluteY="71dp" />
-        </RadioGroup>
-</LinearLayout>
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_cultureday_form_inlog_system">
+                <RadioButton
+                    android:id="@+id/rb_cultureday_form_inlogsystem_yes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="onRadioButtonClicked"
+                    android:text="Ja"
+                    tools:layout_editor_absoluteX="0dp"
+                    tools:layout_editor_absoluteY="71dp" />
+                <RadioButton
+                    android:id="@+id/rb_cultureday_form_inlogsystem_no"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="onRadioButtonClicked"
+                    android:text="Nee"
+                    tools:layout_editor_absoluteX="0dp"
+                    tools:layout_editor_absoluteY="71dp" />
+            </RadioGroup>
+        </LinearLayout>
 
         <TextView
             android:id="@+id/tv_cultureday_form_cost_text"

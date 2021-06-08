@@ -14,18 +14,17 @@ import androidx.fragment.app.Fragment;
 
 import com.example.homelayout.R;
 import com.example.homelayout.domain.Workshops;
-import com.example.homelayout.ui.Cultureday.Form.CulturedayFormFragment;
+import com.example.homelayout.ui.Cultureday.Form.CulturedayBookingFormFragment;
 
 public class WorkshopVisualArtsFragment extends Fragment implements View.OnClickListener {
     private ImageButton mButtonGraffiti;
     private ImageButton mButtonGraffitiLight;
     private ImageButton mButtonStopMotion;
     private ImageButton mButtonTshirt;
-
-    LinearLayout llGraffiti;
-    LinearLayout llLightGraffiti;
-    LinearLayout llStopMotion;
-    LinearLayout llTShirt;
+    private LinearLayout llGraffiti;
+    private LinearLayout llLightGraffiti;
+    private LinearLayout llStopMotion;
+    private LinearLayout llTShirt;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_workshop_visual_arts, container, false);

@@ -4,6 +4,7 @@
     <string name="title_workshop">Workshop</string>
     <string name="title_workshops">Workshops</string>
     <string name="title_workshops_categories">Workshop Categorieën</string>
+
     <string name="title_workshop_visual_arts">Beeldende Kunst</string>
     <string name="title_graffiti">Graffiti</string>
     <string name="title_light_graffiti">Light Graffiti</string>
@@ -50,7 +51,7 @@
     <string name="lorem_ipsum">Lorem ipsum blablabla</string>
     <string name="title_loyalty_points">Spaarpunten</string>
     <string name="title_newsletter">Nieuwsbrief</string>
-    <string name="greeting">Goedemorgen</string>
+    <string name="greeting">Welkom</string>
     <string name="txt_book_workshop">Boek Workshop</string>
     <string name="txt_book_culture_day">Boek Cultuurdag</string>
     <string name="iv_newsletter_content">Nieuwsletter afbeelding</string>
@@ -70,4 +71,10 @@
 
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="lorem_ipsum_long">Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+        Excepteur sint occaecat cupidatat non proident,
+        sunt in culpa qui officia deserunt mollit anim id est laborum.</string>
 </resources>

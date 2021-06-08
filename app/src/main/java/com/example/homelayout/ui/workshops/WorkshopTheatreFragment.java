@@ -20,9 +20,9 @@ public class WorkshopTheatreFragment extends Fragment implements View.OnClickLis
     private ImageButton mButtonSoapActing;
     private ImageButton mButtonStageFighting;
     private ImageButton mButtonTheatreSport;
-    LinearLayout llSoapActing;
-    LinearLayout llStageFighting;
-    LinearLayout llTheatreSport;
+    private LinearLayout llSoapActing;
+    private LinearLayout llStageFighting;
+    private LinearLayout llTheatreSport;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_workshop_theatre, container, false);
