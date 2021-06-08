@@ -8,6 +8,7 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="orange">#F49700</color>
+    <color name="burntorange">#CF8000</color>
     <color name="blue_grey">#171F32</color>
     <color name="text_grey">#444A55</color>
     <color name="contrast_dark">#02070F</color>
@@ -115,7 +116,6 @@
     <color name="olivedrab">#6B8E23</color>
     <color name="slateblue">#6A5ACD</color>
     <color name="mediumaquamarine">#66CDAA</color>
-    <color name="dimgray">#696969</color>
     <color name="cornflowerblue">#6495ED</color>
     <color name="cadetblue">#5F9EA0</color>
     <color name="darkolivegreen">#556B2F</color>
