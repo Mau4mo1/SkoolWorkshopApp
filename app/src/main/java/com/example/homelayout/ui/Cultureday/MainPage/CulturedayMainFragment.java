@@ -50,4 +50,11 @@ public class CulturedayMainFragment extends Fragment {
 
         return root;
     }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        BottomNavigationView navigation = (BottomNavigationView) getActivity().findViewById(R.id.nav_view);
+        navigation.getMenu().getItem(2).setChecked(true);
+    }
 }
