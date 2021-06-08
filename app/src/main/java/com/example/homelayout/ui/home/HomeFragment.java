@@ -64,10 +64,10 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                 getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new WorkshopsPopular()).addToBackStack(null).commit();
                 break;
             case R.id.register_button:
-                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new RegisterFragment()).commit();
+                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new RegisterFragment()).addToBackStack(null).commit();
                 break;
             case R.id.login_button:
-                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new LoginFragment()).commit();
+                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new LoginFragment()).addToBackStack(null).commit();
                 break;
         }
     }
