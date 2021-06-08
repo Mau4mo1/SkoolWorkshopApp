@@ -17,10 +17,10 @@ import com.example.homelayout.domain.Workshops;
 
 public class WorkshopMediaFragment extends Fragment implements View.OnClickListener {
 
-    LinearLayout llPhotoshop;
-    LinearLayout llVlogging;
-    LinearLayout llSmartphonePhotography;
-    LinearLayout llVideoClip;
+    private LinearLayout llPhotoshop;
+    private LinearLayout llVlogging;
+    private LinearLayout llSmartphonePhotography;
+    private LinearLayout llVideoClip;
     private ImageButton mButtonPhotoshop;
     private ImageButton mButtonVlogging;
     private ImageButton mButtonSmartphonePhotography;

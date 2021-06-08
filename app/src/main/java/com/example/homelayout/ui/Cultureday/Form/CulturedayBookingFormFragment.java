@@ -30,7 +30,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class CulturedayFormFragment extends Fragment {
+public class CulturedayBookingFormFragment extends Fragment {
     private TextView mCulturedayFormTitle;
     private TextView mCulturedayFormDate;
     private ImageButton mCulturedayChooseDate;
