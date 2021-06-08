@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView android:layout_width="match_parent"
+<ScrollView xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <androidx.constraintlayout.widget.ConstraintLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <TextView
@@ -43,6 +42,7 @@
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@+id/tv_cultureday_form_rounds_description"
             app:layout_constraintLeft_toLeftOf="parent"
+            android:text="0"
             android:layout_marginTop="8sp"
             android:layout_marginStart="20sp"
             android:layout_marginEnd="20sp"/>
@@ -65,7 +65,8 @@
             app:layout_constraintLeft_toLeftOf="parent"
             android:layout_marginTop="8sp"
             android:layout_marginStart="20sp"
-            android:layout_marginEnd="20sp"/>
+            android:layout_marginEnd="20sp"
+            android:text="0"/>
         <TextView
             android:id="@+id/tv_cultureday_form_time_per_round_description"
             android:layout_width="wrap_content"
@@ -83,6 +84,7 @@
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@+id/tv_cultureday_form_time_per_round_description"
             app:layout_constraintLeft_toLeftOf="parent"
+            android:text="0"
             android:layout_marginTop="8sp"
             android:layout_marginStart="20sp"
             android:layout_marginEnd="20sp"/>
@@ -112,13 +114,222 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
                 android:spinnerMode="dropdown"/>
-            <CheckBox
-                android:id="@+id/sv_cultureday_form_workshoplist_dans"
+            <GridLayout
+                android:id="@+id/sv_cultureday_form_workshoplist_dance"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:text="Hiphop"
-                android:visibility="gone"/>
+                android:columnCount="3"
+                android:visibility="gone">
+                <CheckBox
+                    android:id="@+id/sv_cultureday_form_workshoplist_hiphop"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12sp"
+                    android:text="Hiphop"/>
+                <CheckBox
+                    android:id="@+id/sv_cultureday_form_workshoplist_breakdance"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12sp"
+                    android:text="Breakdance"/>
+                <CheckBox
+                    android:id="@+id/sv_cultureday_form_workshoplist_dancefit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12sp"
+                    android:text="Dance-fit"/>
+                <CheckBox
+                    android:id="@+id/sv_cultureday_form_workshoplist_flashmob"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12sp"
+                    android:text="Flashmob"/>
+                <CheckBox
+                    android:id="@+id/sv_cultureday_form_workshoplist_modern"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12sp"
+                    android:text="Moderne dans"/>
+                <CheckBox
+                    android:id="@+id/sv_cultureday_form_workshoplist_stepping"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12sp"
+                    android:text="Stepping"/>
+                <CheckBox
+                    android:id="@+id/sv_cultureday_form_workshoplist_street"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12sp"
+                    android:text="Street dance"/>
+            </GridLayout>
+            <GridLayout
+                android:id="@+id/sv_cultureday_form_workshoplist_visualarts"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:columnCount="3"
+                android:visibility="gone">
+                <CheckBox
+                    android:id="@+id/sv_cultureday_form_workshoplist_designtshirt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12sp"
+                    android:text="T-shirt ontwerpen"/>
+                <CheckBox
+                    android:id="@+id/sv_cultureday_form_workshoplist_graffiti"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12sp"
+                    android:text="Graffiti"/>
+                <CheckBox
+                    android:id="@+id/sv_cultureday_form_workshoplist_stopmotion"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12sp"
+                    android:text="Stop motion"/>
+                <CheckBox
+                    android:id="@+id/sv_cultureday_form_workshoplist_lightgraffiti"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12sp"
+                    android:text="Light graffiti"/>
+            </GridLayout>
+            <GridLayout
+                android:id="@+id/sv_cultureday_form_workshoplist_media"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:columnCount="3"
+                android:visibility="gone">
+                <CheckBox
+                    android:id="@+id/sv_cultureday_form_workshoplist_smartphone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12sp"
+                    android:text="Smartphone fotografie"/>
+                <CheckBox
+                    android:id="@+id/sv_cultureday_form_workshoplist_photoshop"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12sp"
+                    android:text="Photoshop"/>
+                <CheckBox
+                    android:id="@+id/sv_cultureday_form_workshoplist_vlog"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12sp"
+                    android:text="Vloggen"/>
+                <CheckBox
+                    android:id="@+id/sv_cultureday_form_workshoplist_video"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12sp"
+                    android:text="Video clip maken"/>
+            </GridLayout>
+            <GridLayout
+                android:id="@+id/sv_cultureday_form_workshoplist_music"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:columnCount="3"
+                android:visibility="gone">
+                <CheckBox
+                    android:id="@+id/sv_cultureday_form_workshoplist_caribbean"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12sp"
+                    android:text="Caribbean drums"/>
+                <CheckBox
+                    android:id="@+id/sv_cultureday_form_workshoplist_livelooping"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12sp"
+                    android:text="Live looping"/>
+                <CheckBox
+                    android:id="@+id/sv_cultureday_form_workshoplist_percussie"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12sp"
+                    android:text="Percussie"/>
+                <CheckBox
+                    android:id="@+id/sv_cultureday_form_workshoplist_popstar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12sp"
+                    android:text="Popstar"/>
+                <CheckBox
+                    android:id="@+id/sv_cultureday_form_workshoplist_rap"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12sp"
+                    android:text="Rap"/>
+            </GridLayout>
+            <GridLayout
+                android:id="@+id/sv_cultureday_form_workshoplist_sport"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:columnCount="3"
+                android:visibility="gone">
+                <CheckBox
+                    android:id="@+id/sv_cultureday_form_workshoplist_freerunning"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12sp"
+                    android:text="Freerunning"/>
+                <CheckBox
+                    android:id="@+id/sv_cultureday_form_workshoplist_bootcamp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12sp"
+                    android:text="Bootcamp"/>
+                <CheckBox
+                    android:id="@+id/sv_cultureday_form_workshoplist_capoeira"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12sp"
+                    android:text="Capoeira"/>
+                <CheckBox
+                    android:id="@+id/sv_cultureday_form_workshoplist_pannafootbal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12sp"
+                    android:text="Pannavoetbal"/>
+                <CheckBox
+                    android:id="@+id/sv_cultureday_form_workshoplist_kickboxing"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12sp"
+                    android:text="Kickboksen"/>
+                <CheckBox
+                    android:id="@+id/sv_cultureday_form_workshoplist_selfdefence"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12sp"
+                    android:text="Zelfverdediging"/>
+            </GridLayout>
+            <GridLayout
+                android:id="@+id/sv_cultureday_form_workshoplist_theater"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:columnCount="3"
+                android:visibility="gone">
+                <CheckBox
+                    android:id="@+id/sv_cultureday_form_workshoplist_soap"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12sp"
+                    android:text="Soap acteren"/>
+                <CheckBox
+                    android:id="@+id/sv_cultureday_form_workshoplist_stagefighting"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12sp"
+                    android:text="Stage fighting"/>
+                <CheckBox
+                    android:id="@+id/sv_cultureday_form_workshoplist_Theatersport"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12sp"
+                    android:text="Theatersport"/>
+            </GridLayout>
         </LinearLayout>
         <TextView
             android:id="@+id/tv_cultureday_form_timescheme_description"
@@ -205,8 +416,8 @@
             android:layout_height="wrap_content"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/edt_cultureday_form_learninglevel_field"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="50dp"
+            android:layout_marginTop="20sp"
+            android:layout_marginEnd="50sp"
             android:text="Subtotal"
             android:textSize="20sp"/>
         <TextView
@@ -215,8 +426,8 @@
             android:layout_height="wrap_content"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_cultureday_form_subtotal"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="50dp"
+            android:layout_marginTop="20sp"
+            android:layout_marginEnd="50sp"
             android:text="0"
             android:textSize="20sp"/>
         <Button
