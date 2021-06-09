@@ -41,6 +41,7 @@
     <string name="title_soap_acting">Soap Acteren</string>
     <string name="title_stage_fighting">Stage Fighting</string>
     <string name="title_theatre_sport">Theatersport</string>
+    <string name="title_shopping_cart">Winkelmand</string>
 
     <string name="title_culture_day">Cultuurdag</string>
     <string name="title_contact">Contact</string>
@@ -69,6 +70,9 @@
     <string name="text_minutes">Totaal aantal minuten</string>
     <string name="contact_title">Contact</string>
 
+    <string name="navigation_shopping_cart">Winkelwagen</string>
+    <string name="navigation_about_us">Over ons</string>
+    <string name="quiz">Quiz</string>
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="lorem_ipsum_long">Lorem ipsum dolor sit amet, consectetur adipiscing elit,

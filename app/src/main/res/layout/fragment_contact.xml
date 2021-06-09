@@ -6,16 +6,12 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.contact.ContactFragment"
-
-
-    >
+    tools:context=".ui.contact.ContactFragment">
 
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        >
+        android:layout_height="wrap_content">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -228,8 +224,8 @@
                 android:id="@+id/sendBtn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/contact_background"
                 android:text="Send"
+                android:backgroundTint="@color/orange"
                 android:textColor="@color/black" />
             <LinearLayout
                 android:layout_width="match_parent"
