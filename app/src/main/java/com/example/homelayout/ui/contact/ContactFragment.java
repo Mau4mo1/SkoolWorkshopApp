@@ -22,6 +22,7 @@ public EditText mSubject;
 public EditText mMessage;
 public Button btnSend;
 public Context thiscontext;
+
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_contact, container, false);
         thiscontext = container.getContext();
@@ -38,6 +39,7 @@ public Context thiscontext;
         });
         return root;
     }
+
     private void sendMail(){
         String mail = mEmail.getText().toString().trim();
         String message = mMessage.getText().toString();

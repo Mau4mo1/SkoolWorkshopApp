@@ -13,6 +13,6 @@ public class Main {
         values.put("participants", 25);
         values.put("rounds", 3);
         values.put("minutes", 60);
-        calculate.getWorkshop(workshop.DanceFit, values);  
+        calculate.getWorkshopCalc(workshop.DanceFit, values);
     }
 }

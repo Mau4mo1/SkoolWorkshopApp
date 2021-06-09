@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:id="@+id/sv_category_workshops"
+    android:layout_marginBottom="70sp">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tv_workshops_media_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:text="@string/title_workshop_media"
+            android:textSize="32sp"
+            android:textAlignment="center"
+            android:layout_marginTop="20sp"
+            android:layout_marginBottom="20sp"
+            tools:ignore="MissingConstraints" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintTop_toBottomOf="@+id/tv_workshops_media_title"
+            android:layout_marginTop="40sp"
+            android:layout_marginLeft="10sp"
+            android:layout_marginRight="10sp" >
+
+            <LinearLayout
+                android:id="@+id/layout_workshop_photoshop"
+                android:background="@drawable/layout_bg_workshop"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="3sp"
+                android:layout_marginLeft="10sp"
+                android:layout_marginRight="10sp">
+
+                <ImageView
+                    android:id="@+id/iv_workshop_photoshop"
+                    android:layout_width="110sp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/home_image_border" />
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <LinearLayout
+                        android:layout_width="200sp"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <TextView
+                            android:id="@+id/tv_workshop_photoshop"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/title_photoshop"
+                            android:layout_margin="10sp"
+                            android:textSize="22sp"/>
+
+                        <TextView
+                            android:id="@+id/tv_workhop_photoshop_description"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Lorem ipsem blablabla"
+                            android:layout_margin="10dp"
+                            android:textSize="18sp"/>
+
+                    </LinearLayout>
+                    <ImageButton
+                        android:id="@+id/photoshop_info"
+                        android:background="@drawable/layout_bg"
+                        android:src="@drawable/ic_baseline_info_24"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="70sp"
+                        android:layout_marginRight="10sp"
+                        />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_workshop_vlogging"
+                app:layout_constraintTop_toBottomOf="@+id/layout_workshop_photoshop"
+                android:background="@drawable/layout_bg_workshop"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="3sp"
+                android:layout_marginLeft="10sp"
+                android:layout_marginRight="10sp">
+
+                <ImageView
+                    android:id="@+id/iv_workshop_vlogging"
+                    android:layout_width="110sp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/home_image_border"/>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <LinearLayout
+                        android:layout_width="200sp"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <TextView
+                            android:id="@+id/tv_workshop_vlogging_title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/title_vlogging"
+                            android:layout_margin="10dp"
+                            android:textSize="22sp"/>
+
+                        <TextView
+                            android:id="@+id/tv_workhop_vlogging_description"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Lorem ipsem blablabla"
+                            android:layout_margin="10dp"
+                            android:textSize="18sp"/>
+
+                    </LinearLayout>
+                    <ImageButton
+                        android:id="@+id/vlogging_info"
+                        android:background="@drawable/layout_bg"
+                        android:src="@drawable/ic_baseline_info_24"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="70sp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_workshop_smartphone_photography"
+                app:layout_constraintTop_toBottomOf="@+id/layout_workshop_vlogging"
+                android:background="@drawable/layout_bg_workshop"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="3sp"
+                android:layout_marginLeft="10sp"
+                android:layout_marginRight="10sp">
+
+                <ImageView
+                    android:id="@+id/iv_workshop_smartphone_photography"
+                    android:layout_width="110sp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/home_image_border"/>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <LinearLayout
+                        android:layout_width="200sp"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <TextView
+                            android:id="@+id/tv_workshop_smartphone_photography_title"
+                            android:layout_width="180sp"
+                            android:layout_height="wrap_content"
+                            android:text="@string/title_smartphone_photography"
+                            android:layout_margin="10dp"
+                            android:textSize="22sp"/>
+
+                        <TextView
+                            android:id="@+id/tv_workhop_smartphone_photography_description"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Lorem ipsem blablabla"
+                            android:layout_margin="10dp"
+                            android:textSize="18sp"/>
+
+                    </LinearLayout>
+                    <ImageButton
+                        android:id="@+id/smartphone_photography_info"
+                        android:background="@drawable/layout_bg"
+                        android:src="@drawable/ic_baseline_info_24"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="70sp" />
+                </LinearLayout>
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/layout_workshop_videoclip"
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                app:layout_constraintTop_toBottomOf="@+id/layout_workshop_smartphone_photography"
+                android:background="@drawable/layout_bg_workshop"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="3sp"
+                android:layout_marginLeft="10sp"
+                android:layout_marginRight="10sp">
+
+                <ImageView
+                    android:id="@+id/iv_workshop_videoclip"
+                    android:layout_width="110sp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/home_image_border"/>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <LinearLayout
+                        android:layout_width="200sp"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tv_workshop_videoclip_title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/title_videoclip"
+                            android:layout_margin="10dp"
+                            android:textSize="22sp"/>
+
+                        <TextView
+                            android:id="@+id/tv_workhop_videoclip_description"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Lorem ipsem blablabla"
+                            android:layout_margin="10dp"
+                            android:textSize="18sp"/>
+
+                    </LinearLayout>
+                    <ImageButton
+                        android:id="@+id/videoclip_info"
+                        android:background="@drawable/layout_bg"
+                        android:src="@drawable/ic_baseline_info_24"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="70sp" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

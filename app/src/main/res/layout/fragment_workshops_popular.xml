@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        tools:context=".ui.workshops.WorkshopsPopular"
+        android:layout_marginBottom="20dp"
+        android:paddingBottom="10sp">
+
+        <TextView
+            android:id="@+id/tv_popular_workshops_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:text="@string/title_popular_workshops"
+            android:textSize="32sp"
+            android:textAlignment="center"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"/>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:background="@drawable/home_item_border"
+            android:id="@+id/cl_popular_workshop_graffiti"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_popular_workshops_title"
+            android:layout_marginTop="40dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp">
+
+            <ImageView
+                android:id="@+id/iv_popular_workshop_graffiti_image"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:layout_width="115dp"
+                android:layout_height="115dp"
+                android:background="@drawable/home_image_border"/>
+
+            <TextView
+                android:id="@+id/iv_popular_workshop_graffiti_head"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintLeft_toRightOf="@+id/iv_popular_workshop_graffiti_image"
+                app:layout_constraintTop_toTopOf="parent"
+                android:text="@string/title_graffiti"
+                android:layout_margin="10dp"
+                android:textSize="22sp"/>
+
+            <TextView
+                android:id="@+id/home_item_loyalty_points_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintLeft_toRightOf="@+id/iv_popular_workshop_graffiti_image"
+                app:layout_constraintTop_toBottomOf="@+id/iv_popular_workshop_graffiti_head"
+                android:text="@string/lorem_ipsum"
+                android:layout_margin="10dp"
+                android:textSize="18sp"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:background="@drawable/home_item_border"
+            android:id="@+id/cl_popular_workshop_rap"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cl_popular_workshop_graffiti"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp">
+
+            <ImageView
+                android:id="@+id/iv_popular_workshop_rap_image"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:layout_width="115dp"
+                android:layout_height="115dp"
+                android:background="@drawable/home_image_border"/>
+
+            <TextView
+                android:id="@+id/iv_popular_workshop_rap_head"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintLeft_toRightOf="@+id/iv_popular_workshop_rap_image"
+                app:layout_constraintTop_toTopOf="parent"
+                android:text="@string/title_rap"
+                android:layout_margin="10dp"
+                android:textSize="22sp"/>
+
+            <TextView
+                android:id="@+id/home_item_rap_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintLeft_toRightOf="@+id/iv_popular_workshop_rap_image"
+                app:layout_constraintTop_toBottomOf="@+id/iv_popular_workshop_rap_head"
+                android:text="@string/lorem_ipsum"
+                android:layout_margin="10dp"
+                android:textSize="18sp"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:background="@drawable/home_item_border"
+            android:id="@+id/cl_popular_workshop_vlogging"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cl_popular_workshop_rap"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp">
+
+            <ImageView
+                android:id="@+id/iv_popular_workshop_vlogging_image"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:layout_width="115dp"
+                android:layout_height="115dp"
+                android:background="@drawable/home_image_border"/>
+
+            <TextView
+                android:id="@+id/iv_popular_workshop_vlogging_head"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintLeft_toRightOf="@+id/iv_popular_workshop_vlogging_image"
+                app:layout_constraintTop_toTopOf="parent"
+                android:text="@string/title_vlogging"
+                android:layout_margin="10dp"
+                android:textSize="22sp"/>
+
+            <TextView
+                android:id="@+id/home_item_vlogging_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintLeft_toRightOf="@+id/iv_popular_workshop_vlogging_image"
+                app:layout_constraintTop_toBottomOf="@+id/iv_popular_workshop_vlogging_head"
+                android:text="@string/lorem_ipsum"
+                android:layout_margin="10dp"
+                android:textSize="18sp"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:background="@drawable/home_item_border"
+            android:id="@+id/cl_popular_workshop_hiphop"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cl_popular_workshop_vlogging"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp">
+
+            <ImageView
+                android:id="@+id/iv_popular_workshop_hiphop_image"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:layout_width="115dp"
+                android:layout_height="115dp"
+                android:background="@drawable/home_image_border"/>
+
+            <TextView
+                android:id="@+id/iv_popular_workshop_hiphop_head"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintLeft_toRightOf="@+id/iv_popular_workshop_hiphop_image"
+                app:layout_constraintTop_toTopOf="parent"
+                android:text="@string/title_hiphop"
+                android:layout_margin="10dp"
+                android:textSize="22sp"/>
+
+            <TextView
+                android:id="@+id/home_item_hiphop_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintLeft_toRightOf="@+id/iv_popular_workshop_hiphop_image"
+                app:layout_constraintTop_toBottomOf="@+id/iv_popular_workshop_hiphop_head"
+                android:text="@string/lorem_ipsum"
+                android:layout_margin="10dp"
+                android:textSize="18sp"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:background="@drawable/home_item_border"
+            android:id="@+id/cl_popular_workshop_ghetto_drums"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cl_popular_workshop_hiphop"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginBottom="30dp">
+
+            <ImageView
+                android:id="@+id/iv_popular_workshop_ghetto_drums_image"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:layout_width="115dp"
+                android:layout_height="115dp"
+                android:background="@drawable/home_image_border"/>
+
+            <TextView
+                android:id="@+id/iv_popular_workshop_ghetto_drums_head"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintLeft_toRightOf="@+id/iv_popular_workshop_ghetto_drums_image"
+                app:layout_constraintTop_toTopOf="parent"
+                android:text="@string/title_ghetto_drums"
+                android:layout_margin="10dp"
+                android:textSize="22sp"/>
+
+            <TextView
+                android:id="@+id/home_item_ghetto_drums_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintLeft_toRightOf="@+id/iv_popular_workshop_ghetto_drums_image"
+                app:layout_constraintTop_toBottomOf="@+id/iv_popular_workshop_ghetto_drums_head"
+                android:text="@string/lorem_ipsum"
+                android:layout_margin="10dp"
+                android:textSize="18sp"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

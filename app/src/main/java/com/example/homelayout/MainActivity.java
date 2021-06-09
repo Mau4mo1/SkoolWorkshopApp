@@ -4,10 +4,13 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+
 import com.example.homelayout.ui.Cultureday.MainPage.CulturedayMainFragment;
-import com.example.homelayout.ui.Home.HomeFragment;
+import com.example.homelayout.ui.home.HomeFragment;
 import com.example.homelayout.ui.contact.ContactFragment;
+import com.example.homelayout.ui.workshops.WorkshopsForm;
 import com.example.homelayout.ui.workshops.WorkshopsFragment;
+import com.example.homelayout.ui.home.HomeFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.annotation.NonNull;
@@ -24,8 +27,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
-
-
+        // voor de verandering
 
         BottomNavigationView bottomNav = findViewById(R.id.nav_view);
         bottomNav.setOnNavigationItemSelectedListener(navListener);

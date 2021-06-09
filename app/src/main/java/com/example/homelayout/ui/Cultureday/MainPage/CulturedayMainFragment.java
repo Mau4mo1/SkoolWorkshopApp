@@ -16,6 +16,7 @@ import com.example.homelayout.ui.Cultureday.Form.CulturedayFormFragment;
 import com.example.homelayout.ui.contact.ContactFragment;
 import com.example.homelayout.ui.workshops.WorkshopsFragment;
 
+
 public class CulturedayMainFragment extends Fragment {
     public Button btn_more_info_cd;
     public Button btn_book_now_cd;
