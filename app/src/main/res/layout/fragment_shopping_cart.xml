@@ -30,12 +30,13 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:background="@drawable/cart_table_background">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="X"
+                <ImageButton
+                    android:id="@+id/btn_delete_booking1"
+                    android:layout_width="40sp"
+                    android:layout_height="40sp"
+                    android:src="@drawable/ic_delete_foreground"
+                    android:backgroundTint="@color/lightgrey"
                     android:gravity="left"
-                    android:textSize="25sp"
                     android:layout_gravity="left"/>
             </LinearLayout>
             <LinearLayout
@@ -131,6 +132,7 @@
                         android:layout_height="wrap_content"
                         android:text="Tijdschema:"
                         android:gravity="left"
+                        android:paddingRight="5sp"
                         android:textSize="17sp"
                         android:layout_gravity="left"/>
                     <TextView
@@ -261,12 +263,13 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:background="@drawable/cart_table_background">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="X"
+                <ImageButton
+                    android:id="@+id/btn_delete_booking2"
+                    android:layout_width="40sp"
+                    android:layout_height="40sp"
+                    android:src="@drawable/ic_delete_foreground"
+                    android:backgroundTint="@color/lightgrey"
                     android:gravity="left"
-                    android:textSize="25sp"
                     android:layout_gravity="left"/>
             </LinearLayout>
             <LinearLayout
