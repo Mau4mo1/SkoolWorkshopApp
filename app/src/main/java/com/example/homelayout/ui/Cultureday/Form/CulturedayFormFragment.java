@@ -3,8 +3,6 @@ package com.example.homelayout.ui.Cultureday.Form;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -22,19 +20,19 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
 
-import com.example.homelayout.MainActivity;
 import com.example.homelayout.R;
+import com.example.homelayout.domain.Workshops;
+import com.example.homelayout.logic.CalculatePrices;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class CulturedayFormFragment extends Fragment {
+    private HashMap<String, Integer> values = new HashMap<>();
+    private ArrayList<Workshops> workshops = new ArrayList<>();
     private Button btn_book_now_cdf;
     private TextView sub_total_cdf;
     private EditText extra_price_participants_amount;
@@ -50,6 +48,8 @@ public class CulturedayFormFragment extends Fragment {
     private EditText workshop_per_round;
     private EditText workshop_rounds;
     private TextView prijs_summery;
+    private CalculatePrices calculatePrices = new CalculatePrices();
+    private EditText workshop_particepents;
     private CheckBox workshop_graffiti;
     private CheckBox workshop_lightgraffiti;
     private CheckBox workshop_stopmotion;
@@ -201,6 +201,7 @@ public class CulturedayFormFragment extends Fragment {
         workshop_per_round = root.findViewById(R.id.edn_cultureday_form_workshops_per_round_field);
         workshop_rounds = root.findViewById(R.id.edn_cultureday_form_rounds_field);
         prijs_summery = root.findViewById(R.id.tv_cultureday_form_kost);
+        workshop_particepents = root.findViewById(R.id.edn_cultureday_form_participants_field);
 
         workshop_per_round.addTextChangedListener(new TextWatcher() {
             @Override
@@ -212,29 +213,10 @@ public class CulturedayFormFragment extends Fragment {
             @Override
             public void afterTextChanged(Editable s) {
                 try {
-                    workshop_graffiti.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-                        @Override
-                        public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                            if (isChecked == true){
-                                double min = Integer.valueOf(round_minutes.getText().toString());
-                                double rounds = Integer.valueOf(workshop_rounds.getText().toString());
-                                sub_total_cdf.setText(String.valueOf(min*rounds*2.325+25));
-                                prijs_summery.setText(prijs_summery.getText()+"/nGraffiti: €"+String.valueOf(min*rounds*2.325+25));
-                            }
-                        }
-                    });
+                    values.put("workshops", Integer.valueOf(workshop_per_round.getText().toString()));
+                    updateSubtotal();
                 } catch (Exception e){
-                    AlertDialog.Builder extrapopup_error = new AlertDialog.Builder(con);
-                    extrapopup_error.setCancelable(true);
-                    extrapopup_error.setTitle("Workshops per ronden");
-                    extrapopup_error.setMessage("Workshops per ronden is geen nummer");
-                    extrapopup_error.setNegativeButton("OK", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            dialogInterface.cancel();
-                        }
-                    });
-                    extrapopup_error.show();
+                    System.out.println("Workshops per round is not a nummber");
                 }
             }
         });
@@ -248,29 +230,10 @@ public class CulturedayFormFragment extends Fragment {
             @Override
             public void afterTextChanged(Editable s) {
                 try {
-                    workshop_graffiti.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-                        @Override
-                        public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                            if (isChecked == true){
-                                double min = Integer.valueOf(round_minutes.getText().toString());
-                                double rounds = Integer.valueOf(workshop_rounds.getText().toString());
-                                sub_total_cdf.setText(String.valueOf(min*rounds*2.325+25));
-                                prijs_summery.setText(prijs_summery.getText()+"/nGraffiti: €"+String.valueOf(min*rounds*2.325+25));
-                            }
-                        }
-                    });
+                    values.put("rounds", Integer.valueOf(workshop_rounds.getText().toString()));
+                    updateSubtotal();
                 } catch (Exception e){
-                    AlertDialog.Builder extrapopup_error = new AlertDialog.Builder(con);
-                    extrapopup_error.setCancelable(true);
-                    extrapopup_error.setTitle("Rondes");
-                    extrapopup_error.setMessage("Rondes is geen nummer");
-                    extrapopup_error.setNegativeButton("OK", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            dialogInterface.cancel();
-                        }
-                    });
-                    extrapopup_error.show();
+                    System.out.println("Rounds is not a nummber");
                 }
             }
         });
@@ -284,21 +247,10 @@ public class CulturedayFormFragment extends Fragment {
             @Override
             public void afterTextChanged(Editable s) {
                 try {
-                    double extra = Integer.valueOf(extra_price_participants_amount.getText().toString())*7.50;
-                    sub_total_cdf.setText(String.valueOf(Integer.valueOf(sub_total_cdf.getText().toString())+extra));
-                    prijs_summery.setText(prijs_summery.getText()+"/nExtra kosten: €"+String.valueOf(extra));
+                    values.put("participantsGraffitiOrTshirtDesign", Integer.valueOf(extra_price_participants_amount.getText().toString()));
+                    updateSubtotal();
                 } catch (Exception e){
-                    AlertDialog.Builder extrapopup_error = new AlertDialog.Builder(con);
-                    extrapopup_error.setCancelable(true);
-                    extrapopup_error.setTitle("Deelnemers Graffiti/T-shirt ontwerpen");
-                    extrapopup_error.setMessage("Deelnemers voor Graffiti/T-shirt ontwerpen is geen nummer");
-                    extrapopup_error.setNegativeButton("OK", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            dialogInterface.cancel();
-                        }
-                    });
-                    extrapopup_error.show();
+                    System.out.println("Particepants extra kost is not a nummber");
                 }
             }
         });
@@ -312,54 +264,282 @@ public class CulturedayFormFragment extends Fragment {
             @Override
             public void afterTextChanged(Editable s) {
                 try {
-                    if (Integer.valueOf(round_minutes.getText().toString())<60){
-                        AlertDialog.Builder minpopup = new AlertDialog.Builder(con);
-                        minpopup.setCancelable(true);
-                        minpopup.setTitle("Workshops te kort");
-                        minpopup.setMessage("De workshops moeten 60 minuten of langer duren");
-                        minpopup.setNegativeButton("OK", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
-                                dialogInterface.cancel();
-                            }
-                        });
-                        minpopup.show();
-                    }
-                    workshop_graffiti.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-                        @Override
-                        public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                            if (isChecked == true){
-                                double min = Integer.valueOf(round_minutes.getText().toString());
-                                double rounds = Integer.valueOf(workshop_rounds.getText().toString());
-                                sub_total_cdf.setText(String.valueOf(min*rounds*2.325+25));
-                                prijs_summery.setText(prijs_summery.getText()+"/nGraffiti: €"+String.valueOf(min*rounds*2.325+25));
-                            }
-                        }
-                    });
+                    values.put("minutes", Integer.valueOf(round_minutes.getText().toString()));
+                    updateSubtotal();
                 } catch (Exception e){
-                    AlertDialog.Builder extrapopup_error = new AlertDialog.Builder(con);
-                    extrapopup_error.setCancelable(true);
-                    extrapopup_error.setTitle("Aantal minuten per workshop ronden");
-                    extrapopup_error.setMessage("Aantal minuten per workshop ronden is geen nummer");
-                    extrapopup_error.setNegativeButton("OK", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            dialogInterface.cancel();
-                        }
-                    });
-                    extrapopup_error.show();
+                    System.out.println("Minutes is not a nummber");
                 }
             }
         });
 
+        final String[] kosten = {"Aantal workshoprondes - " + workshop_rounds.getText().toString() + "\nAantalworkshops per ronde - " + workshop_per_round.getText().toString() + "\nAantalminuten per workshopronde - " + round_minutes.getText().toString() + "\nWokrshops:"};
+        ArrayList<Workshops> workshops = new ArrayList<>();
         workshop_graffiti.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked == true){
-                    double min = Integer.valueOf(round_minutes.getText().toString());
-                    double rounds = Integer.valueOf(workshop_rounds.getText().toString());
-                    sub_total_cdf.setText(String.valueOf(min*rounds*2.325+25));
-                    prijs_summery.setText(prijs_summery.getText()+"/nGraffiti: €"+String.valueOf(min*rounds*2.325+25));
+                    workshops.add(Workshops.Graffiti);
+                }
+            }
+        });
+        workshop_bootcamp.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked == true){
+                    workshops.add(Workshops.Bootcamp);
+                    kosten[0] = kosten[0] +"\n  Bootcamp";
+                }
+            }
+        });
+        workshop_breakdance.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked == true){
+                    workshops.add(Workshops.Breakdance);
+                    kosten[0] = kosten[0] +"\n  Breakdance";
+                }
+            }
+        });
+        workshop_capoeria.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked == true){
+                    workshops.add(Workshops.Capoeira);
+                    kosten[0] = kosten[0] +"\n  Capoeria";
+                }
+            }
+        });
+        workshop_caribbeandrums.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked == true){
+                    workshops.add(Workshops.CaribbeanDrums);
+                    kosten[0] = kosten[0] +"\n  Caribbean drums";
+                }
+            }
+        });
+        workshop_dancefit.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked == true){
+                    workshops.add(Workshops.DanceFit);
+                    kosten[0] = kosten[0] +"\n  Dance fit";
+                }
+            }
+        });
+        workshop_flashmob.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked == true){
+                    workshops.add(Workshops.Flashmob);
+                    kosten[0] = kosten[0] +"\n  Flashmob";
+                }
+            }
+        });
+        workshop_freerunning.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked == true){
+                    workshops.add(Workshops.Freeruning);
+                    kosten[0] = kosten[0] +"\n  Freerunning";
+                }
+            }
+        });
+        workshop_ghettodrums.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked == true){
+                    workshops.add(Workshops.GhettoDrums);
+                    kosten[0] = kosten[0] +"\n  Ghetto drums";
+                }
+            }
+        });
+        workshop_hiphop.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked == true){
+                    workshops.add(Workshops.Hiphop);
+                    kosten[0] = kosten[0] +"\n  Hiphop";
+                }
+            }
+        });
+        workshop_kickboxing.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked == true){
+                    workshops.add(Workshops.Kickboksen);
+                    kosten[0] = kosten[0] +"\n  Kickboksen";
+                }
+            }
+        });
+        workshop_lightgraffiti.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked == true){
+                    workshops.add(Workshops.LightGraffiti);
+                    kosten[0] = kosten[0] +"\n  Light graffiti";
+                }
+            }
+        });
+        workshop_livelooping.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked == true){
+                    workshops.add(Workshops.LiveLooping);
+                    kosten[0] = kosten[0] +"\n  Live looping";
+                }
+            }
+        });
+        workshop_moderndance.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked == true){
+                    workshops.add(Workshops.ModerneDans);
+                    kosten[0] = kosten[0] +"\n  Moderne dans";
+                }
+            }
+        });
+        workshop_pannafootbal.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked == true){
+                    workshops.add(Workshops.Pannavoetbal);
+                    kosten[0] = kosten[0] +"\n  Pannavoetbal";
+                }
+            }
+        });
+        workshop_percussie.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked == true){
+                    workshops.add(Workshops.Percurssie);
+                    kosten[0] = kosten[0] +"\n  Percurssie";
+                }
+            }
+        });
+        workshop_photoshop.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked == true){
+                    workshops.add(Workshops.Photoshop);
+                    kosten[0] = kosten[0] +"\n  Photoshop";
+                }
+            }
+        });
+        workshop_popstar.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked == true){
+                    workshops.add(Workshops.Popstar);
+                    kosten[0] = kosten[0] +"\n  Popstar";
+                }
+            }
+        });
+        workshop_rap.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked == true){
+                    workshops.add(Workshops.Rap);
+                    kosten[0] = kosten[0] +"\n  Rap";
+                }
+            }
+        });
+        workshop_selfdefence.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked == true){
+                    workshops.add(Workshops.Zelfverdedeging);
+                    kosten[0] = kosten[0] +"\n  Zelfverdedeging";
+                }
+            }
+        });
+        workshop_smartphonefoto.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked == true){
+                    workshops.add(Workshops.Fotografie);
+                    kosten[0] = kosten[0] +"\n  Smartphone fotografie";
+                }
+            }
+        });
+        workshop_soap.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked == true){
+                    workshops.add(Workshops.SoapActeren);
+                    kosten[0] = kosten[0] +"\n  Soap acteren";
+                }
+            }
+        });
+        workshop_stagefight.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked == true){
+                    workshops.add(Workshops.StageFighting);
+                    kosten[0] = kosten[0] +"\n  Stage fighting";
+                }
+            }
+        });
+        workshop_stepping.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked == true){
+                    workshops.add(Workshops.Stepping);
+                    kosten[0] = kosten[0] +"\n  Stepping";
+                }
+            }
+        });
+        workshop_stopmotion.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked == true){
+                    workshops.add(Workshops.StopMotion);
+                    kosten[0] = kosten[0] +"\n  Stop motion";
+                }
+            }
+        });
+        workshop_street.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked == true){
+                    workshops.add(Workshops.Streetdance);
+                    kosten[0] = kosten[0] +"\n  Streetdance";
+                }
+            }
+        });
+        workshop_theatersport.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked == true){
+                    workshops.add(Workshops.Theatersport);
+                    kosten[0] = kosten[0] +"\n  Theatersport";
+                }
+            }
+        });
+        workshop_tshirt.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked == true){
+                    workshops.add(Workshops.TshirtOntwerpen);
+                    kosten[0] = "\n  T-shirt ontwerpen";
+                }
+            }
+        });
+        workshop_videoclip.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked == true){
+                    workshops.add(Workshops.Videoclip);
+                    kosten[0] = kosten[0] +"\n  Videoclip maken";
+                }
+            }
+        });
+        workshop_vlog.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked == true){
+                    workshops.add(Workshops.Vloggen);
+                    kosten[0] = kosten[0] +"\n  Vloggen";
                 }
             }
         });
@@ -370,7 +550,7 @@ public class CulturedayFormFragment extends Fragment {
         btn_book_now_cdf.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    if(Integer.valueOf(sub_total_cdf.getText().toString()) < 1255.50) {
+                    if(Double.valueOf(sub_total_cdf.getText().toString()) < 1255.50) {
                         AlertDialog.Builder subpopup = new AlertDialog.Builder(con);
                         subpopup.setCancelable(true);
                         subpopup.setTitle("Subtotaal niet genoeg");
@@ -383,8 +563,26 @@ public class CulturedayFormFragment extends Fragment {
                         });
                         subpopup.show();
                     }
+                    if (Integer.valueOf(round_minutes.getText().toString())<60) {
+                        AlertDialog.Builder minpopup = new AlertDialog.Builder(con);
+                        minpopup.setCancelable(true);
+                        minpopup.setTitle("Workshops te kort");
+                        minpopup.setMessage("De workshops moeten 60 minuten of langer duren");
+                        minpopup.setNegativeButton("OK", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                dialogInterface.cancel();
+                            }
+                        });
+                        minpopup.show();
+                    }
                 }
         });
         return root;
+    }
+
+    public void updateSubtotal() {
+        double subtotal = calculatePrices.calculateCultureday(values, workshops);
+        sub_total_cdf.setText(String.valueOf(subtotal));
     }
 }

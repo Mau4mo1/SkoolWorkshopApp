@@ -27,7 +27,6 @@
             android:layout_gravity="center"
             android:scaleType="fitStart"
             android:adjustViewBounds="true"
-            tools:srcCompat="@drawable/skoolcd"
             android:contentDescription="cdimage" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -78,4 +77,4 @@
 
     </LinearLayout>
 
-</ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

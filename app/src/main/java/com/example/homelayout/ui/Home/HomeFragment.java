@@ -15,12 +15,9 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.homelayout.R;
 import com.example.homelayout.ui.Cultureday.Form.CulturedayFormFragment;
-<<<<<<< HEAD:app/src/main/java/com/example/homelayout/ui/Home/HomeFragment.java
 import com.example.homelayout.ui.Cultureday.Form.CulturedayFormFragment;
 import com.example.homelayout.ui.Cultureday.MainPage.CulturedayMainFragment;
 import com.example.homelayout.ui.contact.ContactFragment;
-=======
->>>>>>> dev:app/src/main/java/com/example/homelayout/ui/home/HomeFragment.java
 import com.example.homelayout.ui.workshops.WorkshopsFragment;
 import com.example.homelayout.ui.workshops.WorkshopsPopular;
 
@@ -44,7 +41,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         btnBookCultureDay.setOnClickListener(this);
         clPopularWorkshops.setOnClickListener(this);
 
-<<<<<<< HEAD:app/src/main/java/com/example/homelayout/ui/Home/HomeFragment.java
         btnBookWorkshop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -58,8 +54,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                 getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new CulturedayFormFragment()).commit();
             }
         });
-=======
->>>>>>> dev:app/src/main/java/com/example/homelayout/ui/home/HomeFragment.java
         return root;
     }
 

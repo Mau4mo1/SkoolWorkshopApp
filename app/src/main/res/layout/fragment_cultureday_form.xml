@@ -422,7 +422,7 @@
             android:layout_height="wrap_content"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/edt_cultureday_form_learninglevel_field"
-            android:text="Kosten"
+            android:text="Cultuurdag op school"
             android:layout_marginStart="20sp"
             android:textSize="16sp"/>
         <TextView
@@ -431,7 +431,7 @@
             android:layout_height="wrap_content"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_cultureday_form_kost_description"
-            android:text="0"
+            android:text=""
             android:layout_marginStart="20sp"
             android:textSize="16sp"/>
         <TextView
@@ -442,7 +442,7 @@
             app:layout_constraintTop_toBottomOf="@id/tv_cultureday_form_kost"
             android:layout_marginTop="20sp"
             android:layout_marginEnd="50sp"
-            android:text="Subtotal"
+            android:text="Subtotaal:"
             android:textSize="20sp"/>
         <TextView
             android:id="@+id/tv_cultureday_form_subtotal_amount"
