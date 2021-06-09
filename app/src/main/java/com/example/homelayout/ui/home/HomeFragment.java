@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -15,6 +16,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.homelayout.R;
 import com.example.homelayout.ui.Cultureday.Form.CulturedayBookingFormFragment;
+import com.example.homelayout.ui.messagebox.MessageBoxFragment;
 import com.example.homelayout.ui.workshops.WorkshopsFragment;
 import com.example.homelayout.ui.workshops.WorkshopsPopular;
 
@@ -23,6 +25,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     private Button btnBookWorkshop;
     private Button btnBookCultureDay;
     private ConstraintLayout clPopularWorkshops;
+    private ImageView ivBell;
 
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -34,10 +37,14 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         btnBookCultureDay = root.findViewById(R.id.button_book_culture_day);
         btnBookCultureDay.setClickable(true);
         clPopularWorkshops = root.findViewById(R.id.home_item_popular_workshops);
+        clPopularWorkshops.setClickable(true);
+        ivBell = root.findViewById(R.id.iv_home_bell);
+        ivBell.setClickable(true);
 
         btnBookWorkshop.setOnClickListener(this);
         btnBookCultureDay.setOnClickListener(this);
         clPopularWorkshops.setOnClickListener(this);
+        ivBell.setOnClickListener(this);
 
         return root;
     }
@@ -53,6 +60,9 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                 break;
             case R.id.home_item_popular_workshops:
                 getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new WorkshopsPopular()).commit();
+                break;
+            case R.id.iv_home_bell:
+                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new MessageBoxFragment()).commit();
                 break;
         }
     }
