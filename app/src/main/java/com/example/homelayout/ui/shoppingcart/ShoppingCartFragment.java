@@ -45,6 +45,7 @@ public class ShoppingCartFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_shopping_cart, container, false);
+        Log.d("ShoppingCartFragment", "Shoppingcart fragment aangemaakt!");
         workshops.add("workshop rap");
         workshops.add("workshop graffiti");
         workshops.add("workshop stepping");
@@ -52,8 +53,13 @@ public class ShoppingCartFragment extends Fragment {
         workshopLayoutManager = new LinearLayoutManager(thisContext);
         workshopRecyclerView = root.findViewById(R.id.shopping_cart_workshop_recycler);
         workshopRecyclerView.setLayoutManager(workshopLayoutManager);
-        workshopBookings = new WorkshopBookingList().getWorkshops();
+
+        if(workshopBookings == null){
+            workshopBookings = new ArrayList<>();
+        }
+
         shoppingCartWorkshopAdapter = new ShoppingCartWorkshopAdapter(workshopBookings);
+
         workshopRecyclerView.setAdapter(shoppingCartWorkshopAdapter);
         cultureDayLayoutManager = new LinearLayoutManager(thisContext);
         cultureDayRecyclerView = root.findViewById(R.id.shopping_cart_culture_day_recycler);
@@ -73,6 +79,9 @@ public class ShoppingCartFragment extends Fragment {
         });
 
         return root;
+    }
+    public void addWorkshops(WorkshopBooking workshop){
+        workshopBookings.add(workshop);
     }
 
 }

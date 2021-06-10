@@ -1,6 +1,7 @@
 package com.example.homelayout;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -22,6 +23,7 @@ import androidx.appcompat.app.AppCompatDelegate;
 import androidx.fragment.app.Fragment;
 
 public class MainActivity extends AppCompatActivity {
+    private Fragment shoppingCartFragment;
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater menuInflater = getMenuInflater();
@@ -37,7 +39,8 @@ public class MainActivity extends AppCompatActivity {
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         // voor de verandering
-
+        shoppingCartFragment = null;
+        Log.d("OncreateMainActivity", "Oncreate in the main activity aangeroepen");
         BottomNavigationView bottomNav = findViewById(R.id.nav_view);
         bottomNav.setOnNavigationItemSelectedListener(navListener);
         getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new HomeFragment()).commit();
@@ -45,10 +48,12 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-
         if (item.getItemId() == R.id.bt_shopping_cart) {
-            Fragment selectedFragment = new ShoppingCartFragment();
-            getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,selectedFragment).commit();
+            if(shoppingCartFragment == null){
+                shoppingCartFragment = new ShoppingCartFragment();
+                Log.d("MainActivity", "Hij maakt een nieuwe shopping cart fragment aan!");
+            }
+            getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,shoppingCartFragment).commit();
         }
         return super.onOptionsItemSelected(item);
     }

@@ -86,6 +86,7 @@ public class WorkshopsForm extends Fragment {
 
                 @Override
                 public void onDateChanged(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                    Log.d("onDateChanged", "Nieuwe datum gekozen");
                     date = new Date(year, monthOfYear, dayOfMonth);
                 }
             });
@@ -176,11 +177,11 @@ public class WorkshopsForm extends Fragment {
                 int rondes = rounds;
                 String tijdschema = mEditTextWorkshopTimetable.getText().toString();
                 String leerniveau = mEditTextWorkshopLearningLevel.getText().toString();
-                String datum = date.toString();
+                //String datum = date.toString();
                 double prijs = calculatePrices.getWorkshopCalc(workshop, values);
-                WorkshopBooking workshops = new WorkshopBooking(dienst, rondes, minuten,tijdschema,leerniveau,datum,prijs);
-                WorkshopBookingList s = new WorkshopBookingList();
-                s.addWorkshop(workshops);
+                WorkshopBooking workshops = new WorkshopBooking(dienst, rondes, minuten,tijdschema,leerniveau,null,prijs);
+                
+                //s.addWorkshops(workshops);
                 Log.d("Boeken", "Boeking is gelukt hier");
             }
         });
