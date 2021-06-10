@@ -2,15 +2,16 @@ package com.example.homelayout.ui.workshops;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.preference.PreferenceManager;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,24 +19,30 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import com.example.homelayout.MainActivity;
 import com.example.homelayout.R;
 import com.example.homelayout.domain.WorkshopBooking;
-import com.example.homelayout.domain.WorkshopBookingList;
 import com.example.homelayout.domain.Workshops;
 import com.example.homelayout.logic.CalculatePrices;
-import com.example.homelayout.ui.shoppingcart.ShoppingCartFragment;
+import com.example.homelayout.repositories.TinyDB;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
-import java.time.LocalDateTime;
+import java.lang.reflect.Type;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 
 public class WorkshopsForm extends Fragment {
+
+
+    private ArrayList<Object> workshopCardList;
     private HashMap<String, Integer> values = new HashMap<>();
     private CalculatePrices calculatePrices = new CalculatePrices();
     private Workshops workshop;
     private Context thisContext;
+    private TinyDB tinydb;
     private int rounds = 1;
     private int minutes;
     private Date date;
@@ -54,19 +61,23 @@ public class WorkshopsForm extends Fragment {
     private EditText mEditTextWorkshopLearningLevel;
     private TextView mTextViewWorkshopSubtotal;
     private Button mButtonWorkshopsBook;
+    private SharedPreferences sharedPreferences;
 
     public WorkshopsForm(Workshops workshop) {
         this.workshop = workshop;
     }
 
-    @SuppressLint("SetTextI18n")
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
+//
         // Inflate the layout for this fragment
         View root = inflater.inflate(R.layout.fragment_workshops_form, container, false);
         thisContext = container.getContext();
+       tinydb = new TinyDB(thisContext);
+       loadData();
         mTextViewWorkshopsParticipants = (TextView) root.findViewById(R.id.tv_workshops_participants);
         mTextViewWorkshopFormTitle = (TextView) root.findViewById(R.id.tv_workshops_form_title);
         mTextViewWorkshopFormTitle.setText("Workshop " + this.workshop);
@@ -177,10 +188,23 @@ public class WorkshopsForm extends Fragment {
                 int rondes = rounds;
                 String tijdschema = mEditTextWorkshopTimetable.getText().toString();
                 String leerniveau = mEditTextWorkshopLearningLevel.getText().toString();
-                //String datum = date.toString();
+                String datum = date.toString();
+                Log.d("test", datum);
                 double prijs = calculatePrices.getWorkshopCalc(workshop, values);
                 WorkshopBooking workshops = new WorkshopBooking(dienst, rondes, minuten,tijdschema,leerniveau,null,prijs);
-                
+
+//                Gson gson = new Gson();
+//                String json = gson.toJson(workshops);
+//                requireActivity().getSharedPreferences("shopping_card", Context.MODE_PRIVATE).edit().putString("card_item_title", json).apply();
+//               SharedPreferences sharedPreferences= requireActivity().getSharedPreferences("shopping_card", Context.MODE_PRIVATE);
+//               String test = sharedPreferences.getString("card_item_title",null);
+//                Type type = new TypeToken<WorkshopBooking>() {}.getType();
+//                WorkshopBooking test2 = gson.fromJson(json, type);
+
+                workshopCardList.add(workshops);
+                tinydb.putListObject("Carditems", workshopCardList);
+
+
                 //s.addWorkshops(workshops);
                 Log.d("Boeken", "Boeking is gelukt hier");
             }
@@ -193,4 +217,18 @@ public class WorkshopsForm extends Fragment {
             String subtotal = "Subtotaal: €" + calculatePrices.getWorkshopCalc(workshop, values) + "0";
             mTextViewWorkshopSubtotal.setText(subtotal);
         }
+//        private void saveData(){
+//            Gson gson = new Gson();
+//            String json = gson.toJson(workshopCardList);
+//            requireActivity().getSharedPreferences("shopping_card", Context.MODE_PRIVATE).edit().putString("card_item_title", json).apply();
+//        }
+        private void loadData(){
+
+               workshopCardList = tinydb.getListObject("Carditems",WorkshopBooking.class);
+               if (workshopCardList == null){
+                   workshopCardList = new ArrayList<>();
+               }
+        }
+
+
 }

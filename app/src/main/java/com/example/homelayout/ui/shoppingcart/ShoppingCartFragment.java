@@ -14,20 +14,24 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.homelayout.MainActivity;
 import com.example.homelayout.R;
 import com.example.homelayout.domain.CultureDayBooking;
 import com.example.homelayout.domain.WorkshopBooking;
-import com.example.homelayout.domain.WorkshopBookingList;
+import com.example.homelayout.domain.Workshops;
+import com.example.homelayout.repositories.TinyDB;
+import com.example.homelayout.ui.workshops.WorkshopsForm;
 import com.example.homelayout.ui.workshops.WorkshopsFragment;
 
 
 import java.util.ArrayList;
 
 public class ShoppingCartFragment extends Fragment {
-
+    private WorkshopsForm mainActivity = new WorkshopsForm(Workshops.Flashmob);
     private Button mExtraWorkshopButton;
     private ImageButton mDeleteButton;
     private Context thisContext;
+    private TinyDB tinyDB;
     private LinearLayoutManager workshopLayoutManager;
     private LinearLayoutManager cultureDayLayoutManager;
     private RecyclerView workshopRecyclerView;
@@ -50,15 +54,13 @@ public class ShoppingCartFragment extends Fragment {
         workshops.add("workshop graffiti");
         workshops.add("workshop stepping");
         thisContext = container.getContext();
+        tinyDB = new TinyDB(thisContext);
         workshopLayoutManager = new LinearLayoutManager(thisContext);
         workshopRecyclerView = root.findViewById(R.id.shopping_cart_workshop_recycler);
         workshopRecyclerView.setLayoutManager(workshopLayoutManager);
 
-        if(workshopBookings == null){
-            workshopBookings = new ArrayList<>();
-        }
 
-        shoppingCartWorkshopAdapter = new ShoppingCartWorkshopAdapter(workshopBookings);
+        shoppingCartWorkshopAdapter = new ShoppingCartWorkshopAdapter(tinyDB.getListObject("Carditems",WorkshopBooking.class));
 
         workshopRecyclerView.setAdapter(shoppingCartWorkshopAdapter);
         cultureDayLayoutManager = new LinearLayoutManager(thisContext);
@@ -75,6 +77,7 @@ public class ShoppingCartFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new WorkshopsFragment()).commit();
+
             }
         });
 
