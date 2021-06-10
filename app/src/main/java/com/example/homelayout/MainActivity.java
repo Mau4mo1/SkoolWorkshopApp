@@ -38,7 +38,6 @@ import androidx.fragment.app.Fragment;
 
 public class MainActivity extends AppCompatActivity {
     private BottomNavigationView bottomNav;
-    private NavigationView moreView;
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -58,7 +57,6 @@ public class MainActivity extends AppCompatActivity {
         bottomNav = findViewById(R.id.nav_view);
         bottomNav.setOnNavigationItemSelectedListener(navListener);
 
-
         getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new HomeFragment()).commit();
     }
 
@@ -66,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.bt_shopping_cart) {
             Fragment selectedFragment = new ShoppingCartFragment();
-            getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, selectedFragment).commit();
+            getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, selectedFragment).addToBackStack(null).commit();
         }
         return super.onOptionsItemSelected(item);
     }
@@ -98,21 +96,6 @@ public class MainActivity extends AppCompatActivity {
                     return true;
                 }
             };
-
-//    public void onClick(MenuItem v){
-//        switch (v.getItemId()) {
-//            case R.id.navigation_shopping_cart:
-//                break;
-//            case R.id.navigation_about_us:
-//                break;
-//            case R.id.navigation_quiz:
-//                Log.d("test", "hallo");
-//                Uri uri = Uri.parse("https://www.tryinteract.com/share/quiz/60bf53f3749e3400170c19df");
-//                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-//                startActivity(intent);
-//                break;
-//        }
-//    }
 
     private NavigationView.OnNavigationItemSelectedListener navSideBarListener =
             new NavigationView.OnNavigationItemSelectedListener() {
@@ -153,8 +136,8 @@ public class MainActivity extends AppCompatActivity {
             OFFSET_Y = OFFSET_Y + location[1];
 
             changeStatusPopUp.setBackgroundDrawable(new BitmapDrawable());
-            NavigationView shoppingcart = layout.findViewById(R.id.nav_side_view);
-            shoppingcart.setNavigationItemSelectedListener(navSideBarListener);
+            NavigationView sideBarView = layout.findViewById(R.id.nav_side_view);
+            sideBarView.setNavigationItemSelectedListener(navSideBarListener);
             changeStatusPopUp.showAtLocation(layout, Gravity.TOP, OFFSET_X, OFFSET_Y);
 
         }
