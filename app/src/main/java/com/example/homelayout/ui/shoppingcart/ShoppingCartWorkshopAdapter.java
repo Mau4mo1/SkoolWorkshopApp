@@ -26,7 +26,7 @@ public class ShoppingCartWorkshopAdapter extends RecyclerView.Adapter<ShoppingCa
     @Override
     public WorkshopViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         Context context = parent.getContext();
-        int layoutIdForListItem = R.layout.fragment_shopping_cart_item;
+        int layoutIdForListItem = R.layout.fragment_shopping_cart_workshop;
         LayoutInflater inflater = LayoutInflater.from(context);
         boolean shouldAttachToParentImmediately = false;
 
@@ -38,6 +38,7 @@ public class ShoppingCartWorkshopAdapter extends RecyclerView.Adapter<ShoppingCa
     public void onBindViewHolder(@NonNull WorkshopViewHolder holder, int position) {
         DecimalFormat decimalFormat = new DecimalFormat("#.00");
         WorkshopBooking workshopBooking = (WorkshopBooking) workshopData.get(position);
+        String prijs = decimalFormat.format(workshopBooking.getPrijs());
         holder.mDienst.setText(String.valueOf(workshopBooking.getDienst()));
         holder.mRondes.setText(String.valueOf(workshopBooking.getRondes()));
         holder.mMinuten.setText(String.valueOf(workshopBooking.getMinuten()));
@@ -45,7 +46,7 @@ public class ShoppingCartWorkshopAdapter extends RecyclerView.Adapter<ShoppingCa
         holder.mTijdschema.setText(String.valueOf(workshopBooking.getTijdschema()));
         holder.mLeerniveau.setText(String.valueOf(workshopBooking.getLeerniveau()));
         holder.mDatum.setText(String.valueOf(workshopBooking.getDatum()));
-        holder.mPrijs.setText("€" + String.valueOf(decimalFormat.format(workshopBooking.getPrijs())));
+        holder.mPrijs.setText("€" + prijs);
     }
 
     public class WorkshopViewHolder extends RecyclerView.ViewHolder {

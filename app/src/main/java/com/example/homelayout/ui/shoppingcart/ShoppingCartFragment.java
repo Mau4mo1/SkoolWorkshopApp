@@ -27,9 +27,9 @@ public class ShoppingCartFragment extends Fragment {
     private Context thisContext;
     private LinearLayoutManager layoutManager;
     private RecyclerView recyclerView;
-    private ShoppingCartWorkshopAdapter shoppingCartWorkshopAdapter;
+    private ShoppingCartCultureDayAdapter shoppingCartCultureDayAdapter;
     private ArrayList<WorkshopBooking> workshopBookingData = new ArrayList<>();
-    private WorkshopBooking dummyData = new WorkshopBooking("workshop rap", 2, 75, "voorbeeld", "voorbeeld", "3 Juni 2021", 300.00);
+    private WorkshopBooking workshopDummyData = new WorkshopBooking("workshop rap", 2, 75, "voorbeeld", "voorbeeld", "3 Juni 2021", 300.00);
 
 
     @Override
@@ -40,9 +40,9 @@ public class ShoppingCartFragment extends Fragment {
         layoutManager = new LinearLayoutManager(thisContext);
         recyclerView = root.findViewById(R.id.shopping_cart_recycler);
         recyclerView.setLayoutManager(layoutManager);
-        workshopBookingData.add(dummyData);
-        shoppingCartWorkshopAdapter = new ShoppingCartWorkshopAdapter(workshopBookingData);
-        recyclerView.setAdapter(shoppingCartWorkshopAdapter);
+        workshopBookingData.add(workshopDummyData);
+        shoppingCartCultureDayAdapter = new ShoppingCartCultureDayAdapter(workshopBookingData);
+        recyclerView.setAdapter(shoppingCartCultureDayAdapter);
 
         mExtraWorkshopButton = root.findViewById(R.id.btn_cart_extra_workshop);
         mExtraWorkshopButton.setClickable(true);
