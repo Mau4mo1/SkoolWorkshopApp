@@ -2,6 +2,7 @@ package com.example.homelayout.ui.shoppingcart;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.homelayout.R;
 import com.example.homelayout.domain.CultureDayBooking;
 import com.example.homelayout.domain.WorkshopBooking;
+import com.example.homelayout.domain.WorkshopBookingList;
 import com.example.homelayout.ui.workshops.WorkshopsFragment;
 
 
@@ -32,7 +34,7 @@ public class ShoppingCartFragment extends Fragment {
     private RecyclerView cultureDayRecyclerView;
     private ShoppingCartCultureDayAdapter shoppingCartCultureDayAdapter;
     private ShoppingCartWorkshopAdapter shoppingCartWorkshopAdapter;
-    private ArrayList<WorkshopBooking> workshopBookings = new ArrayList<>();
+    private ArrayList<WorkshopBooking> workshopBookings;
     private ArrayList<CultureDayBooking> cultureDayBookings = new ArrayList<>();
     private ArrayList<String> workshops = new ArrayList<>();
     private WorkshopBooking workshopDummyData = new WorkshopBooking("workshop rap", 2, 75, "voorbeeld", "voorbeeld", "3 Juni 2021", 300.00);
@@ -50,7 +52,7 @@ public class ShoppingCartFragment extends Fragment {
         workshopLayoutManager = new LinearLayoutManager(thisContext);
         workshopRecyclerView = root.findViewById(R.id.shopping_cart_workshop_recycler);
         workshopRecyclerView.setLayoutManager(workshopLayoutManager);
-        workshopBookings.add(workshopDummyData);
+        workshopBookings = new WorkshopBookingList().getWorkshops();
         shoppingCartWorkshopAdapter = new ShoppingCartWorkshopAdapter(workshopBookings);
         workshopRecyclerView.setAdapter(shoppingCartWorkshopAdapter);
         cultureDayLayoutManager = new LinearLayoutManager(thisContext);
@@ -72,4 +74,5 @@ public class ShoppingCartFragment extends Fragment {
 
         return root;
     }
+
 }

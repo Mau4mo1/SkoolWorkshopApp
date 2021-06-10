@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment;
 
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,8 +21,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.homelayout.R;
+import com.example.homelayout.domain.WorkshopBooking;
+import com.example.homelayout.domain.WorkshopBookingList;
 import com.example.homelayout.domain.Workshops;
 import com.example.homelayout.logic.CalculatePrices;
+import com.example.homelayout.ui.shoppingcart.ShoppingCartFragment;
 
 import java.time.LocalDateTime;
 import java.util.Date;
@@ -167,6 +171,17 @@ public class WorkshopsForm extends Fragment {
             @Override
             public void onClick(View v) {
 
+                String dienst = mTextViewWorkshopFormTitle.getText().toString();
+                int minuten = minutes;
+                int rondes = rounds;
+                String tijdschema = mEditTextWorkshopTimetable.getText().toString();
+                String leerniveau = mEditTextWorkshopLearningLevel.getText().toString();
+                String datum = date.toString();
+                double prijs = calculatePrices.getWorkshopCalc(workshop, values);
+                WorkshopBooking workshops = new WorkshopBooking(dienst, rondes, minuten,tijdschema,leerniveau,datum,prijs);
+                WorkshopBookingList s = new WorkshopBookingList();
+                s.addWorkshop(workshops);
+                Log.d("Boeken", "Boeking is gelukt hier");
             }
         });
 
