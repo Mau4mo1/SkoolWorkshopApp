@@ -10,48 +10,45 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.homelayout.R;
-import com.example.homelayout.domain.Payment;
-
-import org.jetbrains.annotations.NotNull;
+import com.example.homelayout.domain.WorkshopBooking;
 
 import java.io.Serializable;
 import java.text.DecimalFormat;
 import java.util.List;
-import java.util.zip.Inflater;
 
-public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.PaymentViewHolder> implements Serializable {
-    private List paymentData;
+public class ShoppingCartWorkshopAdapter extends RecyclerView.Adapter<ShoppingCartWorkshopAdapter.WorkshopViewHolder> implements Serializable {
+    private List workshopData;
 
-    public RecyclerAdapter(List paymentData) {
-        this.paymentData = paymentData;
+    public ShoppingCartWorkshopAdapter(List workshopData) {
+        this.workshopData = workshopData;
     }
 
     @Override
-    public PaymentViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public WorkshopViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         Context context = parent.getContext();
         int layoutIdForListItem = R.layout.fragment_shopping_cart_item;
         LayoutInflater inflater = LayoutInflater.from(context);
         boolean shouldAttachToParentImmediately = false;
 
         View view = inflater.inflate(layoutIdForListItem, parent, false);
-        return new PaymentViewHolder(view);
+        return new WorkshopViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RecyclerAdapter.PaymentViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull WorkshopViewHolder holder, int position) {
         DecimalFormat decimalFormat = new DecimalFormat("#.00");
-        Payment payment = (Payment) paymentData.get(position);
-        holder.mDienst.setText(String.valueOf(payment.getDienst()));
-        holder.mRondes.setText(String.valueOf(payment.getRondes()));
-        holder.mMinuten.setText(String.valueOf(payment.getMinuten()));
-        holder.mTotaleMinuten.setText(String.valueOf(payment.getTotaleMinuten()));
-        holder.mTijdschema.setText(String.valueOf(payment.getTijdschema()));
-        holder.mLeerniveau.setText(String.valueOf(payment.getLeerniveau()));
-        holder.mDatum.setText(String.valueOf(payment.getDatum()));
-        holder.mPrijs.setText("€" + String.valueOf(decimalFormat.format(payment.getPrijs())));
+        WorkshopBooking workshopBooking = (WorkshopBooking) workshopData.get(position);
+        holder.mDienst.setText(String.valueOf(workshopBooking.getDienst()));
+        holder.mRondes.setText(String.valueOf(workshopBooking.getRondes()));
+        holder.mMinuten.setText(String.valueOf(workshopBooking.getMinuten()));
+        holder.mTotaleMinuten.setText(String.valueOf(workshopBooking.getTotaleMinuten()));
+        holder.mTijdschema.setText(String.valueOf(workshopBooking.getTijdschema()));
+        holder.mLeerniveau.setText(String.valueOf(workshopBooking.getLeerniveau()));
+        holder.mDatum.setText(String.valueOf(workshopBooking.getDatum()));
+        holder.mPrijs.setText("€" + String.valueOf(decimalFormat.format(workshopBooking.getPrijs())));
     }
 
-    public class PaymentViewHolder extends RecyclerView.ViewHolder {
+    public class WorkshopViewHolder extends RecyclerView.ViewHolder {
         private TextView mDienst;
         private TextView mRondes;
         private TextView mMinuten;
@@ -61,7 +58,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Paymen
         private TextView mDatum;
         private TextView mPrijs;
 
-        public PaymentViewHolder(@NonNull View view) {
+        public WorkshopViewHolder(@NonNull View view) {
             super(view);
             mDienst = (TextView) itemView.findViewById(R.id.shopping_cart_dienst);
             mRondes = (TextView) itemView.findViewById(R.id.shopping_cart_rondes);
@@ -76,9 +73,9 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Paymen
 
     @Override
         public int getItemCount() {
-            if (paymentData == null) {
+            if (workshopData == null) {
                 return 0;
             }
-            return paymentData.size();
+            return workshopData.size();
         }
 }
