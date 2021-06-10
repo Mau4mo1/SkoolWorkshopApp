@@ -456,6 +456,7 @@
             android:id="@+id/button_book_now_cdf"
             android:layout_width="350sp"
             android:layout_height="60sp"
+            android:backgroundTint="@color/orange"
             app:layout_constraintTop_toBottomOf="@id/tv_cultureday_form_subtotal_amount"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"

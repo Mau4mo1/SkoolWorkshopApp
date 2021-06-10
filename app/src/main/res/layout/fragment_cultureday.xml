@@ -17,6 +17,7 @@
             android:text="Cultuurdag"
             android:textSize="20sp"/>
         <ImageView
+            android:id="@+id/img_cd"
             android:layout_marginTop="20sp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -24,15 +25,6 @@
             android:scaleType="fitStart"
             android:adjustViewBounds="true"
             tools:srcCompat="@drawable/skoolcd"/>
-        <ImageView
-            android:id="@+id/layout_horizontal01_cd"
-            android:layout_marginTop="20sp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:scaleType="fitStart"
-            android:adjustViewBounds="true"
-            android:contentDescription="cdimage" />
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/layout_const01_cd"
             android:layout_width="match_parent"
@@ -45,7 +37,8 @@
                 android:layout_height="55sp"
                 android:layout_marginStart="215sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/layout_horizontal01_cd"
+                app:layout_constraintTop_toBottomOf="@id/img_cd"
+                android:backgroundTint="@color/orange"
                 android:text="Meer informatie"
                 tools:ignore="NotSibling" />
             <Button
@@ -53,8 +46,9 @@
                 android:layout_marginStart="65sp"
                 android:layout_width="130sp"
                 android:layout_height="55sp"
-                app:layout_constraintTop_toBottomOf="@id/layout_horizontal01_cd"
+                app:layout_constraintTop_toBottomOf="@id/img_cd"
                 app:layout_constraintStart_toStartOf="parent"
+                android:backgroundTint="@color/orange"
                 android:text="Boek nu"
                 tools:ignore="NotSibling"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
