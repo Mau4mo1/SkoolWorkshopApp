@@ -42,7 +42,6 @@
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@+id/tv_cultureday_form_rounds_description"
             app:layout_constraintLeft_toLeftOf="parent"
-            android:text="0"
             android:layout_marginTop="8sp"
             android:layout_marginStart="20sp"
             android:layout_marginEnd="20sp"/>
@@ -65,8 +64,7 @@
             app:layout_constraintLeft_toLeftOf="parent"
             android:layout_marginTop="8sp"
             android:layout_marginStart="20sp"
-            android:layout_marginEnd="20sp"
-            android:text="0"/>
+            android:layout_marginEnd="20sp"/>
         <TextView
             android:id="@+id/tv_cultureday_form_time_per_round_description"
             android:layout_width="wrap_content"
@@ -84,7 +82,6 @@
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@+id/tv_cultureday_form_time_per_round_description"
             app:layout_constraintLeft_toLeftOf="parent"
-            android:text="0"
             android:layout_marginTop="8sp"
             android:layout_marginStart="20sp"
             android:layout_marginEnd="20sp"/>
@@ -385,7 +382,8 @@
             android:text="Aantal deelnemers voor Graffiti of T-shirt ontwerpen (+€7,50)"
             android:layout_marginTop="8sp"
             android:layout_marginStart="20sp"
-            android:layout_marginEnd="20sp"/>
+            android:layout_marginEnd="20sp"
+            android:visibility="gone"/>
         <EditText
             android:id="@+id/edn_cultureday_form_participants_shirt_and_drums_field"
             android:inputType="number"
@@ -393,10 +391,10 @@
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@+id/tv_cultureday_form_participants_shirt_and_drums_description"
             app:layout_constraintLeft_toLeftOf="parent"
-            android:text="0"
             android:layout_marginTop="8sp"
             android:layout_marginStart="20sp"
-            android:layout_marginEnd="20sp"/>
+            android:layout_marginEnd="20sp"
+            android:visibility="gone"/>
         <TextView
             android:id="@+id/tv_cultureday_form_learninglevel_description"
             android:layout_width="match_parent"

@@ -25,12 +25,14 @@ import androidx.fragment.app.Fragment;
 import com.example.homelayout.R;
 import com.example.homelayout.domain.Workshops;
 import com.example.homelayout.logic.CalculatePrices;
+import com.example.homelayout.logic.CulturedayBookingInfo;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
 public class CulturedayFormFragment extends Fragment {
+    private double subtotal_amount = 0;
     private HashMap<String, Integer> values = new HashMap<>();
     private ArrayList<Workshops> workshops = new ArrayList<>();
     private Button btn_book_now_cdf;
@@ -38,6 +40,7 @@ public class CulturedayFormFragment extends Fragment {
     private EditText extra_price_participants_amount;
     private EditText round_minutes;
     private Spinner dropdown_categories;
+    private TextView extra_price_participants_amount_description;
     public Context con;
     private GridLayout workshop_check_dance;
     private GridLayout workshop_check_sport;
@@ -49,6 +52,7 @@ public class CulturedayFormFragment extends Fragment {
     private EditText workshop_rounds;
     private TextView prijs_summery;
     private CalculatePrices calculatePrices = new CalculatePrices();
+    private CulturedayBookingInfo culturedayBookingInfo = new CulturedayBookingInfo();
     private EditText workshop_particepents;
     private CheckBox workshop_graffiti;
     private CheckBox workshop_lightgraffiti;
@@ -202,6 +206,7 @@ public class CulturedayFormFragment extends Fragment {
         workshop_rounds = root.findViewById(R.id.edn_cultureday_form_rounds_field);
         prijs_summery = root.findViewById(R.id.tv_cultureday_form_kost);
         workshop_particepents = root.findViewById(R.id.edn_cultureday_form_participants_field);
+        extra_price_participants_amount_description = root.findViewById(R.id.tv_cultureday_form_participants_shirt_and_drums_description);
 
         workshop_per_round.addTextChangedListener(new TextWatcher() {
             @Override
@@ -272,13 +277,23 @@ public class CulturedayFormFragment extends Fragment {
             }
         });
 
-        final String[] kosten = {"Aantal workshoprondes - " + workshop_rounds.getText().toString() + "\nAantalworkshops per ronde - " + workshop_per_round.getText().toString() + "\nAantalminuten per workshopronde - " + round_minutes.getText().toString() + "\nWokrshops:"};
-        ArrayList<Workshops> workshops = new ArrayList<>();
         workshop_graffiti.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked == true){
                     workshops.add(Workshops.Graffiti);
+                    updateSubtotal();
+                    extra_price_participants_amount.setVisibility(View.VISIBLE);
+                    extra_price_participants_amount_description.setVisibility(View.VISIBLE);
+                } else {
+                    for(Workshops i : workshops){
+                        if(i.equals(Workshops.Graffiti)){
+                            workshops.remove(Workshops.Graffiti);
+                        }
+                    }
+                    extra_price_participants_amount.setVisibility(View.GONE);
+                    extra_price_participants_amount_description.setVisibility(View.GONE);
+                    updateSubtotal();
                 }
             }
         });
@@ -287,7 +302,12 @@ public class CulturedayFormFragment extends Fragment {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked == true){
                     workshops.add(Workshops.Bootcamp);
-                    kosten[0] = kosten[0] +"\n  Bootcamp";
+                } else {
+                    for(Workshops i : workshops){
+                        if(i.equals(Workshops.Bootcamp)){
+                            workshops.remove(Workshops.Bootcamp);
+                        }
+                    }
                 }
             }
         });
@@ -296,7 +316,12 @@ public class CulturedayFormFragment extends Fragment {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked == true){
                     workshops.add(Workshops.Breakdance);
-                    kosten[0] = kosten[0] +"\n  Breakdance";
+                } else {
+                    for(Workshops i : workshops){
+                        if(i.equals(Workshops.Breakdance)){
+                            workshops.remove(Workshops.Breakdance);
+                        }
+                    }
                 }
             }
         });
@@ -305,7 +330,12 @@ public class CulturedayFormFragment extends Fragment {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked == true){
                     workshops.add(Workshops.Capoeira);
-                    kosten[0] = kosten[0] +"\n  Capoeria";
+                } else {
+                    for(Workshops i : workshops){
+                        if(i.equals(Workshops.Capoeira)){
+                            workshops.remove(Workshops.Capoeira);
+                        }
+                    }
                 }
             }
         });
@@ -314,7 +344,12 @@ public class CulturedayFormFragment extends Fragment {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked == true){
                     workshops.add(Workshops.CaribbeanDrums);
-                    kosten[0] = kosten[0] +"\n  Caribbean drums";
+                } else {
+                    for(Workshops i : workshops){
+                        if(i.equals(Workshops.CaribbeanDrums)){
+                            workshops.remove(Workshops.CaribbeanDrums);
+                        }
+                    }
                 }
             }
         });
@@ -323,7 +358,12 @@ public class CulturedayFormFragment extends Fragment {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked == true){
                     workshops.add(Workshops.DanceFit);
-                    kosten[0] = kosten[0] +"\n  Dance fit";
+                } else {
+                    for(Workshops i : workshops){
+                        if(i.equals(Workshops.DanceFit)){
+                            workshops.remove(Workshops.DanceFit);
+                        }
+                    }
                 }
             }
         });
@@ -332,7 +372,12 @@ public class CulturedayFormFragment extends Fragment {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked == true){
                     workshops.add(Workshops.Flashmob);
-                    kosten[0] = kosten[0] +"\n  Flashmob";
+                } else {
+                    for(Workshops i : workshops){
+                        if(i.equals(Workshops.Flashmob)){
+                            workshops.remove(Workshops.Flashmob);
+                        }
+                    }
                 }
             }
         });
@@ -341,7 +386,12 @@ public class CulturedayFormFragment extends Fragment {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked == true){
                     workshops.add(Workshops.Freeruning);
-                    kosten[0] = kosten[0] +"\n  Freerunning";
+                } else {
+                    for(Workshops i : workshops){
+                        if(i.equals(Workshops.Freeruning)){
+                            workshops.remove(Workshops.Freeruning);
+                        }
+                    }
                 }
             }
         });
@@ -350,7 +400,12 @@ public class CulturedayFormFragment extends Fragment {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked == true){
                     workshops.add(Workshops.GhettoDrums);
-                    kosten[0] = kosten[0] +"\n  Ghetto drums";
+                } else {
+                    for(Workshops i : workshops){
+                        if(i.equals(Workshops.GhettoDrums)){
+                            workshops.remove(Workshops.GhettoDrums);
+                        }
+                    }
                 }
             }
         });
@@ -359,7 +414,12 @@ public class CulturedayFormFragment extends Fragment {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked == true){
                     workshops.add(Workshops.Hiphop);
-                    kosten[0] = kosten[0] +"\n  Hiphop";
+                } else {
+                    for(Workshops i : workshops){
+                        if(i.equals(Workshops.Hiphop)){
+                            workshops.remove(Workshops.Hiphop);
+                        }
+                    }
                 }
             }
         });
@@ -368,7 +428,12 @@ public class CulturedayFormFragment extends Fragment {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked == true){
                     workshops.add(Workshops.Kickboksen);
-                    kosten[0] = kosten[0] +"\n  Kickboksen";
+                } else {
+                    for(Workshops i : workshops){
+                        if(i.equals(Workshops.Kickboksen)){
+                            workshops.remove(Workshops.Kickboksen);
+                        }
+                    }
                 }
             }
         });
@@ -377,7 +442,12 @@ public class CulturedayFormFragment extends Fragment {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked == true){
                     workshops.add(Workshops.LightGraffiti);
-                    kosten[0] = kosten[0] +"\n  Light graffiti";
+                } else {
+                    for(Workshops i : workshops){
+                        if(i.equals(Workshops.LightGraffiti)){
+                            workshops.remove(Workshops.LightGraffiti);
+                        }
+                    }
                 }
             }
         });
@@ -386,7 +456,12 @@ public class CulturedayFormFragment extends Fragment {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked == true){
                     workshops.add(Workshops.LiveLooping);
-                    kosten[0] = kosten[0] +"\n  Live looping";
+                } else {
+                    for(Workshops i : workshops){
+                        if(i.equals(Workshops.LiveLooping)){
+                            workshops.remove(Workshops.LiveLooping);
+                        }
+                    }
                 }
             }
         });
@@ -395,7 +470,12 @@ public class CulturedayFormFragment extends Fragment {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked == true){
                     workshops.add(Workshops.ModerneDans);
-                    kosten[0] = kosten[0] +"\n  Moderne dans";
+                } else {
+                    for(Workshops i : workshops){
+                        if(i.equals(Workshops.ModerneDans)){
+                            workshops.remove(Workshops.ModerneDans);
+                        }
+                    }
                 }
             }
         });
@@ -404,7 +484,12 @@ public class CulturedayFormFragment extends Fragment {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked == true){
                     workshops.add(Workshops.Pannavoetbal);
-                    kosten[0] = kosten[0] +"\n  Pannavoetbal";
+                } else {
+                    for(Workshops i : workshops){
+                        if(i.equals(Workshops.Pannavoetbal)){
+                            workshops.remove(Workshops.Pannavoetbal);
+                        }
+                    }
                 }
             }
         });
@@ -413,7 +498,12 @@ public class CulturedayFormFragment extends Fragment {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked == true){
                     workshops.add(Workshops.Percurssie);
-                    kosten[0] = kosten[0] +"\n  Percurssie";
+                } else {
+                    for(Workshops i : workshops){
+                        if(i.equals(Workshops.Percurssie)){
+                            workshops.remove(Workshops.Percurssie);
+                        }
+                    }
                 }
             }
         });
@@ -422,7 +512,12 @@ public class CulturedayFormFragment extends Fragment {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked == true){
                     workshops.add(Workshops.Photoshop);
-                    kosten[0] = kosten[0] +"\n  Photoshop";
+                } else {
+                    for(Workshops i : workshops){
+                        if(i.equals(Workshops.Photoshop)){
+                            workshops.remove(Workshops.Photoshop);
+                        }
+                    }
                 }
             }
         });
@@ -431,7 +526,12 @@ public class CulturedayFormFragment extends Fragment {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked == true){
                     workshops.add(Workshops.Popstar);
-                    kosten[0] = kosten[0] +"\n  Popstar";
+                } else {
+                    for(Workshops i : workshops){
+                        if(i.equals(Workshops.Popstar)){
+                            workshops.remove(Workshops.Popstar);
+                        }
+                    }
                 }
             }
         });
@@ -440,7 +540,12 @@ public class CulturedayFormFragment extends Fragment {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked == true){
                     workshops.add(Workshops.Rap);
-                    kosten[0] = kosten[0] +"\n  Rap";
+                } else {
+                    for(Workshops i : workshops){
+                        if(i.equals(Workshops.Rap)){
+                            workshops.remove(Workshops.Rap);
+                        }
+                    }
                 }
             }
         });
@@ -449,7 +554,12 @@ public class CulturedayFormFragment extends Fragment {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked == true){
                     workshops.add(Workshops.Zelfverdedeging);
-                    kosten[0] = kosten[0] +"\n  Zelfverdedeging";
+                } else {
+                    for(Workshops i : workshops){
+                        if(i.equals(Workshops.Zelfverdedeging)){
+                            workshops.remove(Workshops.Zelfverdedeging);
+                        }
+                    }
                 }
             }
         });
@@ -458,7 +568,12 @@ public class CulturedayFormFragment extends Fragment {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked == true){
                     workshops.add(Workshops.Fotografie);
-                    kosten[0] = kosten[0] +"\n  Smartphone fotografie";
+                } else {
+                    for(Workshops i : workshops){
+                        if(i.equals(Workshops.Fotografie)){
+                            workshops.remove(Workshops.Fotografie);
+                        }
+                    }
                 }
             }
         });
@@ -467,7 +582,12 @@ public class CulturedayFormFragment extends Fragment {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked == true){
                     workshops.add(Workshops.SoapActeren);
-                    kosten[0] = kosten[0] +"\n  Soap acteren";
+                } else {
+                    for(Workshops i : workshops){
+                        if(i.equals(Workshops.SoapActeren)){
+                            workshops.remove(Workshops.SoapActeren);
+                        }
+                    }
                 }
             }
         });
@@ -476,7 +596,12 @@ public class CulturedayFormFragment extends Fragment {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked == true){
                     workshops.add(Workshops.StageFighting);
-                    kosten[0] = kosten[0] +"\n  Stage fighting";
+                } else {
+                    for(Workshops i : workshops){
+                        if(i.equals(Workshops.StageFighting)){
+                            workshops.remove(Workshops.StageFighting);
+                        }
+                    }
                 }
             }
         });
@@ -485,7 +610,12 @@ public class CulturedayFormFragment extends Fragment {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked == true){
                     workshops.add(Workshops.Stepping);
-                    kosten[0] = kosten[0] +"\n  Stepping";
+                } else {
+                    for(Workshops i : workshops){
+                        if(i.equals(Workshops.Stepping)){
+                            workshops.remove(Workshops.Stepping);
+                        }
+                    }
                 }
             }
         });
@@ -494,7 +624,12 @@ public class CulturedayFormFragment extends Fragment {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked == true){
                     workshops.add(Workshops.StopMotion);
-                    kosten[0] = kosten[0] +"\n  Stop motion";
+                } else {
+                    for(Workshops i : workshops){
+                        if(i.equals(Workshops.StopMotion)){
+                            workshops.remove(Workshops.StopMotion);
+                        }
+                    }
                 }
             }
         });
@@ -503,7 +638,12 @@ public class CulturedayFormFragment extends Fragment {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked == true){
                     workshops.add(Workshops.Streetdance);
-                    kosten[0] = kosten[0] +"\n  Streetdance";
+                } else {
+                    for(Workshops i : workshops){
+                        if(i.equals(Workshops.Streetdance)){
+                            workshops.remove(Workshops.Streetdance);
+                        }
+                    }
                 }
             }
         });
@@ -512,7 +652,12 @@ public class CulturedayFormFragment extends Fragment {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked == true){
                     workshops.add(Workshops.Theatersport);
-                    kosten[0] = kosten[0] +"\n  Theatersport";
+                } else {
+                    for(Workshops i : workshops){
+                        if(i.equals(Workshops.Theatersport)){
+                            workshops.remove(Workshops.Theatersport);
+                        }
+                    }
                 }
             }
         });
@@ -521,7 +666,18 @@ public class CulturedayFormFragment extends Fragment {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked == true){
                     workshops.add(Workshops.TshirtOntwerpen);
-                    kosten[0] = "\n  T-shirt ontwerpen";
+                    updateSubtotal();
+                    extra_price_participants_amount.setVisibility(View.VISIBLE);
+                    extra_price_participants_amount_description.setVisibility(View.VISIBLE);
+                } else {
+                    for(Workshops i : workshops){
+                        if(i.equals(Workshops.TshirtOntwerpen)){
+                            workshops.remove(Workshops.TshirtOntwerpen);
+                        }
+                    }
+                    updateSubtotal();
+                    extra_price_participants_amount.setVisibility(View.GONE);
+                    extra_price_participants_amount_description.setVisibility(View.GONE);
                 }
             }
         });
@@ -530,7 +686,6 @@ public class CulturedayFormFragment extends Fragment {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked == true){
                     workshops.add(Workshops.Videoclip);
-                    kosten[0] = kosten[0] +"\n  Videoclip maken";
                 }
             }
         });
@@ -539,7 +694,6 @@ public class CulturedayFormFragment extends Fragment {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked == true){
                     workshops.add(Workshops.Vloggen);
-                    kosten[0] = kosten[0] +"\n  Vloggen";
                 }
             }
         });
@@ -550,7 +704,7 @@ public class CulturedayFormFragment extends Fragment {
         btn_book_now_cdf.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    if(Double.valueOf(sub_total_cdf.getText().toString()) < 1255.50) {
+                    if(subtotal_amount < 1255.50) {
                         AlertDialog.Builder subpopup = new AlertDialog.Builder(con);
                         subpopup.setCancelable(true);
                         subpopup.setTitle("Subtotaal niet genoeg");
@@ -562,8 +716,7 @@ public class CulturedayFormFragment extends Fragment {
                             }
                         });
                         subpopup.show();
-                    }
-                    if (Integer.valueOf(round_minutes.getText().toString())<60) {
+                    }else if (Integer.valueOf(round_minutes.getText().toString())<60) {
                         AlertDialog.Builder minpopup = new AlertDialog.Builder(con);
                         minpopup.setCancelable(true);
                         minpopup.setTitle("Workshops te kort");
@@ -575,6 +728,16 @@ public class CulturedayFormFragment extends Fragment {
                             }
                         });
                         minpopup.show();
+                    }else{
+                        try {
+                            culturedayBookingInfo.setParticepants(Integer.parseInt(workshop_particepents.getText().toString()));
+                            culturedayBookingInfo.setRounds(Integer.parseInt(workshop_rounds.getText().toString()));
+                            culturedayBookingInfo.setWorkshop_minutes(Integer.parseInt(round_minutes.getText().toString()));
+                            culturedayBookingInfo.setWorkshops(workshops);
+                            culturedayBookingInfo.setWorkshops_per_round(Integer.parseInt(workshop_per_round.getText().toString()));
+                        }catch (Exception e){
+                            System.out.println("Booking info invalet or incompelte");
+                        }
                     }
                 }
         });
@@ -583,6 +746,7 @@ public class CulturedayFormFragment extends Fragment {
 
     public void updateSubtotal() {
         double subtotal = calculatePrices.calculateCultureday(values, workshops);
-        sub_total_cdf.setText(String.valueOf(subtotal));
+        this.subtotal_amount = subtotal;
+        sub_total_cdf.setText("Subtotal: €" + subtotal + "0");
     }
 }
