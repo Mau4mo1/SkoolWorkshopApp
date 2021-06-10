@@ -24,12 +24,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.fragment.app.Fragment;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements WorkshopController.WorkshopsControllerListener {
     private BottomNavigationView bottomNav;
     private WorkshopController workshopController;
-    private List<WorkshopsObject> workshopsObjectList;
+    private List<WorkshopsObject> workshopsObjectList = new ArrayList<>();
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -50,7 +51,7 @@ public class MainActivity extends AppCompatActivity implements WorkshopControlle
         bottomNav = findViewById(R.id.nav_view);
         bottomNav.setOnNavigationItemSelectedListener(navListener);
         workshopController = new WorkshopController(this);
-        workshopController.loadAllWorkshops();
+        workshopController.loadInfoAboutWorkshop(2);
         getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new HomeFragment()).commit();
     }
 

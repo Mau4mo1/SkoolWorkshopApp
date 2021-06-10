@@ -2,17 +2,13 @@ package com.example.homelayout.controller;
 
 import android.util.Log;
 
-import com.example.homelayout.MainActivity;
 import com.example.homelayout.domain.WorkshopsObject;
 import com.example.homelayout.service.WorkshopAPI;
 import com.example.homelayout.service.WorkshopsAPIResponse;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.google.gson.reflect.TypeToken;
 
-import java.lang.reflect.Type;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 import retrofit2.Call;
@@ -43,8 +39,16 @@ public class WorkshopController implements Callback<WorkshopsAPIResponse> {
 
     public void loadAllWorkshops(){
         Call<WorkshopsAPIResponse> call = workshopAPI.loadAllWorkshops();
+        Log.d(TAG, "loadAllWorkshops called");
         call.enqueue(this);
     }
+
+    public void loadInfoAboutWorkshop(int id){
+        Call<WorkshopsAPIResponse> call = workshopAPI.loadInfoAboutWorkshop(id);
+        Log.d(TAG, "loadInfoAboutWorkshop called");
+        call.enqueue(this);
+    }
+
 
     @Override
     public void onResponse(Call<WorkshopsAPIResponse> call, Response<WorkshopsAPIResponse> response) {
