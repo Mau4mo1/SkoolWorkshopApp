@@ -24,12 +24,6 @@
                 android:background="@drawable/skool_home_background"
                 android:paddingBottom="15dp">
 
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    android:id="@+id/cl_login_buttons"
-                    android:layout_height="wrap_content"
-                    android:layout_width="match_parent">
 
                     <Button
                         android:id="@+id/login_button"
@@ -69,16 +63,6 @@
                         android:textSize="12sp"
                         android:visibility="visible"/>
 
-        <Button
-            android:id="@+id/button_book_workshop"
-            android:layout_width="160sp"
-            android:layout_height="80sp"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/text_view_greeting"
-            android:layout_marginTop="40sp"
-            android:layout_marginStart="15sp"
-            android:backgroundTint="@color/orange"
-            android:text="@string/txt_book_workshop"/>
                     <ImageView
                         android:id="@+id/iv_home_bell"
                         android:layout_width="50dp"
@@ -93,16 +77,6 @@
                         android:layout_marginTop="5dp"
                         android:layout_marginRight="5dp"/>
 
-        <Button
-            android:id="@+id/button_book_culture_day"
-            android:layout_width="160sp"
-            android:layout_height="80sp"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/text_view_greeting"
-            android:layout_marginTop="40sp"
-            android:layout_marginEnd="15sp"
-            android:backgroundTint="@color/orange"
-            android:text="@string/txt_book_culture_day"/>
 
                 <TextView
                     android:id="@+id/text_view_greeting"

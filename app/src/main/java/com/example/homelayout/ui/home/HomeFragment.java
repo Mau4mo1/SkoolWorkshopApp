@@ -78,7 +78,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                 getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new LoginFragment()).addToBackStack(null).commit();
                 break;
             case R.id.iv_home_bell:
-                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new MessageBoxFragment()).commit();
+                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new MessageBoxFragment()).addToBackStack(null).commit();
                 break;
         }
     }
