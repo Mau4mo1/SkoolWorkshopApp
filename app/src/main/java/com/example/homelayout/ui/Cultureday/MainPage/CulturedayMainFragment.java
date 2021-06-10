@@ -14,21 +14,17 @@ import androidx.fragment.app.Fragment;
 
 import com.example.homelayout.R;
 import com.example.homelayout.ui.Cultureday.Form.CulturedayBookingFormFragment;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 
 public class CulturedayMainFragment extends Fragment {
-    private Button btn_meer_informatie_cd;
-    private Button btn_boek_nu_cd;
-
+    public Button btn_more_info_cd;
+    public Button btn_book_now_cd;
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_cultureday, container, false);
-
-        btn_meer_informatie_cd = root.findViewById(R.id.b_cultureday_more_info);
-        btn_meer_informatie_cd.setClickable(true);
-        btn_meer_informatie_cd.setOnClickListener(new View.OnClickListener() {
-
+        btn_more_info_cd = root.findViewById(R.id.button_more_info_cd);
+        btn_more_info_cd.setClickable(true);
+        btn_more_info_cd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Uri uri = Uri.parse("https://www.skoolworkshop.nl/workshops/cultuurdag/");
@@ -37,13 +33,12 @@ public class CulturedayMainFragment extends Fragment {
             }
         });
 
-        btn_boek_nu_cd = root.findViewById(R.id.b_cultureday_book_day);
-        btn_boek_nu_cd.setClickable(true);
-        btn_boek_nu_cd.setOnClickListener(new View.OnClickListener() {
-
+        btn_book_now_cd = root.findViewById(R.id.button_book_now_cd);
+        btn_book_now_cd.setClickable(true);
+        btn_book_now_cd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new CulturedayBookingFormFragment()).addToBackStack(null).commit();
+                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new CulturedayBookingFormFragment()).commit();
             }
         });
 
