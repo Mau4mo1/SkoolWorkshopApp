@@ -7,6 +7,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.homelayout.controller.WorkshopController;
+import com.example.homelayout.domain.Workshops;
+import com.example.homelayout.domain.WorkshopsObject;
 import com.example.homelayout.ui.Cultureday.MainPage.CulturedayMainFragment;
 import com.example.homelayout.ui.home.HomeFragment;
 import com.example.homelayout.ui.contact.ContactFragment;
@@ -21,8 +24,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.fragment.app.Fragment;
 
-public class MainActivity extends AppCompatActivity {
+import java.util.List;
+
+public class MainActivity extends AppCompatActivity implements WorkshopController.WorkshopsControllerListener {
     private BottomNavigationView bottomNav;
+    private WorkshopController workshopController;
+    private List<WorkshopsObject> workshopsObjectList;
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater menuInflater = getMenuInflater();
@@ -41,6 +49,8 @@ public class MainActivity extends AppCompatActivity {
 
         bottomNav = findViewById(R.id.nav_view);
         bottomNav.setOnNavigationItemSelectedListener(navListener);
+        workshopController = new WorkshopController(this);
+        workshopController.loadAllWorkshops();
         getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new HomeFragment()).commit();
     }
 
@@ -83,4 +93,13 @@ public class MainActivity extends AppCompatActivity {
             };
 
 
+    @Override
+    public void onWorkshopsAvailable(List<WorkshopsObject> workshopsObjectList) {
+       this.workshopsObjectList = workshopsObjectList;
+    }
+
+    @Override
+    public void onError(String message) {
+
+    }
 }
