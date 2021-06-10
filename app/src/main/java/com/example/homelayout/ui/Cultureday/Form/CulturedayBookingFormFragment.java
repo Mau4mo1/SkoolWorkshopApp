@@ -31,7 +31,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class CulturedayFormFragment extends Fragment {
+public class CulturedayBookingFormFragment extends Fragment {
     private double subtotal_amount = 0;
     private HashMap<String, Integer> values = new HashMap<>();
     private ArrayList<Workshops> workshops = new ArrayList<>();
