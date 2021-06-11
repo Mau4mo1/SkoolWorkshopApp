@@ -60,6 +60,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Aantal workshop rondes:"
+                    android:textColor="@color/text_grey"
                     android:gravity="left"
                     android:textSize="16sp"
                     android:layout_gravity="left"/>
@@ -69,6 +70,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:text="3"
+                    android:textColor="@color/text_grey"
                     android:textSize="17sp"
                     android:gravity="right"/>
             </LinearLayout>
@@ -80,6 +82,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Aantal workshops per ronde:"
+                    android:textColor="@color/text_grey"
                     android:gravity="left"
                     android:textSize="16sp"
                     android:layout_gravity="left"/>
@@ -89,6 +92,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:text="3"
+                    android:textColor="@color/text_grey"
                     android:textSize="17sp"
                     android:gravity="right"/>
             </LinearLayout>
@@ -100,6 +104,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Aantal minuten per workshopronde:"
+                    android:textColor="@color/text_grey"
                     android:gravity="left"
                     android:textSize="16sp"
                     android:layout_gravity="left"/>
@@ -109,6 +114,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:text="60"
+                    android:textColor="@color/text_grey"
                     android:textSize="17sp"
                     android:gravity="right"/>
             </LinearLayout>
@@ -120,6 +126,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Totale duur in minuten:"
+                    android:textColor="@color/text_grey"
                     android:gravity="left"
                     android:textSize="16sp"
                     android:layout_gravity="left"/>
@@ -129,6 +136,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:text="180"
+                    android:textColor="@color/text_grey"
                     android:textSize="17sp"
                     android:gravity="right"/>
             </LinearLayout>
@@ -140,6 +148,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Totaal aantal deelnemers:"
+                    android:textColor="@color/text_grey"
                     android:gravity="left"
                     android:textSize="16sp"
                     android:layout_gravity="left"/>
@@ -149,6 +158,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:text="100"
+                    android:textColor="@color/text_grey"
                     android:textSize="17sp"
                     android:gravity="right"/>
             </LinearLayout>
@@ -160,6 +170,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Workshops:"
+                    android:textColor="@color/text_grey"
                     android:gravity="left"
                     android:textSize="16sp"
                     android:layout_gravity="left"/>
@@ -169,6 +180,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:text="Rap\nLight Graffiti\nStepping"
+                    android:textColor="@color/text_grey"
                     android:textSize="17sp"
                     android:gravity="right"/>
             </LinearLayout>
@@ -180,6 +192,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Tijdschema:"
+                    android:textColor="@color/text_grey"
                     android:gravity="left"
                     android:paddingRight="5sp"
                     android:textSize="17sp"
@@ -190,6 +203,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:text="Voorbeeld"
+                    android:textColor="@color/text_grey"
                     android:textSize="17sp"
                     android:gravity="right"/>
             </LinearLayout>
@@ -201,6 +215,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Leerniveau:"
+                    android:textColor="@color/text_grey"
                     android:gravity="left"
                     android:textSize="17sp"
                     android:layout_gravity="left"/>
@@ -210,6 +225,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:text="Voorbeeld"
+                    android:textColor="@color/text_grey"
                     android:textSize="17sp"
                     android:gravity="right"/>
             </LinearLayout>
@@ -222,6 +238,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Workshopdatum:"
+                    android:textColor="@color/text_grey"
                     android:gravity="left"
                     android:textSize="17sp"
                     android:layout_gravity="left"/>
@@ -231,6 +248,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:text="3 Juni 2021"
+                    android:textColor="@color/text_grey"
                     android:textSize="17sp"
                     android:gravity="right"/>
             </LinearLayout>
@@ -246,6 +264,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Prijs:"
+                android:textColor="@color/text_grey"
                 android:gravity="left"
                 android:textSize="20sp"
                 android:layout_gravity="left"/>
@@ -255,6 +274,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:text="€1500,00"
+                android:textColor="@color/text_grey"
                 android:textSize="17sp"
                 android:gravity="right"/>
         </LinearLayout>
