@@ -58,6 +58,7 @@ public class ShoppingCartFragment extends Fragment {
         workshopLayoutManager = new LinearLayoutManager(thisContext);
         workshopRecyclerView = root.findViewById(R.id.shopping_cart_workshop_recycler);
         workshopRecyclerView.setLayoutManager(workshopLayoutManager);
+        workshopRecyclerView.setHasFixedSize(true);
 
 
         shoppingCartWorkshopAdapter = new ShoppingCartWorkshopAdapter(tinyDB.getListObject("Carditems",WorkshopBooking.class));
@@ -66,6 +67,7 @@ public class ShoppingCartFragment extends Fragment {
         cultureDayLayoutManager = new LinearLayoutManager(thisContext);
         cultureDayRecyclerView = root.findViewById(R.id.shopping_cart_culture_day_recycler);
         cultureDayRecyclerView.setLayoutManager(cultureDayLayoutManager);
+        cultureDayRecyclerView.setHasFixedSize(true);
         cultureDayBookings.add(cultureDayDummyData);
         shoppingCartCultureDayAdapter = new ShoppingCartCultureDayAdapter(cultureDayBookings);
         cultureDayRecyclerView.setAdapter(shoppingCartCultureDayAdapter);
