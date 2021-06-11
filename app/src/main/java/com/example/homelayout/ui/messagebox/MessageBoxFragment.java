@@ -3,6 +3,7 @@ package com.example.homelayout.ui.messagebox;
 import android.content.Context;
 import android.os.Bundle;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -11,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.homelayout.MainActivity;
 import com.example.homelayout.R;
 import com.example.homelayout.domain.Message;
 import com.example.homelayout.logic.MessageAdapter;
@@ -28,6 +30,8 @@ public class MessageBoxFragment extends Fragment {
     private Message testMessage1 = new Message(1, "Mooie titel", "Lorem ipsum blablablablabla");
     private Message testMessage2 = new Message(2, "Mooie titel 2.0", "Lorem ipsum blablablablabla 2.0");
 
+    private Message firebaseMessage;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -42,9 +46,18 @@ public class MessageBoxFragment extends Fragment {
         messageList.add(testMessage1);
         messageList.add(testMessage1);
 
+        MainActivity active = (MainActivity) getActivity();
+        if(active.getMessage() != null){
+            for(Message m : active.getMessage()){
+                messageList.add(m);
+            }
+        }
         messageAdapter = new MessageAdapter(messageList);
         recyclerView.setAdapter(messageAdapter);
 
         return root;
     }
+
+
+
 }

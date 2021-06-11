@@ -1,5 +1,7 @@
 package com.example.homelayout.domain;
 
+import androidx.annotation.NonNull;
+
 import java.io.Serializable;
 
 public class Message implements Serializable {
@@ -35,5 +37,11 @@ public class Message implements Serializable {
 
     public void setText(String text){
         this.title = text;
+    }
+
+    @NonNull
+    @Override
+    public String toString() {
+        return "" + this.getId() + " " + this.getTitle() + " " + this.getMessageText();
     }
 }
