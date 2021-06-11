@@ -1,11 +1,14 @@
 package com.example.homelayout;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.app.ActionBar;
 import android.app.Activity;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
@@ -23,7 +26,9 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.PopupMenu;
 import android.widget.PopupWindow;
+import android.widget.Toast;
 
+import com.example.homelayout.domain.Message;
 import com.example.homelayout.domain.WorkshopBooking;
 import com.example.homelayout.ui.Cultureday.MainPage.CulturedayMainFragment;
 import com.example.homelayout.ui.home.HomeFragment;
@@ -32,22 +37,33 @@ import com.example.homelayout.ui.shoppingcart.ShoppingCartFragment;
 import com.example.homelayout.ui.workshops.WorkshopsForm;
 import com.example.homelayout.ui.workshops.WorkshopsFragment;
 import com.example.homelayout.ui.home.HomeFragment;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.messaging.FirebaseMessaging;
+import com.google.firebase.messaging.FirebaseMessagingService;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
+
+import org.jetbrains.annotations.NotNull;
+
+import java.util.ArrayList;
 
 import java.lang.reflect.Type;
-import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     private BottomNavigationView bottomNav;
+    private Message m = null;
+    private ArrayList<Message> aTestForTim;
+    private int countdown;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,8 +76,25 @@ public class MainActivity extends AppCompatActivity {
         // voor de verandering
         bottomNav = findViewById(R.id.nav_view);
         bottomNav.setOnNavigationItemSelectedListener(navListener);
-
+        aTestForTim = new ArrayList<>();
+        countdown = 2;
         getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new HomeFragment()).commit();
+        FirebaseMessaging.getInstance().getToken()
+                .addOnCompleteListener(new OnCompleteListener<String>() {
+                    @Override
+                    public void onComplete(@NonNull Task<String> task) {
+                        if (!task.isSuccessful()) {
+                            Log.w("TAG", "Fetching FCM registration token failed", task.getException());
+                            return;
+                        }
+                        // Get new FCM registration token
+                        String token = task.getResult();
+                        // Log and toast
+                        @SuppressLint({"StringFormatInvalid", "LocalSuppress"}) String msg = getString(R.string.msg_token_fmt, token);
+                        Log.d("TAG", msg);
+                        Toast.makeText(MainActivity.this, msg, Toast.LENGTH_SHORT).show();
+                    }
+                });
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -70,8 +103,27 @@ public class MainActivity extends AppCompatActivity {
         return super.onCreateOptionsMenu(menu);
     }
 
+    private BroadcastReceiver messageReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            countdown += 1;
+            Message m = new Message(countdown, intent.getExtras().getString("title"), intent.getExtras().getString("body"));
+            aTestForTim.add(m);
+            Log.d("TAG", m.toString());
+        }
+    };
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        LocalBroadcastManager.getInstance(this).registerReceiver(messageReceiver, new IntentFilter("MyData"));
+    }
 
+    @Override
+    protected void onStop() {
+        super.onStop();
+        LocalBroadcastManager.getInstance(this).unregisterReceiver(messageReceiver);
+    }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
@@ -153,6 +205,9 @@ public class MainActivity extends AppCompatActivity {
             NavigationView sideBarView = layout.findViewById(R.id.nav_side_view);
             sideBarView.setNavigationItemSelectedListener(navSideBarListener);
             changeStatusPopUp.showAtLocation(layout, Gravity.TOP, OFFSET_X, OFFSET_Y);
+        }
 
+        public ArrayList<Message> getMessage(){
+            return this.aTestForTim;
         }
 }

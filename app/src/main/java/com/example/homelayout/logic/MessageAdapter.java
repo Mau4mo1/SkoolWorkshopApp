@@ -1,10 +1,12 @@
 package com.example.homelayout.logic;
 import android.content.Context;
 import android.content.Intent;
+import android.media.Image;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -46,9 +48,14 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
         //     Log.d(TAG, "onBind is aangeroepen");
 
         Message message = messageList.get(position);
-
         holder.mTitle.setText(String.valueOf(message.getTitle()));
         holder.mText.setText(String.valueOf(message.getMessageText()));
+        holder.imageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                messageList.remove(messageList.get(position));
+            }
+        });
 
         holder.clMessageBoxItem.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -78,6 +85,7 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
     public class MessageViewHolder extends RecyclerView.ViewHolder {
         private TextView mTitle;
         private TextView mText;
+        private ImageButton imageButton;
         private ConstraintLayout clMessageBoxItem;
 
         public MessageViewHolder(@NonNull View view) {
@@ -85,8 +93,9 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
 
             Log.d(TAG, "ViewHolder constructor is aangeroepen.");
 
-            mTitle = (TextView) itemView.findViewById(R.id.tv_message_box_title);
-            mText = (TextView) itemView.findViewById(R.id.tv_message_box_description);
+            mTitle = (TextView) view.findViewById(R.id.tv_message_box_title);
+            mText = (TextView) view.findViewById(R.id.tv_message_box_description);
+            imageButton = (ImageButton) view.findViewById(R.id.ib_delete_message);
             clMessageBoxItem = (ConstraintLayout) itemView.findViewById(R.id.cl_message_box_item);
 
             /*clMessageBoxItem.setOnClickListener(new View.OnClickListener() {
