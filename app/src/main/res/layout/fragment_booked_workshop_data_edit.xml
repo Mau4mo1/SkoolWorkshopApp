@@ -14,8 +14,8 @@
             android:layout_height="wrap_content"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
-            android:text="Voornaam"
-            android:layout_marginStart="20sp"
+            android:text="Workshop gegevens"
+            android:layout_marginStart="30sp"
             android:textSize="20sp"/>
         <androidx.constraintlayout.widget.ConstraintLayout
             app:layout_constraintLeft_toLeftOf="parent"
@@ -23,6 +23,7 @@
             android:id="@+id/const_booked_workshop_02"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="20sp"
             android:background="@drawable/contact_background">
             <TextView
                 android:id="@+id/tv_booked_workshop_edit_firstname_description"

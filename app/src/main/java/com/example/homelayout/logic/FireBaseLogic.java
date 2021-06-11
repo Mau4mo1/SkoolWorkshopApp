@@ -1,4 +1,4 @@
-/*package com.example.homelayout.logic;
+package com.example.homelayout.logic;
 
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
