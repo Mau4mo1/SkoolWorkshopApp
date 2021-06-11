@@ -30,6 +30,8 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -188,18 +190,11 @@ public class WorkshopsForm extends Fragment {
                 int rondes = rounds;
                 String tijdschema = mEditTextWorkshopTimetable.getText().toString();
                 String leerniveau = mEditTextWorkshopLearningLevel.getText().toString();
-                String datum = date.toString();
+                DateFormat dateFormat = new SimpleDateFormat("dd/MM/"+20+"YY");
+                String datum = dateFormat.format(date);
                 Log.d("test", datum);
                 double prijs = calculatePrices.getWorkshopCalc(workshop, values);
-                WorkshopBooking workshops = new WorkshopBooking(dienst, rondes, minuten,tijdschema,leerniveau,null,prijs);
-
-//                Gson gson = new Gson();
-//                String json = gson.toJson(workshops);
-//                requireActivity().getSharedPreferences("shopping_card", Context.MODE_PRIVATE).edit().putString("card_item_title", json).apply();
-//               SharedPreferences sharedPreferences= requireActivity().getSharedPreferences("shopping_card", Context.MODE_PRIVATE);
-//               String test = sharedPreferences.getString("card_item_title",null);
-//                Type type = new TypeToken<WorkshopBooking>() {}.getType();
-//                WorkshopBooking test2 = gson.fromJson(json, type);
+                WorkshopBooking workshops = new WorkshopBooking(dienst, rondes, minuten,tijdschema,leerniveau,datum,prijs);
 
                 workshopCardList.add(workshops);
                 tinydb.putListObject("Carditems", workshopCardList);
