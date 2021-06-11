@@ -116,6 +116,7 @@ public class MainActivity extends AppCompatActivity {
                     return true;
                 }
             };
+    private void showStatusPopup(final Activity context) {
 
         private void showStatusPopup(final Activity context){
             // Inflate the popup_layout.xml
