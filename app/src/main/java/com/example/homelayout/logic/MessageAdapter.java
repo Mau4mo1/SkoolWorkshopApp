@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -86,7 +87,7 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
         private TextView mTitle;
         private TextView mText;
         private ImageButton imageButton;
-        private ConstraintLayout clMessageBoxItem;
+        private LinearLayout clMessageBoxItem;
 
         public MessageViewHolder(@NonNull View view) {
             super(view);
@@ -96,7 +97,7 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
             mTitle = (TextView) view.findViewById(R.id.tv_message_box_title);
             mText = (TextView) view.findViewById(R.id.tv_message_box_description);
             imageButton = (ImageButton) view.findViewById(R.id.ib_delete_message);
-            clMessageBoxItem = (ConstraintLayout) itemView.findViewById(R.id.cl_message_box_item);
+            clMessageBoxItem = (LinearLayout) itemView.findViewById(R.id.cl_message_box_item);
 
             /*clMessageBoxItem.setOnClickListener(new View.OnClickListener() {
                 @Override
