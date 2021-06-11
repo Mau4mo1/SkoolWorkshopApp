@@ -26,6 +26,7 @@ import com.example.homelayout.domain.WorkshopBooking;
 import com.example.homelayout.domain.Workshops;
 import com.example.homelayout.logic.CalculatePrices;
 import com.example.homelayout.repositories.TinyDB;
+import com.example.homelayout.ui.shoppingcart.ShoppingCartFragment;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -198,7 +199,7 @@ public class WorkshopsForm extends Fragment {
 
                 workshopCardList.add(workshops);
                 tinydb.putListObject("Carditems", workshopCardList);
-
+                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new ShoppingCartFragment()).commit();
 
                 //s.addWorkshops(workshops);
                 Log.d("Boeken", "Boeking is gelukt hier");

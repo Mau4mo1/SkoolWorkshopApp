@@ -22,6 +22,13 @@ public class WorkshopBooking {
         this.datum = datum;
         this.prijs = prijs;
     }
+    public void setPositon(){
+
+    }
+    public int getPositon()
+    {
+       return 0;
+    }
 
     public int getTotaleMinuten() {
         return totaleMinuten;

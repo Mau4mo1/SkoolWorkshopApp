@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:id="@+id/shopping_cart_scrollview">
     <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
         android:layout_height="match_parent"
         android:layout_width="350sp"
         android:orientation="vertical"
@@ -21,6 +20,7 @@
             android:text="Extra workshop toevoegen"
             android:textSize="15sp"
             android:textColor="@color/white"/>
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/shopping_cart_workshop_recycler"
             android:layout_width="match_parent"

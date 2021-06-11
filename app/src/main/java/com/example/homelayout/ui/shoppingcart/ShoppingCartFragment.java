@@ -83,13 +83,6 @@ public class ShoppingCartFragment extends Fragment {
             }
         });
 
-        mDeleteButton = root.findViewById(R.id.btn_delete_workshop);
-        mDeleteButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                removeAt();
-            }
-        });
 
 
 
@@ -97,11 +90,7 @@ public class ShoppingCartFragment extends Fragment {
         return root;
     }
 
-    public void removeAt(int position) {
-
+   public void refresh(){
+       getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new ShoppingCartFragment()).commit();
     }
-    public void addWorkshops(WorkshopBooking workshop){
-        workshopBookings.add(workshop);
-    }
-
 }

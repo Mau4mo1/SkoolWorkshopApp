@@ -50,6 +50,7 @@ public class ShoppingCartCultureDayAdapter extends RecyclerView.Adapter<Shopping
                 workshops += workshoplist.get(i) + "\n";
             }
         }
+
         holder.mRondes.setText(String.valueOf(cultureDayBooking.getRondes()));
         holder.mMinuten.setText(String.valueOf(cultureDayBooking.getMinutenPerRonde()));
         holder.mTotaleMinuten.setText(String.valueOf(cultureDayBooking.getTotaleMinuten()));
