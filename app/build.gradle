@@ -1,5 +1,6 @@
 plugins {
     id 'com.android.application'
+    //id 'com.google.gms.google-services'
 }
 
 android {
@@ -44,5 +45,9 @@ dependencies {
     implementation files('libs/activation.jar')
     implementation files('libs/additionnal.jar')
     implementation files('libs/mail.jar')
+    implementation platform('com.google.firebase:firebase-bom:28.1.0')
 
+    implementation 'com.google.firebase:firebase-messaging'
+    implementation 'com.google.firebase:firebase-analytics'
 }
+apply plugin: 'com.google.gms.google-services'
