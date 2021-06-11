@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.homelayout.R;
@@ -48,6 +49,18 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
 
         holder.mTitle.setText(String.valueOf(message.getTitle()));
         holder.mText.setText(String.valueOf(message.getMessageText()));
+
+        holder.clMessageBoxItem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                /*Message film = messageList.get(position);
+                Context context = v.getContext();
+                Class destinationActivity = DetailActivity.class;
+                Intent startActivity = new Intent(context, destinationActivity);
+                startActivity.putExtra("FILM_NAME", film);
+                context.startActivity(startActivity);*/
+            }
+        });
     }
 
     @Override
@@ -65,6 +78,7 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
     public class MessageViewHolder extends RecyclerView.ViewHolder {
         private TextView mTitle;
         private TextView mText;
+        private ConstraintLayout clMessageBoxItem;
 
         public MessageViewHolder(@NonNull View view) {
             super(view);
@@ -73,8 +87,30 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
 
             mTitle = (TextView) itemView.findViewById(R.id.tv_message_box_title);
             mText = (TextView) itemView.findViewById(R.id.tv_message_box_description);
+            clMessageBoxItem = (ConstraintLayout) itemView.findViewById(R.id.cl_message_box_item);
 
+            /*clMessageBoxItem.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int position = 1;
+                    for (Message movie : messageList) {
+                        if (mTitleText.getText().toString().equals(movie.getTitle())) {
+                            position = filmList.indexOf(movie);
+                        }
+                    }
+                    Films film = filmList.get(position);
+                    Context context = v.getContext();
+                    Class destinationActivity = DetailActivity.class;
+                    Intent startActivity = new Intent(context, destinationActivity);
+                    startActivity.putExtra("FILM_NAME", film);
+                    context.startActivity(startActivity);
+                }*/
+            //});
         }
+    }
+
+    public interface RecyclerviewOnClickListener{
+        void recyclerviewClick(int position);
     }
 }
 

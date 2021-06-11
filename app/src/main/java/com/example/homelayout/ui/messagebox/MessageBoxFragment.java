@@ -17,7 +17,7 @@ import com.example.homelayout.logic.MessageAdapter;
 
 import java.util.ArrayList;
 
-public class MessageBoxFragment extends Fragment {
+public class MessageBoxFragment extends Fragment implements MessageAdapter.RecyclerviewOnClickListener {
     private ArrayList<Message> messageList = new ArrayList<>();
     private MessageAdapter messageAdapter;
     private RecyclerView recyclerView;
@@ -45,6 +45,19 @@ public class MessageBoxFragment extends Fragment {
         messageAdapter = new MessageAdapter(messageList);
         recyclerView.setAdapter(messageAdapter);
 
+        /*int position = 1;
+        for (Message movie : messageList) {
+            if (mTitleText.getText().toString().equals(movie.getTitle())) {
+                position = filmList.indexOf(movie);
+            }
+        }
+        Message message = messageList.get(position);*/
+
         return root;
+    }
+
+    @Override
+    public void recyclerviewClick(int position) {
+
     }
 }
