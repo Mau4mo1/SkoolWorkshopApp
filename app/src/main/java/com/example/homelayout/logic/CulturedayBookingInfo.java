@@ -10,6 +10,10 @@ public class CulturedayBookingInfo {
     private int workshop_minutes;
     private int particepants;
     private ArrayList<Workshops> workshops;
+    private int year;
+    private int month;
+    private int day;
+    private boolean registration_system;
 
     public void setRounds(int rounds) {
         this.rounds = rounds;
@@ -44,5 +48,33 @@ public class CulturedayBookingInfo {
     }
     public ArrayList<Workshops> getWorkshops() {
         return this.workshops;
+    }
+
+    public void setRegistration(boolean registration) {
+        this.registration_system = registration;
+    }
+    public boolean getRegistration() {
+        return this.registration_system;
+    }
+
+    public void setYear(int year) {
+        this.year = year;
+    }
+    public int getYear() {
+        return this.year;
+    }
+
+    public void setMonth(int month) {
+        this.month = month;
+    }
+    public int getMonth() {
+        return this.month;
+    }
+
+    public void setDay(int day) {
+        this.day = day;
+    }
+    public int getDay() {
+        return this.day;
     }
 }

@@ -14,6 +14,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.GridLayout;
 import android.widget.Spinner;
@@ -26,6 +27,7 @@ import com.example.homelayout.R;
 import com.example.homelayout.domain.Workshops;
 import com.example.homelayout.logic.CalculatePrices;
 import com.example.homelayout.logic.CulturedayBookingInfo;
+import com.example.homelayout.ui.home.HomeFragment;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -51,8 +53,10 @@ public class CulturedayBookingFormFragment extends Fragment {
     private EditText workshop_per_round;
     private EditText workshop_rounds;
     private TextView prijs_summery;
+    private DatePicker date_cultureday;
     private CalculatePrices calculatePrices = new CalculatePrices();
     private CulturedayBookingInfo culturedayBookingInfo = new CulturedayBookingInfo();
+    private CheckBox cultureday_registration_box;
     private EditText workshop_particepents;
     private CheckBox workshop_graffiti;
     private CheckBox workshop_lightgraffiti;
@@ -698,6 +702,8 @@ public class CulturedayBookingFormFragment extends Fragment {
             }
         });
 
+        date_cultureday = root.findViewById(R.id.tv_cultureday_form_date);
+        cultureday_registration_box = root.findViewById(R.id.sv_cultureday_form_registration_box);
         btn_book_now_cdf = root.findViewById(R.id.button_book_now_cdf);
         btn_book_now_cdf.setClickable(true);
 
@@ -730,13 +736,38 @@ public class CulturedayBookingFormFragment extends Fragment {
                         minpopup.show();
                     }else{
                         try {
+                            culturedayBookingInfo.setYear(date_cultureday.getYear());
+                            System.out.println("Year: "+date_cultureday.getYear());
+                            culturedayBookingInfo.setMonth(date_cultureday.getMonth());
+                            System.out.println("Month: "+date_cultureday.getMonth());
+                            culturedayBookingInfo.setDay(date_cultureday.getDayOfMonth());
+                            System.out.println("Day: "+date_cultureday.getDayOfMonth());
+                            if (cultureday_registration_box.isChecked() == true){
+                                culturedayBookingInfo.setRegistration(true);
+                                System.out.println("Registration true");
+                            } else {
+                                culturedayBookingInfo.setRegistration(false);
+                                System.out.println("Registration false");
+                            }
                             culturedayBookingInfo.setParticepants(Integer.parseInt(workshop_particepents.getText().toString()));
                             culturedayBookingInfo.setRounds(Integer.parseInt(workshop_rounds.getText().toString()));
                             culturedayBookingInfo.setWorkshop_minutes(Integer.parseInt(round_minutes.getText().toString()));
                             culturedayBookingInfo.setWorkshops(workshops);
                             culturedayBookingInfo.setWorkshops_per_round(Integer.parseInt(workshop_per_round.getText().toString()));
+//                            Link to shopingcart
+                            getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new HomeFragment()).commit();
                         }catch (Exception e){
-                            System.out.println("Booking info invalet or incompelte");
+                            System.out.println("Booking info invalet or incompelte");AlertDialog.Builder infopopup = new AlertDialog.Builder(con);
+                            infopopup.setCancelable(true);
+                            infopopup.setTitle("Niet alles ingevuld");
+                            infopopup.setMessage("Niet alle velden ingevuld (Aantal deelnemers, Aantal rondes, Aantal workshops per ronde, Aantal minuten per workshop)");
+                            infopopup.setNegativeButton("OK", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    dialogInterface.cancel();
+                                }
+                            });
+                            infopopup.show();
                         }
                     }
                 }
