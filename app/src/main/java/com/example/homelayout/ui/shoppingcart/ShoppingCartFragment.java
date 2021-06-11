@@ -38,7 +38,7 @@ public class ShoppingCartFragment extends Fragment {
     private RecyclerView cultureDayRecyclerView;
     private ShoppingCartCultureDayAdapter shoppingCartCultureDayAdapter;
     private ShoppingCartWorkshopAdapter shoppingCartWorkshopAdapter;
-    private ArrayList<WorkshopBooking> workshopBookings;
+    private ArrayList<Object> workshopBookings;
     private ArrayList<CultureDayBooking> cultureDayBookings = new ArrayList<>();
     private ArrayList<String> workshops = new ArrayList<>();
     private WorkshopBooking workshopDummyData = new WorkshopBooking("workshop rap", 2, 75, "voorbeeld", "voorbeeld", "3 Juni 2021", 300.00);
@@ -60,8 +60,8 @@ public class ShoppingCartFragment extends Fragment {
         workshopRecyclerView.setLayoutManager(workshopLayoutManager);
         workshopRecyclerView.setHasFixedSize(true);
 
-
-        shoppingCartWorkshopAdapter = new ShoppingCartWorkshopAdapter(tinyDB.getListObject("Carditems",WorkshopBooking.class));
+    workshopBookings = tinyDB.getListObject("Carditems",WorkshopBooking.class);
+        shoppingCartWorkshopAdapter = new ShoppingCartWorkshopAdapter(workshopBookings);
 
         workshopRecyclerView.setAdapter(shoppingCartWorkshopAdapter);
         cultureDayLayoutManager = new LinearLayoutManager(thisContext);
@@ -83,7 +83,22 @@ public class ShoppingCartFragment extends Fragment {
             }
         });
 
+        mDeleteButton = root.findViewById(R.id.btn_delete_workshop);
+        mDeleteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                removeAt();
+            }
+        });
+
+
+
+
         return root;
+    }
+
+    public void removeAt(int position) {
+
     }
     public void addWorkshops(WorkshopBooking workshop){
         workshopBookings.add(workshop);

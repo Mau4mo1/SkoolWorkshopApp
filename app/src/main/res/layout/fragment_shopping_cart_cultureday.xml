@@ -15,7 +15,7 @@
             android:orientation="horizontal"
             android:background="@drawable/cart_table_background">
             <ImageButton
-                android:id="@+id/btn_delete_booking1"
+                android:id="@+id/btn_delete_workshop"
                 android:layout_width="40sp"
                 android:layout_height="40sp"
                 android:src="@drawable/ic_delete_foreground"
