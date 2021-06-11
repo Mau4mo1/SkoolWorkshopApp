@@ -21,8 +21,10 @@ import java.util.List;
 public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageViewHolder> implements Serializable {
     private final String TAG = getClass().getSimpleName();
     private List<Message> messageList;
+    private RecyclerviewOnClickListener listener;
 
-    public MessageAdapter(List messageList) {
+    public MessageAdapter(RecyclerviewOnClickListener listener, List messageList) {
+        this.listener = listener;
         this.messageList = messageList;
     }
 
@@ -47,20 +49,12 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
 
         Message message = messageList.get(position);
 
+
+
         holder.mTitle.setText(String.valueOf(message.getTitle()));
         holder.mText.setText(String.valueOf(message.getMessageText()));
 
-        holder.clMessageBoxItem.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                /*Message film = messageList.get(position);
-                Context context = v.getContext();
-                Class destinationActivity = DetailActivity.class;
-                Intent startActivity = new Intent(context, destinationActivity);
-                startActivity.putExtra("FILM_NAME", film);
-                context.startActivity(startActivity);*/
-            }
-        });
+
     }
 
     @Override
@@ -80,15 +74,28 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
         private TextView mText;
         private ConstraintLayout clMessageBoxItem;
 
+        //RecyclerviewOnClickListener betweenListener = this.listener;
+
         public MessageViewHolder(@NonNull View view) {
             super(view);
 
             Log.d(TAG, "ViewHolder constructor is aangeroepen.");
 
+
+
             mTitle = (TextView) itemView.findViewById(R.id.tv_message_box_title);
             mText = (TextView) itemView.findViewById(R.id.tv_message_box_description);
             clMessageBoxItem = (ConstraintLayout) itemView.findViewById(R.id.cl_message_box_item);
 
+            clMessageBoxItem.setOnClickListener(new View.OnClickListener() {
+
+                //RecyclerviewOnClickListener listener = betweenListener;
+
+                @Override
+                public void onClick(View v) {
+                    listener.recyclerviewClick(getAdapterPosition());
+                }
+            });
             /*clMessageBoxItem.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

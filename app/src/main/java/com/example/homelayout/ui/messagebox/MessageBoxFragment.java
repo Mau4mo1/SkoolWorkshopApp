@@ -13,7 +13,9 @@ import android.view.ViewGroup;
 
 import com.example.homelayout.R;
 import com.example.homelayout.domain.Message;
+import com.example.homelayout.domain.Workshops;
 import com.example.homelayout.logic.MessageAdapter;
+import com.example.homelayout.ui.workshops.WorkshopsForm;
 
 import java.util.ArrayList;
 
@@ -42,22 +44,14 @@ public class MessageBoxFragment extends Fragment implements MessageAdapter.Recyc
         messageList.add(testMessage1);
         messageList.add(testMessage1);
 
-        messageAdapter = new MessageAdapter(messageList);
+        messageAdapter = new MessageAdapter(this, messageList);
         recyclerView.setAdapter(messageAdapter);
-
-        /*int position = 1;
-        for (Message movie : messageList) {
-            if (mTitleText.getText().toString().equals(movie.getTitle())) {
-                position = filmList.indexOf(movie);
-            }
-        }
-        Message message = messageList.get(position);*/
 
         return root;
     }
 
     @Override
     public void recyclerviewClick(int position) {
-
+        getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new WorkshopsForm(Workshops.Streetdance)).addToBackStack(null).commit();
     }
 }
