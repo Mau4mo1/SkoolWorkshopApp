@@ -116,8 +116,9 @@ public class MainActivity extends AppCompatActivity {
                     return true;
                 }
             };
+    private void showStatusPopup(final Activity context) {
 
-        private void showStatusPopup(final Activity context){
+
             // Inflate the popup_layout.xml
             ConstraintLayout viewGroup = (ConstraintLayout) context.findViewById(R.id.container_sideView);
             LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);

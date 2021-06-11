@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/llSortChangePopup"
+    android:layout_width="150sp"
+    android:layout_height="wrap_content"
+    android:background="@drawable/contact_background"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tvDistance"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="afstand"
+        android:layout_weight="1.0"
+        android:layout_marginLeft="20dp"
+        android:paddingTop="5dp"
+        android:gravity="center_vertical"
+        android:textColor="@color/white" />
+
+    <ImageView
+        android:layout_marginLeft="11dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_calendar"
+        />
+
+    <TextView
+        android:id="@+id/tvPriority"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Prioriteit"
+        android:layout_weight="1.0"
+        android:layout_marginLeft="20dp"
+        android:gravity="center_vertical"
+        android:clickable="true"
+        android:onClick="popupSortOnClick"
+        android:textColor="@color/white" />
+
+
+    <ImageView
+        android:layout_marginLeft="11dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_calendar"
+        />
+
+    <TextView
+        android:id="@+id/tvTime"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Tijd"
+        android:layout_weight="1.0"
+        android:layout_marginLeft="20dp"
+        android:gravity="center_vertical"
+        android:clickable="true"
+        android:onClick="popupSortOnClick"
+        android:textColor="@color/white" />
+
+    <ImageView
+        android:layout_marginLeft="11dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_calendar"
+        />
+
+    <TextView
+        android:id="@+id/tvStatus"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Status"
+        android:layout_weight="1.0"
+        android:layout_marginLeft="20dp"
+        android:gravity="center_vertical"
+        android:textColor="@color/white"
+        android:clickable="true"
+        android:onClick="popupSortOnClick"
+        android:paddingBottom="10dp"/>
+
+</LinearLayout>
