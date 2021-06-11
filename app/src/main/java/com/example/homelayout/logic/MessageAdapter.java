@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -57,6 +58,18 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
                 notifyDataSetChanged();
             }
         });
+
+        holder.clMessageBoxItem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                /*Message film = messageList.get(position);
+                Context context = v.getContext();
+                Class destinationActivity = DetailActivity.class;
+                Intent startActivity = new Intent(context, destinationActivity);
+                startActivity.putExtra("FILM_NAME", film);
+                context.startActivity(startActivity);*/
+            }
+        });
     }
 
 
@@ -78,7 +91,7 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
         private TextView mTitle;
         private TextView mText;
         private ImageButton imageButton;
-        private ConstraintLayout constraintLayout;
+        private LinearLayout clMessageBoxItem;
 
         public MessageViewHolder(@NonNull View view) {
             super(view);
@@ -88,7 +101,30 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
             mTitle = (TextView) view.findViewById(R.id.tv_message_box_title);
             mText = (TextView) view.findViewById(R.id.tv_message_box_description);
             imageButton = (ImageButton) view.findViewById(R.id.ib_delete_message);
+            clMessageBoxItem = (LinearLayout) itemView.findViewById(R.id.cl_message_box_item);
+
+            /*clMessageBoxItem.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int position = 1;
+                    for (Message movie : messageList) {
+                        if (mTitleText.getText().toString().equals(movie.getTitle())) {
+                            position = filmList.indexOf(movie);
+                        }
+                    }
+                    Films film = filmList.get(position);
+                    Context context = v.getContext();
+                    Class destinationActivity = DetailActivity.class;
+                    Intent startActivity = new Intent(context, destinationActivity);
+                    startActivity.putExtra("FILM_NAME", film);
+                    context.startActivity(startActivity);
+                }*/
+            //});
         }
+    }
+
+    public interface RecyclerviewOnClickListener{
+        void recyclerviewClick(int position);
     }
 }
 

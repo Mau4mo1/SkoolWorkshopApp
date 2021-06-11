@@ -1,6 +1,8 @@
 package com.example.homelayout;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.app.ActionBar;
 import android.app.Activity;
 import android.content.BroadcastReceiver;
@@ -11,6 +13,8 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
+import android.util.Log;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -25,6 +29,7 @@ import android.widget.PopupWindow;
 import android.widget.Toast;
 
 import com.example.homelayout.domain.Message;
+import com.example.homelayout.domain.WorkshopBooking;
 import com.example.homelayout.ui.Cultureday.MainPage.CulturedayMainFragment;
 import com.example.homelayout.ui.home.HomeFragment;
 import com.example.homelayout.ui.contact.ContactFragment;
@@ -35,6 +40,8 @@ import com.example.homelayout.ui.home.HomeFragment;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.messaging.FirebaseMessaging;
 import com.google.firebase.messaging.FirebaseMessagingService;
@@ -50,6 +57,8 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 
+import java.lang.reflect.Type;
+
 public class MainActivity extends AppCompatActivity {
     private BottomNavigationView bottomNav;
     private Message m = null;
@@ -57,14 +66,8 @@ public class MainActivity extends AppCompatActivity {
     private int countdown;
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater menuInflater = getMenuInflater();
-        menuInflater.inflate(R.menu.actionbar, menu);
-        return super.onCreateOptionsMenu(menu);
-    }
-
-    @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -92,6 +95,12 @@ public class MainActivity extends AppCompatActivity {
                         Toast.makeText(MainActivity.this, msg, Toast.LENGTH_SHORT).show();
                     }
                 });
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.actionbar, menu);
+        return super.onCreateOptionsMenu(menu);
     }
 
     private BroadcastReceiver messageReceiver = new BroadcastReceiver() {
@@ -172,8 +181,9 @@ public class MainActivity extends AppCompatActivity {
                     return true;
                 }
             };
+    private void showStatusPopup(final Activity context) {
 
-        private void showStatusPopup(final Activity context){
+
             // Inflate the popup_layout.xml
             ConstraintLayout viewGroup = (ConstraintLayout) context.findViewById(R.id.container_sideView);
             LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
