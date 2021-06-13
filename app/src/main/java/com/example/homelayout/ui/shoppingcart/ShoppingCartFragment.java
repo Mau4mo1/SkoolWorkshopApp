@@ -19,6 +19,7 @@ import com.example.homelayout.R;
 import com.example.homelayout.domain.CultureDayBooking;
 import com.example.homelayout.domain.WorkshopBooking;
 import com.example.homelayout.domain.Workshops;
+import com.example.homelayout.logic.CulturedayBookingInfo;
 import com.example.homelayout.repositories.TinyDB;
 import com.example.homelayout.ui.workshops.WorkshopsForm;
 import com.example.homelayout.ui.workshops.WorkshopsFragment;
@@ -39,7 +40,7 @@ public class ShoppingCartFragment extends Fragment {
     private ShoppingCartCultureDayAdapter shoppingCartCultureDayAdapter;
     private ShoppingCartWorkshopAdapter shoppingCartWorkshopAdapter;
     private ArrayList<Object> workshopBookings;
-    private ArrayList<CultureDayBooking> cultureDayBookings = new ArrayList<>();
+    private ArrayList<Object> cultureDayBookings = new ArrayList<>();
     private ArrayList<String> workshops = new ArrayList<>();
     private WorkshopBooking workshopDummyData = new WorkshopBooking("workshop rap", 2, 75, "voorbeeld", "voorbeeld", "3 Juni 2021", 300.00);
     private CultureDayBooking cultureDayDummyData = new CultureDayBooking(3,3,60,75, workshops, "voorbeeld", "HBO", "26 Juni 2022",1500.00);
@@ -69,6 +70,7 @@ public class ShoppingCartFragment extends Fragment {
         cultureDayRecyclerView.setLayoutManager(cultureDayLayoutManager);
         cultureDayRecyclerView.setHasFixedSize(true);
         cultureDayBookings.add(cultureDayDummyData);
+        cultureDayBookings = tinyDB.getListObject("CultureItems", CulturedayBookingInfo.class);
         shoppingCartCultureDayAdapter = new ShoppingCartCultureDayAdapter(cultureDayBookings);
         cultureDayRecyclerView.setAdapter(shoppingCartCultureDayAdapter);
 

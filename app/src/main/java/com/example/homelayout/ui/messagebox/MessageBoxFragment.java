@@ -50,7 +50,7 @@ public class MessageBoxFragment extends Fragment {
         recyclerView.setLayoutManager(layoutManager);
 
         //Here the message list gets filled with test messages
-//        messageList.add(testMessage1);
+        messageList.add(testMessage1);
 //        messageList.add(testMessage1);
 
         MainActivity active = (MainActivity) getActivity();
