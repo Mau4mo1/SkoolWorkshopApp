@@ -12,15 +12,18 @@ public class WorkshopPictureObject {
     @SerializedName("ContentType")
     private String contentType;
     @SerializedName("Blob")
-    private Byte[] blob;
+    private BlobObject blob;
+    @SerializedName("ThumbNailName")
+    private String thumbNailName;
 
 
-    public WorkshopPictureObject(int id, String rubric, String fileName, String contentType, Byte[] blob) {
+    public WorkshopPictureObject(int id, String rubric, String fileName, String contentType, BlobObject blob, String thumbNailName) {
         this.id = id;
         this.rubric = rubric;
         this.fileName = fileName;
         this.contentType = contentType;
         this.blob = blob;
+        this.thumbNailName = thumbNailName;
     }
 
     public int getId() {
@@ -55,11 +58,19 @@ public class WorkshopPictureObject {
         this.contentType = contentType;
     }
 
-    public Byte[] getBlob() {
+    public BlobObject getBlob() {
         return blob;
     }
 
-    public void setBlob(Byte[] blob) {
+    public void setBlob(BlobObject blob) {
         this.blob = blob;
+    }
+
+    public String getThumbNailName() {
+        return thumbNailName;
+    }
+
+    public void setThumbNailName(String thumbNailName) {
+        this.thumbNailName = thumbNailName;
     }
 }

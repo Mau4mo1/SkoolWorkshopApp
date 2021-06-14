@@ -1,20 +1,20 @@
 package com.example.homelayout.ui.home;
 
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.TextView;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
 
 import com.example.homelayout.R;
+import com.example.homelayout.domain.WorkshopPictureObject;
 import com.example.homelayout.ui.Cultureday.Form.CulturedayBookingFormFragment;
 import com.example.homelayout.ui.login.LoginFragment;
 import com.example.homelayout.ui.register.RegisterFragment;
@@ -22,17 +22,21 @@ import com.example.homelayout.ui.workshops.WorkshopsFragment;
 import com.example.homelayout.ui.workshops.WorkshopsPopular;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class HomeFragment extends Fragment implements View.OnClickListener {
+import java.sql.SQLException;
 
+public class HomeFragment extends Fragment implements View.OnClickListener {
     private Button btnBookWorkshop;
     private Button btnBookCultureDay;
     private Button btnRegister;
     private Button btnLogin;
     private ConstraintLayout clPopularWorkshops;
+    private Bitmap bmp;
+    private ImageView mImageViewSpaarPunten;
 
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
+
         View root = inflater.inflate(R.layout.fragment_home, container, false);
         btnRegister = root.findViewById(R.id.register_button);
         btnRegister.setClickable(true);
@@ -42,6 +46,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         btnBookCultureDay = root.findViewById(R.id.button_book_culture_day);
         btnBookCultureDay.setClickable(true);
         clPopularWorkshops = root.findViewById(R.id.home_item_popular_workshops);
+        mImageViewSpaarPunten = root.findViewById(R.id.home_item_loyalty_points_image);
 
         btnBookWorkshop.setOnClickListener(this);
         btnBookCultureDay.setOnClickListener(this);

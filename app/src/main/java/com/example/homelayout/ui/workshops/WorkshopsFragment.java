@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -12,20 +12,34 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 
 import com.example.homelayout.R;
-import com.example.homelayout.ui.Cultureday.MainPage.CulturedayMainFragment;
+import com.example.homelayout.domain.WorkshopPictureObject;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class WorkshopsFragment extends Fragment {
+import java.sql.SQLException;
 
+public class WorkshopsFragment extends Fragment {
     private ConstraintLayout mConstraintLayoutVisualArts;
     private ConstraintLayout mConstraintLayoutDance;
     private ConstraintLayout mConstraintLayoutMedia;
     private ConstraintLayout mConstraintLayoutMusic;
     private ConstraintLayout mConstraintLayoutSport;
     private ConstraintLayout mConstraintLayoutTheatre;
+    private ImageView mImageViewMedia;
+    private ImageView mImageViewMusic;
+    private ImageView mImageViewSport;
+    private ImageView mImageViewTheater;
+    private ImageView mImageViewVisualArts;
+    private ImageView mImageViewDance;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.fragment_category_workshops,container, false);
+        View root = inflater.inflate(R.layout.fragment_category_workshops, container, false);
+        mImageViewMedia = root.findViewById(R.id.iv_media);
+        mImageViewMusic = root.findViewById(R.id.iv_music);
+        mImageViewSport = root.findViewById(R.id.iv_sport);
+        mImageViewTheater = root.findViewById(R.id.iv_theater);
+        mImageViewVisualArts = root.findViewById(R.id.iv_visual_arts);
+        mImageViewDance = root.findViewById(R.id.iv_dance);
+
         mConstraintLayoutVisualArts = root.findViewById(R.id.item_visual_arts);
         mConstraintLayoutVisualArts.setClickable(true);
         mConstraintLayoutVisualArts.setOnClickListener(new View.OnClickListener() {
@@ -37,7 +51,7 @@ public class WorkshopsFragment extends Fragment {
 
         mConstraintLayoutDance = root.findViewById(R.id.item_dance);
         mConstraintLayoutDance.setClickable(true);
-        mConstraintLayoutDance.setOnClickListener(new View.OnClickListener(){
+        mConstraintLayoutDance.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new WorkshopDanceFragment()).addToBackStack(null).commit();
@@ -46,7 +60,7 @@ public class WorkshopsFragment extends Fragment {
 
         mConstraintLayoutMedia = root.findViewById(R.id.item_media);
         mConstraintLayoutMedia.setClickable(true);
-        mConstraintLayoutMedia.setOnClickListener(new View.OnClickListener(){
+        mConstraintLayoutMedia.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new WorkshopMediaFragment()).addToBackStack(null).commit();
@@ -55,7 +69,7 @@ public class WorkshopsFragment extends Fragment {
 
         mConstraintLayoutMusic = root.findViewById(R.id.item_music);
         mConstraintLayoutMusic.setClickable(true);
-        mConstraintLayoutMusic.setOnClickListener(new View.OnClickListener(){
+        mConstraintLayoutMusic.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
@@ -65,7 +79,7 @@ public class WorkshopsFragment extends Fragment {
 
         mConstraintLayoutSport = root.findViewById(R.id.item_sport);
         mConstraintLayoutSport.setClickable(true);
-        mConstraintLayoutSport.setOnClickListener(new View.OnClickListener(){
+        mConstraintLayoutSport.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new WorkshopSportFragment()).addToBackStack(null).commit();
@@ -74,7 +88,7 @@ public class WorkshopsFragment extends Fragment {
 
         mConstraintLayoutTheatre = root.findViewById(R.id.item_theater);
         mConstraintLayoutTheatre.setClickable(true);
-        mConstraintLayoutTheatre.setOnClickListener(new View.OnClickListener(){
+        mConstraintLayoutTheatre.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new WorkshopTheatreFragment()).addToBackStack(null).commit();
@@ -82,6 +96,7 @@ public class WorkshopsFragment extends Fragment {
         });
         return root;
     }
+
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);

@@ -4,11 +4,11 @@ import android.util.Log;
 
 import com.example.homelayout.domain.WorkshopsObject;
 import com.example.homelayout.service.WorkshopAPI;
-import com.example.homelayout.service.WorkshopPictureResponse;
 import com.example.homelayout.service.WorkshopsAPIResponse;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -48,6 +48,13 @@ public class WorkshopController implements Callback<WorkshopsAPIResponse> {
         call.enqueue(this);
     }
 
+    public void loadWorkshopsByCategory(String category){
+        usedMethod = "loadWorkshopsByCategory";
+        Call<WorkshopsAPIResponse> call = workshopAPI.loadWorkshopsByCategory(category);
+        Log.d(TAG, "loadAllWorkshops called");
+        call.enqueue(this);
+    }
+
 
     @Override
     public void onResponse(Call<WorkshopsAPIResponse> call, Response<WorkshopsAPIResponse> response) {
@@ -57,11 +64,12 @@ public class WorkshopController implements Callback<WorkshopsAPIResponse> {
             Log.d(TAG, "response: " + response.body());
 
             // Deserialization
-            if(usedMethod.equals("loadAllWorkshops")){
-                assert response.body() != null;
                 ArrayList<WorkshopsObject> workshopsObjectList =
                         (ArrayList<WorkshopsObject>) response.body().getResults();
+            try {
                 listener.onWorkshopsAvailable(workshopsObjectList);
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
             }
         } else {
             Log.e(TAG, "Not successful! Message: " + response.message());
@@ -74,7 +82,6 @@ public class WorkshopController implements Callback<WorkshopsAPIResponse> {
     }
 
     public interface WorkshopsControllerListener {
-        void onWorkshopsAvailable(List<WorkshopsObject> workshopsObjectList);
-        void onError (String message);
+        void onWorkshopsAvailable(List<WorkshopsObject> workshopsObjectList) throws SQLException;
     }
 }

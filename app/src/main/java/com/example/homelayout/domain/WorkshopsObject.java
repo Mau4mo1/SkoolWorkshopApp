@@ -13,15 +13,17 @@ public class WorkshopsObject {
     private String shortDesc;
     @SerializedName("NeedsApp")
     private boolean needsApp;
+    @SerializedName("__Pictures__")
+    private WorkshopPictureObject[] pictureObject;
 
-    public WorkshopsObject(int id, String category, String codeName, String shortDesc, boolean needsApp) {
+    public WorkshopsObject(int id, String category, String codeName, String shortDesc, boolean needsApp, WorkshopPictureObject[] pictureObject) {
         this.id = id;
         this.category = category;
         this.codeName = codeName;
         this.shortDesc = shortDesc;
         this.needsApp = needsApp;
+        this.pictureObject = pictureObject;
     }
-
 
     public int getId() {
         return id;
@@ -49,6 +51,14 @@ public class WorkshopsObject {
 
     public String getShortDesc() {
         return shortDesc;
+    }
+
+    public WorkshopPictureObject[] getPictureObject() {
+        return pictureObject;
+    }
+
+    public void setPictureObject(WorkshopPictureObject[] pictureObject) {
+        this.pictureObject = pictureObject;
     }
 
     public void setShortDesc(String shortDesc) {

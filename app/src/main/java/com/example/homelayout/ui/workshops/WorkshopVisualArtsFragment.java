@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ImageButton;
 
@@ -13,10 +14,15 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import com.example.homelayout.R;
+import com.example.homelayout.controller.WorkshopController;
+import com.example.homelayout.domain.WorkshopPictureObject;
 import com.example.homelayout.domain.Workshops;
-import com.example.homelayout.ui.Cultureday.Form.CulturedayBookingFormFragment;
+import com.example.homelayout.domain.WorkshopsObject;
 
-public class WorkshopVisualArtsFragment extends Fragment implements View.OnClickListener {
+import java.sql.SQLException;
+import java.util.List;
+
+public class WorkshopVisualArtsFragment extends Fragment implements View.OnClickListener, WorkshopController.WorkshopsControllerListener {
     private ImageButton mButtonGraffiti;
     private ImageButton mButtonGraffitiLight;
     private ImageButton mButtonStopMotion;
@@ -25,9 +31,22 @@ public class WorkshopVisualArtsFragment extends Fragment implements View.OnClick
     private LinearLayout llLightGraffiti;
     private LinearLayout llStopMotion;
     private LinearLayout llTShirt;
+    private List<WorkshopsObject> workshopsObjectList;
+    private ImageView mImageViewGraffiti;
+    private ImageView mImageViewLightGraffiti;
+    private ImageView mImageViewStopMotion;
+    private ImageView mImageViewTshirtDesign;
+
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_workshop_visual_arts, container, false);
+        mImageViewGraffiti = root.findViewById(R.id.iv_workshop_graffiti);
+        mImageViewLightGraffiti = root.findViewById(R.id.iv_workshop_light_graffiti);
+        mImageViewStopMotion = root.findViewById(R.id.iv_workshop_stop_motion);
+        mImageViewTshirtDesign = root.findViewById(R.id.iv_workshop_tshirt_design);
+
+        new WorkshopController(this).loadWorkshopsByCategory("BeeldendeKunst");
+
         mButtonGraffiti = root.findViewById(R.id.graffiti_info);
         mButtonGraffiti.setClickable(true);
         mButtonGraffitiLight = root.findViewById(R.id.graffiti_light_info);
@@ -99,5 +118,39 @@ public class WorkshopVisualArtsFragment extends Fragment implements View.OnClick
                 break;
         }
 
+    }
+
+    @Override
+    public void onWorkshopsAvailable(List<WorkshopsObject> workshopsObjectList) throws SQLException {
+        this.workshopsObjectList = workshopsObjectList;
+        for (WorkshopsObject i : workshopsObjectList) {
+            fillImages(i);
+        }
+    }
+
+    public void fillImages(WorkshopsObject workshopsObject) throws SQLException {
+        WorkshopPictureObject[] workshopPictureObject = workshopsObject.getPictureObject();
+        switch (workshopsObject.getCodeName()) {
+            case "SkoolGraffiti":
+                mImageViewGraffiti
+                        .setImageBitmap(workshopPictureObject[0]
+                                .getBlob()
+                                .convertBlobIntoImage());
+            case "SkoolLightGraffiti":
+                mImageViewLightGraffiti
+                        .setImageBitmap(workshopPictureObject[0]
+                                .getBlob()
+                                .convertBlobIntoImage());
+            case "SkoolStopMotion":
+                mImageViewStopMotion
+                        .setImageBitmap(workshopPictureObject[0]
+                                .getBlob()
+                                .convertBlobIntoImage());
+            case "SkoolTshirtOntwerpen":
+                mImageViewTshirtDesign
+                        .setImageBitmap(workshopPictureObject[0]
+                                .getBlob()
+                                .convertBlobIntoImage());
+        }
     }
 }
