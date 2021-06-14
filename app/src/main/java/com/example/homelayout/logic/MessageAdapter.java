@@ -25,7 +25,8 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
     private final String TAG = getClass().getSimpleName();
     public List<Message> messageList;
 
-    public MessageAdapter(List messageList) {
+    public MessageAdapter(RecyclerviewOnClickListener listener, List messageList) {
+        this.listener = listener;
         this.messageList = messageList;
     }
 
@@ -59,17 +60,6 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
             }
         });
 
-        holder.clMessageBoxItem.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                /*Message film = messageList.get(position);
-                Context context = v.getContext();
-                Class destinationActivity = DetailActivity.class;
-                Intent startActivity = new Intent(context, destinationActivity);
-                startActivity.putExtra("FILM_NAME", film);
-                context.startActivity(startActivity);*/
-            }
-        });
     }
 
 
@@ -93,6 +83,8 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
         private ImageButton imageButton;
         private LinearLayout clMessageBoxItem;
 
+        //RecyclerviewOnClickListener betweenListener = this.listener;
+
         public MessageViewHolder(@NonNull View view) {
             super(view);
 
@@ -103,6 +95,15 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
             imageButton = (ImageButton) view.findViewById(R.id.ib_delete_message);
             clMessageBoxItem = (LinearLayout) itemView.findViewById(R.id.cl_message_box_item);
 
+            clMessageBoxItem.setOnClickListener(new View.OnClickListener() {
+
+                //RecyclerviewOnClickListener listener = betweenListener;
+
+                @Override
+                public void onClick(View v) {
+                    listener.recyclerviewClick(getAdapterPosition());
+                }
+            });
             /*clMessageBoxItem.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

@@ -16,6 +16,7 @@ import android.view.ViewGroup;
 import com.example.homelayout.MainActivity;
 import com.example.homelayout.R;
 import com.example.homelayout.domain.Message;
+import com.example.homelayout.domain.Workshops;
 import com.example.homelayout.logic.MessageAdapter;
 import com.example.homelayout.repositories.TinyDB;
 import com.google.gson.Gson;
@@ -48,6 +49,12 @@ public class MessageBoxFragment extends Fragment {
         layoutManager = new LinearLayoutManager(thisContext);
         recyclerView = root.findViewById(R.id.rv_message_box_recyclerview);
         recyclerView.setLayoutManager(layoutManager);
+
+
+        if(messageList.isEmpty()){
+            messageList.add(testMessage1);
+            messageList.add(testMessage2);
+        }
 
         //Here the message list gets filled with test messages
         messageList.add(testMessage1);
