@@ -1,5 +1,6 @@
 package com.example.homelayout.ui.home;
 
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +15,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 
 import com.example.homelayout.R;
+import com.example.homelayout.domain.WorkshopPictureObject;
 import com.example.homelayout.ui.Cultureday.Form.CulturedayBookingFormFragment;
 import com.example.homelayout.ui.login.LoginFragment;
 import com.example.homelayout.ui.register.RegisterFragment;
@@ -22,18 +24,22 @@ import com.example.homelayout.ui.workshops.WorkshopsFragment;
 import com.example.homelayout.ui.workshops.WorkshopsPopular;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class HomeFragment extends Fragment implements View.OnClickListener {
+import java.sql.SQLException;
 
+public class HomeFragment extends Fragment implements View.OnClickListener {
     private Button btnBookWorkshop;
     private Button btnBookCultureDay;
     private Button btnRegister;
     private Button btnLogin;
     private ConstraintLayout clPopularWorkshops;
+    private Bitmap bmp;
+    private ImageView mImageViewSpaarPunten;
     private ImageView ivBell;
 
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
+
         View root = inflater.inflate(R.layout.fragment_home, container, false);
         btnRegister = root.findViewById(R.id.register_button);
         btnRegister.setClickable(true);
@@ -46,6 +52,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         clPopularWorkshops.setClickable(true);
         ivBell = root.findViewById(R.id.iv_home_bell);
         ivBell.setClickable(true);
+        mImageViewSpaarPunten = root.findViewById(R.id.home_item_loyalty_points_image);
 
         btnBookWorkshop.setOnClickListener(this);
         btnBookCultureDay.setOnClickListener(this);

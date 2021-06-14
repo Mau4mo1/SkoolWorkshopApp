@@ -30,11 +30,13 @@ import android.widget.Toast;
 
 import com.example.homelayout.domain.Message;
 import com.example.homelayout.domain.WorkshopBooking;
+import com.example.homelayout.controller.WorkshopController;
+import com.example.homelayout.domain.WorkshopPictureObject;
+import com.example.homelayout.domain.WorkshopsObject;
 import com.example.homelayout.ui.Cultureday.MainPage.CulturedayMainFragment;
 import com.example.homelayout.ui.home.HomeFragment;
 import com.example.homelayout.ui.contact.ContactFragment;
 import com.example.homelayout.ui.shoppingcart.ShoppingCartFragment;
-import com.example.homelayout.ui.workshops.WorkshopsForm;
 import com.example.homelayout.ui.workshops.WorkshopsFragment;
 import com.example.homelayout.ui.home.HomeFragment;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -60,10 +62,23 @@ import java.util.ArrayList;
 import java.lang.reflect.Type;
 
 public class MainActivity extends AppCompatActivity {
+import java.util.List;
+
+public class MainActivity extends AppCompatActivity implements WorkshopController.WorkshopsControllerListener {
     private BottomNavigationView bottomNav;
     private Message m = null;
     private ArrayList<Message> aTestForTim;
     private int countdown;
+    private WorkshopController workshopController;
+    private List<WorkshopsObject> workshopsObjectList;
+    private WorkshopsObject workshopObject;
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.actionbar, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -97,6 +112,14 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
 
+//        workshopController = new WorkshopController(this);
+//        workshopPictureController = new WorkshopPictureController(this);
+//        workshopPictureController.loadPictureWorkshops(2);
+
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.nav_host_fragment, new HomeFragment())
+                .commit();
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -132,12 +155,14 @@ public class MainActivity extends AppCompatActivity {
         if (item.getItemId() == R.id.bt_shopping_cart) {
             Fragment selectedFragment = new ShoppingCartFragment();
             getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, selectedFragment).addToBackStack(null).commit();
+            getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, selectedFragment).commit();
         }
         return super.onOptionsItemSelected(item);
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener navListener =
             new BottomNavigationView.OnNavigationItemSelectedListener() {
+
                 @Override
                 public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                     Fragment selectedFragment = null;
@@ -180,6 +205,7 @@ public class MainActivity extends AppCompatActivity {
                             startActivity(intent);
                             break;
                     }
+                    getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, selectedFragment).addToBackStack(null).commit();
                     return true;
                 }
             };
@@ -212,4 +238,8 @@ public class MainActivity extends AppCompatActivity {
         public ArrayList<Message> getMessage(){
             return this.aTestForTim;
         }
+    @Override
+    public void onWorkshopsAvailable(List<WorkshopsObject> workshopsObjectList) {
+        this.workshopsObjectList = workshopsObjectList;
+    }
 }

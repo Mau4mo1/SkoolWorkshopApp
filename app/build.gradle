@@ -51,5 +51,13 @@ dependencies {
 
     implementation 'com.google.firebase:firebase-messaging'
     implementation 'com.google.firebase:firebase-analytics'
+
+    def retrofit_version = "2.9.0"
+    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
+
+    def room_version = "2.2.6"
+    implementation "androidx.room:room-runtime:$room_version"
+    annotationProcessor "androidx.room:room-compiler:$room_version"
 }
 apply plugin: 'com.google.gms.google-services'

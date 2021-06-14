@@ -1,0 +1,17 @@
+package com.example.homelayout.service;
+
+import com.example.homelayout.domain.WorkshopPictureObject;
+
+import retrofit2.Call;
+import retrofit2.http.GET;
+import retrofit2.http.Path;
+import retrofit2.http.Query;
+
+public interface WorkshopAPI {
+
+    @GET("workshop")
+    Call<WorkshopsAPIResponse> loadAllWorkshops();
+
+    @GET("category/workshops")
+    Call<WorkshopsAPIResponse> loadWorkshopsByCategory(@Query("category") String category);
+}
