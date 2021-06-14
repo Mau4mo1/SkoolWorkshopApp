@@ -3,9 +3,11 @@ package com.example.homelayout.ui.Cultureday.Form;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,6 +23,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 
 import com.example.homelayout.R;
@@ -34,12 +37,16 @@ import com.example.homelayout.ui.home.HomeFragment;
 import com.example.homelayout.ui.shoppingcart.ShoppingCartFragment;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
 public class CulturedayBookingFormFragment extends Fragment {
     private ArrayList<Object> bookings;
     private TinyDB tinyDB;
+    private Date date;
+    private EditText time_scheme;
+    private EditText learning_level;
     private double subtotal_amount = 0;
     private HashMap<String, Integer> values = new HashMap<>();
     private ArrayList<Workshops> workshops = new ArrayList<>();
@@ -713,8 +720,11 @@ public class CulturedayBookingFormFragment extends Fragment {
         cultureday_registration_box = root.findViewById(R.id.sv_cultureday_form_registration_box);
         btn_book_now_cdf = root.findViewById(R.id.button_book_now_cdf);
         btn_book_now_cdf.setClickable(true);
+        time_scheme = root.findViewById(R.id.edm_cultureday_form_timescheme_field);
+        learning_level = root.findViewById(R.id.edt_cultureday_form_learninglevel_field);
 
         btn_book_now_cdf.setOnClickListener(new View.OnClickListener() {
+                @RequiresApi(api = Build.VERSION_CODES.O)
                 @Override
                 public void onClick(View view) {
                     if(subtotal_amount < 1255.50) {
@@ -743,12 +753,15 @@ public class CulturedayBookingFormFragment extends Fragment {
                         minpopup.show();
                     }else{
                         try {
-                            culturedayBookingInfo.setYear(date_cultureday.getYear());
-                            System.out.println("Year: "+date_cultureday.getYear());
-                            culturedayBookingInfo.setMonth(date_cultureday.getMonth());
-                            System.out.println("Month: "+date_cultureday.getMonth());
-                            culturedayBookingInfo.setDay(date_cultureday.getDayOfMonth());
-                            System.out.println("Day: "+date_cultureday.getDayOfMonth());
+                            date_cultureday.setOnDateChangedListener(new DatePicker.OnDateChangedListener() {
+                                @Override
+                                public void onDateChanged(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                                    Log.d("onDateChanged", "Nieuwe datum gekozen");
+                                    date = new Date(year, monthOfYear, dayOfMonth);
+                                }
+                            });
+                            culturedayBookingInfo.setDate(date);
+                            System.out.println(date);
                             if (cultureday_registration_box.isChecked() == true){
                                 culturedayBookingInfo.setRegistration(true);
                                 System.out.println("Registration true");
@@ -756,6 +769,8 @@ public class CulturedayBookingFormFragment extends Fragment {
                                 culturedayBookingInfo.setRegistration(false);
                                 System.out.println("Registration false");
                             }
+                            culturedayBookingInfo.setLearninglevel(learning_level.getText().toString());
+                            culturedayBookingInfo.setTimescheme(workshop_particepents.getText().toString());
                             culturedayBookingInfo.setParticepants(Integer.parseInt(workshop_particepents.getText().toString()));
                             culturedayBookingInfo.setRounds(Integer.parseInt(workshop_rounds.getText().toString()));
                             culturedayBookingInfo.setWorkshop_minutes(Integer.parseInt(round_minutes.getText().toString()));
@@ -793,7 +808,6 @@ public class CulturedayBookingFormFragment extends Fragment {
         sub_total_cdf.setText("Subtotal: €" + subtotal + "0");
     }
     private void loadData(){
-
         bookings = tinyDB.getListObject("CultureItems", CulturedayBookingInfo.class);
         if (bookings == null){
             bookings = new ArrayList<>();
