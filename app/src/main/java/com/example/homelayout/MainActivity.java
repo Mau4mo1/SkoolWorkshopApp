@@ -61,7 +61,6 @@ import java.util.ArrayList;
 
 import java.lang.reflect.Type;
 
-public class MainActivity extends AppCompatActivity {
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements WorkshopController.WorkshopsControllerListener {
@@ -72,13 +71,6 @@ public class MainActivity extends AppCompatActivity implements WorkshopControlle
     private WorkshopController workshopController;
     private List<WorkshopsObject> workshopsObjectList;
     private WorkshopsObject workshopObject;
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater menuInflater = getMenuInflater();
-        menuInflater.inflate(R.menu.actionbar, menu);
-        return super.onCreateOptionsMenu(menu);
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -191,10 +183,12 @@ public class MainActivity extends AppCompatActivity implements WorkshopControlle
 
     private NavigationView.OnNavigationItemSelectedListener navSideBarListener =
             new NavigationView.OnNavigationItemSelectedListener() {
+                Fragment selectedFragment = null;
                 @Override
                 public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                     switch (item.getItemId()) {
                         case R.id.navigation_shopping_cart:
+                            selectedFragment = new ShoppingCartFragment();
                             break;
                         case R.id.navigation_about_us:
                             break;
