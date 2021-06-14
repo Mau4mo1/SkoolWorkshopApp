@@ -21,7 +21,6 @@ import java.util.ArrayList;
 
 public class MessageBoxFragment extends Fragment implements MessageAdapter.RecyclerviewOnClickListener {
     private ArrayList<Message> messageList = new ArrayList<>();
-    private ArrayList<Integer> idList = new ArrayList<>();
     private MessageAdapter messageAdapter;
     private RecyclerView recyclerView;
     private RecyclerView.LayoutManager layoutManager;
@@ -47,17 +46,6 @@ public class MessageBoxFragment extends Fragment implements MessageAdapter.Recyc
             messageList.add(testMessage2);
         }
 
-        //Here the message list gets filled with test messages
-        /*for(Message message: messageList){
-            if(!idList.contains(testMessage1.getId())){
-                idList.add(testMessage1.getId());
-                messageList.add(testMessage1);
-            }else if(!idList.contains(testMessage2.getId())){
-                idList.add(testMessage2.getId());
-                messageList.add(testMessage2);
-            }
-        }*/
-
         messageAdapter = new MessageAdapter(this, messageList);
         recyclerView.setAdapter(messageAdapter);
 
@@ -68,4 +56,6 @@ public class MessageBoxFragment extends Fragment implements MessageAdapter.Recyc
     public void recyclerviewClick(int position) {
         getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new MessageScreen(messageList.get(position))).addToBackStack(null).commit();
     }
+
+    
 }
