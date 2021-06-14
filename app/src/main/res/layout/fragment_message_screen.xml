@@ -13,9 +13,9 @@
         android:layout_height="wrap_content"
         android:text="@string/lorem_ipsum"
         android:textSize="26dp"
-        android:layout_margin = "10dp"
-        android:textColor="@color/text_grey"
-        android:background="@color/background_grey">
+        android:padding = "12dp"
+        android:textColor="@color/white"
+        android:background="@color/orange">
 
     </TextView>
 
