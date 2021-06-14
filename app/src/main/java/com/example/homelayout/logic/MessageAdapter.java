@@ -24,6 +24,7 @@ import java.util.List;
 public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageViewHolder> implements Serializable {
     private final String TAG = getClass().getSimpleName();
     public List<Message> messageList;
+    private RecyclerviewOnClickListener listener;
 
     public MessageAdapter(RecyclerviewOnClickListener listener, List messageList) {
         this.listener = listener;
@@ -62,9 +63,6 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
 
     }
 
-
-
-
     @Override
     public int getItemCount() {
 
@@ -81,9 +79,8 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
         private TextView mTitle;
         private TextView mText;
         private ImageButton imageButton;
-        private LinearLayout clMessageBoxItem;
-
-        //RecyclerviewOnClickListener betweenListener = this.listener;
+        private ConstraintLayout clMessageBoxItem;
+        public Message messageItem;
 
         public MessageViewHolder(@NonNull View view) {
             super(view);
@@ -93,39 +90,21 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
             mTitle = (TextView) view.findViewById(R.id.tv_message_box_title);
             mText = (TextView) view.findViewById(R.id.tv_message_box_description);
             imageButton = (ImageButton) view.findViewById(R.id.ib_delete_message);
-            clMessageBoxItem = (LinearLayout) itemView.findViewById(R.id.cl_message_box_item);
+            clMessageBoxItem = (ConstraintLayout) itemView.findViewById(R.id.cl_message_box_item);
 
             clMessageBoxItem.setOnClickListener(new View.OnClickListener() {
 
-                //RecyclerviewOnClickListener listener = betweenListener;
-
                 @Override
                 public void onClick(View v) {
-                    listener.recyclerviewClick(getAdapterPosition());
+                    listener.recyclerviewClick(messageItem= (Message) messageList.get(getAdapterPosition()));
                 }
             });
-            /*clMessageBoxItem.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    int position = 1;
-                    for (Message movie : messageList) {
-                        if (mTitleText.getText().toString().equals(movie.getTitle())) {
-                            position = filmList.indexOf(movie);
-                        }
-                    }
-                    Films film = filmList.get(position);
-                    Context context = v.getContext();
-                    Class destinationActivity = DetailActivity.class;
-                    Intent startActivity = new Intent(context, destinationActivity);
-                    startActivity.putExtra("FILM_NAME", film);
-                    context.startActivity(startActivity);
-                }*/
-            //});
         }
     }
 
     public interface RecyclerviewOnClickListener{
-        void recyclerviewClick(int position);
+
+        void recyclerviewClick(Message message);
     }
 }
 
