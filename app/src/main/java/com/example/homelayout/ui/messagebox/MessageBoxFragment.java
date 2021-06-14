@@ -35,7 +35,7 @@ public class MessageBoxFragment extends Fragment {
 
 
     //These are test messages to fill the message list and test the recyclerview.
-    private Message testMessage1 = new Message(1, "Hello there", "General kenobi");
+    private Message testMessage1 = new Message(1, "Test bericht", "Dit is onze berichtenbox");
     private Message testMessage2 = new Message(2, "Mooie titel 2.0", "Lorem ipsum blablablablabla 2.0");
 
     @Override

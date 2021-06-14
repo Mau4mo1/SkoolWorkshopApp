@@ -11,6 +11,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.homelayout.R;
 import com.example.homelayout.domain.CultureDayBooking;
+import com.example.homelayout.domain.Workshops;
+import com.example.homelayout.logic.CulturedayBookingInfo;
 
 import java.io.Serializable;
 import java.text.DecimalFormat;
@@ -39,9 +41,9 @@ public class ShoppingCartCultureDayAdapter extends RecyclerView.Adapter<Shopping
     public void onBindViewHolder(@NonNull CultureDayViewHolder holder, int position) {
         final int pos = position;
         DecimalFormat decimalFormat = new DecimalFormat("#.00");
-        CultureDayBooking cultureDayBooking = (CultureDayBooking) cultureDayData.get(pos);
-        String prijs = decimalFormat.format(cultureDayBooking.getPrijs());
-        List<String> workshoplist = cultureDayBooking.getWorkshops();
+        CulturedayBookingInfo cultureDayBooking = (CulturedayBookingInfo) cultureDayData.get(pos);
+        String prijs = decimalFormat.format(cultureDayBooking.getPrice());
+        ArrayList<Workshops> workshoplist = cultureDayBooking.getWorkshops();
         String workshops = "";
         for (int i = 0; i < workshoplist.size(); i++) {
             if (i == workshoplist.size() - 1) {
@@ -51,14 +53,14 @@ public class ShoppingCartCultureDayAdapter extends RecyclerView.Adapter<Shopping
             }
         }
 
-        holder.mRondes.setText(String.valueOf(cultureDayBooking.getRondes()));
-        holder.mMinuten.setText(String.valueOf(cultureDayBooking.getMinutenPerRonde()));
-        holder.mTotaleMinuten.setText(String.valueOf(cultureDayBooking.getTotaleMinuten()));
-        holder.mDeelnemers.setText(String.valueOf(cultureDayBooking.getDeelnemers()));
-        holder.mWorkshops.setText(workshops);
-        holder.mTijdschema.setText(String.valueOf(cultureDayBooking.getTijdschema()));
-        holder.mLeerniveau.setText(String.valueOf(cultureDayBooking.getLeerniveau()));
-        holder.mDatum.setText(String.valueOf(cultureDayBooking.getDatum()));
+        holder.mRondes.setText(String.valueOf(cultureDayBooking.getRounds()));
+        holder.mMinuten.setText(String.valueOf(cultureDayBooking.getWorkshops_per_round()));
+        holder.mTotaleMinuten.setText(String.valueOf(cultureDayBooking.getWorkshop_minutes()));
+        holder.mDeelnemers.setText(String.valueOf(cultureDayBooking.getParticepants()));
+        holder.mWorkshops.setText(workshops.toString());
+        holder.mTijdschema.setText(String.valueOf(cultureDayBooking.getTimescheme()));
+        holder.mLeerniveau.setText(String.valueOf(cultureDayBooking.getLearninglevel()));
+        holder.mDatum.setText(String.valueOf(cultureDayBooking.getDate()));
         holder.mPrijs.setText("€" + prijs);
     }
 
