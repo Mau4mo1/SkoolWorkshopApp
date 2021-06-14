@@ -23,7 +23,7 @@ import java.util.List;
 
 public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageViewHolder> implements Serializable {
     private final String TAG = getClass().getSimpleName();
-    private List<Message> messageList;
+    public List<Message> messageList;
 
     public MessageAdapter(List messageList) {
         this.messageList = messageList;
@@ -54,7 +54,8 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
         holder.imageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                messageList.remove(messageList.get(position));
+                messageList.remove(position);
+                notifyDataSetChanged();
             }
         });
 
@@ -70,6 +71,9 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
             }
         });
     }
+
+
+
 
     @Override
     public int getItemCount() {

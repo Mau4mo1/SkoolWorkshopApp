@@ -34,7 +34,10 @@ public class FireBaseLogic extends FirebaseMessagingService {
     @Override
     public void onMessageReceived(@NonNull RemoteMessage remoteMessage) {
         super.onMessageReceived(remoteMessage);
-        handleMessage(remoteMessage);
+        if(remoteMessage.getData().size() > 0){
+            handleMessage(remoteMessage);
+        }
+
 
     }
     @Override

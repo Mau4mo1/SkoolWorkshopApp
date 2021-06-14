@@ -10,6 +10,7 @@ public class CulturedayBookingInfo {
     private int workshop_minutes;
     private int particepants;
     private ArrayList<Workshops> workshops;
+    private int price;
     private int year;
     private int month;
     private int day;
@@ -76,5 +77,11 @@ public class CulturedayBookingInfo {
     }
     public int getDay() {
         return this.day;
+    }
+    public int getPrice(){
+        return price;
+    }
+    public void setPrice(int price){
+        this.price = price;
     }
 }
