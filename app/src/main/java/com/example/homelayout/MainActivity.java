@@ -60,9 +60,8 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 
 import java.lang.reflect.Type;
-
-public class MainActivity extends AppCompatActivity {
 import java.util.List;
+
 
 public class MainActivity extends AppCompatActivity implements WorkshopController.WorkshopsControllerListener {
     private BottomNavigationView bottomNav;
@@ -73,12 +72,6 @@ public class MainActivity extends AppCompatActivity implements WorkshopControlle
     private List<WorkshopsObject> workshopsObjectList;
     private WorkshopsObject workshopObject;
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater menuInflater = getMenuInflater();
-        menuInflater.inflate(R.menu.actionbar, menu);
-        return super.onCreateOptionsMenu(menu);
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -93,6 +86,7 @@ public class MainActivity extends AppCompatActivity implements WorkshopControlle
         bottomNav.setOnNavigationItemSelectedListener(navListener);
         aTestForTim = new ArrayList<>();
         countdown = 2;
+
         getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new HomeFragment()).commit();
         FirebaseMessaging.getInstance().getToken()
                 .addOnCompleteListener(new OnCompleteListener<String>() {
@@ -111,10 +105,6 @@ public class MainActivity extends AppCompatActivity implements WorkshopControlle
                         Toast.makeText(MainActivity.this, msg, Toast.LENGTH_SHORT).show();
                     }
                 });
-
-//        workshopController = new WorkshopController(this);
-//        workshopPictureController = new WorkshopPictureController(this);
-//        workshopPictureController.loadPictureWorkshops(2);
 
         getSupportFragmentManager()
                 .beginTransaction()
@@ -191,10 +181,12 @@ public class MainActivity extends AppCompatActivity implements WorkshopControlle
 
     private NavigationView.OnNavigationItemSelectedListener navSideBarListener =
             new NavigationView.OnNavigationItemSelectedListener() {
+                Fragment selectedFragment = null;
                 @Override
                 public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                     switch (item.getItemId()) {
                         case R.id.navigation_shopping_cart:
+                            selectedFragment = new ShoppingCartFragment();
                             break;
                         case R.id.navigation_about_us:
                             break;
