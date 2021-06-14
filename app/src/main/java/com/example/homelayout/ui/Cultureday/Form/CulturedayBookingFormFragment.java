@@ -24,16 +24,22 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import com.example.homelayout.R;
+import com.example.homelayout.domain.CultureDayBooking;
+import com.example.homelayout.domain.WorkshopBooking;
 import com.example.homelayout.domain.Workshops;
 import com.example.homelayout.logic.CalculatePrices;
 import com.example.homelayout.logic.CulturedayBookingInfo;
+import com.example.homelayout.repositories.TinyDB;
 import com.example.homelayout.ui.home.HomeFragment;
+import com.example.homelayout.ui.shoppingcart.ShoppingCartFragment;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
 public class CulturedayBookingFormFragment extends Fragment {
+    private ArrayList<Object> bookings;
+    private TinyDB tinyDB;
     private double subtotal_amount = 0;
     private HashMap<String, Integer> values = new HashMap<>();
     private ArrayList<Workshops> workshops = new ArrayList<>();
@@ -94,7 +100,8 @@ public class CulturedayBookingFormFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_cultureday_form, container, false);
         con = container.getContext();
-
+        tinyDB = new TinyDB(con);
+        loadData();
         dropdown_categories = root.findViewById(R.id.sv_cultureday_form_catagorie_dropdown);
         workshop_check_dance = root.findViewById(R.id.sv_cultureday_form_workshoplist_dance);
         workshop_check_sport = root.findViewById(R.id.sv_cultureday_form_workshoplist_sport);
@@ -754,8 +761,13 @@ public class CulturedayBookingFormFragment extends Fragment {
                             culturedayBookingInfo.setWorkshop_minutes(Integer.parseInt(round_minutes.getText().toString()));
                             culturedayBookingInfo.setWorkshops(workshops);
                             culturedayBookingInfo.setWorkshops_per_round(Integer.parseInt(workshop_per_round.getText().toString()));
+
+
+                            // send to TinyDB
+                            bookings.add(culturedayBookingInfo);
+                            tinyDB.putListObject("CultureItems", bookings);
 //                            Link to shopingcart
-                            getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new HomeFragment()).commit();
+                            getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new ShoppingCartFragment()).commit();
                         }catch (Exception e){
                             System.out.println("Booking info invalet or incompelte");AlertDialog.Builder infopopup = new AlertDialog.Builder(con);
                             infopopup.setCancelable(true);
@@ -779,5 +791,12 @@ public class CulturedayBookingFormFragment extends Fragment {
         double subtotal = calculatePrices.calculateCultureday(values, workshops);
         this.subtotal_amount = subtotal;
         sub_total_cdf.setText("Subtotal: €" + subtotal + "0");
+    }
+    private void loadData(){
+
+        bookings = tinyDB.getListObject("CultureItems", CulturedayBookingInfo.class);
+        if (bookings == null){
+            bookings = new ArrayList<>();
+        }
     }
 }
