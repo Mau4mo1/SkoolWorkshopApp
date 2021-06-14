@@ -68,7 +68,7 @@ public class MessageBoxFragment extends Fragment implements MessageAdapter.Recyc
                 messageList.add(m);
             }
         }
-        messageAdapter = new MessageAdapter(messageList);
+        messageAdapter = new MessageAdapter(this, messageList);
         recyclerView.setAdapter(messageAdapter);
 
         return root;
