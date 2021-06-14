@@ -4,6 +4,7 @@ import android.util.Log;
 
 import com.example.homelayout.domain.WorkshopsObject;
 import com.example.homelayout.service.WorkshopAPI;
+import com.example.homelayout.service.WorkshopPictureResponse;
 import com.example.homelayout.service.WorkshopsAPIResponse;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -22,8 +23,10 @@ public class WorkshopController implements Callback<WorkshopsAPIResponse> {
     private final String TAG = this.getClass().getSimpleName();
     private final Retrofit retrofit;
     private final Gson gson;
-    private final WorkshopAPI workshopAPI;
+    private WorkshopAPI workshopAPI;
+    private String usedMethod;
     private WorkshopsControllerListener listener;
+
 
     public WorkshopController(WorkshopsControllerListener listener) {
         this.listener = listener;
@@ -31,6 +34,7 @@ public class WorkshopController implements Callback<WorkshopsAPIResponse> {
         gson = new GsonBuilder()
                 .setLenient()
                 .create();
+
         retrofit = new Retrofit.Builder().baseUrl(BASE_URL).addConverterFactory(GsonConverterFactory.create(gson))
                 .build();
 
@@ -38,14 +42,9 @@ public class WorkshopController implements Callback<WorkshopsAPIResponse> {
     }
 
     public void loadAllWorkshops(){
+        usedMethod = "loadAllWorkshops";
         Call<WorkshopsAPIResponse> call = workshopAPI.loadAllWorkshops();
         Log.d(TAG, "loadAllWorkshops called");
-        call.enqueue(this);
-    }
-
-    public void loadInfoAboutWorkshop(int id){
-        Call<WorkshopsAPIResponse> call = workshopAPI.loadInfoAboutWorkshop(id);
-        Log.d(TAG, "loadInfoAboutWorkshop called");
         call.enqueue(this);
     }
 
@@ -58,9 +57,12 @@ public class WorkshopController implements Callback<WorkshopsAPIResponse> {
             Log.d(TAG, "response: " + response.body());
 
             // Deserialization
-            ArrayList<WorkshopsObject> workshopsObjectList = (ArrayList<WorkshopsObject>) response.body().getResults();
-            listener.onWorkshopsAvailable(workshopsObjectList);
-
+            if(usedMethod.equals("loadAllWorkshops")){
+                assert response.body() != null;
+                ArrayList<WorkshopsObject> workshopsObjectList =
+                        (ArrayList<WorkshopsObject>) response.body().getResults();
+                listener.onWorkshopsAvailable(workshopsObjectList);
+            }
         } else {
             Log.e(TAG, "Not successful! Message: " + response.message());
         }

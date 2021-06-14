@@ -14,7 +14,6 @@ public class WorkshopsAPIResponse {
     }
 
     public  List<WorkshopsObject> getResults() {
-        Log.d("WorkshopsAPIResponse", "HELLLLL YEAAAAHHHHHHHHHHHHHHHHHHHHHHHHH");
         return result;
     }
 

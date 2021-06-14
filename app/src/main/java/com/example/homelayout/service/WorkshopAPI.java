@@ -1,6 +1,6 @@
 package com.example.homelayout.service;
 
-import java.util.List;
+import com.example.homelayout.domain.WorkshopPictureObject;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
@@ -11,7 +11,6 @@ public interface WorkshopAPI {
     @GET("workshop")
     Call<WorkshopsAPIResponse> loadAllWorkshops();
 
-    @GET("workshop/{workshopId}")
-    Call<WorkshopsAPIResponse> loadInfoAboutWorkshop(@Path("workshopId") int id);
-
+    @GET("workshop/{workshopId}/pictures")
+    Call<WorkshopPictureResponse> loadPictureWorkshops(@Path("workshopId") int id);
 }

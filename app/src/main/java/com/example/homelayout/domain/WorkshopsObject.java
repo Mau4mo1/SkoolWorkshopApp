@@ -22,6 +22,7 @@ public class WorkshopsObject {
         this.needsApp = needsApp;
     }
 
+
     public int getId() {
         return id;
     }
