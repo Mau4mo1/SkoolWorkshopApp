@@ -10,6 +10,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/const_my_invoice_01"
             android:layout_marginTop="20sp"
+            android:layout_marginStart="10sp"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             android:background="@drawable/contact_background"
@@ -41,7 +42,7 @@
             app:layout_constraintTop_toBottomOf="@+id/const_my_invoice_01"
             app:layout_constraintLeft_toLeftOf="parent"
             android:text="Bewerken"
-            android:layout_marginStart="20sp"
+            android:layout_marginStart="30sp"
             android:textSize="16sp"
             android:textColor="@color/orange"/>
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -49,6 +50,7 @@
             android:id="@+id/const_my_invoice_02"
             app:layout_constraintTop_toBottomOf="@+id/tv_my_invoice_edit_invoice_data"
             android:background="@drawable/contact_background"
+            android:layout_marginStart="10sp"
             app:layout_constraintLeft_toLeftOf="parent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -78,7 +80,7 @@
             app:layout_constraintTop_toBottomOf="@+id/const_my_invoice_02"
             app:layout_constraintLeft_toLeftOf="parent"
             android:text="Bewerken"
-            android:layout_marginStart="20sp"
+            android:layout_marginStart="30sp"
             android:textSize="16sp"
             android:textColor="@color/orange"/>
     </androidx.constraintlayout.widget.ConstraintLayout>

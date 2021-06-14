@@ -22,6 +22,7 @@
             app:layout_constraintTop_toBottomOf="@+id/tv_booked_workshop_edit_title"
             android:id="@+id/const_booked_workshop_02"
             android:layout_width="match_parent"
+            android:layout_marginStart="10sp"
             android:layout_height="wrap_content"
             android:background="@drawable/contact_background">
             <TextView

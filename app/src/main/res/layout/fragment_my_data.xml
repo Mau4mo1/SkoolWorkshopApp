@@ -12,6 +12,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             android:id="@+id/const_my_data_02"
+            android:layout_marginStart="10sp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/contact_background">

@@ -20,6 +20,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_invoice_edit_title"
+            android:layout_marginStart="10sp"
             android:id="@+id/const_invoice_02"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
