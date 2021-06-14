@@ -1,10 +1,17 @@
 package com.example.homelayout.domain;
 
+import com.google.gson.annotations.SerializedName;
+
 public class WorkshopsObject {
+    @SerializedName("Id")
     private int id;
+    @SerializedName("Category")
     private String category;
+    @SerializedName("CodeName")
     private String codeName;
+    @SerializedName("ShortDesc")
     private String shortDesc;
+    @SerializedName("NeedsApp")
     private boolean needsApp;
 
     public WorkshopsObject(int id, String category, String codeName, String shortDesc, boolean needsApp) {
@@ -14,6 +21,7 @@ public class WorkshopsObject {
         this.shortDesc = shortDesc;
         this.needsApp = needsApp;
     }
+
 
     public int getId() {
         return id;

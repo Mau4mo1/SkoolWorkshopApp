@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.homelayout.controller.WorkshopController;
+import com.example.homelayout.controller.WorkshopPictureController;
+import com.example.homelayout.domain.WorkshopPictureObject;
 import com.example.homelayout.domain.Workshops;
 import com.example.homelayout.domain.WorkshopsObject;
 import com.example.homelayout.ui.Cultureday.MainPage.CulturedayMainFragment;
@@ -26,10 +28,12 @@ import androidx.fragment.app.Fragment;
 
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements WorkshopController.WorkshopsControllerListener {
+public class MainActivity extends AppCompatActivity implements WorkshopController.WorkshopsControllerListener, WorkshopPictureController.WorkshopPictureControllerListener {
     private BottomNavigationView bottomNav;
     private WorkshopController workshopController;
+    private WorkshopPictureController workshopPictureController;
     private List<WorkshopsObject> workshopsObjectList;
+    private WorkshopsObject workshopObject;
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -50,7 +54,8 @@ public class MainActivity extends AppCompatActivity implements WorkshopControlle
         bottomNav = findViewById(R.id.nav_view);
         bottomNav.setOnNavigationItemSelectedListener(navListener);
         workshopController = new WorkshopController(this);
-        workshopController.loadAllWorkshops();
+        workshopPictureController = new WorkshopPictureController(this);
+        workshopPictureController.loadPictureWorkshops(2);
         getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new HomeFragment()).commit();
     }
 
@@ -100,6 +105,11 @@ public class MainActivity extends AppCompatActivity implements WorkshopControlle
 
     @Override
     public void onError(String message) {
+
+    }
+
+    @Override
+    public void onWorkshopPicturesAvailable(List<WorkshopPictureObject> workshopPictureObjectList) {
 
     }
 }
