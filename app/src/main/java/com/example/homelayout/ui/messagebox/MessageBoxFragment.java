@@ -1,66 +1,92 @@
 package com.example.homelayout.ui.messagebox;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.homelayout.MainActivity;
 import com.example.homelayout.R;
+import com.example.homelayout.domain.Message;
+import com.example.homelayout.domain.Workshops;
+import com.example.homelayout.logic.MessageAdapter;
+import com.example.homelayout.repositories.TinyDB;
+import com.example.homelayout.ui.workshops.WorkshopsForm;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link MessageBoxFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
-public class MessageBoxFragment extends Fragment {
+import java.util.ArrayList;
+import java.util.List;
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+public class MessageBoxFragment extends Fragment implements MessageAdapter.RecyclerviewOnClickListener {
+    private ArrayList<Object> messageList;
+    private MessageAdapter messageAdapter;
+    private RecyclerView recyclerView;
+    private RecyclerView.LayoutManager layoutManager;
+    private Context thisContext;
+    private TinyDB tinyDB;
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
 
-    public MessageBoxFragment() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment MessageBoxFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static MessageBoxFragment newInstance(String param1, String param2) {
-        MessageBoxFragment fragment = new MessageBoxFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
+    //These are test messages to fill the message list and test the recyclerview.
+    private Message testMessage1 = new Message(1, "Hello there", "Did you ever hear the tragedy of Darth Plagueis The Wise? I thought not. It’s not a story the Jedi would tell you. It’s a Sith legend. Darth Plagueis was a Dark Lord of the Sith, so powerful and so wise he could use the Force to influence the midichlorians to create life… He had such a knowledge of the dark side that he could even keep the ones he cared about from dying. The dark side of the Force is a pathway to many abilities some consider to be unnatural. He became so powerful… the only thing he was afraid of was losing his power, which eventually, of course, he did. Unfortunately, he taught his apprentice everything he knew, then his apprentice killed him in his sleep. Ironic. He could save others from death, but not himself.");
+    private Message testMessage2 = new Message(2, "Lorem Ipsum Bro", "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.");
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_message_box, container, false);
+        View root = inflater.inflate(R.layout.fragment_message_box, container, false);
+
+        thisContext = container.getContext();
+        tinyDB = new TinyDB(thisContext);
+        loadData();
+        layoutManager = new LinearLayoutManager(thisContext);
+        recyclerView = root.findViewById(R.id.rv_message_box_recyclerview);
+        recyclerView.setLayoutManager(layoutManager);
+
+        if(messageList.isEmpty()){
+            messageList.add(testMessage1);
+            messageList.add(testMessage2);
+
+            MainActivity active = (MainActivity) getActivity();
+            if(active.getMessage() != null){
+                for(Message m : active.getMessage()){
+                    messageList.add(m);
+                }
+            }
+            saveData();
+        }
+
+
+        //tinyDB.clear();
+        //Here the message list gets filled with test messages
+//        messageList.add(testMessage1);
+
+
+        messageAdapter = new MessageAdapter(this,messageList);
+        recyclerView.setAdapter(messageAdapter);
+        return root;
+    }
+
+
+    public void saveData(){
+        tinyDB.putListObject("MessageBox", messageList);
+    }
+    public void loadData(){
+        messageList= tinyDB.getListObject("MessageBox",Message.class);
+        if (messageList == null){
+            messageList = new ArrayList<>();
+        }
+    }
+
+    @Override
+    public void recyclerviewClick(Message message) {
+        getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new MessageScreen(message)).addToBackStack(null).commit();
+
     }
 }

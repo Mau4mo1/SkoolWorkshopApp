@@ -125,15 +125,14 @@ public class CalculatePrices {
 
         for(Workshops i : workshops){
             if(i.equals(Workshops.Graffiti)){
-                totalAmount =+ participantsGraffitiOrTshirtDesign * MATERIAL_COST;
+                if(participantsGraffitiOrTshirtDesign != 0) {
+                    totalAmount = totalAmount + (participantsGraffitiOrTshirtDesign * MATERIAL_COST);
+                }
             }else if(i.equals(Workshops.TshirtOntwerpen)){
-                totalAmount =+ participantsGraffitiOrTshirtDesign * MATERIAL_COST;
+                if(participantsGraffitiOrTshirtDesign != 0) {
+                    totalAmount = totalAmount + (participantsGraffitiOrTshirtDesign * MATERIAL_COST);
+                }
             }
-        }
-
-        System.out.println(totalAmount);
-        if(checkIfTotalAmountIsAboveMinimalOneThousandFiftyFiveAndFiftyCents(totalAmount)){
-            Log.d(TAG, "The total amount is above 1255.5");
         }
         return totalAmount;
     }
@@ -150,13 +149,6 @@ public class CalculatePrices {
             return true;
         }
          Log.d(TAG, "The total amount should be at least 250");
-        return false;
-    }
-    private boolean checkIfTotalAmountIsAboveMinimalOneThousandFiftyFiveAndFiftyCents(double totalAmount){
-        if(totalAmount >= 1255.5){
-            return true;
-        }
-        Log.d(TAG, "The total amount should be at least 1255.5");
         return false;
     }
 }

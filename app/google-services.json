@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "390763267878",
+    "project_id": "skoolworkshops-b8f87",
+    "storage_bucket": "skoolworkshops-b8f87.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:390763267878:android:13b5a75800ec0e0af6a3e7",
+        "android_client_info": {
+          "package_name": "com.example.homelayout"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "390763267878-mtjs1kmfdj0degte1mkta7h74t71ck47.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAbTLXH7wE7GUo5CWzPQlM-kaV12jHNBcs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "390763267878-mtjs1kmfdj0degte1mkta7h74t71ck47.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

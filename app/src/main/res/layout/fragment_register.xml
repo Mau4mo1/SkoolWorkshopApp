@@ -87,14 +87,16 @@
             android:hint="Wachtwoord"
             />
     </LinearLayout>
+
     <TextView
+        android:id="@+id/tv_register_policy"
         android:textColor="@color/black"
         android:paddingLeft="10sp"
         android:layout_margin="10sp"
         android:layout_gravity="center"
         android:layout_width="350sp"
         android:layout_height="wrap_content"
-        android:text="Je persoonlijke gegevens worden gebruikt om je ervaringen op deze site te ondersteunen, om toegang to je account te beheren en voor andere doeleinden zoals omschreven in ons privacybeleid "/>
+        android:text="Je persoonlijke gegevens worden gebruikt om je ervaringen op deze site te ondersteunen, om toegang tot je account te beheren en voor andere doeleinden zoals omschreven in ons "/>
     <Button
         android:paddingLeft="8sp"
         android:layout_gravity="center"

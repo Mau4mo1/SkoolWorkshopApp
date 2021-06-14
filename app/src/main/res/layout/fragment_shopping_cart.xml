@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:id="@+id/shopping_cart_scrollview">
     <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
         android:layout_height="match_parent"
         android:layout_width="350sp"
         android:orientation="vertical"
@@ -20,470 +20,22 @@
             android:text="Extra workshop toevoegen"
             android:textSize="15sp"
             android:textColor="@color/white"/>
-        <LinearLayout
-            android:paddingTop="20sp"
-            android:layout_width="350sp"
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/shopping_cart_workshop_recycler"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:background="@drawable/cart_table_background">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="X"
-                    android:gravity="left"
-                    android:textSize="25sp"
-                    android:layout_gravity="left"/>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:background="@drawable/cart_table_background">
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingTop="3sp"
-                    android:orientation="horizontal">
-                    <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Dienst:"
-                    android:textStyle="bold"
-                    android:gravity="left"
-                    android:textSize="17sp"
-                    android:layout_gravity="left"/>
-                    <TextView
-                    android:layout_gravity="right"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Workshop rap"
-                        android:textColor="@color/burntorange"
-                    android:textSize="17sp"
-                    android:gravity="right"/>
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Aantal workshop rondes:"
-                        android:gravity="left"
-                        android:textSize="16sp"
-                        android:layout_gravity="left"/>
-                    <TextView
-                        android:layout_gravity="right"
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:text="2"
-                        android:textSize="17sp"
-                        android:gravity="right"/>
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Aantal minuten per workshopronde:"
-                        android:gravity="left"
-                        android:textSize="16sp"
-                        android:layout_gravity="left"/>
-                    <TextView
-                        android:layout_gravity="right"
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:text="60"
-                        android:textSize="17sp"
-                        android:gravity="right"/>
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Totale duur in minuten:"
-                        android:gravity="left"
-                        android:textSize="16sp"
-                        android:layout_gravity="left"/>
-                    <TextView
-                        android:layout_gravity="right"
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:text="120"
-                        android:textSize="17sp"
-                        android:gravity="right"/>
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Tijdschema:"
-                        android:gravity="left"
-                        android:textSize="17sp"
-                        android:layout_gravity="left"/>
-                    <TextView
-                        android:layout_gravity="right"
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Voorbeeld"
-                        android:textSize="17sp"
-                        android:gravity="right"/>
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Leerniveau:"
-                        android:gravity="left"
-                        android:textSize="17sp"
-                        android:layout_gravity="left"/>
-                    <TextView
-                        android:layout_gravity="right"
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Voorbeeld"
-                        android:textSize="17sp"
-                        android:gravity="right"/>
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:paddingBottom="5sp">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Workshopdatum:"
-                        android:gravity="left"
-                        android:textSize="17sp"
-                        android:layout_gravity="left"/>
-                    <TextView
-                        android:layout_gravity="right"
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:text="3 Juni 2021"
-                        android:textSize="17sp"
-                        android:gravity="right"/>
-                </LinearLayout>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:paddingBottom="5sp"
-                android:paddingTop="5sp"
-                android:background="@drawable/cart_table_background">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Prijs:"
-                    android:gravity="left"
-                    android:textSize="20sp"
-                    android:layout_gravity="left"/>
-                <TextView
-                    android:layout_gravity="right"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:text="€325,00"
-                    android:textSize="17sp"
-                    android:gravity="right"/>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:paddingBottom="5sp"
-                android:paddingTop="5sp"
-                android:background="@drawable/cart_table_background">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Aantal:"
-                    android:gravity="left"
-                    android:textSize="20sp"
-                    android:layout_gravity="left"/>
-                <TextView
-                    android:layout_gravity="right"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:text="1"
-                    android:textSize="17sp"
-                    android:gravity="right"/>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:paddingBottom="5sp"
-                android:paddingTop="5sp"
-                android:background="@drawable/cart_table_background">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Subtotaal:"
-                    android:gravity="left"
-                    android:textSize="20sp"
-                    android:layout_gravity="left"/>
-                <TextView
-                    android:layout_gravity="right"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:text="€325,00"
-                    android:textSize="17sp"
-                    android:gravity="right"/>
-            </LinearLayout>
+            android:nestedScrollingEnabled="false">
 
+        </androidx.recyclerview.widget.RecyclerView>
 
-
-
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="350sp"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/shopping_cart_culture_day_recycler"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:background="@drawable/cart_table_background">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="X"
-                    android:gravity="left"
-                    android:textSize="25sp"
-                    android:layout_gravity="left"/>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:background="@drawable/cart_table_background">
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingTop="3sp"
-                    android:orientation="horizontal">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Dienst:"
-                        android:textStyle="bold"
-                        android:gravity="left"
-                        android:textSize="17sp"
-                        android:layout_gravity="left"/>
-                    <TextView
-                        android:layout_gravity="right"
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Workshop rap"
-                        android:textColor="@color/burntorange"
-                        android:textSize="17sp"
-                        android:gravity="right"/>
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Aantal workshop rondes:"
-                        android:gravity="left"
-                        android:textSize="16sp"
-                        android:layout_gravity="left"/>
-                    <TextView
-                        android:layout_gravity="right"
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:text="2"
-                        android:textSize="17sp"
-                        android:gravity="right"/>
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Aantal minuten per workshopronde:"
-                        android:gravity="left"
-                        android:textSize="16sp"
-                        android:layout_gravity="left"/>
-                    <TextView
-                        android:layout_gravity="right"
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:text="60"
-                        android:textSize="17sp"
-                        android:gravity="right"/>
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Totale duur in minuten:"
-                        android:gravity="left"
-                        android:textSize="16sp"
-                        android:layout_gravity="left"/>
-                    <TextView
-                        android:layout_gravity="right"
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:text="120"
-                        android:textSize="17sp"
-                        android:gravity="right"/>
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Tijdschema:"
-                        android:gravity="left"
-                        android:textSize="17sp"
-                        android:layout_gravity="left"/>
-                    <TextView
-                        android:layout_gravity="right"
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Voorbeeld"
-                        android:textSize="17sp"
-                        android:gravity="right"/>
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Leerniveau:"
-                        android:gravity="left"
-                        android:textSize="17sp"
-                        android:layout_gravity="left"/>
-                    <TextView
-                        android:layout_gravity="right"
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Voorbeeld"
-                        android:textSize="17sp"
-                        android:gravity="right"/>
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:paddingBottom="5sp">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Workshopdatum:"
-                        android:gravity="left"
-                        android:textSize="17sp"
-                        android:layout_gravity="left"/>
-                    <TextView
-                        android:layout_gravity="right"
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:text="3 Juni 2021"
-                        android:textSize="17sp"
-                        android:gravity="right"/>
-                </LinearLayout>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:paddingBottom="5sp"
-                android:paddingTop="5sp"
-                android:background="@drawable/cart_table_background">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Prijs:"
-                    android:gravity="left"
-                    android:textSize="20sp"
-                    android:layout_gravity="left"/>
-                <TextView
-                    android:layout_gravity="right"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:text="€325,00"
-                    android:textSize="17sp"
-                    android:gravity="right"/>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:paddingBottom="5sp"
-                android:paddingTop="5sp"
-                android:background="@drawable/cart_table_background">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Aantal:"
-                    android:gravity="left"
-                    android:textSize="20sp"
-                    android:layout_gravity="left"/>
-                <TextView
-                    android:layout_gravity="right"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:text="1"
-                    android:textSize="17sp"
-                    android:gravity="right"/>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:paddingBottom="5sp"
-                android:paddingTop="5sp"
-                android:background="@drawable/cart_table_background">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Subtotaal:"
-                    android:gravity="left"
-                    android:textSize="20sp"
-                    android:layout_gravity="left"/>
-                <TextView
-                    android:layout_gravity="right"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:text="€325,00"
-                    android:textSize="17sp"
-                    android:gravity="right"/>
-            </LinearLayout>
+            android:nestedScrollingEnabled="false">
 
-
-
-
-        </LinearLayout>
-
+        </androidx.recyclerview.widget.RecyclerView>
         <LinearLayout
             android:paddingTop="20sp"
             android:layout_width="350sp"
@@ -498,6 +50,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Subtotaal:"
+                    android:textColor="@color/text_grey"
                     android:gravity="left"
                     android:textSize="20sp"
                     android:layout_gravity="left"/>
@@ -506,6 +59,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:text="*Prijs zonder reiskosten*"
+                    android:textColor="@color/text_grey"
                     android:textSize="17sp"
                     android:gravity="right"/>
             </LinearLayout>
@@ -517,7 +71,8 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Reiskosten"
+                    android:text="Reiskosten:"
+                    android:textColor="@color/text_grey"
                     android:gravity="left"
                     android:textSize="20sp"
                     android:layout_gravity="left"/>
@@ -526,6 +81,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:text="*Bereken reiskosten*"
+                    android:textColor="@color/text_grey"
                     android:textSize="17sp"
                     android:gravity="right"/>
             </LinearLayout>
@@ -537,7 +93,8 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Totaal"
+                    android:text="Totaal:"
+                    android:textColor="@color/text_grey"
                     android:gravity="left"
                     android:textSize="20sp"
                     android:layout_gravity="left"/>
@@ -546,6 +103,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:text="*Prijs met reiskosten*"
+                    android:textColor="@color/text_grey"
                     android:textSize="17sp"
                     android:gravity="right"/>
             </LinearLayout>
@@ -567,4 +125,4 @@
             android:paddingBottom="10sp"/>
 
     </LinearLayout>
-</ScrollView>
+</androidx.core.widget.NestedScrollView>
