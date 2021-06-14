@@ -36,12 +36,15 @@ import com.example.homelayout.repositories.TinyDB;
 import com.example.homelayout.ui.home.HomeFragment;
 import com.example.homelayout.ui.shoppingcart.ShoppingCartFragment;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
 public class CulturedayBookingFormFragment extends Fragment {
+    private String dateString;
     private ArrayList<Object> bookings;
     private TinyDB tinyDB;
     private Date date;
@@ -758,9 +761,12 @@ public class CulturedayBookingFormFragment extends Fragment {
                                 public void onDateChanged(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
                                     Log.d("onDateChanged", "Nieuwe datum gekozen");
                                     date = new Date(year, monthOfYear, dayOfMonth);
+                                    DateFormat dateFormat = new SimpleDateFormat("dd/MM/"+20+"YY");
+                                    dateString = dateFormat.format(date);
+                                    Log.d("WErktdit", dateString);
                                 }
                             });
-                            culturedayBookingInfo.setDate(date);
+
                             System.out.println(date);
                             if (cultureday_registration_box.isChecked() == true){
                                 culturedayBookingInfo.setRegistration(true);
@@ -770,12 +776,14 @@ public class CulturedayBookingFormFragment extends Fragment {
                                 System.out.println("Registration false");
                             }
                             culturedayBookingInfo.setLearninglevel(learning_level.getText().toString());
-                            culturedayBookingInfo.setTimescheme(workshop_particepents.getText().toString());
+                            culturedayBookingInfo.setTimescheme(time_scheme.getText().toString());
                             culturedayBookingInfo.setParticepants(Integer.parseInt(workshop_particepents.getText().toString()));
                             culturedayBookingInfo.setRounds(Integer.parseInt(workshop_rounds.getText().toString()));
                             culturedayBookingInfo.setWorkshop_minutes(Integer.parseInt(round_minutes.getText().toString()));
                             culturedayBookingInfo.setWorkshops(workshops);
                             culturedayBookingInfo.setWorkshops_per_round(Integer.parseInt(workshop_per_round.getText().toString()));
+                            culturedayBookingInfo.setPrice(calculatePrices.calculateCultureday(values, workshops));
+                            culturedayBookingInfo.setDate(dateString);
 
 
                             // send to TinyDB

@@ -12,9 +12,9 @@ public class CulturedayBookingInfo {
     private int particepants;
     private String learning_level;
     private ArrayList<Workshops> workshops;
-    private int price;
+    private double price;
     private String time_scheme;
-    private Date date;
+    private String date;
     private boolean registration_system;
 
     public void setRounds(int rounds) {
@@ -59,17 +59,17 @@ public class CulturedayBookingInfo {
         return this.registration_system;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
-    public Date getDate() {
+    public String getDate() {
         return this.date;
     }
 
-    public void setPrice(int price){
+    public void setPrice(double price){
         this.price = price;
     }
-    public int getPrice(){
+    public double getPrice(){
         return this.price;
     }
 
