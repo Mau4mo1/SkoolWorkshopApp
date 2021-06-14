@@ -70,7 +70,7 @@ public class ShoppingCartFragment extends Fragment {
         cultureDayRecyclerView.setLayoutManager(cultureDayLayoutManager);
         cultureDayRecyclerView.setHasFixedSize(true);
         cultureDayBookings.add(cultureDayDummyData);
-        cultureDayBookings = tinyDB.getListObject("CultureItems", CulturedayBookingInfo.class);
+
         shoppingCartCultureDayAdapter = new ShoppingCartCultureDayAdapter(cultureDayBookings);
         cultureDayRecyclerView.setAdapter(shoppingCartCultureDayAdapter);
 
