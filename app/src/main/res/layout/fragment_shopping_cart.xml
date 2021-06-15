@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:id="@+id/shopping_cart_scrollview">
     <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
         android:layout_height="match_parent"
         android:layout_width="350sp"
         android:orientation="vertical"
@@ -21,10 +20,20 @@
             android:text="Extra workshop toevoegen"
             android:textSize="15sp"
             android:textColor="@color/white"/>
+
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/shopping_cart_recycler"
+            android:id="@+id/shopping_cart_workshop_recycler"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:nestedScrollingEnabled="false">
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/shopping_cart_culture_day_recycler"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:nestedScrollingEnabled="false">
 
         </androidx.recyclerview.widget.RecyclerView>
         <LinearLayout
@@ -41,6 +50,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Subtotaal:"
+                    android:textColor="@color/text_grey"
                     android:gravity="left"
                     android:textSize="20sp"
                     android:layout_gravity="left"/>
@@ -49,6 +59,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:text="*Prijs zonder reiskosten*"
+                    android:textColor="@color/text_grey"
                     android:textSize="17sp"
                     android:gravity="right"/>
             </LinearLayout>
@@ -61,6 +72,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Reiskosten:"
+                    android:textColor="@color/text_grey"
                     android:gravity="left"
                     android:textSize="20sp"
                     android:layout_gravity="left"/>
@@ -69,6 +81,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:text="*Bereken reiskosten*"
+                    android:textColor="@color/text_grey"
                     android:textSize="17sp"
                     android:gravity="right"/>
             </LinearLayout>
@@ -81,6 +94,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Totaal:"
+                    android:textColor="@color/text_grey"
                     android:gravity="left"
                     android:textSize="20sp"
                     android:layout_gravity="left"/>
@@ -89,6 +103,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:text="*Prijs met reiskosten*"
+                    android:textColor="@color/text_grey"
                     android:textSize="17sp"
                     android:gravity="right"/>
             </LinearLayout>
@@ -110,4 +125,4 @@
             android:paddingBottom="10sp"/>
 
     </LinearLayout>
-</ScrollView>
+</androidx.core.widget.NestedScrollView>

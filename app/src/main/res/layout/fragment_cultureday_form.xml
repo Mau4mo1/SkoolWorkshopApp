@@ -419,6 +419,14 @@
                 android:layout_marginTop="8sp"
                 android:layout_marginEnd="20sp"
                 android:background="@drawable/form_background_rounded"/>
+            <CheckBox
+                android:id="@+id/sv_cultureday_form_registration_box"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12sp"
+                app:layout_constraintTop_toBottomOf="@+id/edt_cultureday_form_learninglevel_field"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:text="Inschrijf systeem gebruiken?"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -442,24 +450,14 @@
             android:layout_marginStart="20sp"
             android:textSize="16sp"/>
         <TextView
-            android:id="@+id/tv_cultureday_form_subtotal"
+            android:id="@+id/tv_cultureday_form_subtotal_amount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_cultureday_form_kost"
             android:layout_marginTop="20sp"
             android:layout_marginEnd="50sp"
-            android:text="Subtotaal:"
-            android:textSize="20sp"/>
-        <TextView
-            android:id="@+id/tv_cultureday_form_subtotal_amount"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_cultureday_form_subtotal"
-            android:layout_marginTop="20sp"
-            android:layout_marginEnd="50sp"
-            android:text="0"
+            android:text="Subtotal: €0.00"
             android:textSize="20sp"/>
         <Button
             android:id="@+id/button_book_now_cdf"

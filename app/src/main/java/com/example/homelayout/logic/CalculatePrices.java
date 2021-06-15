@@ -134,8 +134,6 @@ public class CalculatePrices {
                 }
             }
         }
-        
-        System.out.println(totalAmount);
         return totalAmount;
     }
 

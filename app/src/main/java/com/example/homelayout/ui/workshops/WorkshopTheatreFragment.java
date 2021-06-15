@@ -7,15 +7,22 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import com.example.homelayout.R;
+import com.example.homelayout.controller.WorkshopController;
+import com.example.homelayout.domain.WorkshopPictureObject;
 import com.example.homelayout.domain.Workshops;
+import com.example.homelayout.domain.WorkshopsObject;
 
-public class WorkshopTheatreFragment extends Fragment implements View.OnClickListener {
+import java.sql.SQLException;
+import java.util.List;
+
+public class WorkshopTheatreFragment extends Fragment implements View.OnClickListener, WorkshopController.WorkshopsControllerListener {
 
     private ImageButton mButtonSoapActing;
     private ImageButton mButtonStageFighting;
@@ -23,9 +30,20 @@ public class WorkshopTheatreFragment extends Fragment implements View.OnClickLis
     private LinearLayout llSoapActing;
     private LinearLayout llStageFighting;
     private LinearLayout llTheatreSport;
+    private List<WorkshopsObject> workshopsObjectList;
+    private ImageView mImageViewSoapActing;
+    private ImageView mImageViewStageFighting;
+    private ImageView mImageViewTheaterSport;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_workshop_theatre, container, false);
+
+        mImageViewSoapActing = root.findViewById(R.id.iv_workshop_soap_acting);
+        mImageViewStageFighting = root.findViewById(R.id.iv_workshop_stage_fighting);
+        mImageViewTheaterSport = root.findViewById(R.id.iv_workshop_theatre_sport);
+
+        new WorkshopController(this).loadWorkshopsByCategory("Theater");
+
         mButtonSoapActing = root.findViewById(R.id.soap_acting_info);
         mButtonSoapActing.setClickable(true);
         mButtonStageFighting = root.findViewById(R.id.stage_fighting_info);
@@ -39,14 +57,16 @@ public class WorkshopTheatreFragment extends Fragment implements View.OnClickLis
                 Intent intent = new Intent(Intent.ACTION_VIEW, uri);
                 startActivity(intent);
             }
-        });mButtonStageFighting.setOnClickListener(new View.OnClickListener() {
+        });
+        mButtonStageFighting.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Uri uri = Uri.parse("https://skoolworkshop.nl/workshops/workshop-stage-fighting/");
                 Intent intent = new Intent(Intent.ACTION_VIEW, uri);
                 startActivity(intent);
             }
-        });mButtonTheatreSport.setOnClickListener(new View.OnClickListener() {
+        });
+        mButtonTheatreSport.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Uri uri = Uri.parse("https://skoolworkshop.nl/workshops/workshop-theatersport/");
@@ -68,7 +88,7 @@ public class WorkshopTheatreFragment extends Fragment implements View.OnClickLis
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.layout_workshop_soap_acting:
                 getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new WorkshopsForm(Workshops.SoapActeren)).addToBackStack(null).commit();
                 break;
@@ -78,6 +98,35 @@ public class WorkshopTheatreFragment extends Fragment implements View.OnClickLis
             case R.id.layout_workshop_theatre_sport:
                 getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new WorkshopsForm(Workshops.Theatersport)).addToBackStack(null).commit();
                 break;
+        }
+    }
+
+    @Override
+    public void onWorkshopsAvailable(List<WorkshopsObject> workshopsObjectList) throws SQLException {
+        this.workshopsObjectList = workshopsObjectList;
+        for (WorkshopsObject i : workshopsObjectList) {
+            fillImages(i);
+        }
+    }
+
+    public void fillImages(WorkshopsObject workshopsObject) throws SQLException {
+        WorkshopPictureObject[] workshopPictureObject = workshopsObject.getPictureObject();
+        switch (workshopsObject.getCodeName()) {
+            case "SkoolSoapActeren":
+                mImageViewSoapActing
+                        .setImageBitmap(workshopPictureObject[0]
+                                .getBlob()
+                                .convertBlobIntoImage());
+            case "SkoolStageFighting":
+                mImageViewStageFighting
+                        .setImageBitmap(workshopPictureObject[0]
+                                .getBlob()
+                                .convertBlobIntoImage());
+            case "SkoolTheatersport":
+                mImageViewTheaterSport
+                        .setImageBitmap(workshopPictureObject[0]
+                                .getBlob()
+                                .convertBlobIntoImage());
         }
     }
 }
