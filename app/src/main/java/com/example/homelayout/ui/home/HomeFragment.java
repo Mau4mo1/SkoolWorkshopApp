@@ -16,6 +16,7 @@ import androidx.fragment.app.Fragment;
 
 import com.example.homelayout.R;
 import com.example.homelayout.domain.WorkshopPictureObject;
+import com.example.homelayout.logic.NewsletterAPI;
 import com.example.homelayout.ui.Cultureday.Form.CulturedayBookingFormFragment;
 import com.example.homelayout.ui.login.LoginFragment;
 import com.example.homelayout.ui.register.RegisterFragment;
@@ -24,6 +25,7 @@ import com.example.homelayout.ui.workshops.WorkshopsFragment;
 import com.example.homelayout.ui.workshops.WorkshopsPopular;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import java.io.IOException;
 import java.sql.SQLException;
 
 public class HomeFragment extends Fragment implements View.OnClickListener {
@@ -60,6 +62,12 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         btnRegister.setOnClickListener(this);
         btnLogin.setOnClickListener(this);
         ivBell.setOnClickListener(this);
+
+        try {
+            new NewsletterAPI().execute("");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         return root;
     }
