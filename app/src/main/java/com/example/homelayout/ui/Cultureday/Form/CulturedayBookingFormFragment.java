@@ -228,6 +228,21 @@ public class CulturedayBookingFormFragment extends Fragment {
         prijs_summery = root.findViewById(R.id.tv_cultureday_form_kost);
         workshop_particepents = root.findViewById(R.id.edn_cultureday_form_participants_field);
         extra_price_participants_amount_description = root.findViewById(R.id.tv_cultureday_form_participants_shirt_and_drums_description);
+        date_cultureday = (DatePicker)root.findViewById(R.id.tv_cultureday_form_date);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            this.date_cultureday.setOnDateChangedListener(new DatePicker.OnDateChangedListener() {
+                @Override
+                public void onDateChanged(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                    Log.d("onDateChanged", "Nieuwe datum gekozen");
+                    date = new Date(year, monthOfYear, dayOfMonth);
+                    DateFormat dateFormat = new SimpleDateFormat("dd/MM/"+20+"YY");
+                    dateString = dateFormat.format(date);
+                    Log.d("WErktdit", dateString);
+                }
+            });
+        }
+
+
 
         workshop_per_round.addTextChangedListener(new TextWatcher() {
             @Override
@@ -719,7 +734,7 @@ public class CulturedayBookingFormFragment extends Fragment {
             }
         });
 
-        date_cultureday = root.findViewById(R.id.tv_cultureday_form_date);
+
         cultureday_registration_box = root.findViewById(R.id.sv_cultureday_form_registration_box);
         btn_book_now_cdf = root.findViewById(R.id.button_book_now_cdf);
         btn_book_now_cdf.setClickable(true);
@@ -756,16 +771,7 @@ public class CulturedayBookingFormFragment extends Fragment {
                         minpopup.show();
                     }else{
                         try {
-                            date_cultureday.setOnDateChangedListener(new DatePicker.OnDateChangedListener() {
-                                @Override
-                                public void onDateChanged(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                                    Log.d("onDateChanged", "Nieuwe datum gekozen");
-                                    date = new Date(year, monthOfYear, dayOfMonth);
-                                    DateFormat dateFormat = new SimpleDateFormat("dd/MM/"+20+"YY");
-                                    dateString = dateFormat.format(date);
-                                    Log.d("WErktdit", dateString);
-                                }
-                            });
+
 
                             System.out.println(date);
                             if (cultureday_registration_box.isChecked() == true){
