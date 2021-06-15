@@ -4,7 +4,9 @@ import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 
@@ -51,6 +53,7 @@ public class WorkshopsForm extends Fragment {
     private int rounds = 1;
     private int minutes;
     private Date date;
+    private Button mButtonWorkshopInfo;
     private TextView mTextViewWorkshopTotalMinutes;
     private TextView mTextViewWorkshopFormTitle;
     private DatePicker mDatePickerWorkshopForm;
@@ -81,14 +84,23 @@ public class WorkshopsForm extends Fragment {
         // Inflate the layout for this fragment
         // pls werk
         View root = inflater.inflate(R.layout.fragment_workshops_form, container, false);
+        mButtonWorkshopInfo = root.findViewById(R.id.button_more_info_workshop);
+        mButtonWorkshopInfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Uri uri = Uri.parse(getUrl(workshop));
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                startActivity(intent);
+            }
+        });
         thisContext = container.getContext();
-       tinydb = new TinyDB(thisContext);
-       loadData();
+        tinydb = new TinyDB(thisContext);
+        loadData();
         mTextViewWorkshopsParticipants = (TextView) root.findViewById(R.id.tv_workshops_participants);
         mTextViewWorkshopFormTitle = (TextView) root.findViewById(R.id.tv_workshops_form_title);
         mTextViewWorkshopFormTitle.setText("Workshop " + this.workshop);
 
-        switch (workshop){
+        switch (workshop) {
             case Graffiti:
             case TshirtOntwerpen:
                 mTextViewWorkshopsParticipants.setText("Totale aantal deelnemers * (+€7,50)");
@@ -112,7 +124,8 @@ public class WorkshopsForm extends Fragment {
         this.mEditTextWorkshopParticipants.addTextChangedListener(new TextWatcher() {
 
             @Override
-            public void afterTextChanged(Editable s) {}
+            public void afterTextChanged(Editable s) {
+            }
 
             @Override
             public void beforeTextChanged(CharSequence s, int start,
@@ -122,7 +135,7 @@ public class WorkshopsForm extends Fragment {
             @Override
             public void onTextChanged(CharSequence s, int start,
                                       int before, int count) {
-                if(s.length() != 0){
+                if (s.length() != 0) {
                     values.put("participants", Integer.valueOf(String.valueOf(mEditTextWorkshopParticipants.getText())));
                     updateSubtotal();
                 }
@@ -133,7 +146,8 @@ public class WorkshopsForm extends Fragment {
         this.mEditTextWorkshopRounds.addTextChangedListener(new TextWatcher() {
 
             @Override
-            public void afterTextChanged(Editable s) {}
+            public void afterTextChanged(Editable s) {
+            }
 
             @Override
             public void beforeTextChanged(CharSequence s, int start,
@@ -143,7 +157,7 @@ public class WorkshopsForm extends Fragment {
             @Override
             public void onTextChanged(CharSequence s, int start,
                                       int before, int count) {
-                if(s.length() != 0){
+                if (s.length() != 0) {
                     rounds = Integer.parseInt(String.valueOf(mEditTextWorkshopRounds.getText()));
                     values.put("rounds", rounds);
                     updateSubtotal();
@@ -156,7 +170,8 @@ public class WorkshopsForm extends Fragment {
         this.mEditTextWorkshopMinutes.addTextChangedListener(new TextWatcher() {
 
             @Override
-            public void afterTextChanged(Editable s) {}
+            public void afterTextChanged(Editable s) {
+            }
 
             @Override
             public void beforeTextChanged(CharSequence s, int start,
@@ -166,7 +181,7 @@ public class WorkshopsForm extends Fragment {
             @Override
             public void onTextChanged(CharSequence s, int start,
                                       int before, int count) {
-                if(s.length() != 0){
+                if (s.length() != 0) {
                     minutes = Integer.valueOf(String.valueOf(mEditTextWorkshopMinutes.getText()));
                     values.put("minutes", minutes);
                     mTextViewWorkshopTotalMinutes.setText("Totaal aantal minuten: " + rounds * minutes);
@@ -192,7 +207,7 @@ public class WorkshopsForm extends Fragment {
                 boolean checkPrice;
                 boolean checkParticipants = false;
                 int participants = Integer.parseInt(String.valueOf(mEditTextWorkshopParticipants.getText()));
-                if(participants <= 25) {
+                if (participants <= 25) {
                     checkParticipants = true;
                 }
                 switch (workshop) {
@@ -238,22 +253,24 @@ public class WorkshopsForm extends Fragment {
     }
 
     public void updateSubtotal() {
-            String subtotal = "Subtotaal: €" + calculatePrices.getWorkshopCalc(workshop, values) + "0";
-            mTextViewWorkshopSubtotal.setText(subtotal);
-        }
-//        private void saveData(){
+        String subtotal = "Subtotaal: €" + calculatePrices.getWorkshopCalc(workshop, values) + "0";
+        mTextViewWorkshopSubtotal.setText(subtotal);
+    }
+
+    //        private void saveData(){
 //            Gson gson = new Gson();
 //            String json = gson.toJson(workshopCardList);
 //            requireActivity().getSharedPreferences("shopping_card", Context.MODE_PRIVATE).edit().putString("card_item_title", json).apply();
 //        }
-        private void loadData(){
+    private void loadData() {
 
-               workshopCardList = tinydb.getListObject("Carditems",WorkshopBooking.class);
-               if (workshopCardList == null){
-                   workshopCardList = new ArrayList<>();
-               }
+        workshopCardList = tinydb.getListObject("Carditems", WorkshopBooking.class);
+        if (workshopCardList == null) {
+            workshopCardList = new ArrayList<>();
         }
-    private void showPricePopup(){
+    }
+
+    private void showPricePopup() {
         AlertDialog.Builder subpopup = new AlertDialog.Builder(thisContext);
         switch (workshop) {
             case Photoshop:
@@ -263,17 +280,18 @@ public class WorkshopsForm extends Fragment {
             default:
                 subpopup.setMessage("Minimaal bedrag voor deze workshop is €175,00, pas de ingevulde gegevens aan om deze prijs te berijken");
         }
-            subpopup.setCancelable(true);
-            subpopup.setTitle("Subtotaal niet genoeg");
-            subpopup.setNegativeButton("OK", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialogInterface, int i) {
-                    dialogInterface.cancel();
-                }
-            });
-            subpopup.show();
+        subpopup.setCancelable(true);
+        subpopup.setTitle("Subtotaal niet genoeg");
+        subpopup.setNegativeButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.cancel();
+            }
+        });
+        subpopup.show();
     }
-    private void showParticipantPopup(){
+
+    private void showParticipantPopup() {
         AlertDialog.Builder subpopup = new AlertDialog.Builder(thisContext);
         subpopup.setCancelable(true);
         subpopup.setTitle("Te veel deelnemers");
@@ -285,6 +303,103 @@ public class WorkshopsForm extends Fragment {
             }
         });
         subpopup.show();
+    }
+
+    private String getUrl(Workshops workshop) {
+        String Url = null;
+        switch (workshop) {
+            case Graffiti:
+                Url = "https://skoolworkshop.nl/workshops/workshop-graffiti/";
+                break;
+            case LightGraffiti:
+                Url = "https://skoolworkshop.nl/workshops/workshop-light-graffiti/";
+                break;
+            case StopMotion:
+                Url = "https://skoolworkshop.nl/workshops/workshop-stop-motion/";
+                break;
+            case TshirtOntwerpen:
+                Url = "https://skoolworkshop.nl/workshops/workshop-t-shirt-ontwerpen/";
+                break;
+            case Breakdance:
+                Url = "https://skoolworkshop.nl/workshops/workshop-breakdance/";
+                break;
+            case DanceFit:
+                Url = "https://skoolworkshop.nl/workshops/workshop-dance-fit/";
+                break;
+            case Flashmob:
+                Url = "https://skoolworkshop.nl/workshops/workshop-flashmob/";
+                break;
+            case Hiphop:
+                Url = "https://skoolworkshop.nl/workshops/workshop-hiphop/";
+                break;
+            case ModerneDans:
+                Url = "https://skoolworkshop.nl/workshops/workshop-moderne-dans/";
+                break;
+            case Stepping:
+                Url = "https://skoolworkshop.nl/workshops/workshop-stepping/";
+                break;
+            case Streetdance:
+                Url = "https://skoolworkshop.nl/workshops/workshop-streetdance/";
+                break;
+            case Photoshop:
+                Url = "https://skoolworkshop.nl/workshops/workshop-photoshop/";
+                break;
+            case Vloggen:
+                Url = "https://skoolworkshop.nl/workshops/workshop-vloggen/";
+                break;
+            case Fotografie:
+                Url = "https://skoolworkshop.nl/workshops/workshop-smartphone-fotografie/";
+                break;
+            case Videoclip:
+                Url = "https://skoolworkshop.nl/workshops/workshop-videoclip-maken/";
+                break;
+            case CaribbeanDrums:
+                Url = "https://skoolworkshop.nl/workshops/workshop-caribbean-drums/";
+                break;
+            case GhettoDrums:
+                Url = "https://skoolworkshop.nl/workshops/workshop-ghetto-drums/";
+                break;
+            case LiveLooping:
+                Url = "https://skoolworkshop.nl/workshops/workshop-live-looping/";
+                break;
+            case Percurssie:
+                Url = "https://skoolworkshop.nl/workshops/workshop-percussie/";
+                break;
+            case Popstar:
+                Url = "https://skoolworkshop.nl/workshops/workshop-popstar/";
+                break;
+            case Rap:
+                Url = "https://skoolworkshop.nl/workshops/workshop-rap/";
+                break;
+            case Bootcamp:
+                Url = "https://skoolworkshop.nl/workshops/workshop-bootcamp/";
+                break;
+            case Capoeira:
+                Url = "https://skoolworkshop.nl/workshops/workshop-capoeira/";
+                break;
+            case Freeruning:
+                Url = "https://skoolworkshop.nl/workshops/workshop-freerunning/";
+                break;
+            case Kickboksen:
+                Url = "https://skoolworkshop.nl/workshops/workshop-kickboksen/";
+                break;
+            case Pannavoetbal:
+                Url = "https://skoolworkshop.nl/workshops/workshop-pannavoetbal/";
+                break;
+            case Zelfverdedeging:
+                Url = "https://skoolworkshop.nl/workshops/workshop-zelfverdedeging/";
+                break;
+            case SoapActeren:
+                Url = "https://skoolworkshop.nl/workshops/workshop-soap-acteren/";
+                break;
+            case StageFighting:
+                Url = "https://skoolworkshop.nl/workshops/workshop-stage-fighting/";
+                break;
+            case Theatersport:
+                Url = "https://skoolworkshop.nl/workshops/workshop-theatersport/";
+                break;
+        }
+        return Url;
     }
 
 }
