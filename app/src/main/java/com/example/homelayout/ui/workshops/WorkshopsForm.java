@@ -237,20 +237,6 @@ public class WorkshopsForm extends Fragment {
                     String date = dateFormat.format(WorkshopsForm.this.date);
                     Log.d("test", date);
 
-                String dienst = mTextViewWorkshopFormTitle.getText().toString();
-                int minuten = minutes;
-                int rondes = rounds;
-                String tijdschema = mEditTextWorkshopTimetable.getText().toString();
-                String leerniveau = mEditTextWorkshopLearningLevel.getText().toString();
-                DateFormat dateFormat = null;
-                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
-                    dateFormat = new SimpleDateFormat("dd/MM/" + 20 + "YY");
-                }
-                String datum = dateFormat.format(date);
-                Log.d("test", datum);
-                double prijs = calculatePrices.getWorkshopCalc(workshop, values);
-                WorkshopBooking workshops = new WorkshopBooking(dienst, rondes, minuten, tijdschema, leerniveau, datum, prijs);
-
                     WorkshopBooking workshops = new WorkshopBooking(service, rounds, minutes, timeScheme, learningLevel, date, price);
 
                     workshopCardList.add(workshops);
