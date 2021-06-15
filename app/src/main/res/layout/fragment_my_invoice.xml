@@ -7,11 +7,27 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/const_my_invoice_01"
+        <LinearLayout
+            android:id="@+id/llmy_invoice01"
+            android:layout_width="match_parent"
+            android:layout_height="50sp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:background="@drawable/top_background_login"
+            android:orientation="horizontal" />
+        <TextView
+            android:id="@+id/tv_my_invoice_description"
+            app:layout_constraintTop_toBottomOf="@+id/llmy_invoice01"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginTop="20sp"
             android:layout_marginStart="10sp"
-            app:layout_constraintTop_toTopOf="parent"
+            android:text="De volgende adressen worden standaard gebruikt op de afrekenpagina."/>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/const_my_invoice_01"
+            android:layout_marginStart="10sp"
+            app:layout_constraintTop_toBottomOf="@+id/tv_my_invoice_description"
             app:layout_constraintLeft_toLeftOf="parent"
             android:background="@drawable/contact_background"
             android:layout_width="match_parent"

@@ -7,9 +7,17 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_marginTop="20sp"
+        <LinearLayout
+            android:id="@+id/llmy_data01"
+            android:layout_width="match_parent"
+            android:layout_height="50sp"
             app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:background="@drawable/top_background_login"
+            android:orientation="horizontal" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            app:layout_constraintTop_toBottomOf="@+id/llmy_data01"
+            android:layout_marginTop="20sp"
             app:layout_constraintLeft_toLeftOf="parent"
             android:id="@+id/const_my_data_02"
             android:layout_marginStart="10sp"

@@ -7,15 +7,23 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+        <LinearLayout
+            android:id="@+id/llmy_invoice_edit01"
+            android:layout_width="match_parent"
+            android:layout_height="50sp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:background="@drawable/top_background_login"
+            android:orientation="horizontal" />
         <TextView
             android:layout_marginTop="20sp"
             android:id="@+id/tv_invoice_edit_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/llmy_invoice_edit01"
             app:layout_constraintLeft_toLeftOf="parent"
-            android:text="Voornaam"
-            android:layout_marginStart="20sp"
+            android:text="Factuuradres"
+            android:layout_marginStart="10sp"
             android:textSize="20sp"/>
         <androidx.constraintlayout.widget.ConstraintLayout
             app:layout_constraintLeft_toLeftOf="parent"
@@ -26,7 +34,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/contact_background">
             <TextView
-                android:id="@+id/tv_booked_workshop_edit_firstname_description"
+                android:id="@+id/tv_invoice_edit_firstname_description"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toTopOf="parent"
