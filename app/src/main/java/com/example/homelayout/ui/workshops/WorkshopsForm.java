@@ -10,6 +10,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 
+import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 
 import android.preference.PreferenceManager;
@@ -200,7 +201,6 @@ public class WorkshopsForm extends Fragment {
 
         this.mButtonWorkshopsBook.setClickable(true);
         this.mButtonWorkshopsBook.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View v) {
                 double price = calculatePrices.getWorkshopCalc(workshop, values);
@@ -236,7 +236,6 @@ public class WorkshopsForm extends Fragment {
                     }
                     String date = dateFormat.format(WorkshopsForm.this.date);
                     Log.d("test", date);
-
 
                     WorkshopBooking workshops = new WorkshopBooking(service, rounds, minutes, timeScheme, learningLevel, date, price);
 

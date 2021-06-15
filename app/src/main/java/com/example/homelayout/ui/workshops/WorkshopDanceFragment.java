@@ -195,6 +195,7 @@ public class WorkshopDanceFragment extends Fragment implements View.OnClickListe
                         .setImageBitmap(workshopPictureObject[0]
                                 .getBlob()
                                 .convertBlobIntoImage());
+
             case "SkoolModerneDans":
                 mImageViewModernDance
                         .setImageBitmap(workshopPictureObject[0]

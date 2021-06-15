@@ -14,6 +14,7 @@ import androidx.fragment.app.Fragment;
 import com.example.homelayout.R;
 import com.example.homelayout.domain.WorkshopPictureObject;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.squareup.picasso.Picasso;
 
 import java.sql.SQLException;
 
@@ -34,18 +35,36 @@ public class WorkshopsFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_category_workshops, container, false);
         mImageViewMedia = root.findViewById(R.id.iv_media);
+        Picasso.get()
+                .load("https://cdn-bnege.nitrocdn.com/MVgfApSlnIZMEMtTrPfeVWWDRvGvEHus/assets/static/source/rev-23fdb00/wp-content/uploads/2019/12/Media-Website-1024x683.jpg")
+                .into(mImageViewMedia);
         mImageViewMusic = root.findViewById(R.id.iv_music);
+        Picasso.get()
+                .load("https://cdn-bnege.nitrocdn.com/MVgfApSlnIZMEMtTrPfeVWWDRvGvEHus/assets/static/optimized/rev-23fdb00/wp-content/uploads/2021/01/Naamloos-1.jpg")
+                .into(mImageViewMusic);
         mImageViewSport = root.findViewById(R.id.iv_sport);
+        Picasso.get()
+                .load("https://cdn-bnege.nitrocdn.com/MVgfApSlnIZMEMtTrPfeVWWDRvGvEHus/assets/static/optimized/rev-23fdb00/wp-content/uploads/2019/12/Sport.jpg")
+                .into(mImageViewSport);
         mImageViewTheater = root.findViewById(R.id.iv_theater);
+        Picasso.get()
+                .load("https://cdn-bnege.nitrocdn.com/MVgfApSlnIZMEMtTrPfeVWWDRvGvEHus/assets/static/optimized/rev-23fdb00/wp-content/uploads/2019/12/Theater.jpg")
+                .into(mImageViewTheater);
         mImageViewVisualArts = root.findViewById(R.id.iv_visual_arts);
+        Picasso.get()
+                .load("https://cdn-bnege.nitrocdn.com/MVgfApSlnIZMEMtTrPfeVWWDRvGvEHus/assets/static/source/rev-23fdb00/wp-content/uploads/2020/01/Beeldende-Kunst.jpg")
+                .into(mImageViewVisualArts);
         mImageViewDance = root.findViewById(R.id.iv_dance);
+        Picasso.get()
+                .load("https://cdn-bnege.nitrocdn.com/MVgfApSlnIZMEMtTrPfeVWWDRvGvEHus/assets/static/source/rev-23fdb00/wp-content/uploads/2019/12/Dans-Website-1024x683.jpg")
+                .into(mImageViewDance);
 
         mConstraintLayoutVisualArts = root.findViewById(R.id.item_visual_arts);
         mConstraintLayoutVisualArts.setClickable(true);
         mConstraintLayoutVisualArts.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new WorkshopVisualArtsFragment()).addToBackStack(null).commit();
+                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new WorkshopCategoryRecyclerView("BeeldendeKunst")).addToBackStack(null).commit();
             }
         });
 
@@ -54,7 +73,7 @@ public class WorkshopsFragment extends Fragment {
         mConstraintLayoutDance.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new WorkshopDanceFragment()).addToBackStack(null).commit();
+                    getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new WorkshopCategoryRecyclerView("Dans")).addToBackStack(null).commit();
             }
         });
 
@@ -63,7 +82,7 @@ public class WorkshopsFragment extends Fragment {
         mConstraintLayoutMedia.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new WorkshopMediaFragment()).addToBackStack(null).commit();
+                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new WorkshopCategoryRecyclerView("Media")).addToBackStack(null).commit();
             }
         });
 
@@ -73,7 +92,7 @@ public class WorkshopsFragment extends Fragment {
 
             @Override
             public void onClick(View v) {
-                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new WorkshopMusicFragment()).addToBackStack(null).commit();
+                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new WorkshopCategoryRecyclerView("Muziek")).addToBackStack(null).commit();
             }
         });
 
@@ -82,7 +101,7 @@ public class WorkshopsFragment extends Fragment {
         mConstraintLayoutSport.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new WorkshopSportFragment()).addToBackStack(null).commit();
+                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new WorkshopCategoryRecyclerView("Sport")).addToBackStack(null).commit();
             }
         });
 
@@ -91,7 +110,7 @@ public class WorkshopsFragment extends Fragment {
         mConstraintLayoutTheatre.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new WorkshopTheatreFragment()).addToBackStack(null).commit();
+                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new WorkshopCategoryRecyclerView("Theater")).addToBackStack(null).commit();
             }
         });
         return root;

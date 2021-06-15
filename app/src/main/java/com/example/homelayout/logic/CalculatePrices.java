@@ -24,6 +24,7 @@ public class CalculatePrices {
     public CalculatePrices() {
 
     }
+
     public double getWorkshopCalc(Workshops workshop, HashMap<String, Integer> values) {
         switch (workshop) {
             case Graffiti:
@@ -44,14 +45,14 @@ public class CalculatePrices {
         Iterator it = values.entrySet().iterator();
         while (it.hasNext()) {
             Map.Entry pair = (Map.Entry) it.next();
-            if(pair.getKey().equals("rounds")){
+            if (pair.getKey().equals("rounds")) {
                 rounds = (int) pair.getValue();
             }
-            if(pair.getKey().equals("minutes")){
+            if (pair.getKey().equals("minutes")) {
                 minutes = (int) pair.getValue();
             }
         }
-        totalAmount = (double) (START_FEE + rounds * (minutes * COST_PER_MINUTE_WORKSHOPS));
+        totalAmount = START_FEE + rounds * (minutes * COST_PER_MINUTE_WORKSHOPS);
         Log.d(TAG, "The total amount is: " + totalAmount);
         return totalAmount;
     }
@@ -61,14 +62,14 @@ public class CalculatePrices {
         Iterator it = values.entrySet().iterator();
         while (it.hasNext()) {
             Map.Entry pair = (Map.Entry) it.next();
-            if(pair.getKey().equals("rounds")){
+            if (pair.getKey().equals("rounds")) {
                 rounds = (int) pair.getValue();
             }
-            if(pair.getKey().equals("minutes")){
+            if (pair.getKey().equals("minutes")) {
                 minutes = (int) pair.getValue();
             }
         }
-        totalAmount = (double) (START_FEE + rounds * (minutes * COST_PER_MINUTE_WORKSHOPS));
+        totalAmount = START_FEE + rounds * (minutes * COST_PER_MINUTE_WORKSHOPS);
         System.out.println(totalAmount);
         return totalAmount;
     }
@@ -78,50 +79,53 @@ public class CalculatePrices {
         Iterator it = values.entrySet().iterator();
         while (it.hasNext()) {
             Map.Entry pair = (Map.Entry) it.next();
-            if(pair.getKey().equals("participants")){
+            if (pair.getKey().equals("participants")) {
                 participants = (int) pair.getValue();
             }
-            if(pair.getKey().equals("rounds")){
+            if (pair.getKey().equals("rounds")) {
                 rounds = (int) pair.getValue();
             }
-            if(pair.getKey().equals("minutes")){
+            if (pair.getKey().equals("minutes")) {
                 minutes = (int) pair.getValue();
             }
         }
-        totalAmount = (double) (START_FEE + rounds * (minutes * COST_PER_MINUTE_WORKSHOPS) + participants * MATERIAL_COST);
+        totalAmount = START_FEE + rounds * (minutes * COST_PER_MINUTE_WORKSHOPS);
         System.out.println(totalAmount);
         return totalAmount;
     }
 
-    public double calculateCultureday(HashMap values, ArrayList<Workshops> workshops){
+    public double calculateCultureday(HashMap values, ArrayList<Workshops> workshops) {
         double totalAmount = 0;
 
         Iterator it = values.entrySet().iterator();
         while (it.hasNext()) {
             Map.Entry pair = (Map.Entry) it.next();
-            if(pair.getKey().equals("participants")){
+            if (pair.getKey().equals("participants")) {
                 participants = (int) pair.getValue();
             }
-            if(pair.getKey().equals("workshops")){
+            if (pair.getKey().equals("workshops")) {
                 amountOfWorkshops = (int) pair.getValue();
             }
-            if(pair.getKey().equals("participantsGraffitiOrTshirtDesign")){
+            if (pair.getKey().equals("participantsGraffitiOrTshirtDesign")) {
                 participantsGraffitiOrTshirtDesign = (int) pair.getValue();
             }
-            if(pair.getKey().equals("rounds")){
+            if (pair.getKey().equals("rounds")) {
                 rounds = (int) pair.getValue();
             }
-            if(pair.getKey().equals("minutes")){
+            if (pair.getKey().equals("minutes")) {
                 minutes = (int) pair.getValue();
             }
         }
-        totalAmount = (double) (amountOfWorkshops * rounds * (minutes * COST_PER_MINUTE_CULTUREDAY));
+        totalAmount = amountOfWorkshops * rounds * (minutes * COST_PER_MINUTE_CULTUREDAY);
+        checkIfTotalAmountIsAboveMinimalOneThousandTwoHundredFiftyFiveAndFiftyCents(totalAmount);
 
-        for(Workshops i : workshops){
-            if(i.equals(Workshops.Graffiti)){
+        for (Workshops i : workshops) {
+            if (i.equals(Workshops.Graffiti)) {
+                if (participantsGraffitiOrTshirtDesign != 0) {
                     totalAmount = totalAmount + (participantsGraffitiOrTshirtDesign * MATERIAL_COST);
-                }else if(i.equals(Workshops.TshirtOntwerpen)){
-                if(participantsGraffitiOrTshirtDesign != 0) {
+                }
+            } else if (i.equals(Workshops.TshirtOntwerpen)) {
+                if (participantsGraffitiOrTshirtDesign != 0) {
                     totalAmount = totalAmount + (participantsGraffitiOrTshirtDesign * MATERIAL_COST);
                 }
             }
@@ -133,14 +137,21 @@ public class CalculatePrices {
         if(totalAmount >= 175.0){
             return true;
         }
-         Log.d(TAG, "The total amount should be at least 175");
+        Log.d(TAG, "The total amount should be at least 175");
         return false;
     }
     public boolean checkIfTotalAmountIsAboveMinimalTwoHundredFifty(double totalAmount){
         if(totalAmount >= 250.0){
             return true;
         }
-         Log.d(TAG, "The total amount should be at least 250");
+        Log.d(TAG, "The total amount should be at least 250");
+        return false;
+    }
+    private boolean checkIfTotalAmountIsAboveMinimalOneThousandTwoHundredFiftyFiveAndFiftyCents(double totalAmount) {
+        if (totalAmount >= 1255.5) {
+            return true;
+        }
+        Log.d(TAG, "The total amount should be at least 250");
         return false;
     }
 }
