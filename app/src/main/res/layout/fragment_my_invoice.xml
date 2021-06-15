@@ -23,6 +23,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20sp"
             android:layout_marginStart="10sp"
+            android:textSize="16sp"
             android:text="De volgende adressen worden standaard gebruikt op de afrekenpagina."/>
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/const_my_invoice_01"
