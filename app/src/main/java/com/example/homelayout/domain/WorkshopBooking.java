@@ -1,26 +1,24 @@
 package com.example.homelayout.domain;
 
-import java.util.Date;
-
 public class WorkshopBooking {
-    private String dienst;
-    private int rondes;
-    private int minuten;
-    private int totaleMinuten;
-    private String tijdschema;
-    private String leerniveau;
-    private String datum;
-    private double prijs;
+    private String service;
+    private int rounds;
+    private int minutes;
+    private int totalMinutes;
+    private String timeTable;
+    private String learningLevel;
+    private String date;
+    private double price;
 
-    public WorkshopBooking(String dienst, int rondes, int minuten, String tijdschema, String leerniveau, String datum, double prijs) {
-        this.dienst = dienst;
-        this.rondes = rondes;
-        this.minuten = minuten;
-        this.totaleMinuten = rondes * minuten;
-        this.tijdschema = tijdschema;
-        this.leerniveau = leerniveau;
-        this.datum = datum;
-        this.prijs = prijs;
+    public WorkshopBooking(String service, int rounds, int minutes, String timeTable, String learningLevel, String date, double price) {
+        this.service = service;
+        this.rounds = rounds;
+        this.minutes = minutes;
+        this.totalMinutes = rounds * minutes;
+        this.timeTable = timeTable;
+        this.learningLevel = learningLevel;
+        this.date = date;
+        this.price = price;
     }
     public void setPositon(){
 
@@ -30,65 +28,65 @@ public class WorkshopBooking {
        return 0;
     }
 
-    public int getTotaleMinuten() {
-        return totaleMinuten;
+    public int getTotalMinutes() {
+        return totalMinutes;
     }
 
-    public void setTotaleMinuten(int totaleMinuten) {
-        this.totaleMinuten = totaleMinuten;
+    public void setTotalMinutes(int totalMinutes) {
+        this.totalMinutes = totalMinutes;
     }
 
-    public String getDienst() {
-        return dienst;
+    public String getService() {
+        return service;
     }
 
-    public void setDienst(String dienst) {
-        this.dienst = dienst;
+    public void setService(String service) {
+        this.service = service;
     }
 
-    public int getRondes() {
-        return rondes;
+    public int getRounds() {
+        return rounds;
     }
 
-    public void setRondes(int rondes) {
-        this.rondes = rondes;
+    public void setRounds(int rounds) {
+        this.rounds = rounds;
     }
 
-    public int getMinuten() {
-        return minuten;
+    public int getMinutes() {
+        return minutes;
     }
 
-    public void setMinuten(int minuten) {
-        this.minuten = minuten;
+    public void setMinutes(int minutes) {
+        this.minutes = minutes;
     }
 
-    public String getTijdschema() {
-        return tijdschema;
+    public String getTimeTable() {
+        return timeTable;
     }
 
-    public void setTijdschema(String tijdschema) {
-        this.tijdschema = tijdschema;
+    public void setTimeTable(String timeTable) {
+        this.timeTable = timeTable;
     }
 
-    public String getLeerniveau() {
-        return leerniveau;
+    public String getLearningLevel() {
+        return learningLevel;
     }
 
-    public void setLeerniveau(String leerniveau) {
-        this.leerniveau = leerniveau;
+    public void setLearningLevel(String learningLevel) {
+        this.learningLevel = learningLevel;
     }
 
-    public String getDatum() { return datum; }
+    public String getDate() { return date; }
 
-    public void setDatum(String datum) {
-        this.datum = datum;
+    public void setDate(String date) {
+        this.date = date;
     }
 
-    public double getPrijs() {
-        return prijs;
+    public double getPrice() {
+        return price;
     }
 
-    public void setPrijs(double prijs) {
-        this.prijs = prijs;
+    public void setPrice(double price) {
+        this.price = price;
     }
 }

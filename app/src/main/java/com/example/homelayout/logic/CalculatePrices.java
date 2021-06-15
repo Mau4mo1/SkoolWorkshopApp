@@ -39,7 +39,7 @@ public class CalculatePrices {
         }
     }
 
-    private double normalCalculation(HashMap values) {
+    public double normalCalculation(HashMap values) {
         double totalAmount = 0;
 
         Iterator it = values.entrySet().iterator();
@@ -57,7 +57,7 @@ public class CalculatePrices {
         return totalAmount;
     }
 
-    private double minimalNinetyMinutes(HashMap values) {
+    public double minimalNinetyMinutes(HashMap values) {
         double totalAmount = 0;
         Iterator it = values.entrySet().iterator();
         while (it.hasNext()) {
@@ -71,13 +71,10 @@ public class CalculatePrices {
         }
         totalAmount = START_FEE + rounds * (minutes * COST_PER_MINUTE_WORKSHOPS);
         System.out.println(totalAmount);
-        if (checkIfTotalAmountIsAboveMinimalTwoHundredFifty(totalAmount)) {
-            Log.d(TAG, "The total amount is above 175");
-        }
         return totalAmount;
     }
 
-    private double materialCostsIncluded(HashMap values) {
+    public double materialCostsIncluded(HashMap values) {
         double totalAmount = 0;
         Iterator it = values.entrySet().iterator();
         while (it.hasNext()) {
@@ -94,10 +91,6 @@ public class CalculatePrices {
         }
         totalAmount = START_FEE + rounds * (minutes * COST_PER_MINUTE_WORKSHOPS);
         System.out.println(totalAmount);
-        if (checkIfTotalAmountIsAboveMinimalOneHundredSeventyFive(totalAmount)) {
-            Log.d(TAG, "The total amount is above 175");
-        }
-        totalAmount = totalAmount + participants * MATERIAL_COST;
         return totalAmount;
     }
 
@@ -140,16 +133,15 @@ public class CalculatePrices {
         return totalAmount;
     }
 
-    private boolean checkIfTotalAmountIsAboveMinimalOneHundredSeventyFive(double totalAmount) {
-        if (totalAmount >= 175.0) {
+    public boolean checkIfTotalAmountIsAboveMinimalOneHundredSeventyFive(double totalAmount){
+        if(totalAmount >= 175.0){
             return true;
         }
         Log.d(TAG, "The total amount should be at least 175");
         return false;
     }
-
-    private boolean checkIfTotalAmountIsAboveMinimalTwoHundredFifty(double totalAmount) {
-        if (totalAmount >= 250.0) {
+    public boolean checkIfTotalAmountIsAboveMinimalTwoHundredFifty(double totalAmount){
+        if(totalAmount >= 250.0){
             return true;
         }
         Log.d(TAG, "The total amount should be at least 250");

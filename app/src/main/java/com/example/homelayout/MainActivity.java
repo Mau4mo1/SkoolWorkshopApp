@@ -63,6 +63,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import java.lang.reflect.Type;
+
 import java.util.List;
 
 
@@ -186,7 +187,6 @@ public class MainActivity extends AppCompatActivity {
     private NavigationView.OnNavigationItemSelectedListener navSideBarListener =
             new NavigationView.OnNavigationItemSelectedListener() {
                 Fragment selectedFragment = null;
-
                 @Override
                 public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                     switch (item.getItemId()) {

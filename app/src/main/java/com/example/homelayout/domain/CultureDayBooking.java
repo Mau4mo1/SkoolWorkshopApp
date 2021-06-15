@@ -1,71 +1,70 @@
 package com.example.homelayout.domain;
 
-import java.util.Date;
 import java.util.List;
 
 public class CultureDayBooking {
 
-    private int rondes;
-    private int workshopsPerRonde;
-    private int minutenPerRonde;
-    private int totaleMinuten;
-    private int deelnemers;
+    private int rounds;
+    private int workshopsPerRound;
+    private int minutesPerRound;
+    private int totalMinutes;
+    private int participants;
     private List<String> workshops;
-    private String tijdschema;
-    private String leerniveau;
-    private String datum;
-    private double prijs;
+    private String timeTable;
+    private String learningLevel;
+    private String date;
+    private double price;
 
-    public CultureDayBooking(int rondes, int workshopsPerRonde, int minutenPerRonde, int deelnemers, List<String> workshops, String tijdschema, String leerniveau, String datum, double prijs) {
-        this.rondes = rondes;
-        this.workshopsPerRonde = workshopsPerRonde;
-        this.minutenPerRonde = minutenPerRonde;
-        this.totaleMinuten = rondes * minutenPerRonde;
-        this.deelnemers = deelnemers;
+    public CultureDayBooking(int rondes, int workshopsPerRound, int minutesPerRound, int participants, List<String> workshops, String timeTable, String learningLevel, String date, double price) {
+        this.rounds = rondes;
+        this.workshopsPerRound = workshopsPerRound;
+        this.minutesPerRound = minutesPerRound;
+        this.totalMinutes = rondes * minutesPerRound;
+        this.participants = participants;
         this.workshops = workshops;
-        this.tijdschema = tijdschema;
-        this.leerniveau = leerniveau;
-        this.datum = datum;
-        this.prijs = prijs;
+        this.timeTable = timeTable;
+        this.learningLevel = learningLevel;
+        this.date = date;
+        this.price = price;
     }
 
-    public int getRondes() { return rondes; }
+    public int getRondes() { return rounds; }
 
-    public void setRondes(int rondes) { this.rondes = rondes; }
+    public void setRondes(int rondes) { this.rounds = rondes; }
 
-    public int getWorkshopsPerRonde() { return workshopsPerRonde; }
+    public int getWorkshopsPerRound() { return workshopsPerRound; }
 
-    public void setWorkshopsPerRonde(int workshopsPerRonde) { this.workshopsPerRonde = workshopsPerRonde; }
+    public void setWorkshopsPerRound(int workshopsPerRound) { this.workshopsPerRound = workshopsPerRound; }
 
-    public int getMinutenPerRonde() { return minutenPerRonde; }
+    public int getMinutesPerRound() { return minutesPerRound; }
 
-    public void setMinutenPerRonde(int minutenPerRonde) { this.minutenPerRonde = minutenPerRonde; }
+    public void setMinutesPerRound(int minutesPerRound) { this.minutesPerRound = minutesPerRound; }
 
-    public int getTotaleMinuten() { return totaleMinuten; }
+    public int getTotalMinutes() { return totalMinutes; }
 
-    public void setTotaleMinuten(int totaleMinuten) { this.totaleMinuten = totaleMinuten; }
+    public void setTotalMinutes(int totalMinutes) { this.totalMinutes = totalMinutes; }
 
-    public int getDeelnemers() { return deelnemers; }
+    public int getParticipants() { return participants; }
 
-    public void setDeelnemers(int deelnemers) { this.deelnemers = deelnemers; }
+    public void setParticipants(int participants) { this.participants = participants; }
 
     public List<String> getWorkshops() { return workshops; }
 
     public void setWorkshops(List<String> workshops) { this.workshops = workshops; }
 
-    public String getTijdschema() { return tijdschema; }
+    public String getTimeTable() { return timeTable; }
 
-    public void setTijdschema(String tijdschema) { this.tijdschema = tijdschema; }
+    public void setTimeTable(String timeTable) { this.timeTable = timeTable; }
 
-    public String getLeerniveau() { return leerniveau; }
+    public String getLearningLevel() { return learningLevel; }
 
-    public void setLeerniveau(String leerniveau) { this.leerniveau = leerniveau; }
+    public void setLearningLevel(String learningLevel) { this.learningLevel = learningLevel; }
 
-    public String getDatum() { return datum; }
+    public String getDate() { return date; }
 
-    public void setDatum(String datum) { this.datum = datum; }
+    public void setDate(String date) { this.date = date; }
 
-    public double getPrijs() { return prijs; }
+    public double getPrice() { return price; }
 
-    public void setPrijs(double prijs) { this.prijs = prijs; }
+    public void setPrice(double price) { this.price = price; }
 }
