@@ -45,7 +45,7 @@ public class WorkshopsFragment extends Fragment {
         mConstraintLayoutVisualArts.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new WorkshopVisualArtsFragment()).addToBackStack(null).commit();
+                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new WorkshopCategoryRecyclerView("BeeldendeKunst")).addToBackStack(null).commit();
             }
         });
 
@@ -54,7 +54,7 @@ public class WorkshopsFragment extends Fragment {
         mConstraintLayoutDance.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new WorkshopDanceFragment()).addToBackStack(null).commit();
+                    getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new WorkshopCategoryRecyclerView("Dans")).addToBackStack(null).commit();
             }
         });
 
@@ -63,7 +63,7 @@ public class WorkshopsFragment extends Fragment {
         mConstraintLayoutMedia.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new WorkshopMediaFragment()).addToBackStack(null).commit();
+                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new WorkshopCategoryRecyclerView("Media")).addToBackStack(null).commit();
             }
         });
 
@@ -73,7 +73,7 @@ public class WorkshopsFragment extends Fragment {
 
             @Override
             public void onClick(View v) {
-                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new WorkshopMusicFragment()).addToBackStack(null).commit();
+                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new WorkshopCategoryRecyclerView("Muziek")).addToBackStack(null).commit();
             }
         });
 
@@ -82,7 +82,7 @@ public class WorkshopsFragment extends Fragment {
         mConstraintLayoutSport.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new WorkshopSportFragment()).addToBackStack(null).commit();
+                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new WorkshopCategoryRecyclerView("Sport")).addToBackStack(null).commit();
             }
         });
 
@@ -91,7 +91,7 @@ public class WorkshopsFragment extends Fragment {
         mConstraintLayoutTheatre.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new WorkshopTheatreFragment()).addToBackStack(null).commit();
+                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new WorkshopCategoryRecyclerView("Theater")).addToBackStack(null).commit();
             }
         });
         return root;

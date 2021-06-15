@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 
+import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 
 import android.preference.PreferenceManager;
@@ -80,13 +81,13 @@ public class WorkshopsForm extends Fragment {
         // pls werk
         View root = inflater.inflate(R.layout.fragment_workshops_form, container, false);
         thisContext = container.getContext();
-       tinydb = new TinyDB(thisContext);
-       loadData();
+        tinydb = new TinyDB(thisContext);
+        loadData();
         mTextViewWorkshopsParticipants = (TextView) root.findViewById(R.id.tv_workshops_participants);
         mTextViewWorkshopFormTitle = (TextView) root.findViewById(R.id.tv_workshops_form_title);
         mTextViewWorkshopFormTitle.setText("Workshop " + this.workshop);
 
-        switch (workshop){
+        switch (workshop) {
             case Graffiti:
             case TshirtOntwerpen:
                 mTextViewWorkshopsParticipants.setText("Totale aantal deelnemers * (+€7,50)");
@@ -110,7 +111,8 @@ public class WorkshopsForm extends Fragment {
         this.mEditTextWorkshopParticipants.addTextChangedListener(new TextWatcher() {
 
             @Override
-            public void afterTextChanged(Editable s) {}
+            public void afterTextChanged(Editable s) {
+            }
 
             @Override
             public void beforeTextChanged(CharSequence s, int start,
@@ -120,7 +122,7 @@ public class WorkshopsForm extends Fragment {
             @Override
             public void onTextChanged(CharSequence s, int start,
                                       int before, int count) {
-                if(s.length() != 0){
+                if (s.length() != 0) {
                     values.put("participants", Integer.valueOf(String.valueOf(mEditTextWorkshopParticipants.getText())));
                     updateSubtotal();
                 }
@@ -131,7 +133,8 @@ public class WorkshopsForm extends Fragment {
         this.mEditTextWorkshopRounds.addTextChangedListener(new TextWatcher() {
 
             @Override
-            public void afterTextChanged(Editable s) {}
+            public void afterTextChanged(Editable s) {
+            }
 
             @Override
             public void beforeTextChanged(CharSequence s, int start,
@@ -141,7 +144,7 @@ public class WorkshopsForm extends Fragment {
             @Override
             public void onTextChanged(CharSequence s, int start,
                                       int before, int count) {
-                if(s.length() != 0){
+                if (s.length() != 0) {
                     rounds = Integer.parseInt(String.valueOf(mEditTextWorkshopRounds.getText()));
                     values.put("rounds", rounds);
                     updateSubtotal();
@@ -154,7 +157,8 @@ public class WorkshopsForm extends Fragment {
         this.mEditTextWorkshopMinutes.addTextChangedListener(new TextWatcher() {
 
             @Override
-            public void afterTextChanged(Editable s) {}
+            public void afterTextChanged(Editable s) {
+            }
 
             @Override
             public void beforeTextChanged(CharSequence s, int start,
@@ -164,7 +168,7 @@ public class WorkshopsForm extends Fragment {
             @Override
             public void onTextChanged(CharSequence s, int start,
                                       int before, int count) {
-                if(s.length() != 0){
+                if (s.length() != 0) {
                     minutes = Integer.valueOf(String.valueOf(mEditTextWorkshopMinutes.getText()));
                     values.put("minutes", minutes);
                     mTextViewWorkshopTotalMinutes.setText("Totaal aantal minuten: " + rounds * minutes);
@@ -183,7 +187,6 @@ public class WorkshopsForm extends Fragment {
 
         this.mButtonWorkshopsBook.setClickable(true);
         this.mButtonWorkshopsBook.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View v) {
 
@@ -192,11 +195,14 @@ public class WorkshopsForm extends Fragment {
                 int rondes = rounds;
                 String tijdschema = mEditTextWorkshopTimetable.getText().toString();
                 String leerniveau = mEditTextWorkshopLearningLevel.getText().toString();
-                DateFormat dateFormat = new SimpleDateFormat("dd/MM/"+20+"YY");
+                DateFormat dateFormat = null;
+                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
+                    dateFormat = new SimpleDateFormat("dd/MM/" + 20 + "YY");
+                }
                 String datum = dateFormat.format(date);
                 Log.d("test", datum);
                 double prijs = calculatePrices.getWorkshopCalc(workshop, values);
-                WorkshopBooking workshops = new WorkshopBooking(dienst, rondes, minuten,tijdschema,leerniveau,datum,prijs);
+                WorkshopBooking workshops = new WorkshopBooking(dienst, rondes, minuten, tijdschema, leerniveau, datum, prijs);
 
                 workshopCardList.add(workshops);
                 tinydb.putListObject("Carditems", workshopCardList);
@@ -211,21 +217,22 @@ public class WorkshopsForm extends Fragment {
     }
 
     public void updateSubtotal() {
-            String subtotal = "Subtotaal: €" + calculatePrices.getWorkshopCalc(workshop, values) + "0";
-            mTextViewWorkshopSubtotal.setText(subtotal);
-        }
-//        private void saveData(){
+        String subtotal = "Subtotaal: €" + calculatePrices.getWorkshopCalc(workshop, values) + "0";
+        mTextViewWorkshopSubtotal.setText(subtotal);
+    }
+
+    //        private void saveData(){
 //            Gson gson = new Gson();
 //            String json = gson.toJson(workshopCardList);
 //            requireActivity().getSharedPreferences("shopping_card", Context.MODE_PRIVATE).edit().putString("card_item_title", json).apply();
 //        }
-        private void loadData(){
+    private void loadData() {
 
-               workshopCardList = tinydb.getListObject("Carditems",WorkshopBooking.class);
-               if (workshopCardList == null){
-                   workshopCardList = new ArrayList<>();
-               }
+        workshopCardList = tinydb.getListObject("Carditems", WorkshopBooking.class);
+        if (workshopCardList == null) {
+            workshopCardList = new ArrayList<>();
         }
+    }
 
 
 }
