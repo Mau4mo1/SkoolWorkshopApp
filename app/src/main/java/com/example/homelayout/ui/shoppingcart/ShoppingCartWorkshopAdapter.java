@@ -48,7 +48,7 @@ public class ShoppingCartWorkshopAdapter extends RecyclerView.Adapter<ShoppingCa
     @Override
     public void onBindViewHolder(@NonNull WorkshopViewHolder holder, int position) {
         WorkshopBooking workshopBooking = (WorkshopBooking) workshopData.get(position);
-        DecimalFormat decimalFormat = new DecimalFormat("#,00");
+        DecimalFormat decimalFormat = new DecimalFormat("#,##0.00");
         String prijs = decimalFormat.format(workshopBooking.getPrijs());
         holder.mDienst.setText(String.valueOf(workshopBooking.getDienst()));
         holder.mRondes.setText(String.valueOf(workshopBooking.getRondes()));
