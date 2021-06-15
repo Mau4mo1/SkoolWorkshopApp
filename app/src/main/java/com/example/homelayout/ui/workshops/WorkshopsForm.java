@@ -188,7 +188,7 @@ public class WorkshopsForm extends Fragment {
 
             @Override
             public void onClick(View v) {
-                double prijs = calculatePrices.getWorkshopCalc(workshop, values);
+                double price = calculatePrices.getWorkshopCalc(workshop, values);
                 boolean checkPrice;
                 boolean checkParticipants = false;
                 int participants = Integer.parseInt(String.valueOf(mEditTextWorkshopParticipants.getText()));
@@ -199,10 +199,10 @@ public class WorkshopsForm extends Fragment {
                     case Photoshop:
                     case Videoclip:
                     case Vloggen:
-                        checkPrice = calculatePrices.checkIfTotalAmountIsAboveMinimalTwoHundredFifty(prijs);
+                        checkPrice = calculatePrices.checkIfTotalAmountIsAboveMinimalTwoHundredFifty(price);
                         break;
                     default:
-                        checkPrice = calculatePrices.checkIfTotalAmountIsAboveMinimalOneHundredSeventyFive(prijs);
+                        checkPrice = calculatePrices.checkIfTotalAmountIsAboveMinimalOneHundredSeventyFive(price);
                         break;
                 }
                 if (!checkParticipants) {
@@ -210,20 +210,20 @@ public class WorkshopsForm extends Fragment {
                 } else if (!checkPrice) {
                     showPricePopup();
                 } else {
-                    String dienst = mTextViewWorkshopFormTitle.getText().toString();
-                    int minuten = minutes;
-                    int rondes = rounds;
-                    String tijdschema = mEditTextWorkshopTimetable.getText().toString();
-                    String leerniveau = mEditTextWorkshopLearningLevel.getText().toString();
+                    String service = mTextViewWorkshopFormTitle.getText().toString();
+                    int minutes = WorkshopsForm.this.minutes;
+                    int rounds = WorkshopsForm.this.rounds;
+                    String timeScheme = mEditTextWorkshopTimetable.getText().toString();
+                    String learningLevel = mEditTextWorkshopLearningLevel.getText().toString();
                     DateFormat dateFormat = null;
                     if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
                         dateFormat = new SimpleDateFormat("dd/MM/" + 20 + "YY");
                     }
-                    String datum = dateFormat.format(date);
-                    Log.d("test", datum);
+                    String date = dateFormat.format(WorkshopsForm.this.date);
+                    Log.d("test", date);
 
 
-                    WorkshopBooking workshops = new WorkshopBooking(dienst, rondes, minuten, tijdschema, leerniveau, datum, prijs);
+                    WorkshopBooking workshops = new WorkshopBooking(service, rounds, minutes, timeScheme, learningLevel, date, price);
 
                     workshopCardList.add(workshops);
                     tinydb.putListObject("Carditems", workshopCardList);
