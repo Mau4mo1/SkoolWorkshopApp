@@ -1,7 +1,9 @@
 package com.example.homelayout.ui.workshops;
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
@@ -186,27 +188,52 @@ public class WorkshopsForm extends Fragment {
 
             @Override
             public void onClick(View v) {
-
-                String dienst = mTextViewWorkshopFormTitle.getText().toString();
-                int minuten = minutes;
-                int rondes = rounds;
-                String tijdschema = mEditTextWorkshopTimetable.getText().toString();
-                String leerniveau = mEditTextWorkshopLearningLevel.getText().toString();
-                DateFormat dateFormat = new SimpleDateFormat("dd/MM/"+20+"YY");
-                String datum = dateFormat.format(date);
-                Log.d("test", datum);
                 double prijs = calculatePrices.getWorkshopCalc(workshop, values);
-                WorkshopBooking workshops = new WorkshopBooking(dienst, rondes, minuten,tijdschema,leerniveau,datum,prijs);
+                boolean checkPrice;
+                boolean checkParticipants = false;
+                int participants = Integer.parseInt(String.valueOf(mEditTextWorkshopParticipants.getText()));
+                if(participants <= 25) {
+                    checkParticipants = true;
+                }
+                switch (workshop) {
+                    case Photoshop:
+                    case Videoclip:
+                    case Vloggen:
+                        checkPrice = calculatePrices.checkIfTotalAmountIsAboveMinimalTwoHundredFifty(prijs);
+                        break;
+                    default:
+                        checkPrice = calculatePrices.checkIfTotalAmountIsAboveMinimalOneHundredSeventyFive(prijs);
+                        break;
+                }
+                if (!checkParticipants) {
+                    showParticipantPopup();
+                } else if (!checkPrice) {
+                    showPricePopup();
+                } else {
+                    String dienst = mTextViewWorkshopFormTitle.getText().toString();
+                    int minuten = minutes;
+                    int rondes = rounds;
+                    String tijdschema = mEditTextWorkshopTimetable.getText().toString();
+                    String leerniveau = mEditTextWorkshopLearningLevel.getText().toString();
+                    DateFormat dateFormat = null;
+                    if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
+                        dateFormat = new SimpleDateFormat("dd/MM/" + 20 + "YY");
+                    }
+                    String datum = dateFormat.format(date);
+                    Log.d("test", datum);
 
-                workshopCardList.add(workshops);
-                tinydb.putListObject("Carditems", workshopCardList);
-                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new ShoppingCartFragment()).commit();
 
-                //s.addWorkshops(workshops);
-                Log.d("Boeken", "Boeking is gelukt hier");
+                    WorkshopBooking workshops = new WorkshopBooking(dienst, rondes, minuten, tijdschema, leerniveau, datum, prijs);
+
+                    workshopCardList.add(workshops);
+                    tinydb.putListObject("Carditems", workshopCardList);
+                    getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new ShoppingCartFragment()).commit();
+
+                    //s.addWorkshops(workshops);
+                    Log.d("Boeken", "Boeking is gelukt hier");
+                }
             }
         });
-
         return root;
     }
 
@@ -226,6 +253,38 @@ public class WorkshopsForm extends Fragment {
                    workshopCardList = new ArrayList<>();
                }
         }
-
+    private void showPricePopup(){
+        AlertDialog.Builder subpopup = new AlertDialog.Builder(thisContext);
+        switch (workshop) {
+            case Photoshop:
+            case Videoclip:
+            case Vloggen:
+                subpopup.setMessage("Minimaal bedrag voor deze workshop is €250,00, pas de ingevulde gegevens aan om deze prijs te berijken");
+            default:
+                subpopup.setMessage("Minimaal bedrag voor deze workshop is €175,00, pas de ingevulde gegevens aan om deze prijs te berijken");
+        }
+            subpopup.setCancelable(true);
+            subpopup.setTitle("Subtotaal niet genoeg");
+            subpopup.setNegativeButton("OK", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    dialogInterface.cancel();
+                }
+            });
+            subpopup.show();
+    }
+    private void showParticipantPopup(){
+        AlertDialog.Builder subpopup = new AlertDialog.Builder(thisContext);
+        subpopup.setCancelable(true);
+        subpopup.setTitle("Te veel deelnemers");
+        subpopup.setMessage("Het maximaal aantal deelnemers voor een workshop is 25, pas het aantal deelnemers aan of verdeel het aantal over meerdere workshops");
+        subpopup.setNegativeButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.cancel();
+            }
+        });
+        subpopup.show();
+    }
 
 }
