@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -13,6 +14,7 @@ import com.example.homelayout.R;
 import com.example.homelayout.domain.CultureDayBooking;
 import com.example.homelayout.domain.Workshops;
 import com.example.homelayout.logic.CulturedayBookingInfo;
+import com.example.homelayout.repositories.TinyDB;
 
 import java.io.Serializable;
 import java.text.DecimalFormat;
@@ -20,15 +22,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ShoppingCartCultureDayAdapter extends RecyclerView.Adapter<ShoppingCartCultureDayAdapter.CultureDayViewHolder> implements Serializable {
-    private List cultureDayData;
-
-    public ShoppingCartCultureDayAdapter(List cultureDayData) {
+    private ArrayList<Object> cultureDayData;
+    private TinyDB tinyDB;
+    public ShoppingCartCultureDayAdapter(ArrayList cultureDayData) {
         this.cultureDayData = cultureDayData;
     }
 
     @Override
     public CultureDayViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         Context context = parent.getContext();
+        tinyDB = new TinyDB(context);
         int layoutIdForListItem = R.layout.fragment_shopping_cart_cultureday;
         LayoutInflater inflater = LayoutInflater.from(context);
         boolean shouldAttachToParentImmediately = false;
@@ -62,6 +65,15 @@ public class ShoppingCartCultureDayAdapter extends RecyclerView.Adapter<Shopping
         holder.mLeerniveau.setText(String.valueOf(cultureDayBooking.getLearninglevel()));
         holder.mDatum.setText(String.valueOf(cultureDayBooking.getDate()));
         holder.mPrijs.setText("€" + prijs);
+        holder.mButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                cultureDayData.remove(cultureDayData.get(position));
+                tinyDB.putListObject("CultureItems", cultureDayData);
+                notifyDataSetChanged();
+
+            }
+        });
     }
 
     public class CultureDayViewHolder extends RecyclerView.ViewHolder {
@@ -74,6 +86,7 @@ public class ShoppingCartCultureDayAdapter extends RecyclerView.Adapter<Shopping
         private TextView mLeerniveau;
         private TextView mDatum;
         private TextView mPrijs;
+        private ImageButton mButton;
 
         public CultureDayViewHolder(@NonNull View view) {
             super(view);
@@ -86,6 +99,7 @@ public class ShoppingCartCultureDayAdapter extends RecyclerView.Adapter<Shopping
             mLeerniveau = (TextView) itemView.findViewById(R.id.shopping_cart_leerniveau);
             mDatum = (TextView) itemView.findViewById(R.id.shopping_cart_datum);
             mPrijs = (TextView) itemView.findViewById(R.id.shopping_cart_prijs);
+            mButton = (ImageButton) itemView.findViewById(R.id.btn_delete_cultureday);
         }
     }
 
