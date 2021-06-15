@@ -1,6 +1,8 @@
 package com.example.homelayout.ui.workshops;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -29,9 +31,11 @@ import java.util.List;
 
 public class WorkshopCategoryAdapter extends RecyclerView.Adapter<WorkshopCategoryAdapter.WorkshopCategoryHolder> implements Serializable {
     private List<WorkshopsObject> workshopsObjectList;
+    private Context context;
 
-    public WorkshopCategoryAdapter(List<WorkshopsObject> workshopsObjectList) {
+    public WorkshopCategoryAdapter(List<WorkshopsObject> workshopsObjectList, Context context) {
         this.workshopsObjectList = workshopsObjectList;
+        this.context = context;
     }
 
     @Override
@@ -61,6 +65,15 @@ public class WorkshopCategoryAdapter extends RecyclerView.Adapter<WorkshopCatego
                 if (translationsObjects.get(1).getTranslation() != null) {
                     holder.mDescriptionWorkshop.setText((translationsObjects.get(1).getTranslation()));
                 }
+                holder.mInfoImageButton.setClickable(true);
+                holder.mInfoImageButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Uri uri = Uri.parse("https://skoolworkshop.nl/workshops/workshop-" + workshopsObject.getCodeName().split("Skool")[1]);
+                        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                        context.startActivity(intent);
+                    }
+                });
             } catch (Exception e) {
                 e.printStackTrace();
         }
@@ -78,12 +91,14 @@ public class WorkshopCategoryAdapter extends RecyclerView.Adapter<WorkshopCatego
         private ImageView mImageWorkshop;
         private TextView mTitleWorkshop;
         private TextView mDescriptionWorkshop;
+        private ImageButton mInfoImageButton;
 
         public WorkshopCategoryHolder(@NonNull View view) {
             super(view);
             mImageWorkshop = view.findViewById(R.id.iv_workshop_image_workshop);
             mTitleWorkshop = view.findViewById(R.id.tv_workshop_title_workshop);
             mDescriptionWorkshop = view.findViewById(R.id.tv_workhop_description);
+            mInfoImageButton = view.findViewById(R.id.iv_workshop_info);
         }
     }
 

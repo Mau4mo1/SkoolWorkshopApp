@@ -66,7 +66,7 @@ public class WorkshopCategoryRecyclerView extends Fragment implements WorkshopCo
             workshopRecyclerView = root.findViewById(R.id.rv_workshops_recycler_view);
             workshopRecyclerView.setLayoutManager(workshopLayoutManager);
             workshopRecyclerView.setHasFixedSize(true);
-            workshopRecyclerView.setAdapter(new WorkshopCategoryAdapter(workshopsObjectListWithTranslations));
+            workshopRecyclerView.setAdapter(new WorkshopCategoryAdapter(workshopsObjectListWithTranslations, context));
         }
     }
 }

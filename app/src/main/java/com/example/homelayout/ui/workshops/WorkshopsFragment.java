@@ -14,6 +14,7 @@ import androidx.fragment.app.Fragment;
 import com.example.homelayout.R;
 import com.example.homelayout.domain.WorkshopPictureObject;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.squareup.picasso.Picasso;
 
 import java.sql.SQLException;
 
@@ -34,11 +35,29 @@ public class WorkshopsFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_category_workshops, container, false);
         mImageViewMedia = root.findViewById(R.id.iv_media);
+        Picasso.get()
+                .load("https://cdn-bnege.nitrocdn.com/MVgfApSlnIZMEMtTrPfeVWWDRvGvEHus/assets/static/source/rev-23fdb00/wp-content/uploads/2019/12/Media-Website-1024x683.jpg")
+                .into(mImageViewMedia);
         mImageViewMusic = root.findViewById(R.id.iv_music);
+        Picasso.get()
+                .load("https://cdn-bnege.nitrocdn.com/MVgfApSlnIZMEMtTrPfeVWWDRvGvEHus/assets/static/optimized/rev-23fdb00/wp-content/uploads/2021/01/Naamloos-1.jpg")
+                .into(mImageViewMusic);
         mImageViewSport = root.findViewById(R.id.iv_sport);
+        Picasso.get()
+                .load("https://cdn-bnege.nitrocdn.com/MVgfApSlnIZMEMtTrPfeVWWDRvGvEHus/assets/static/optimized/rev-23fdb00/wp-content/uploads/2019/12/Sport.jpg")
+                .into(mImageViewSport);
         mImageViewTheater = root.findViewById(R.id.iv_theater);
+        Picasso.get()
+                .load("https://cdn-bnege.nitrocdn.com/MVgfApSlnIZMEMtTrPfeVWWDRvGvEHus/assets/static/optimized/rev-23fdb00/wp-content/uploads/2019/12/Theater.jpg")
+                .into(mImageViewTheater);
         mImageViewVisualArts = root.findViewById(R.id.iv_visual_arts);
+        Picasso.get()
+                .load("https://cdn-bnege.nitrocdn.com/MVgfApSlnIZMEMtTrPfeVWWDRvGvEHus/assets/static/source/rev-23fdb00/wp-content/uploads/2020/01/Beeldende-Kunst.jpg")
+                .into(mImageViewVisualArts);
         mImageViewDance = root.findViewById(R.id.iv_dance);
+        Picasso.get()
+                .load("https://cdn-bnege.nitrocdn.com/MVgfApSlnIZMEMtTrPfeVWWDRvGvEHus/assets/static/source/rev-23fdb00/wp-content/uploads/2019/12/Dans-Website-1024x683.jpg")
+                .into(mImageViewDance);
 
         mConstraintLayoutVisualArts = root.findViewById(R.id.item_visual_arts);
         mConstraintLayoutVisualArts.setClickable(true);
