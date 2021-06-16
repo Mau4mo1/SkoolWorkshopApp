@@ -70,11 +70,23 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         ivBell.setOnClickListener(this);
 
 
-        if(((MainActivity) getActivity()).getIsTheUserLoggedIn()){
+        if(((MainActivity) getActivity()).getIsTheUserLoggedIn() == true){
+
           btnLogin.setVisibility(View.GONE);
           btnRegister.setVisibility(View.GONE);
           btnLogout.setVisibility(View.VISIBLE);
           loyaltyPoints.setVisibility(View.VISIBLE);
+          greetings.setText("Welkom, Clinten");
+          btnLogout = root.findViewById(R.id.logout_button);
+          btnLogout.setClickable(true);
+          btnLogout.setOnClickListener(new View.OnClickListener() {
+              @Override
+              public void onClick(View v) {
+                  ((MainActivity) getActivity()).setLoggedIn(false);
+                  getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new HomeFragment()).addToBackStack(null).commit();
+              }
+          });
+
           ConstraintLayout cons = root.findViewById(R.id.cl_home_background);
           ConstraintSet constraintSet = new ConstraintSet();
           constraintSet.clone(cons);
@@ -108,9 +120,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
             case R.id.iv_home_bell:
                 getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new MessageBoxFragment()).addToBackStack(null).commit();
                 break;
-            case R.id.logout_button:
-                ((MainActivity) getActivity()).setLoggedIn(false);
-                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new HomeFragment()).addToBackStack(null).commit();
         }
     }
 

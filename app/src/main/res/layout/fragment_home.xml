@@ -136,7 +136,8 @@
                 app:layout_constraintLeft_toLeftOf="parent"
                 android:layout_width="115dp"
                 android:layout_height="115dp"
-                android:background="@drawable/home_image_border"/>
+                android:src="@drawable/loyalty_points"
+                />
 
             <TextView
                 android:id="@+id/home_item_loyalty_points_head"
@@ -180,8 +181,7 @@
                 app:layout_constraintLeft_toLeftOf="parent"
                 android:layout_width="115dp"
                 android:layout_height="115dp"
-                android:src=""
-                android:background="@drawable/home_image_border"/>
+                android:src="@drawable/kunst"/>
 
             <TextView
                 android:id="@+id/home_item_popular_workshops_head"
@@ -226,7 +226,7 @@
                 app:layout_constraintLeft_toLeftOf="parent"
                 android:layout_width="115dp"
                 android:layout_height="115dp"
-                android:background="@drawable/home_image_border"/>
+                android:src="@drawable/nieuwsbrief" />
 
             <TextView
                 android:id="@+id/home_item_newsletter_head"
