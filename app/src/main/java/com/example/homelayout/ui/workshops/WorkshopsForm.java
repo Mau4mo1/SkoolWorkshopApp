@@ -183,7 +183,7 @@ public class WorkshopsForm extends Fragment {
             public void onTextChanged(CharSequence s, int start,
                                       int before, int count) {
                 if (s.length() != 0) {
-                    minutes = Integer.valueOf(String.valueOf(mEditTextWorkshopMinutes.getText()));
+                    minutes = Integer.parseInt(String.valueOf(mEditTextWorkshopMinutes.getText()));
                     values.put("minutes", minutes);
                     mTextViewWorkshopTotalMinutes.setText("Totaal aantal minuten: " + rounds * minutes);
                     updateSubtotal();

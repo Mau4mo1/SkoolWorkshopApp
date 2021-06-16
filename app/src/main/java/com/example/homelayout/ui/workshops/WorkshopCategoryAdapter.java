@@ -17,17 +17,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.homelayout.R;
 import com.example.homelayout.domain.TranslationsObject;
 import com.example.homelayout.domain.WorkshopPictureObject;
-import com.example.homelayout.domain.Workshops;
-import com.example.homelayout.domain.WorkshopsObject;
-import com.example.homelayout.repositories.TinyDB;
-import com.example.homelayout.ui.shoppingcart.ShoppingCartWorkshopAdapter;
 
-import org.jetbrains.annotations.NotNull;
+import com.example.homelayout.domain.WorkshopsObject;
 
 import java.io.Serializable;
-import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Pattern;
 
 public class WorkshopCategoryAdapter extends RecyclerView.Adapter<WorkshopCategoryAdapter.WorkshopCategoryHolder> implements Serializable {
     private List<WorkshopsObject> workshopsObjectList;
@@ -60,20 +55,15 @@ public class WorkshopCategoryAdapter extends RecyclerView.Adapter<WorkshopCatego
                             .convertBlobIntoImage());
                 }
                 if (workshopsObject.getCodeName() != null) {
-                    holder.mTitleWorkshop.setText(workshopsObject.getCodeName().split("Skool")[1]);
+                    Pattern p = Pattern.compile("(?=\\p{Lu})");
+                    String codeName = workshopsObject.getCodeName();
+                    String[] codeNameWithoutSkool = codeName.split("Skool");
+                    String[] rightName = p.split(codeNameWithoutSkool[1]);
+                    holder.mTitleWorkshop.setText("Workshop " + rightName[0]);
                 }
                 if (translationsObjects.get(1).getTranslation() != null) {
                     holder.mDescriptionWorkshop.setText((translationsObjects.get(1).getTranslation()));
                 }
-                holder.mInfoImageButton.setClickable(true);
-                holder.mInfoImageButton.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Uri uri = Uri.parse("https://skoolworkshop.nl/workshops/workshop-" + workshopsObject.getCodeName().split("Skool")[1]);
-                        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-                        context.startActivity(intent);
-                    }
-                });
             } catch (Exception e) {
                 e.printStackTrace();
         }
@@ -98,7 +88,6 @@ public class WorkshopCategoryAdapter extends RecyclerView.Adapter<WorkshopCatego
             mImageWorkshop = view.findViewById(R.id.iv_workshop_image_workshop);
             mTitleWorkshop = view.findViewById(R.id.tv_workshop_title_workshop);
             mDescriptionWorkshop = view.findViewById(R.id.tv_workhop_description);
-            mInfoImageButton = view.findViewById(R.id.iv_workshop_info);
         }
     }
 

@@ -49,14 +49,6 @@
                     android:maxLines="2"/>
 
             </LinearLayout>
-
-            <ImageButton
-                android:id="@+id/iv_workshop_info"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="70sp"
-                android:background="@drawable/layout_bg"
-                android:src="@drawable/ic_baseline_info_24" />
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>
