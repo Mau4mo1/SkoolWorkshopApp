@@ -12,8 +12,10 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.constraintlayout.widget.ConstraintSet;
 import androidx.fragment.app.Fragment;
 
+import com.example.homelayout.MainActivity;
 import com.example.homelayout.R;
 import com.example.homelayout.domain.WorkshopPictureObject;
 import com.example.homelayout.ui.Cultureday.Form.CulturedayBookingFormFragment;
@@ -31,11 +33,13 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     private Button btnBookCultureDay;
     private Button btnRegister;
     private Button btnLogin;
+    private Button btnLogout;
     private ConstraintLayout clPopularWorkshops;
     private Bitmap bmp;
     private ImageView mImageViewSpaarPunten;
     private ImageView ivBell;
-
+    private ConstraintLayout loyaltyPoints;
+    private TextView greetings;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -44,6 +48,9 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         btnRegister = root.findViewById(R.id.register_button);
         btnRegister.setClickable(true);
         btnLogin = root.findViewById(R.id.login_button);
+        btnLogin.setClickable(true);
+        btnLogout = root.findViewById(R.id.logout_button);
+        btnLogout.setClickable(true);
         btnBookWorkshop = root.findViewById(R.id.button_book_workshop);
         btnBookWorkshop.setClickable(true);
         btnBookCultureDay = root.findViewById(R.id.button_book_culture_day);
@@ -53,13 +60,29 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         ivBell = root.findViewById(R.id.iv_home_bell);
         ivBell.setClickable(true);
         mImageViewSpaarPunten = root.findViewById(R.id.home_item_loyalty_points_image);
-
+        loyaltyPoints = root.findViewById(R.id.home_item_loyalty_points);
+        greetings = root.findViewById(R.id.text_view_greeting);
         btnBookWorkshop.setOnClickListener(this);
         btnBookCultureDay.setOnClickListener(this);
         clPopularWorkshops.setOnClickListener(this);
         btnRegister.setOnClickListener(this);
         btnLogin.setOnClickListener(this);
         ivBell.setOnClickListener(this);
+
+
+        if(((MainActivity) getActivity()).getIsTheUserLoggedIn()){
+          btnLogin.setVisibility(View.GONE);
+          btnRegister.setVisibility(View.GONE);
+          btnLogout.setVisibility(View.VISIBLE);
+          loyaltyPoints.setVisibility(View.VISIBLE);
+          ConstraintLayout cons = root.findViewById(R.id.cl_home_background);
+          ConstraintSet constraintSet = new ConstraintSet();
+          constraintSet.clone(cons);
+          constraintSet.connect(greetings.getId(), ConstraintSet.RIGHT, btnLogout.getId(), ConstraintSet.LEFT, 0);
+          //constraintSet.connect(greetings.getId(), ConstraintSet.RIGHT, ConstraintSet.PARENT_ID, ConstraintSet.LEFT);
+          constraintSet.applyTo(cons);
+        }
+
 
         return root;
     }
@@ -85,6 +108,9 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
             case R.id.iv_home_bell:
                 getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new MessageBoxFragment()).addToBackStack(null).commit();
                 break;
+            case R.id.logout_button:
+                ((MainActivity) getActivity()).setLoggedIn(false);
+                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new HomeFragment()).addToBackStack(null).commit();
         }
     }
 

@@ -35,7 +35,7 @@
                         android:layout_margin="5sp"
                         android:textSize="12sp"
                         android:text="@string/title_login"
-                        android:visibility="gone"/>
+                        android:visibility="visible"/>
 
                     <Button
                         android:id="@+id/register_button"
@@ -48,7 +48,7 @@
                         android:layout_marginStart="5sp"
                         android:text="@string/title_register"
                         android:textSize="12sp"
-                        android:visibility="gone"
+                        android:visibility="visible"
                         android:layout_marginEnd="15sp"/>
 
                     <Button
@@ -61,7 +61,7 @@
                         android:layout_margin="5sp"
                         android:text="@string/title_logout"
                         android:textSize="12sp"
-                        android:visibility="visible"/>
+                        android:visibility="gone"/>
 
                     <ImageView
                         android:id="@+id/iv_home_bell"
@@ -80,12 +80,13 @@
 
                 <TextView
                     android:id="@+id/text_view_greeting"
-                    app:layout_constraintTop_toBottomOf="@+id/logout_button"
-                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintRight_toLeftOf="@+id/login_button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginRight="30sp"
                     android:text="@string/greeting"
-                    android:layout_marginTop="5sp"
+                    android:layout_marginTop="10sp"
                     android:layout_marginStart="12dp"
                     android:textSize="25sp"
                     android:textColor="@color/white"
@@ -124,7 +125,9 @@
             app:layout_constraintTop_toBottomOf="@+id/cl_home_background"
             android:layout_marginTop="25dp"
             android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp">
+            android:layout_marginRight="15dp"
+            android:visibility="gone"
+            >
 
             <ImageView
                 android:contentDescription="@string/iv_loyalty_points_content"
@@ -177,6 +180,7 @@
                 app:layout_constraintLeft_toLeftOf="parent"
                 android:layout_width="115dp"
                 android:layout_height="115dp"
+                android:src=""
                 android:background="@drawable/home_image_border"/>
 
             <TextView

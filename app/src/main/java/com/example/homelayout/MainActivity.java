@@ -71,6 +71,8 @@ public class MainActivity extends AppCompatActivity implements WorkshopControlle
     private WorkshopController workshopController;
     private List<WorkshopsObject> workshopsObjectList;
     private WorkshopsObject workshopObject;
+    public boolean istheuserloggedin;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -107,7 +109,8 @@ public class MainActivity extends AppCompatActivity implements WorkshopControlle
 //        workshopController = new WorkshopController(this);
 //        workshopPictureController = new WorkshopPictureController(this);
 //        workshopPictureController.loadPictureWorkshops(2);
-
+        //TODO SHAREDPREFERENCES TOEVOEGEN ALS INLOGGEN WERKT
+        this.istheuserloggedin = false;
         getSupportFragmentManager()
                 .beginTransaction()
                 .replace(R.id.nav_host_fragment, new HomeFragment())
@@ -147,7 +150,6 @@ public class MainActivity extends AppCompatActivity implements WorkshopControlle
         if (item.getItemId() == R.id.bt_shopping_cart) {
             Fragment selectedFragment = new ShoppingCartFragment();
             getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, selectedFragment).addToBackStack(null).commit();
-            getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, selectedFragment).commit();
         }
         return super.onOptionsItemSelected(item);
     }
@@ -236,4 +238,13 @@ public class MainActivity extends AppCompatActivity implements WorkshopControlle
     public void onWorkshopsAvailable(List<WorkshopsObject> workshopsObjectList) {
         this.workshopsObjectList = workshopsObjectList;
     }
+
+    public void setLoggedIn(boolean bool){
+        this.istheuserloggedin = bool;
+    }
+
+    public boolean getIsTheUserLoggedIn(){
+        return this.istheuserloggedin;
+    }
+
 }
