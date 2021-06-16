@@ -1,6 +1,9 @@
 package com.example.homelayout.ui.shoppingcart;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -8,9 +11,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -25,12 +30,14 @@ import com.example.homelayout.ui.workshops.WorkshopsForm;
 import com.example.homelayout.ui.workshops.WorkshopsFragment;
 
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class ShoppingCartFragment extends Fragment {
     private WorkshopsForm mainActivity = new WorkshopsForm(Workshops.Flashmob);
     private Button mExtraWorkshopButton;
     private ImageButton mDeleteButton;
+    private TextView mSubtotal;
     private Context thisContext;
     private TinyDB tinyDB;
     private LinearLayoutManager workshopLayoutManager;
@@ -42,18 +49,13 @@ public class ShoppingCartFragment extends Fragment {
     private ArrayList<Object> workshopBookings;
     private ArrayList<Object> cultureDayBookings;
     private ArrayList<String> workshops = new ArrayList<>();
-    private WorkshopBooking workshopDummyData = new WorkshopBooking("workshop rap", 2, 75, "voorbeeld", "voorbeeld", "3 Juni 2021", 300.00);
-    private CultureDayBooking cultureDayDummyData = new CultureDayBooking(3, 3, 60, 75, workshops, "voorbeeld", "HBO", "26 Juni 2022", 1500.00);
-
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_shopping_cart, container, false);
         Log.d("ShoppingCartFragment", "Shoppingcart fragment aangemaakt!");
-        workshops.add("workshop rap");
-        workshops.add("workshop graffiti");
-        workshops.add("workshop stepping");
+
         thisContext = container.getContext();
         tinyDB = new TinyDB(thisContext);
         workshopLayoutManager = new LinearLayoutManager(thisContext);
@@ -62,7 +64,7 @@ public class ShoppingCartFragment extends Fragment {
         workshopRecyclerView.setHasFixedSize(true);
 
         workshopBookings = tinyDB.getListObject("Carditems", WorkshopBooking.class);
-        shoppingCartWorkshopAdapter = new ShoppingCartWorkshopAdapter(workshopBookings);
+        shoppingCartWorkshopAdapter = new ShoppingCartWorkshopAdapter(workshopBookings, getFragmentManager());
 
         workshopRecyclerView.setAdapter(shoppingCartWorkshopAdapter);
         cultureDayLayoutManager = new LinearLayoutManager(thisContext);
@@ -71,9 +73,11 @@ public class ShoppingCartFragment extends Fragment {
         cultureDayRecyclerView.setHasFixedSize(true);
         cultureDayBookings = tinyDB.getListObject("CultureItems", CulturedayBookingInfo.class);
 
-        shoppingCartCultureDayAdapter = new ShoppingCartCultureDayAdapter(cultureDayBookings);
+        shoppingCartCultureDayAdapter = new ShoppingCartCultureDayAdapter(cultureDayBookings, getFragmentManager());
         cultureDayRecyclerView.setAdapter(shoppingCartCultureDayAdapter);
 
+        mSubtotal = root.findViewById(R.id.shopping_cart_subtotal);
+        mSubtotal.setText("€" + getSubTotal());
 
         mExtraWorkshopButton = root.findViewById(R.id.btn_cart_extra_workshop);
         mExtraWorkshopButton.setClickable(true);
@@ -87,6 +91,20 @@ public class ShoppingCartFragment extends Fragment {
 
 
         return root;
+    }
+
+    public String getSubTotal() {
+        double subtotal = 0;
+        for (int i = 0; i < cultureDayBookings.size(); i++) {
+            CulturedayBookingInfo cultureDayBooking = (CulturedayBookingInfo) cultureDayBookings.get(i);
+            subtotal += cultureDayBooking.getPrice();
+        }
+        for (int i = 0; i < workshopBookings.size(); i++) {
+            WorkshopBooking workshopBooking = (WorkshopBooking) workshopBookings.get(i);
+            subtotal += workshopBooking.getPrice();
+        }
+        DecimalFormat decimalFormat = new DecimalFormat("#,##0.00");
+        return decimalFormat.format(subtotal);
     }
 
     public void refresh() {
