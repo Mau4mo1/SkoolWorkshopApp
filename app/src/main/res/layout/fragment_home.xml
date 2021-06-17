@@ -226,7 +226,7 @@
                 app:layout_constraintLeft_toLeftOf="parent"
                 android:layout_width="115dp"
                 android:layout_height="115dp"
-                android:src="@drawable/nieuwsbrief" />
+                android:src="@drawable/imageedit_3_6513785217" />
 
             <TextView
                 android:id="@+id/home_item_newsletter_head"
