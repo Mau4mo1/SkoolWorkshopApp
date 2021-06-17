@@ -11,15 +11,24 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.homelayout.R;
-import com.example.homelayout.logic.MessageAdapter;
+import com.example.homelayout.domain.CultureDayBooking;
+import com.example.homelayout.repositories.TinyDB;
 
 import java.io.Serializable;
+import java.text.DecimalFormat;
+import java.util.ArrayList;
+import java.util.List;
 
-public class ReservationAdapter extends RecyclerView.Adapter<ReservationAdapter.ReservationViewHolder> implements Serializable {
+public class ReservationAdapterCultureDay extends RecyclerView.Adapter<ReservationAdapterCultureDay.ReservationViewHolder> implements Serializable {
+    private ArrayList<Object> cultureDayData;
+    private TinyDB tinydb;
+
+    public ReservationAdapterCultureDay(ArrayList<Object> cultureDayData) {
+        this.cultureDayData = cultureDayData;
+    }
     @NonNull
     @Override
-    public ReservationAdapter.ReservationViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        //      Log.d(TAG, "onCreateViewHolder() is aangeroepen.");
+    public ReservationAdapterCultureDay.ReservationViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         Context context = parent.getContext();
 
@@ -32,27 +41,42 @@ public class ReservationAdapter extends RecyclerView.Adapter<ReservationAdapter.
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ReservationAdapter.ReservationViewHolder holder, int position) {
-        Message message = messageList.get(position);
-        holder.mTitle.setText(String.valueOf(message.getTitle()));
-        holder.mText.setText(String.valueOf(message.getMessageText()));
-        holder.imageButton.setOnClickListener(new View.OnClickListener() {​​​​​​​​
+    public void onBindViewHolder(@NonNull ReservationAdapterCultureDay.ReservationViewHolder holder, int position) {
+        final int pos = position;
+        DecimalFormat decimalFormat = new DecimalFormat("#.00");
+        CultureDayBooking cultureDayBooking = (CultureDayBooking) cultureDayData.get(pos);
+        String prijs = decimalFormat.format(cultureDayBooking.getPrijs());
+        List<String> workshoplist = cultureDayBooking.getWorkshops();
+        String workshops = "";
+        for (int i = 0; i < workshoplist.size(); i++) {
+            if (i == workshoplist.size() - 1) {
+                workshops += workshoplist.get(i);
+            } else {
+                workshops += workshoplist.get(i) + "\n";
+            }
+        }
+
+        holder.id.setText(String.valueOf(cultureDayBooking.getRondes()));
+        holder.date.setText(String.valueOf(cultureDayBooking.getMinutenPerRonde()));
+        holder.status.setText(String.valueOf(cultureDayBooking.getTotaleMinuten()));
+        holder.kost.setText(String.valueOf(cultureDayBooking.getDeelnemers()));
+        holder.detail.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {​​​​​​​​
-                messageList.remove(position);
-                messageObjList.addAll(messageList);
-                tinyDB.clear();
-                tinyDB.putListObject("MessageBox", messageObjList);
+            public void onClick(View v) {
+                cultureDayData.remove(cultureDayData.get(position));
+                tinydb.putListObject("Carditems", cultureDayData);
                 notifyDataSetChanged();
+
             }
         });
-
-
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        if (cultureDayData == null) {
+            return 0;
+        }
+        return cultureDayData.size();
     }
 
     public class ReservationViewHolder extends RecyclerView.ViewHolder{
@@ -64,6 +88,11 @@ public class ReservationAdapter extends RecyclerView.Adapter<ReservationAdapter.
 
         public ReservationViewHolder(@NonNull View view){
             super(view);
+            id = view.findViewById(R.id.tv_my_reservation_id);
+            date = view.findViewById(R.id.tv_my_reservation_date);
+            status = view.findViewById(R.id.tv_my_reservation_status);
+            kost = view.findViewById(R.id.tv_my_reservation_total_kost);
+            detail = view.findViewById(R.id.button_my_reservation_info);
         }
     }
 }
