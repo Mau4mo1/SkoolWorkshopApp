@@ -41,7 +41,7 @@ public class ShoppingCartCultureDayAdapter extends RecyclerView.Adapter<Shopping
     @Override
     public void onBindViewHolder(@NonNull CultureDayViewHolder holder, int position) {
         final int pos = position;
-        DecimalFormat decimalFormat = new DecimalFormat("#.##0,00");
+        DecimalFormat decimalFormat = new DecimalFormat("#,##0.00");
         CulturedayBookingInfo cultureDayBooking = (CulturedayBookingInfo) cultureDayData.get(pos);
         String price = decimalFormat.format(cultureDayBooking.getPrice());
         ArrayList<Workshops> workshoplist = cultureDayBooking.getWorkshops();

@@ -14,4 +14,8 @@ public interface WorkshopAPI {
 
     @GET("category/workshops")
     Call<WorkshopsAPIResponse> loadWorkshopsByCategory(@Query("category") String category);
+
+    @GET("workshop/{workshopId}/translations")
+    Call<TranslationsAPIResponse> loadTranslations(@Path("workshopId") int workshopId);
+
 }

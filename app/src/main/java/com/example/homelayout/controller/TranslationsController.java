@@ -2,7 +2,9 @@ package com.example.homelayout.controller;
 
 import android.util.Log;
 
+import com.example.homelayout.domain.TranslationsObject;
 import com.example.homelayout.domain.WorkshopsObject;
+import com.example.homelayout.service.TranslationsAPIResponse;
 import com.example.homelayout.service.WorkshopAPI;
 import com.example.homelayout.service.WorkshopsAPIResponse;
 import com.google.gson.Gson;
@@ -18,17 +20,17 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class WorkshopController implements Callback<WorkshopsAPIResponse> {
+public class TranslationsController implements Callback<TranslationsAPIResponse> {
     public static final String BASE_URL = "https://skool-workshop.herokuapp.com/api/v1/";
     private final String TAG = this.getClass().getSimpleName();
     private final Retrofit retrofit;
     private final Gson gson;
     private WorkshopAPI workshopAPI;
+    private WorkshopsObject workshopsObject;
     private String usedMethod;
-    private WorkshopsControllerListener listener;
+    private TranslationsController.TranslationsControllerListener listener;
 
-
-    public WorkshopController(WorkshopsControllerListener listener) {
+    public TranslationsController(TranslationsController.TranslationsControllerListener listener) {
         this.listener = listener;
 
         gson = new GsonBuilder()
@@ -41,40 +43,28 @@ public class WorkshopController implements Callback<WorkshopsAPIResponse> {
         workshopAPI = retrofit.create(WorkshopAPI.class);
     }
 
-    public void loadAllWorkshops(){
-        usedMethod = "loadAllWorkshops";
-        Call<WorkshopsAPIResponse> call = workshopAPI.loadAllWorkshops();
-        Log.d(TAG, "loadAllWorkshops called");
+    public void loadTranslations(int id, WorkshopsObject workshopsObject){
+        usedMethod = "loadTranslations";
+        this.workshopsObject = workshopsObject;
+        Call<TranslationsAPIResponse> call = workshopAPI.loadTranslations(id);
+        Log.d(TAG, "loadTranslations called");
         call.enqueue(this);
     }
-
-    public void loadWorkshopsByCategory(String category){
-        usedMethod = "loadWorkshopsByCategory";
-        Call<WorkshopsAPIResponse> call = workshopAPI.loadWorkshopsByCategory(category);
-        Log.d(TAG, "loadAllWorkshops called");
-        call.enqueue(this);
-    }
-
 
     @Override
-    public void onResponse(Call<WorkshopsAPIResponse> call, Response<WorkshopsAPIResponse> response) {
+    public void onResponse(Call<TranslationsAPIResponse> call, Response<TranslationsAPIResponse> response) {
         Log.d(TAG, "onResponse() - statuscode: " + response.code());
 
         if(response.isSuccessful()) {
             Log.d(TAG, "response: " + response.body());
 
             // Deserialization
-                ArrayList<WorkshopsObject> workshopsObjectList = new ArrayList<>();
-                ArrayList<WorkshopsObject> responseObjects =
-                        (ArrayList<WorkshopsObject>) response.body().getResults();
+            ArrayList<TranslationsObject> translationsObjectsList =
+                    (ArrayList<TranslationsObject>) response.body().getResults();
 
-                    for(WorkshopsObject i : responseObjects){
-                        if(i.getPictureObject().length !=0){
-                            workshopsObjectList.add(i);
-                        }
-                    }
+                workshopsObject.setTranslationsObjects(translationsObjectsList);
             try {
-                listener.onWorkshopsAvailable(workshopsObjectList);
+                listener.onTranslationsAvailable(workshopsObject);
             } catch (SQLException throwables) {
                 throwables.printStackTrace();
             }
@@ -84,11 +74,11 @@ public class WorkshopController implements Callback<WorkshopsAPIResponse> {
     }
 
     @Override
-    public void onFailure(Call<WorkshopsAPIResponse> call, Throwable t) {
+    public void onFailure(Call<TranslationsAPIResponse> call, Throwable t) {
         Log.e(TAG, "onFailure - " + t.getMessage());
     }
 
-    public interface WorkshopsControllerListener {
-        void onWorkshopsAvailable(List<WorkshopsObject> workshopsObjectList) throws SQLException;
+    public interface TranslationsControllerListener {
+        void onTranslationsAvailable(WorkshopsObject workshopsObject) throws SQLException;
     }
 }
