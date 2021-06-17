@@ -33,7 +33,7 @@
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintRight_toLeftOf="@id/register_button"
                         android:layout_margin="5sp"
-                        android:textSize="12sp"
+                        android:textSize="11sp"
                         android:text="@string/title_login"
                         android:visibility="visible"/>
 
@@ -47,7 +47,7 @@
                         android:layout_marginTop="5sp"
                         android:layout_marginStart="5sp"
                         android:text="@string/title_register"
-                        android:textSize="12sp"
+                        android:textSize="11sp"
                         android:visibility="visible"
                         android:layout_marginEnd="15sp"/>
 
@@ -84,11 +84,11 @@
                     app:layout_constraintRight_toLeftOf="@+id/login_button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="30sp"
+                    android:layout_marginRight="90sp"
                     android:text="@string/greeting"
-                    android:layout_marginTop="10sp"
+                    android:layout_marginTop="11sp"
                     android:layout_marginStart="12dp"
-                    android:textSize="25sp"
+                    android:textSize="18sp"
                     android:textColor="@color/white"
                     android:background="@drawable/greeting_background"/>
 
@@ -136,7 +136,7 @@
                 app:layout_constraintLeft_toLeftOf="parent"
                 android:layout_width="115dp"
                 android:layout_height="115dp"
-                android:src="@drawable/loyalty_points"
+                android:src="@drawable/loyaltypoints"
                 />
 
             <TextView
@@ -155,7 +155,7 @@
                 android:layout_height="wrap_content"
                 app:layout_constraintLeft_toRightOf="@+id/home_item_loyalty_points_image"
                 app:layout_constraintTop_toBottomOf="@+id/home_item_loyalty_points_head"
-                android:text="@string/lorem_ipsum_long"
+                android:text="@string/loyaltypointsText"
                 android:layout_margin="10dp"
                 android:textSize="18sp"
                 android:ellipsize="end"
@@ -199,7 +199,7 @@
                 android:layout_height="wrap_content"
                 app:layout_constraintLeft_toRightOf="@+id/home_item_popular_workshops_image"
                 app:layout_constraintTop_toBottomOf="@+id/home_item_popular_workshops_head"
-                android:text="@string/lorem_ipsum_long"
+                android:text="@string/populaireworkshopstext"
                 android:layout_margin="10dp"
                 android:textSize="18sp"
                 android:ellipsize="end"
@@ -244,7 +244,7 @@
                 android:layout_height="wrap_content"
                 app:layout_constraintLeft_toRightOf="@+id/home_item_newsletter_image"
                 app:layout_constraintTop_toBottomOf="@+id/home_item_newsletter_head"
-                android:text="@string/lorem_ipsum_long"
+                android:text="@string/newsletterText"
                 android:layout_margin="10dp"
                 android:textSize="18sp"
                 android:ellipsize="end"
