@@ -1,71 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/layout_vertical01_cd"
-        android:layout_height="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:orientation="vertical">
-        <TextView
-            android:layout_marginTop="15sp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="Cultuurdag"
-            android:textSize="20sp"/>
-        <ImageView
-            android:id="@+id/img_cd"
-            android:layout_marginTop="20sp"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:id="@+id/layout_vertical01_cd"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/skoolcd">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="20sp"
+                    android:background="@drawable/greeting_background"
+                    android:text="Cultuurdag"
+                    android:textColor="@color/white"
+                    android:textSize="25sp" />
+            </LinearLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layout_const01_cd"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="20sp">
+                <Button
+                    android:id="@+id/button_more_info_cd"
+                    android:layout_width="130sp"
+                    android:layout_height="55sp"
+                    android:layout_marginStart="215sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/img_cd"
+                    android:backgroundTint="@color/orange"
+                    android:text="Meer informatie"
+                    tools:ignore="NotSibling" />
+                <Button
+                    android:id="@+id/button_book_now_cd"
+                    android:layout_marginStart="65sp"
+                    android:layout_width="130sp"
+                    android:layout_height="55sp"
+                    app:layout_constraintTop_toBottomOf="@id/img_cd"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:backgroundTint="@color/orange"
+                    android:text="Boek nu"
+                    tools:ignore="NotSibling"/>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+            <LinearLayout
+                android:layout_marginTop="20sp"
+                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:background="@drawable/contact_background"
+                android:layout_marginStart="10sp">
+                <TextView
+                    android:layout_marginStart="20sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Een cultuurdag op school is een dag vol met CKV activiteiten en culturele workshops binnen vijf verschillende kunstdisciplines namelijk:\n-Beeldende kunst\n-Dans\n-Media\n-Muziek\n-Theater\nSkool Workshop biedt een divers aanbod van CKV activiteiten. Middels het diverse aanbod van CKV activiteiten en workshops kunnen de leerlingen uitgedaagd en gestimuleerd worden op verschillende en meerdere manieren. Wij zijn in het bezit van een team met pedagogisch onderlegde workshopdocenten, de docenten begeleiden de leerlingen in deze reis van ontdekking en ervaring. Wij hebben inmiddels al een cultuurdag met succes verzorgd op verschillende schooltypes denk hierbij aan: primair onderwijs, voorgezet onderwijs, speciaal onderwijs, praktijkonderwijs en het middelbaar beroepsonderwijs."/>
+            </LinearLayout>
+        </LinearLayout>
+        <EditText
+            app:layout_constraintTop_toBottomOf="@+id/layout_vertical01_cd"
+            android:id="@+id/edt_cultureday_padding01"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:scaleType="fitStart"
-            android:adjustViewBounds="true"
-            tools:srcCompat="@drawable/skoolcd"/>
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/layout_const01_cd"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="20sp">
-            <Button
-                android:id="@+id/button_more_info_cd"
-                android:layout_width="130sp"
-                android:layout_height="55sp"
-                android:layout_marginStart="215sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/img_cd"
-                android:backgroundTint="@color/orange"
-                android:text="Meer informatie"
-                tools:ignore="NotSibling" />
-            <Button
-                android:id="@+id/button_book_now_cd"
-                android:layout_marginStart="65sp"
-                android:layout_width="130sp"
-                android:layout_height="55sp"
-                app:layout_constraintTop_toBottomOf="@id/img_cd"
-                app:layout_constraintStart_toStartOf="parent"
-                android:backgroundTint="@color/orange"
-                android:text="Boek nu"
-                tools:ignore="NotSibling"/>
-        </androidx.constraintlayout.widget.ConstraintLayout>
-        <TextView
-            android:layout_marginTop="10sp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="Een hele dag plezier!"
-            android:textSize="16sp"/>
-        <TextView
-            android:layout_marginTop="5sp"
-            android:layout_marginBottom="20sp"
-            android:layout_width="400sp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="Een cultuurdag is een dag met meerdere workshops die je kan bestellen. Bestel via een cultuurdag en krijg korting op iedere gekozen workshop! (minimale bedrag €1255,50)"
-            android:textSize="14sp"/>
-    </LinearLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>
+            android:visibility="invisible"
+            android:layout_marginTop="8sp"
+            android:layout_marginStart="20sp"
+            android:layout_marginEnd="20sp"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

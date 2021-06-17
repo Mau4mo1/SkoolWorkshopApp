@@ -43,12 +43,30 @@
                 android:layout_marginStart="20sp"
                 android:textSize="20sp"/>
             <TextView
-                android:id="@+id/tv_my_invoiceaddress_description"
+                android:id="@+id/tv_my_invoiceaddress_invoice_holder_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toBottomOf="@+id/tv_my_invoiceaddress_title"
                 app:layout_constraintLeft_toLeftOf="parent"
-                android:text="Informatie"
+                android:text="Naam factuur houder"
+                android:layout_marginStart="20sp"
+                android:textSize="16sp"/>
+            <TextView
+                android:id="@+id/tv_my_invoiceaddress_invoice_street_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/tv_my_invoiceaddress_invoice_holder_name"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:text="Straatnaam factuur"
+                android:layout_marginStart="20sp"
+                android:textSize="16sp"/>
+            <TextView
+                android:id="@+id/tv_my_invoiceaddress_invoice_zipcode_city"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/tv_my_invoiceaddress_invoice_street_name"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:text="Postcode en plaats"
                 android:layout_marginStart="20sp"
                 android:textSize="16sp"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -81,12 +99,30 @@
                 android:layout_marginStart="20sp"
                 android:textSize="20sp"/>
             <TextView
-                android:id="@+id/tv_my_invoice_workshopinfo_description"
+                android:id="@+id/tv_my_invoiceaddress_workshop_holder_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toBottomOf="@+id/tv_my_invoice_workshopaddress_title"
                 app:layout_constraintLeft_toLeftOf="parent"
-                android:text="Informatie"
+                android:text="Naam factuur houder"
+                android:layout_marginStart="20sp"
+                android:textSize="16sp"/>
+            <TextView
+                android:id="@+id/tv_my_invoiceaddress_workshop_street_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/tv_my_invoiceaddress_workshop_holder_name"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:text="Straatnaam factuur"
+                android:layout_marginStart="20sp"
+                android:textSize="16sp"/>
+            <TextView
+                android:id="@+id/tv_my_invoiceaddress_workshop_zipcode_city"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/tv_my_invoiceaddress_workshop_street_name"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:text="Postcode en plaats"
                 android:layout_marginStart="20sp"
                 android:textSize="16sp"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
