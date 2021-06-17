@@ -21,11 +21,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.homelayout.MainActivity;
 import com.example.homelayout.R;
+import com.example.homelayout.controller.ShoppingCartController;
 import com.example.homelayout.domain.CultureDayBooking;
 import com.example.homelayout.domain.WorkshopBooking;
 import com.example.homelayout.domain.Workshops;
+import com.example.homelayout.domain.distancecalc.DistanceResult;
 import com.example.homelayout.logic.CulturedayBookingInfo;
 import com.example.homelayout.repositories.TinyDB;
+import com.example.homelayout.service.ShoppingCartAPI;
 import com.example.homelayout.ui.workshops.WorkshopsForm;
 import com.example.homelayout.ui.workshops.WorkshopsFragment;
 
@@ -33,9 +36,10 @@ import com.example.homelayout.ui.workshops.WorkshopsFragment;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
-public class ShoppingCartFragment extends Fragment {
+public class ShoppingCartFragment extends Fragment implements ShoppingCartController.DistanceListener {
     private WorkshopsForm mainActivity = new WorkshopsForm(Workshops.Flashmob);
     private Button mExtraWorkshopButton;
+    private DistanceResult distanceResult;
     private ImageButton mDeleteButton;
     private TextView mSubtotal;
     private Context thisContext;
@@ -55,6 +59,9 @@ public class ShoppingCartFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_shopping_cart, container, false);
         Log.d("ShoppingCartFragment", "Shoppingcart fragment aangemaakt!");
+
+        ShoppingCartController shoppingCartController = new ShoppingCartController(this);
+        shoppingCartController.loadDistance("51.55363487608391,4.787215559520832");
 
         thisContext = container.getContext();
         tinyDB = new TinyDB(thisContext);
@@ -109,5 +116,10 @@ public class ShoppingCartFragment extends Fragment {
 
     public void refresh() {
         getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new ShoppingCartFragment()).commit();
+    }
+
+    @Override
+    public void onDistanceReady(DistanceResult result) {
+        this.distanceResult = result;
     }
 }
