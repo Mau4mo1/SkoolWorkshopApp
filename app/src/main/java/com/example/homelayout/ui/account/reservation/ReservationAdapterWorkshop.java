@@ -62,9 +62,6 @@ public class ReservationAdapterWorkshop extends RecyclerView.Adapter<Reservation
         holder.detail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                workshopData.remove(workshopData.get(position));
-                tinydb.putListObject("Carditems", workshopData);
-                notifyDataSetChanged();
 
             }
         });
@@ -92,6 +89,7 @@ public class ReservationAdapterWorkshop extends RecyclerView.Adapter<Reservation
             status = view.findViewById(R.id.tv_my_reservation_status);
             kost = view.findViewById(R.id.tv_my_reservation_total_kost);
             date = view.findViewById(R.id.button_my_reservation_info);
+            detail = view.findViewById(R.id.button_my_reservation_info);
         }
     }
 }

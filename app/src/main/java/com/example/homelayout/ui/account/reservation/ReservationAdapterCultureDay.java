@@ -63,9 +63,6 @@ public class ReservationAdapterCultureDay extends RecyclerView.Adapter<Reservati
         holder.detail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                cultureDayData.remove(cultureDayData.get(position));
-                tinydb.putListObject("Carditems", cultureDayData);
-                notifyDataSetChanged();
 
             }
         });
