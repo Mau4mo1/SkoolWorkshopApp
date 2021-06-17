@@ -3,9 +3,11 @@ package com.example.homelayout.ui.Cultureday.Form;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,24 +16,37 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.GridLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 
 import com.example.homelayout.R;
+import com.example.homelayout.domain.CultureDayBooking;
+import com.example.homelayout.domain.WorkshopBooking;
 import com.example.homelayout.domain.Workshops;
 import com.example.homelayout.logic.CalculatePrices;
 import com.example.homelayout.logic.CulturedayBookingInfo;
+import com.example.homelayout.repositories.TinyDB;
+import com.example.homelayout.ui.home.HomeFragment;
+import com.example.homelayout.ui.shoppingcart.ShoppingCartFragment;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
 public class CulturedayBookingFormFragment extends Fragment {
+    private ArrayList<Object> bookings;
+    private TinyDB tinyDB;
+    private Date date;
+    private EditText time_scheme;
+    private EditText learning_level;
     private double subtotal_amount = 0;
     private HashMap<String, Integer> values = new HashMap<>();
     private ArrayList<Workshops> workshops = new ArrayList<>();
@@ -51,8 +66,10 @@ public class CulturedayBookingFormFragment extends Fragment {
     private EditText workshop_per_round;
     private EditText workshop_rounds;
     private TextView prijs_summery;
+    private DatePicker date_cultureday;
     private CalculatePrices calculatePrices = new CalculatePrices();
     private CulturedayBookingInfo culturedayBookingInfo = new CulturedayBookingInfo();
+    private CheckBox cultureday_registration_box;
     private EditText workshop_particepents;
     private CheckBox workshop_graffiti;
     private CheckBox workshop_lightgraffiti;
@@ -90,7 +107,8 @@ public class CulturedayBookingFormFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_cultureday_form, container, false);
         con = container.getContext();
-
+        tinyDB = new TinyDB(con);
+        loadData();
         dropdown_categories = root.findViewById(R.id.sv_cultureday_form_catagorie_dropdown);
         workshop_check_dance = root.findViewById(R.id.sv_cultureday_form_workshoplist_dance);
         workshop_check_sport = root.findViewById(R.id.sv_cultureday_form_workshoplist_sport);
@@ -698,10 +716,15 @@ public class CulturedayBookingFormFragment extends Fragment {
             }
         });
 
+        date_cultureday = root.findViewById(R.id.tv_cultureday_form_date);
+        cultureday_registration_box = root.findViewById(R.id.sv_cultureday_form_registration_box);
         btn_book_now_cdf = root.findViewById(R.id.button_book_now_cdf);
         btn_book_now_cdf.setClickable(true);
+        time_scheme = root.findViewById(R.id.edm_cultureday_form_timescheme_field);
+        learning_level = root.findViewById(R.id.edt_cultureday_form_learninglevel_field);
 
         btn_book_now_cdf.setOnClickListener(new View.OnClickListener() {
+                @RequiresApi(api = Build.VERSION_CODES.O)
                 @Override
                 public void onClick(View view) {
                     if(subtotal_amount < 1255.50) {
@@ -730,13 +753,48 @@ public class CulturedayBookingFormFragment extends Fragment {
                         minpopup.show();
                     }else{
                         try {
+                            date_cultureday.setOnDateChangedListener(new DatePicker.OnDateChangedListener() {
+                                @Override
+                                public void onDateChanged(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                                    Log.d("onDateChanged", "Nieuwe datum gekozen");
+                                    date = new Date(year, monthOfYear, dayOfMonth);
+                                }
+                            });
+                            culturedayBookingInfo.setDate(date);
+                            System.out.println(date);
+                            if (cultureday_registration_box.isChecked() == true){
+                                culturedayBookingInfo.setRegistration(true);
+                                System.out.println("Registration true");
+                            } else {
+                                culturedayBookingInfo.setRegistration(false);
+                                System.out.println("Registration false");
+                            }
+                            culturedayBookingInfo.setLearninglevel(learning_level.getText().toString());
+                            culturedayBookingInfo.setTimescheme(workshop_particepents.getText().toString());
                             culturedayBookingInfo.setParticepants(Integer.parseInt(workshop_particepents.getText().toString()));
                             culturedayBookingInfo.setRounds(Integer.parseInt(workshop_rounds.getText().toString()));
                             culturedayBookingInfo.setWorkshop_minutes(Integer.parseInt(round_minutes.getText().toString()));
                             culturedayBookingInfo.setWorkshops(workshops);
                             culturedayBookingInfo.setWorkshops_per_round(Integer.parseInt(workshop_per_round.getText().toString()));
+
+
+                            // send to TinyDB
+                            bookings.add(culturedayBookingInfo);
+                            tinyDB.putListObject("CultureItems", bookings);
+//                            Link to shopingcart
+                            getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new ShoppingCartFragment()).commit();
                         }catch (Exception e){
-                            System.out.println("Booking info invalet or incompelte");
+                            System.out.println("Booking info invalet or incompelte");AlertDialog.Builder infopopup = new AlertDialog.Builder(con);
+                            infopopup.setCancelable(true);
+                            infopopup.setTitle("Niet alles ingevuld");
+                            infopopup.setMessage("Niet alle velden ingevuld (Aantal deelnemers, Aantal rondes, Aantal workshops per ronde, Aantal minuten per workshop)");
+                            infopopup.setNegativeButton("OK", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    dialogInterface.cancel();
+                                }
+                            });
+                            infopopup.show();
                         }
                     }
                 }
@@ -748,5 +806,11 @@ public class CulturedayBookingFormFragment extends Fragment {
         double subtotal = calculatePrices.calculateCultureday(values, workshops);
         this.subtotal_amount = subtotal;
         sub_total_cdf.setText("Subtotal: €" + subtotal + "0");
+    }
+    private void loadData(){
+        bookings = tinyDB.getListObject("CultureItems", CulturedayBookingInfo.class);
+        if (bookings == null){
+            bookings = new ArrayList<>();
+        }
     }
 }

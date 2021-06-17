@@ -31,6 +31,7 @@
             android:layout_marginStart="10sp"
             android:id="@+id/const_invoice_02"
             android:layout_width="match_parent"
+            android:layout_marginStart="20sp"
             android:layout_height="wrap_content"
             android:background="@drawable/contact_background">
             <TextView

@@ -2,7 +2,7 @@ package com.example.homelayout.domain;
 
 import java.util.Date;
 
-public class Payment {
+public class WorkshopBooking {
     private String dienst;
     private int rondes;
     private int minuten;
@@ -12,7 +12,7 @@ public class Payment {
     private String datum;
     private double prijs;
 
-    public Payment(String dienst, int rondes, int minuten, String tijdschema, String leerniveau, String datum, double prijs) {
+    public WorkshopBooking(String dienst, int rondes, int minuten, String tijdschema, String leerniveau, String datum, double prijs) {
         this.dienst = dienst;
         this.rondes = rondes;
         this.minuten = minuten;
@@ -21,6 +21,13 @@ public class Payment {
         this.leerniveau = leerniveau;
         this.datum = datum;
         this.prijs = prijs;
+    }
+    public void setPositon(){
+
+    }
+    public int getPositon()
+    {
+       return 0;
     }
 
     public int getTotaleMinuten() {

@@ -3,13 +3,19 @@ package com.example.homelayout.logic;
 import com.example.homelayout.domain.Workshops;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 public class CulturedayBookingInfo {
     private int rounds;
     private int workshops_per_round;
     private int workshop_minutes;
     private int particepants;
+    private String learning_level;
     private ArrayList<Workshops> workshops;
+    private int price;
+    private String time_scheme;
+    private Date date;
+    private boolean registration_system;
 
     public void setRounds(int rounds) {
         this.rounds = rounds;
@@ -44,5 +50,40 @@ public class CulturedayBookingInfo {
     }
     public ArrayList<Workshops> getWorkshops() {
         return this.workshops;
+    }
+
+    public void setRegistration(boolean registration) {
+        this.registration_system = registration;
+    }
+    public boolean getRegistration() {
+        return this.registration_system;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+    public Date getDate() {
+        return this.date;
+    }
+
+    public void setPrice(int price){
+        this.price = price;
+    }
+    public int getPrice(){
+        return this.price;
+    }
+
+    public void setTimescheme(String scheme){
+        this.time_scheme = scheme;
+    }
+    public String getTimescheme(){
+        return this.time_scheme;
+    }
+
+    public void setLearninglevel(String level){
+        this.learning_level = level;
+    }
+    public String getLearninglevel(){
+        return learning_level;
     }
 }

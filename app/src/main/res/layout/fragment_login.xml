@@ -89,13 +89,14 @@
             />
     </LinearLayout>
     <TextView
+        android:id="@+id/tv_login_link"
         android:textColor="@color/black"
         android:paddingLeft="10sp"
         android:layout_margin="10sp"
         android:layout_gravity="center"
         android:layout_width="350sp"
         android:layout_height="wrap_content"
-        android:text="Nog geen acount? Klik hier om in te loggen"/>
+        android:text="Nog geen acount? Klik hier om je aan te melden"/>
     <Button
         android:paddingLeft="8sp"
         android:layout_gravity="center"
