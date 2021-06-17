@@ -27,7 +27,7 @@ import java.util.List;
 
 public class MessageBoxFragment extends Fragment implements MessageAdapter.RecyclerviewOnClickListener {
     private ArrayList<Object> messageList;
-    private List<Message> messageTypeList;
+    private ArrayList<Object> toAddList = new ArrayList<>();
     private MessageAdapter messageAdapter;
     private RecyclerView recyclerView;
     private RecyclerView.LayoutManager layoutManager;
@@ -53,21 +53,26 @@ public class MessageBoxFragment extends Fragment implements MessageAdapter.Recyc
         recyclerView = root.findViewById(R.id.rv_message_box_recyclerview);
         recyclerView.setLayoutManager(layoutManager);
 
+        if(messageList.isEmpty()){
+            messageList.add(testMessage1);
+            messageList.add(testMessage2);
+        }
+
         MainActivity active = (MainActivity) getActivity();
         if(active.getMessage() != null){
             for(Message m : active.getMessage()){
                 for(Object message : messageList){
                     if(!messageList.contains(m)){
-                        messageList.add(m);
+                        toAddList.add(m);
                     }
                 }
             }
         }
 
-        saveData();
-
+        messageList.addAll(toAddList);
+        toAddList.clear();
         //tinyDB.clear();
-
+        saveData();
 
         messageAdapter = new MessageAdapter(this,messageList, tinyDB);
         recyclerView.setAdapter(messageAdapter);
@@ -79,6 +84,7 @@ public class MessageBoxFragment extends Fragment implements MessageAdapter.Recyc
     public void saveData(){
         tinyDB.putListObject("MessageBox", messageList);
     }
+
     public void loadData(){
         messageList= tinyDB.getListObject("MessageBox",Message.class);
 
@@ -90,7 +96,6 @@ public class MessageBoxFragment extends Fragment implements MessageAdapter.Recyc
     @Override
     public void recyclerviewClick(Message message) {
         getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new MessageScreen(message)).addToBackStack(null).commit();
-
     }
 
     
