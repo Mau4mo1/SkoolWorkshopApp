@@ -28,7 +28,9 @@ import android.widget.PopupMenu;
 import android.widget.PopupWindow;
 import android.widget.Toast;
 
+import com.example.homelayout.controller.TranslationsController;
 import com.example.homelayout.domain.Message;
+import com.example.homelayout.domain.TranslationsObject;
 import com.example.homelayout.domain.WorkshopBooking;
 import com.example.homelayout.controller.WorkshopController;
 import com.example.homelayout.domain.WorkshopPictureObject;
@@ -57,13 +59,15 @@ import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import java.lang.reflect.Type;
 
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements WorkshopController.WorkshopsControllerListener {
+
+public class MainActivity extends AppCompatActivity {
     private BottomNavigationView bottomNav;
     private Message m = null;
     private ArrayList<Message> aTestForTim;
@@ -71,6 +75,9 @@ public class MainActivity extends AppCompatActivity implements WorkshopControlle
     private WorkshopController workshopController;
     private List<WorkshopsObject> workshopsObjectList;
     private WorkshopsObject workshopObject;
+    public boolean istheuserloggedin;
+    private List<TranslationsObject> translationsObjectsList;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,6 +92,7 @@ public class MainActivity extends AppCompatActivity implements WorkshopControlle
         bottomNav.setOnNavigationItemSelectedListener(navListener);
         aTestForTim = new ArrayList<>();
         countdown = 2;
+
         getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new HomeFragment()).commit();
         FirebaseMessaging.getInstance().getToken()
                 .addOnCompleteListener(new OnCompleteListener<String>() {
@@ -107,12 +115,14 @@ public class MainActivity extends AppCompatActivity implements WorkshopControlle
 //        workshopController = new WorkshopController(this);
 //        workshopPictureController = new WorkshopPictureController(this);
 //        workshopPictureController.loadPictureWorkshops(2);
-
+        //TODO SHAREDPREFERENCES TOEVOEGEN ALS INLOGGEN WERKT
+        this.istheuserloggedin = false;
         getSupportFragmentManager()
                 .beginTransaction()
                 .replace(R.id.nav_host_fragment, new HomeFragment())
                 .commit();
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater menuInflater = getMenuInflater();
@@ -147,7 +157,6 @@ public class MainActivity extends AppCompatActivity implements WorkshopControlle
         if (item.getItemId() == R.id.bt_shopping_cart) {
             Fragment selectedFragment = new ShoppingCartFragment();
             getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, selectedFragment).addToBackStack(null).commit();
-            getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, selectedFragment).commit();
         }
         return super.onOptionsItemSelected(item);
     }
@@ -203,37 +212,43 @@ public class MainActivity extends AppCompatActivity implements WorkshopControlle
                     return true;
                 }
             };
+
     private void showStatusPopup(final Activity context) {
 
 
-            // Inflate the popup_layout.xml
-            ConstraintLayout viewGroup = (ConstraintLayout) context.findViewById(R.id.container_sideView);
-            LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            View layout = layoutInflater.inflate(R.layout.activity_more, null);
-            PopupWindow changeStatusPopUp = new PopupWindow(context);
-            changeStatusPopUp.setContentView(layout);
-            changeStatusPopUp.setWidth(ConstraintLayout.LayoutParams.WRAP_CONTENT);
-            changeStatusPopUp.setHeight(ConstraintLayout.LayoutParams.WRAP_CONTENT);
-            changeStatusPopUp.setFocusable(true);
+        // Inflate the popup_layout.xml
+        ConstraintLayout viewGroup = (ConstraintLayout) context.findViewById(R.id.container_sideView);
+        LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View layout = layoutInflater.inflate(R.layout.activity_more, null);
+        PopupWindow changeStatusPopUp = new PopupWindow(context);
+        changeStatusPopUp.setContentView(layout);
+        changeStatusPopUp.setWidth(ConstraintLayout.LayoutParams.WRAP_CONTENT);
+        changeStatusPopUp.setHeight(ConstraintLayout.LayoutParams.WRAP_CONTENT);
+        changeStatusPopUp.setFocusable(true);
 
-            int OFFSET_X = 0;
-            int OFFSET_Y = -400;
-            int[] location = new int[2];
-            findViewById(R.id.navigation_more).getLocationOnScreen(location);
-            OFFSET_X = OFFSET_X + location[0];
-            OFFSET_Y = OFFSET_Y + location[1];
+        int OFFSET_X = 0;
+        int OFFSET_Y = -400;
+        int[] location = new int[2];
+        findViewById(R.id.navigation_more).getLocationOnScreen(location);
+        OFFSET_X = OFFSET_X + location[0];
+        OFFSET_Y = OFFSET_Y + location[1];
 
-            changeStatusPopUp.setBackgroundDrawable(new BitmapDrawable());
-            NavigationView sideBarView = layout.findViewById(R.id.nav_side_view);
-            sideBarView.setNavigationItemSelectedListener(navSideBarListener);
-            changeStatusPopUp.showAtLocation(layout, Gravity.TOP, OFFSET_X, OFFSET_Y);
-        }
-
-        public ArrayList<Message> getMessage(){
-            return this.aTestForTim;
-        }
-    @Override
-    public void onWorkshopsAvailable(List<WorkshopsObject> workshopsObjectList) {
-        this.workshopsObjectList = workshopsObjectList;
+        changeStatusPopUp.setBackgroundDrawable(new BitmapDrawable());
+        NavigationView sideBarView = layout.findViewById(R.id.nav_side_view);
+        sideBarView.setNavigationItemSelectedListener(navSideBarListener);
+        changeStatusPopUp.showAtLocation(layout, Gravity.TOP, OFFSET_X, OFFSET_Y);
     }
+
+    public ArrayList<Message> getMessage() {
+        return this.aTestForTim;
+    }
+
+    public void setLoggedIn(boolean bool){
+        this.istheuserloggedin = bool;
+    }
+
+    public boolean getIsTheUserLoggedIn(){
+        return this.istheuserloggedin;
+    }
+
 }

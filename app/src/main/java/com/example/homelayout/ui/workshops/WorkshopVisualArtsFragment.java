@@ -89,7 +89,7 @@ public class WorkshopVisualArtsFragment extends Fragment implements View.OnClick
         });
 
         llGraffiti = root.findViewById(R.id.layout_workshop_graffiti);
-        llLightGraffiti = root.findViewById(R.id.layout_workshop_tshirt_design);
+        llLightGraffiti = root.findViewById(R.id.layout_workshop_light_graffiti);
         llStopMotion = root.findViewById(R.id.layout_workshop_stop_motion);
         llTShirt = root.findViewById(R.id.layout_workshop_tshirt_design);
 

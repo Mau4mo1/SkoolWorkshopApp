@@ -2,6 +2,8 @@ package com.example.homelayout.domain;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.List;
+
 public class WorkshopsObject {
     @SerializedName("Id")
     private int id;
@@ -15,6 +17,7 @@ public class WorkshopsObject {
     private boolean needsApp;
     @SerializedName("__Pictures__")
     private WorkshopPictureObject[] pictureObject;
+    private List<TranslationsObject> translationsObjects;
 
     public WorkshopsObject(int id, String category, String codeName, String shortDesc, boolean needsApp, WorkshopPictureObject[] pictureObject) {
         this.id = id;
@@ -71,5 +74,13 @@ public class WorkshopsObject {
 
     public void setNeedsApp(boolean needsApp) {
         this.needsApp = needsApp;
+    }
+
+    public List<TranslationsObject> getTranslationsObjects() {
+        return translationsObjects;
+    }
+
+    public void setTranslationsObjects(List<TranslationsObject> translationsObjects) {
+        this.translationsObjects = translationsObjects;
     }
 }

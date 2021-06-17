@@ -4,31 +4,32 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.homelayout.R;
-import com.example.homelayout.domain.CultureDayBooking;
 import com.example.homelayout.domain.Workshops;
 import com.example.homelayout.logic.CulturedayBookingInfo;
+import com.example.homelayout.repositories.TinyDB;
 
 import java.io.Serializable;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
-import java.util.List;
 
 public class ShoppingCartCultureDayAdapter extends RecyclerView.Adapter<ShoppingCartCultureDayAdapter.CultureDayViewHolder> implements Serializable {
-    private List cultureDayData;
-
-    public ShoppingCartCultureDayAdapter(List cultureDayData) {
+    private ArrayList<Object> cultureDayData;
+    private TinyDB tinyDB;
+    public ShoppingCartCultureDayAdapter(ArrayList cultureDayData) {
         this.cultureDayData = cultureDayData;
     }
 
     @Override
     public CultureDayViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         Context context = parent.getContext();
+        tinyDB = new TinyDB(context);
         int layoutIdForListItem = R.layout.fragment_shopping_cart_cultureday;
         LayoutInflater inflater = LayoutInflater.from(context);
         boolean shouldAttachToParentImmediately = false;
@@ -40,9 +41,9 @@ public class ShoppingCartCultureDayAdapter extends RecyclerView.Adapter<Shopping
     @Override
     public void onBindViewHolder(@NonNull CultureDayViewHolder holder, int position) {
         final int pos = position;
-        DecimalFormat decimalFormat = new DecimalFormat("#.00");
+        DecimalFormat decimalFormat = new DecimalFormat("#,##0.00");
         CulturedayBookingInfo cultureDayBooking = (CulturedayBookingInfo) cultureDayData.get(pos);
-        String prijs = decimalFormat.format(cultureDayBooking.getPrice());
+        String price = decimalFormat.format(cultureDayBooking.getPrice());
         ArrayList<Workshops> workshoplist = cultureDayBooking.getWorkshops();
         String workshops = "";
         for (int i = 0; i < workshoplist.size(); i++) {
@@ -53,39 +54,50 @@ public class ShoppingCartCultureDayAdapter extends RecyclerView.Adapter<Shopping
             }
         }
 
-        holder.mRondes.setText(String.valueOf(cultureDayBooking.getRounds()));
-        holder.mMinuten.setText(String.valueOf(cultureDayBooking.getWorkshops_per_round()));
-        holder.mTotaleMinuten.setText(String.valueOf(cultureDayBooking.getWorkshop_minutes()));
-        holder.mDeelnemers.setText(String.valueOf(cultureDayBooking.getParticepants()));
+        holder.mRounds.setText(String.valueOf(cultureDayBooking.getRounds()));
+        holder.mMinutes.setText(String.valueOf(cultureDayBooking.getWorkshops_per_round()));
+        holder.mTotalMinutes.setText(String.valueOf(cultureDayBooking.getWorkshop_minutes()));
+        holder.mParticipants.setText(String.valueOf(cultureDayBooking.getParticepants()));
         holder.mWorkshops.setText(workshops.toString());
-        holder.mTijdschema.setText(String.valueOf(cultureDayBooking.getTimescheme()));
-        holder.mLeerniveau.setText(String.valueOf(cultureDayBooking.getLearninglevel()));
-        holder.mDatum.setText(String.valueOf(cultureDayBooking.getDate()));
-        holder.mPrijs.setText("€" + prijs);
+        holder.mTimeTable.setText(String.valueOf(cultureDayBooking.getTimescheme()));
+        holder.mLearningLevel.setText(String.valueOf(cultureDayBooking.getLearninglevel()));
+        holder.mDate.setText(String.valueOf(cultureDayBooking.getDate()));
+        holder.mPrice.setText("€" + price);
+        holder.mButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                cultureDayData.remove(cultureDayData.get(position));
+                tinyDB.putListObject("CultureItems", cultureDayData);
+                notifyDataSetChanged();
+
+            }
+        });
     }
 
     public class CultureDayViewHolder extends RecyclerView.ViewHolder {
-        private TextView mRondes;
-        private TextView mMinuten;
-        private TextView mTotaleMinuten;
-        private TextView mDeelnemers;
+        private TextView mRounds;
+        private TextView mMinutes;
+        private TextView mTotalMinutes;
+        private TextView mParticipants;
         private TextView mWorkshops;
-        private TextView mTijdschema;
-        private TextView mLeerniveau;
-        private TextView mDatum;
-        private TextView mPrijs;
+        private TextView mTimeTable;
+        private TextView mLearningLevel;
+        private TextView mDate;
+        private TextView mPrice;
+        private ImageButton mButton;
 
         public CultureDayViewHolder(@NonNull View view) {
             super(view);
-            mRondes = (TextView) itemView.findViewById(R.id.shopping_cart_rondes);
-            mMinuten = (TextView) itemView.findViewById(R.id.shopping_cart_minuten);
-            mTotaleMinuten = (TextView) itemView.findViewById(R.id.shopping_cart_totale_minuten);
-            mDeelnemers = (TextView) itemView.findViewById(R.id.shopping_cart_deelnemers);
+            mRounds = (TextView) itemView.findViewById(R.id.shopping_cart_rounds);
+            mMinutes = (TextView) itemView.findViewById(R.id.shopping_cart_minutes);
+            mTotalMinutes = (TextView) itemView.findViewById(R.id.shopping_cart_total_minutes);
+            mParticipants = (TextView) itemView.findViewById(R.id.shopping_cart_participants);
             mWorkshops = (TextView) itemView.findViewById(R.id.shopping_cart_workshops);
-            mTijdschema = (TextView) itemView.findViewById(R.id.shopping_cart_tijdschema);
-            mLeerniveau = (TextView) itemView.findViewById(R.id.shopping_cart_leerniveau);
-            mDatum = (TextView) itemView.findViewById(R.id.shopping_cart_datum);
-            mPrijs = (TextView) itemView.findViewById(R.id.shopping_cart_prijs);
+            mTimeTable = (TextView) itemView.findViewById(R.id.shopping_cart_timetable);
+            mLearningLevel = (TextView) itemView.findViewById(R.id.shopping_cart_learninglevel);
+            mDate = (TextView) itemView.findViewById(R.id.shopping_cart_date);
+            mPrice = (TextView) itemView.findViewById(R.id.shopping_cart_price);
+            mButton = (ImageButton) itemView.findViewById(R.id.btn_delete_cultureday);
         }
     }
 

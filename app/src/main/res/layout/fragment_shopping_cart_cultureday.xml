@@ -43,7 +43,7 @@
                     android:textSize="17sp"
                     android:layout_gravity="left"/>
                 <TextView
-                    android:id="@+id/shopping_cart_dienst"
+                    android:id="@+id/shopping_cart_service"
                     android:layout_gravity="right"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
@@ -65,7 +65,7 @@
                     android:textSize="16sp"
                     android:layout_gravity="left"/>
                 <TextView
-                    android:id="@+id/shopping_cart_rondes"
+                    android:id="@+id/shopping_cart_rounds"
                     android:layout_gravity="right"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
@@ -109,7 +109,7 @@
                     android:textSize="16sp"
                     android:layout_gravity="left"/>
                 <TextView
-                    android:id="@+id/shopping_cart_minuten"
+                    android:id="@+id/shopping_cart_minutes"
                     android:layout_gravity="right"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
@@ -131,7 +131,7 @@
                     android:textSize="16sp"
                     android:layout_gravity="left"/>
                 <TextView
-                    android:id="@+id/shopping_cart_totale_minuten"
+                    android:id="@+id/shopping_cart_total_minutes"
                     android:layout_gravity="right"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
@@ -153,7 +153,7 @@
                     android:textSize="16sp"
                     android:layout_gravity="left"/>
                 <TextView
-                    android:id="@+id/shopping_cart_deelnemers"
+                    android:id="@+id/shopping_cart_participants"
                     android:layout_gravity="right"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
@@ -198,7 +198,7 @@
                     android:textSize="17sp"
                     android:layout_gravity="left"/>
                 <TextView
-                    android:id="@+id/shopping_cart_tijdschema"
+                    android:id="@+id/shopping_cart_timetable"
                     android:layout_gravity="right"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
@@ -220,7 +220,7 @@
                     android:textSize="17sp"
                     android:layout_gravity="left"/>
                 <TextView
-                    android:id="@+id/shopping_cart_leerniveau"
+                    android:id="@+id/shopping_cart_learninglevel"
                     android:layout_gravity="right"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
@@ -243,7 +243,7 @@
                     android:textSize="17sp"
                     android:layout_gravity="left"/>
                 <TextView
-                    android:id="@+id/shopping_cart_datum"
+                    android:id="@+id/shopping_cart_date"
                     android:layout_gravity="right"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
@@ -269,7 +269,7 @@
                 android:textSize="20sp"
                 android:layout_gravity="left"/>
             <TextView
-                android:id="@+id/shopping_cart_prijs"
+                android:id="@+id/shopping_cart_price"
                 android:layout_gravity="right"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
