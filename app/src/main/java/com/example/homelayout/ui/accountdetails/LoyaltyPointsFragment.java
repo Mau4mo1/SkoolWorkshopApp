@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.homelayout.R;
 import com.example.homelayout.repositories.TinyDB;
-import com.example.homelayout.ui.workshops.WorkshopsFragment;
+import com.example.homelayout.ui.home.HomeFragment;
 import com.example.homelayout.domain.LoyaltyPointsObject;
 import java.util.ArrayList;
 
@@ -51,7 +51,7 @@ public class LoyaltyPointsFragment extends Fragment {
         mBackButton = root.findViewById(R.id.btn_loyalty_points_back);
         mBackButton.setClickable(true);
         mBackButton.setOnClickListener(
-                v -> getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new WorkshopsFragment()).commit());
+                v -> getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new HomeFragment()).commit());
 
         mInfoButton = root.findViewById(R.id.btn_loyalty_points_info);
         mInfoButton.setClickable(true);

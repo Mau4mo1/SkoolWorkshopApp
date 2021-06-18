@@ -63,10 +63,12 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         ivBell.setClickable(true);
         mImageViewSpaarPunten = root.findViewById(R.id.home_item_loyalty_points_image);
         loyaltyPoints = root.findViewById(R.id.home_item_loyalty_points);
+        loyaltyPoints.setClickable(true);
         greetings = root.findViewById(R.id.text_view_greeting);
         btnBookWorkshop.setOnClickListener(this);
         btnBookCultureDay.setOnClickListener(this);
         clPopularWorkshops.setOnClickListener(this);
+        loyaltyPoints.setOnClickListener(this);
         btnRegister.setOnClickListener(this);
         btnLogin.setOnClickListener(this);
         ivBell.setOnClickListener(this);
@@ -105,13 +107,16 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.button_book_workshop:
-                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new LoyaltyPointsFragment()).addToBackStack(null).commit();
+                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new WorkshopsFragment()).addToBackStack(null).commit();
                 break;
             case R.id.button_book_culture_day:
                 getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new CulturedayBookingFormFragment()).addToBackStack(null).commit();
                 break;
             case R.id.home_item_popular_workshops:
                 getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new WorkshopsPopular()).addToBackStack(null).commit();
+                break;
+            case R.id.home_item_loyalty_points:
+                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new LoyaltyPointsFragment()).addToBackStack(null).commit();
                 break;
             case R.id.register_button:
                 getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new RegisterFragment()).addToBackStack(null).commit();
