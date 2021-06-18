@@ -73,7 +73,7 @@
         </TextView>
 
         <EditText
-            android:inputType="textCapSentences"
+            android:inputType="textPassword"
             android:maxLines="1"
             android:textSize="20sp"
             android:id="@+id/password_register"
@@ -100,7 +100,7 @@
     <Button
         android:paddingLeft="8sp"
         android:layout_gravity="center"
-        android:id="@+id/sendBtn"
+        android:id="@+id/btn_send"
         android:layout_width="340sp"
         android:layout_height="35sp"
         android:background="@drawable/contact_background"
