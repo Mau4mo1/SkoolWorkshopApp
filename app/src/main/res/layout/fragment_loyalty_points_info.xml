@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_gravity="center_horizontal">
+        <LinearLayout
+            android:bottomRightRadius="10sp"
+            android:layout_width="match_parent"
+            android:background="@drawable/layout_bg_account_details"
+            android:layout_height="60sp">
+
+            <Button
+                android:id="@+id/btn_loyalty_points_info_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@android:color/transparent"
+                android:text="Terug"
+                android:textColor="@color/white"
+                android:textSize="20sp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Over Skool credits"
+                android:textSize="28sp"
+                android:textColor="@color/black"
+                android:layout_margin="10sp"/>
+        </LinearLayout>
+        
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <View
+                android:layout_width="4sp"
+                android:layout_height="match_parent"
+                android:background="@drawable/info_rectangle"
+                android:layout_marginLeft="10sp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="De SkoolPartner Kaart betreft een spaarsysteem, waarbij jij als klant bij elke boeking van een workshop 100 spaarpunten krijgt. Als je meerdere workshops tegelijkertijd boekt krijg je alsnog per workshop in eenzelfde boeking 100 punten."
+                android:textSize="20sp"
+                android:layout_marginLeft="10sp"
+                android:layout_marginRight="10sp"
+                android:textColor="@color/black"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="30sp">
+            <View
+                android:layout_width="4sp"
+                android:layout_height="match_parent"
+                android:background="@drawable/info_rectangle"
+                android:layout_marginLeft="10sp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Vervolgens kan je ook punten verdienen voor het achterlaten van een recensie. Voor een recensie krijgt je 50 punten. Als een je in totaal 2500 punten hebt gespaard, krijg je 50% korting op de volgende workshop. "
+                android:textSize="20sp"
+                android:layout_marginLeft="10sp"
+                android:layout_marginRight="10sp"
+                android:textColor="@color/black"/>
+        </LinearLayout>
+        <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" android:layout_marginTop="30sp">
+        <View
+            android:layout_width="4sp"
+            android:layout_height="match_parent"
+            android:background="@drawable/info_rectangle"
+            android:layout_marginLeft="10sp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="De korting kan worden toegepast bij een volgende boeking door de persoonlijke couponcode in te voeren tijdens het afrekenen."
+            android:textSize="20sp"
+            android:layout_marginLeft="10sp"
+            android:layout_marginRight="10sp"
+            android:textColor="@color/black"/>
+    </LinearLayout>
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/shopping_cart_scrollview">
+
+    <LinearLayout
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_gravity="center_horizontal"
+        tools:context=".ui.shoppingcart.ShoppingCartFragment">
+
+        <LinearLayout
+            android:bottomRightRadius="10sp"
+            android:layout_width="match_parent"
+            android:background="@drawable/layout_bg_account_details"
+            android:layout_height="60sp">
+
+            <Button
+                android:id="@+id/btn_loyalty_points_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@android:color/transparent"
+                android:text="Terug"
+                android:textColor="@color/white"
+                android:textSize="20sp"/>
+        </LinearLayout>
+    <LinearLayout
+        android:paddingTop="10sp"
+        android:layout_width="350sp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="center_horizontal">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_gravity="left"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="U heeft "
+                android:textColor="@color/black"
+                android:textSize="30sp"/>
+            <TextView
+                android:id="@+id/loyalty_points_total_points"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="7400"
+                android:textColor="@color/black"
+                android:textSize="30sp"/>
+            <TextView
+                android:layout_gravity="left"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" punten"
+                android:textColor="@color/black"
+                android:textSize="30sp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <Button
+                android:id="@+id/btn_loyalty_points_info"
+                android:layout_gravity="left"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Meer info"
+                android:textColor="@color/orange"
+                android:background="@android:color/transparent"
+                android:padding="0sp"
+                android:textSize="20sp"/>
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:paddingTop="10sp"
+        android:layout_width="350sp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="center_horizontal">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/loyalty_points_table_background">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="3sp"
+                android:orientation="horizontal"
+                android:layout_marginLeft="10sp"
+                android:layout_marginRight="10sp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Totaal aantal punten"
+                    android:textColor="@color/text_grey"
+                    android:gravity="left"
+                    android:textSize="20sp"
+                    android:layout_gravity="left"/>
+                <TextView
+                    android:id="@+id/loyalty_points_date"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:text="7400"
+                    android:textColor="@color/text_grey"
+                    android:textSize="20sp"
+                    android:gravity="right"/>
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#C4C4C4"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginLeft="10sp"
+                android:layout_marginRight="10sp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Waarde van uw punten"
+                    android:textColor="@color/text_grey"
+                    android:gravity="left"
+                    android:textSize="20sp"
+                    android:layout_gravity="left"/>
+                <TextView
+                    android:id="@+id/loyalty_points_action"
+                    android:layout_gravity="right"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:text="€222"
+                    android:textColor="@color/text_grey"
+                    android:textSize="20sp"
+                    android:gravity="right"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+        android:layout_height="match_parent"
+        android:layout_width="350sp"
+        android:orientation="vertical"
+        android:layout_gravity="center_horizontal"
+        tools:context=".ui.shoppingcart.ShoppingCartFragment">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/loyalty_points_item_recycler"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:nestedScrollingEnabled="false">
+
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+        </LinearLayout>
+
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>
