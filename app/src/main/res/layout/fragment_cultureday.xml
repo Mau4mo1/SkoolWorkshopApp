@@ -37,7 +37,7 @@
                 <Button
                     android:id="@+id/button_more_info_cd"
                     android:layout_width="130sp"
-                    android:layout_height="55sp"
+                    android:layout_height="80sp"
                     android:layout_marginStart="215sp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/img_cd"
@@ -48,7 +48,7 @@
                     android:id="@+id/button_book_now_cd"
                     android:layout_marginStart="65sp"
                     android:layout_width="130sp"
-                    android:layout_height="55sp"
+                    android:layout_height="80sp"
                     app:layout_constraintTop_toBottomOf="@id/img_cd"
                     app:layout_constraintStart_toStartOf="parent"
                     android:backgroundTint="@color/orange"
@@ -64,6 +64,7 @@
                 android:layout_marginStart="10sp">
                 <TextView
                     android:layout_marginStart="20sp"
+                    android:layout_marginEnd="10sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Een cultuurdag op school is een dag vol met CKV activiteiten en culturele workshops binnen vijf verschillende kunstdisciplines namelijk:\n-Beeldende kunst\n-Dans\n-Media\n-Muziek\n-Theater\nSkool Workshop biedt een divers aanbod van CKV activiteiten. Middels het diverse aanbod van CKV activiteiten en workshops kunnen de leerlingen uitgedaagd en gestimuleerd worden op verschillende en meerdere manieren. Wij zijn in het bezit van een team met pedagogisch onderlegde workshopdocenten, de docenten begeleiden de leerlingen in deze reis van ontdekking en ervaring. Wij hebben inmiddels al een cultuurdag met succes verzorgd op verschillende schooltypes denk hierbij aan: primair onderwijs, voorgezet onderwijs, speciaal onderwijs, praktijkonderwijs en het middelbaar beroepsonderwijs."/>

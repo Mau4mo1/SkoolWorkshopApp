@@ -324,6 +324,7 @@ public class CulturedayBookingFormFragment extends Fragment {
                     for(Workshops i : workshops){
                         if(i.equals(Workshops.Bootcamp)){
                             workshops.remove(Workshops.Bootcamp);
+                            break;
                         }
                     }
                 }
@@ -338,6 +339,7 @@ public class CulturedayBookingFormFragment extends Fragment {
                     for(Workshops i : workshops){
                         if(i.equals(Workshops.Breakdance)){
                             workshops.remove(Workshops.Breakdance);
+                            break;
                         }
                     }
                 }
@@ -352,6 +354,7 @@ public class CulturedayBookingFormFragment extends Fragment {
                     for(Workshops i : workshops){
                         if(i.equals(Workshops.Capoeira)){
                             workshops.remove(Workshops.Capoeira);
+                            break;
                         }
                     }
                 }
@@ -366,6 +369,7 @@ public class CulturedayBookingFormFragment extends Fragment {
                     for(Workshops i : workshops){
                         if(i.equals(Workshops.CaribbeanDrums)){
                             workshops.remove(Workshops.CaribbeanDrums);
+                            break;
                         }
                     }
                 }
@@ -380,6 +384,7 @@ public class CulturedayBookingFormFragment extends Fragment {
                     for(Workshops i : workshops){
                         if(i.equals(Workshops.DanceFit)){
                             workshops.remove(Workshops.DanceFit);
+                            break;
                         }
                     }
                 }
@@ -394,6 +399,7 @@ public class CulturedayBookingFormFragment extends Fragment {
                     for(Workshops i : workshops){
                         if(i.equals(Workshops.Flashmob)){
                             workshops.remove(Workshops.Flashmob);
+                            break;
                         }
                     }
                 }
@@ -408,6 +414,7 @@ public class CulturedayBookingFormFragment extends Fragment {
                     for(Workshops i : workshops){
                         if(i.equals(Workshops.Freeruning)){
                             workshops.remove(Workshops.Freeruning);
+                            break;
                         }
                     }
                 }
@@ -422,6 +429,7 @@ public class CulturedayBookingFormFragment extends Fragment {
                     for(Workshops i : workshops){
                         if(i.equals(Workshops.GhettoDrums)){
                             workshops.remove(Workshops.GhettoDrums);
+                            break;
                         }
                     }
                 }
@@ -436,6 +444,7 @@ public class CulturedayBookingFormFragment extends Fragment {
                     for(Workshops i : workshops){
                         if(i.equals(Workshops.Hiphop)){
                             workshops.remove(Workshops.Hiphop);
+                            break;
                         }
                     }
                 }
@@ -450,6 +459,7 @@ public class CulturedayBookingFormFragment extends Fragment {
                     for(Workshops i : workshops){
                         if(i.equals(Workshops.Kickboksen)){
                             workshops.remove(Workshops.Kickboksen);
+                            break;
                         }
                     }
                 }
@@ -464,6 +474,7 @@ public class CulturedayBookingFormFragment extends Fragment {
                     for(Workshops i : workshops){
                         if(i.equals(Workshops.LightGraffiti)){
                             workshops.remove(Workshops.LightGraffiti);
+                            break;
                         }
                     }
                 }
@@ -478,6 +489,7 @@ public class CulturedayBookingFormFragment extends Fragment {
                     for(Workshops i : workshops){
                         if(i.equals(Workshops.LiveLooping)){
                             workshops.remove(Workshops.LiveLooping);
+                            break;
                         }
                     }
                 }
@@ -492,6 +504,7 @@ public class CulturedayBookingFormFragment extends Fragment {
                     for(Workshops i : workshops){
                         if(i.equals(Workshops.ModerneDans)){
                             workshops.remove(Workshops.ModerneDans);
+                            break;
                         }
                     }
                 }
@@ -506,6 +519,7 @@ public class CulturedayBookingFormFragment extends Fragment {
                     for(Workshops i : workshops){
                         if(i.equals(Workshops.Pannavoetbal)){
                             workshops.remove(Workshops.Pannavoetbal);
+                            break;
                         }
                     }
                 }
@@ -520,6 +534,7 @@ public class CulturedayBookingFormFragment extends Fragment {
                     for(Workshops i : workshops){
                         if(i.equals(Workshops.Percurssie)){
                             workshops.remove(Workshops.Percurssie);
+                            break;
                         }
                     }
                 }
@@ -534,6 +549,7 @@ public class CulturedayBookingFormFragment extends Fragment {
                     for(Workshops i : workshops){
                         if(i.equals(Workshops.Photoshop)){
                             workshops.remove(Workshops.Photoshop);
+                            break;
                         }
                     }
                 }
@@ -548,6 +564,7 @@ public class CulturedayBookingFormFragment extends Fragment {
                     for(Workshops i : workshops){
                         if(i.equals(Workshops.Popstar)){
                             workshops.remove(Workshops.Popstar);
+                            break;
                         }
                     }
                 }
@@ -562,6 +579,7 @@ public class CulturedayBookingFormFragment extends Fragment {
                     for(Workshops i : workshops){
                         if(i.equals(Workshops.Rap)){
                             workshops.remove(Workshops.Rap);
+                            break;
                         }
                     }
                 }
@@ -576,6 +594,7 @@ public class CulturedayBookingFormFragment extends Fragment {
                     for(Workshops i : workshops){
                         if(i.equals(Workshops.Zelfverdedeging)){
                             workshops.remove(Workshops.Zelfverdedeging);
+                            break;
                         }
                     }
                 }
@@ -590,6 +609,7 @@ public class CulturedayBookingFormFragment extends Fragment {
                     for(Workshops i : workshops){
                         if(i.equals(Workshops.Fotografie)){
                             workshops.remove(Workshops.Fotografie);
+                            break;
                         }
                     }
                 }
@@ -604,6 +624,7 @@ public class CulturedayBookingFormFragment extends Fragment {
                     for(Workshops i : workshops){
                         if(i.equals(Workshops.SoapActeren)){
                             workshops.remove(Workshops.SoapActeren);
+                            break;
                         }
                     }
                 }
@@ -618,6 +639,7 @@ public class CulturedayBookingFormFragment extends Fragment {
                     for(Workshops i : workshops){
                         if(i.equals(Workshops.StageFighting)){
                             workshops.remove(Workshops.StageFighting);
+                            break;
                         }
                     }
                 }
@@ -632,6 +654,7 @@ public class CulturedayBookingFormFragment extends Fragment {
                     for(Workshops i : workshops){
                         if(i.equals(Workshops.Stepping)){
                             workshops.remove(Workshops.Stepping);
+                            break;
                         }
                     }
                 }
@@ -646,6 +669,7 @@ public class CulturedayBookingFormFragment extends Fragment {
                     for(Workshops i : workshops){
                         if(i.equals(Workshops.StopMotion)){
                             workshops.remove(Workshops.StopMotion);
+                            break;
                         }
                     }
                 }
@@ -660,6 +684,7 @@ public class CulturedayBookingFormFragment extends Fragment {
                     for(Workshops i : workshops){
                         if(i.equals(Workshops.Streetdance)){
                             workshops.remove(Workshops.Streetdance);
+                            break;
                         }
                     }
                 }
@@ -674,6 +699,7 @@ public class CulturedayBookingFormFragment extends Fragment {
                     for(Workshops i : workshops){
                         if(i.equals(Workshops.Theatersport)){
                             workshops.remove(Workshops.Theatersport);
+                            break;
                         }
                     }
                 }
