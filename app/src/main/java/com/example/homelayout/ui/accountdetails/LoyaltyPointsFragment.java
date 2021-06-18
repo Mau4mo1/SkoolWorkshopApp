@@ -1,47 +1,25 @@
 package com.example.homelayout.ui.accountdetails;
 
 import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.ImageButton;
-
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.example.homelayout.R;
-import com.example.homelayout.controller.WorkshopController;
-import com.example.homelayout.domain.CultureDayBooking;
-import com.example.homelayout.domain.WorkshopBooking;
-import com.example.homelayout.domain.WorkshopPictureObject;
-import com.example.homelayout.domain.Workshops;
-import com.example.homelayout.domain.WorkshopsObject;
-import com.example.homelayout.logic.CulturedayBookingInfo;
 import com.example.homelayout.repositories.TinyDB;
-import com.example.homelayout.ui.home.HomeFragment;
-import com.example.homelayout.ui.shoppingcart.ShoppingCartCultureDayAdapter;
-import com.example.homelayout.ui.shoppingcart.ShoppingCartFragment;
-import com.example.homelayout.ui.shoppingcart.ShoppingCartWorkshopAdapter;
-import com.example.homelayout.ui.workshops.WorkshopsForm;
 import com.example.homelayout.ui.workshops.WorkshopsFragment;
 import com.example.homelayout.domain.LoyaltyPointsObject;
-
-import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
 
 public class LoyaltyPointsFragment extends Fragment {
-    private WorkshopsForm mainActivity = new WorkshopsForm(Workshops.Flashmob);
     private Button mBackButton;
+    private Button mInfoButton;
     private Context thisContext;
     private TinyDB tinyDB;
     private LinearLayoutManager loyaltyPointsLayoutManager;
@@ -74,6 +52,11 @@ public class LoyaltyPointsFragment extends Fragment {
         mBackButton.setClickable(true);
         mBackButton.setOnClickListener(
                 v -> getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new WorkshopsFragment()).commit());
+
+        mInfoButton = root.findViewById(R.id.btn_loyalty_points_info);
+        mInfoButton.setClickable(true);
+        mInfoButton.setOnClickListener(
+                v -> getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new LoyaltyPointsInfoFragment()).commit());
 
         return root;
     }
