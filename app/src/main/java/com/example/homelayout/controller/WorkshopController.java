@@ -2,6 +2,7 @@ package com.example.homelayout.controller;
 
 import android.util.Log;
 
+import com.example.homelayout.domain.Workshops;
 import com.example.homelayout.domain.WorkshopsObject;
 import com.example.homelayout.service.WorkshopAPI;
 import com.example.homelayout.service.WorkshopsAPIResponse;
@@ -74,6 +75,7 @@ public class WorkshopController implements Callback<WorkshopsAPIResponse> {
                         }
                     }
             try {
+                setWorkshopEnumAndSetRightName(workshopsObjectList);
                 listener.onWorkshopsAvailable(workshopsObjectList);
             } catch (SQLException throwables) {
                 throwables.printStackTrace();
@@ -86,6 +88,129 @@ public class WorkshopController implements Callback<WorkshopsAPIResponse> {
     @Override
     public void onFailure(Call<WorkshopsAPIResponse> call, Throwable t) {
         Log.e(TAG, "onFailure - " + t.getMessage());
+    }
+
+    private void setWorkshopEnumAndSetRightName(ArrayList<WorkshopsObject> workshopsObjectList){
+        for(WorkshopsObject i : workshopsObjectList){
+            switch (i.getCodeName()){
+                case "SkoolHipHop":
+                    i.setWorkshops(Workshops.Hiphop);
+                    i.setFormattedName("Hiphop");
+                    break;
+                case "SkoolModerneDans":
+                    i.setWorkshops(Workshops.ModerneDans);
+                    i.setFormattedName("Moderne Dans");
+                    break;
+                case "SkoolSoapActeren":
+                    i.setWorkshops(Workshops.SoapActeren);
+                    i.setFormattedName("Soap Acteren");
+                    break;
+                case "SkoolStageFighting":
+                    i.setWorkshops(Workshops.StageFighting);
+                    i.setFormattedName("Stage Fighting");
+                    break;
+                case "SkoolGraffiti":
+                    i.setWorkshops(Workshops.Graffiti);
+                    i.setFormattedName("Graffiti");
+                    break;
+                case "SkoolLightGraffiti":
+                    i.setWorkshops(Workshops.LightGraffiti);
+                    i.setFormattedName("Light Graffiti");
+                    break;
+                case "SkoolStopMotion":
+                    i.setWorkshops(Workshops.StopMotion);
+                    i.setFormattedName("Stop Motion");
+                    break;
+                case "SkoolTshirtOntwerpen":
+                    i.setWorkshops(Workshops.TshirtOntwerpen);
+                    i.setFormattedName("T-shirt Ontwerpen");
+                    break;
+                case "SkoolBreakdance":
+                    i.setWorkshops(Workshops.Breakdance);
+                    i.setFormattedName("Breakdance");
+                    break;
+                case "SkoolDance-Fit":
+                    i.setWorkshops(Workshops.DanceFit);
+                    i.setFormattedName("Dance-Fit");
+                    break;
+                case "SkoolFlashmob":
+                    i.setWorkshops(Workshops.Flashmob);
+                    i.setFormattedName("Flashmob");
+                    break;
+                case "SkoolStepping":
+                    i.setWorkshops(Workshops.Flashmob);
+                    i.setFormattedName("Flashmob");
+                    break;
+                case "SkoolStreetdance":
+                    i.setWorkshops(Workshops.Streetdance);
+                    i.setFormattedName("Streetdance");
+                    break;
+                case "SkoolPhotoshop":
+                    i.setWorkshops(Workshops.Photoshop);
+                    i.setFormattedName("Photoshop");
+                    break;
+                case "SkoolVloggen":
+                    i.setWorkshops(Workshops.Vloggen);
+                    i.setFormattedName("Vloggen");
+                    break;
+                case "SkoolSmartphoneFotografie":
+                    i.setWorkshops(Workshops.Fotografie);
+                    i.setFormattedName("Smartphone Fotografie");
+                    break;
+                case "SkoolVideoclipMaken":
+                    i.setWorkshops(Workshops.Videoclip);
+                    i.setFormattedName("Videoclip Maken");
+                    break;
+                case "SkoolGhettoDrums":
+                    i.setWorkshops(Workshops.GhettoDrums);
+                    i.setFormattedName("Ghetto Drums");
+                    break;
+                case "SkoolLiveLooping":
+                    i.setWorkshops(Workshops.LiveLooping);
+                    i.setFormattedName("Live Looping");
+                    break;
+                case "SkoolPercussie":
+                    i.setWorkshops(Workshops.Percurssie);
+                    i.setFormattedName("Percurssie");
+                    break;
+                case "SkoolPopstar":
+                    i.setWorkshops(Workshops.Popstar);
+                    i.setFormattedName("Popstar");
+                    break;
+                case "SkoolRap":
+                    i.setWorkshops(Workshops.Rap);
+                    i.setFormattedName("Rap");
+                    break;
+                case "SkoolBootcamp":
+                    i.setWorkshops(Workshops.Bootcamp);
+                    i.setFormattedName("Bootcamp");
+                    break;
+                case "SkoolCapoeira":
+                    i.setWorkshops(Workshops.Capoeira);
+                    i.setFormattedName("Capoeira");
+                    break;
+                case "SkoolFreerunning":
+                    i.setWorkshops(Workshops.Freeruning);
+                    i.setFormattedName("Freeruning");
+                    break;
+                case "SkoolKickboksen":
+                    i.setWorkshops(Workshops.Kickboksen);
+                    i.setFormattedName("Kickboksen");
+                    break;
+                case "SkoolPannavoetbal":
+                    i.setWorkshops(Workshops.Pannavoetbal);
+                    i.setFormattedName("");
+                    break;
+                case "SkoolZelfverdediging":
+                    i.setWorkshops(Workshops.Zelfverdedeging);
+                    i.setFormattedName("Zelfverdedeging");
+                    break;
+                case "SkoolTheatersport":
+                    i.setWorkshops(Workshops.Theatersport);
+                    i.setFormattedName("Theatersport");
+                    break;
+            }
+        }
     }
 
     public interface WorkshopsControllerListener {

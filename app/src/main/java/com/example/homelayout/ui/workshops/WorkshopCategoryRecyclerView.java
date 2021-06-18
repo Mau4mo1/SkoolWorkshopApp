@@ -17,12 +17,14 @@ import com.example.homelayout.controller.WorkshopController;
 import com.example.homelayout.domain.TranslationsObject;
 
 import com.example.homelayout.domain.WorkshopsObject;
+import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class WorkshopCategoryRecyclerView extends Fragment implements WorkshopController.WorkshopsControllerListener, TranslationsController.TranslationsControllerListener {
+public class WorkshopCategoryRecyclerView extends Fragment implements Serializable, WorkshopController.WorkshopsControllerListener, TranslationsController.TranslationsControllerListener {
     private LinearLayoutManager workshopLayoutManager;
     private List<WorkshopsObject> workshopsObjectList;
     private List<TranslationsObject> translationsObjectsList;
@@ -70,5 +72,3 @@ public class WorkshopCategoryRecyclerView extends Fragment implements WorkshopCo
         }
     }
 }
-//         }
-//  if (workshopsObject.getPictureObject().length >= 1 && workshopsObject.getCodeName() != "" && workshopsObject.getTranslationsObjects().get(0).getTranslation() != "") {

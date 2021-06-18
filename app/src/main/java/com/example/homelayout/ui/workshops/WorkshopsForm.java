@@ -29,12 +29,14 @@ import com.example.homelayout.MainActivity;
 import com.example.homelayout.R;
 import com.example.homelayout.domain.WorkshopBooking;
 import com.example.homelayout.domain.Workshops;
+import com.example.homelayout.domain.WorkshopsObject;
 import com.example.homelayout.logic.CalculatePrices;
 import com.example.homelayout.repositories.TinyDB;
 import com.example.homelayout.ui.shoppingcart.ShoppingCartFragment;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
+import java.io.Serializable;
 import java.lang.reflect.Type;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -42,10 +44,9 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 
-public class WorkshopsForm extends Fragment {
-
-
+public class WorkshopsForm extends Fragment implements Serializable {
     private ArrayList<Object> workshopCardList;
+    private WorkshopsObject workshopsObject;
     private HashMap<String, Integer> values = new HashMap<>();
     private CalculatePrices calculatePrices = new CalculatePrices();
     private Workshops workshop;
@@ -70,10 +71,15 @@ public class WorkshopsForm extends Fragment {
     private EditText mEditTextWorkshopLearningLevel;
     private TextView mTextViewWorkshopSubtotal;
     private Button mButtonWorkshopsBook;
+    private Button mButtonMoreInfoWorkshop;
     private SharedPreferences sharedPreferences;
 
     public WorkshopsForm(Workshops workshop) {
         this.workshop = workshop;
+    }
+
+    public WorkshopsForm(WorkshopsObject workshopsObject) {
+        this.workshopsObject = workshopsObject;
     }
 
 
@@ -84,7 +90,9 @@ public class WorkshopsForm extends Fragment {
 //
         // Inflate the layout for this fragment
         // pls werk
+
         View root = inflater.inflate(R.layout.fragment_workshops_form, container, false);
+        mButtonMoreInfoWorkshop = root.findViewById(R.id.button_more_info_workshop);
         mButtonWorkshopInfo = root.findViewById(R.id.button_more_info_workshop);
         mButtonWorkshopInfo.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -99,9 +107,9 @@ public class WorkshopsForm extends Fragment {
         loadData();
         mTextViewWorkshopsParticipants = (TextView) root.findViewById(R.id.tv_workshops_participants);
         mTextViewWorkshopFormTitle = (TextView) root.findViewById(R.id.tv_workshops_form_title);
-        mTextViewWorkshopFormTitle.setText("Workshop " + this.workshop);
+        mTextViewWorkshopFormTitle.setText("Workshop " + this.workshopsObject.getFormattedName());
 
-        switch (workshop) {
+        switch (this.workshopsObject.getWorkshops()) {
             case Graffiti:
             case TshirtOntwerpen:
                 mTextViewWorkshopsParticipants.setText("Totale aantal deelnemers * (+€7,50)");

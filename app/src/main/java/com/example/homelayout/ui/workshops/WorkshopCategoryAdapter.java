@@ -1,8 +1,10 @@
 package com.example.homelayout.ui.workshops;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Parcelable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +14,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.homelayout.R;
@@ -24,9 +30,11 @@ import java.io.Serializable;
 import java.util.List;
 import java.util.regex.Pattern;
 
-public class WorkshopCategoryAdapter extends RecyclerView.Adapter<WorkshopCategoryAdapter.WorkshopCategoryHolder> implements Serializable {
+public class WorkshopCategoryAdapter extends
+        RecyclerView.Adapter<WorkshopCategoryAdapter.WorkshopCategoryHolder> implements Serializable {
     private List<WorkshopsObject> workshopsObjectList;
     private Context context;
+    private WorkshopsObject workshopsObject;
 
     public WorkshopCategoryAdapter(List<WorkshopsObject> workshopsObjectList, Context context) {
         this.workshopsObjectList = workshopsObjectList;
@@ -44,7 +52,7 @@ public class WorkshopCategoryAdapter extends RecyclerView.Adapter<WorkshopCatego
 
     @Override
     public void onBindViewHolder(WorkshopCategoryHolder holder, int position) {
-        WorkshopsObject workshopsObject = workshopsObjectList.get(position);
+        workshopsObject = workshopsObjectList.get(position);
         List<TranslationsObject> translationsObjects = workshopsObject.getTranslationsObjects();
         WorkshopPictureObject[] workshopPictureObject = workshopsObject.getPictureObject();
             try {
@@ -55,11 +63,7 @@ public class WorkshopCategoryAdapter extends RecyclerView.Adapter<WorkshopCatego
                             .convertBlobIntoImage());
                 }
                 if (workshopsObject.getCodeName() != null) {
-                    Pattern p = Pattern.compile("(?=\\p{Lu})");
-                    String codeName = workshopsObject.getCodeName();
-                    String[] codeNameWithoutSkool = codeName.split("Skool");
-                    String[] rightName = p.split(codeNameWithoutSkool[1]);
-                    holder.mTitleWorkshop.setText("Workshop " + rightName[0]);
+                    holder.mTitleWorkshop.setText("Workshop " + workshopsObject.getFormattedName());
                 }
                 if (translationsObjects.get(1).getTranslation() != null) {
                     holder.mDescriptionWorkshop.setText((translationsObjects.get(1).getTranslation()));
@@ -85,6 +89,14 @@ public class WorkshopCategoryAdapter extends RecyclerView.Adapter<WorkshopCatego
 
         public WorkshopCategoryHolder(@NonNull View view) {
             super(view);
+            view.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    AppCompatActivity activity = (AppCompatActivity) view.getContext();
+                    WorkshopsForm fragment = new WorkshopsForm(workshopsObject);
+                    activity.getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, fragment).addToBackStack(null).commit();
+                }
+            });
             mImageWorkshop = view.findViewById(R.id.iv_workshop_image_workshop);
             mTitleWorkshop = view.findViewById(R.id.tv_workshop_title_workshop);
             mDescriptionWorkshop = view.findViewById(R.id.tv_workhop_description);

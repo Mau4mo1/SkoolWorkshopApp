@@ -2,7 +2,9 @@ package com.example.homelayout.domain;
 
 import com.google.gson.annotations.SerializedName;
 
-public class WorkshopPictureObject {
+import java.io.Serializable;
+
+public class WorkshopPictureObject implements Serializable {
     @SerializedName("Id")
     private int id;
     @SerializedName("Rubric")

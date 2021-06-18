@@ -2,7 +2,9 @@ package com.example.homelayout.domain;
 
 import com.google.gson.annotations.SerializedName;
 
-public class TranslationsObject {
+import java.io.Serializable;
+
+public class TranslationsObject  implements Serializable {
     @SerializedName("Translation")
     private String translation;
     @SerializedName("Culture")
