@@ -19,8 +19,6 @@ public interface WorkshopAPI {
     @GET("workshop/{workshopId}/translations")
     Call<TranslationsAPIResponse> loadTranslations(@Path("workshopId") int workshopId);
 
-    @GET(standardUrl + "{origins}&destinations=45.5347,-122.6231&travelMode=driving&{key}")
-    Call<TranslationsAPIResponse> loadDistance(@Query("origins")String origin, @Query("key") String key);
-
-
+    @GET("")
+    Call<WorkshopsAPIResponse> loadPopularWorkshops();
 }

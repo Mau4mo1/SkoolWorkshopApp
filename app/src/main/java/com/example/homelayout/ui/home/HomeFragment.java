@@ -20,6 +20,7 @@ import com.example.homelayout.ui.Cultureday.Form.CulturedayBookingFormFragment;
 import com.example.homelayout.ui.login.LoginFragment;
 import com.example.homelayout.ui.register.RegisterFragment;
 import com.example.homelayout.ui.messagebox.MessageBoxFragment;
+import com.example.homelayout.ui.workshops.WorkshopCategoryRecyclerView;
 import com.example.homelayout.ui.workshops.WorkshopsFragment;
 import com.example.homelayout.ui.workshops.WorkshopsPopular;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -74,7 +75,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                 getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new CulturedayBookingFormFragment()).addToBackStack(null).commit();
                 break;
             case R.id.home_item_popular_workshops:
-                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new WorkshopsPopular()).addToBackStack(null).commit();
+                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new WorkshopCategoryRecyclerView()).addToBackStack(null).commit();
                 break;
             case R.id.register_button:
                 getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new RegisterFragment()).addToBackStack(null).commit();

@@ -50,9 +50,14 @@ public class WorkshopController implements Callback<WorkshopsAPIResponse> {
     }
 
     public void loadWorkshopsByCategory(String category){
-        usedMethod = "loadWorkshopsByCategory";
         Call<WorkshopsAPIResponse> call = workshopAPI.loadWorkshopsByCategory(category);
         Log.d(TAG, "loadAllWorkshops called");
+        call.enqueue(this);
+    }
+
+    public void loadPopularWorkshops(){
+        Call<WorkshopsAPIResponse> call = workshopAPI.loadPopularWorkshops();
+        Log.d(TAG, "loadPopulairWorkshops called");
         call.enqueue(this);
     }
 
