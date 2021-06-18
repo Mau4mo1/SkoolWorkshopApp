@@ -74,7 +74,7 @@
         </TextView>
 
         <EditText
-            android:inputType="textCapSentences"
+            android:inputType="textPassword"
             android:maxLines="1"
             android:textSize="20sp"
             android:id="@+id/password_login"
