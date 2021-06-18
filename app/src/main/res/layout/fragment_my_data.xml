@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:tools="http://schemas.android.com/tools"
+<ScrollView
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:android="http://schemas.android.com/apk/res/android"
@@ -7,12 +7,29 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_marginTop="20sp"
-            android:layout_marginStart="20sp"
+        <LinearLayout
+            android:id="@+id/llmy_data01"
+            android:layout_width="match_parent"
+            android:layout_height="50sp"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
+            android:background="@drawable/top_background_login"
+            android:orientation="horizontal" />
+        <TextView
+            android:id="@+id/tv_my_data_title"
+            android:layout_marginStart="10sp"
+            android:layout_marginTop="20sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/llmy_data01"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:text="Mijn gegevens"
+            android:textSize="20sp"/>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            app:layout_constraintTop_toBottomOf="@+id/tv_my_data_title"
+            app:layout_constraintLeft_toLeftOf="parent"
             android:id="@+id/const_my_data_02"
+            android:layout_marginStart="10sp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/contact_background">
