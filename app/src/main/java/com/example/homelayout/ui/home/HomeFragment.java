@@ -17,6 +17,7 @@ import androidx.fragment.app.Fragment;
 import com.example.homelayout.R;
 import com.example.homelayout.domain.WorkshopPictureObject;
 import com.example.homelayout.ui.Cultureday.Form.CulturedayBookingFormFragment;
+import com.example.homelayout.ui.accountdetails.LoyaltyPointsFragment;
 import com.example.homelayout.ui.login.LoginFragment;
 import com.example.homelayout.ui.register.RegisterFragment;
 import com.example.homelayout.ui.messagebox.MessageBoxFragment;
@@ -68,7 +69,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.button_book_workshop:
-                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new WorkshopsFragment()).addToBackStack(null).commit();
+                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new LoyaltyPointsFragment()).addToBackStack(null).commit();
                 break;
             case R.id.button_book_culture_day:
                 getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new CulturedayBookingFormFragment()).addToBackStack(null).commit();

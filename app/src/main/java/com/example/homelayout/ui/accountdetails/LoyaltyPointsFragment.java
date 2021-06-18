@@ -33,6 +33,7 @@ import com.example.homelayout.ui.shoppingcart.ShoppingCartFragment;
 import com.example.homelayout.ui.shoppingcart.ShoppingCartWorkshopAdapter;
 import com.example.homelayout.ui.workshops.WorkshopsForm;
 import com.example.homelayout.ui.workshops.WorkshopsFragment;
+import com.example.homelayout.domain.LoyaltyPointsObject;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -40,65 +41,41 @@ import java.util.List;
 
 public class LoyaltyPointsFragment extends Fragment {
     private WorkshopsForm mainActivity = new WorkshopsForm(Workshops.Flashmob);
-    private Button mExtraWorkshopButton;
-    private ImageButton mDeleteButton;
+    private Button mBackButton;
     private Context thisContext;
     private TinyDB tinyDB;
-    private LinearLayoutManager workshopLayoutManager;
-    private LinearLayoutManager cultureDayLayoutManager;
-    private RecyclerView workshopRecyclerView;
-    private RecyclerView cultureDayRecyclerView;
-    private ShoppingCartCultureDayAdapter shoppingCartCultureDayAdapter;
-    private ShoppingCartWorkshopAdapter shoppingCartWorkshopAdapter;
-    private ArrayList<Object> workshopBookings;
-    private ArrayList<Object> cultureDayBookings;
-    private ArrayList<String> workshops = new ArrayList<>();
-    private WorkshopBooking workshopDummyData = new WorkshopBooking("workshop rap", 2, 75, "voorbeeld", "voorbeeld", "3 Juni 2021", 300.00);
-    private CultureDayBooking cultureDayDummyData = new CultureDayBooking(3,3,60,75, workshops, "voorbeeld", "HBO", "26 Juni 2022",1500.00);
+    private LinearLayoutManager loyaltyPointsLayoutManager;
+    private RecyclerView loyaltyPointsRecyclerView;
+    private LoyaltyPointsAdapter LoyaltyPointsAdapter;
+    private ArrayList<Object> loyaltyPointsObjects;
+    private ArrayList<Object> loyaltyPoints;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_loyalty_points, container, false);
         Log.d("LoyaltyPointsFragment", "LoyaltyPoints fragment made!");
+        loyaltyPoints = new ArrayList<>();
+        loyaltyPoints.add(new LoyaltyPointsObject("25 mei 2021", "Extra ivm achterlaten recensie", 0, 7200));
+        loyaltyPoints.add(new LoyaltyPointsObject("3 juni 2021", "Workshop geboekt", 1234, 100));
+        loyaltyPoints.add(new LoyaltyPointsObject("5 juni 2021", "Account aangemaakt op de website nadat hij/zij de workshop al heeft gehad", 0, 100));
         thisContext = container.getContext();
         tinyDB = new TinyDB(thisContext);
-        workshopLayoutManager = new LinearLayoutManager(thisContext);
-        workshopRecyclerView = root.findViewById(R.id.shopping_cart_workshop_recycler);
-        workshopRecyclerView.setLayoutManager(workshopLayoutManager);
-        workshopRecyclerView.setHasFixedSize(true);
+        loyaltyPointsLayoutManager = new LinearLayoutManager(thisContext);
+        loyaltyPointsRecyclerView = root.findViewById(R.id.loyalty_points_item_recycler);
+        loyaltyPointsRecyclerView.setLayoutManager(loyaltyPointsLayoutManager);
+        loyaltyPointsRecyclerView.setHasFixedSize(true);
 
-        workshopBookings = tinyDB.getListObject("Carditems", WorkshopBooking.class);
-        shoppingCartWorkshopAdapter = new ShoppingCartWorkshopAdapter(workshopBookings);
+        loyaltyPointsObjects = tinyDB.getListObject("Carditems", LoyaltyPointsObject.class);
+        LoyaltyPointsAdapter = new LoyaltyPointsAdapter(loyaltyPoints);
+        loyaltyPointsRecyclerView.setAdapter(LoyaltyPointsAdapter);
 
-        workshopRecyclerView.setAdapter(shoppingCartWorkshopAdapter);
-        cultureDayLayoutManager = new LinearLayoutManager(thisContext);
-        cultureDayRecyclerView = root.findViewById(R.id.shopping_cart_culture_day_recycler);
-        cultureDayRecyclerView.setLayoutManager(cultureDayLayoutManager);
-        cultureDayRecyclerView.setHasFixedSize(true);
-        cultureDayBookings = tinyDB.getListObject("CultureItems", CulturedayBookingInfo.class);
-
-        shoppingCartCultureDayAdapter = new ShoppingCartCultureDayAdapter(cultureDayBookings);
-        cultureDayRecyclerView.setAdapter(shoppingCartCultureDayAdapter);
-
-
-        mExtraWorkshopButton = root.findViewById(R.id.btn_loyalty_points_back);
-        mExtraWorkshopButton.setClickable(true);
-        mExtraWorkshopButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new WorkshopsFragment()).commit();
-            }
-        });
-
-
-
-
+        mBackButton = root.findViewById(R.id.btn_loyalty_points_back);
+        mBackButton.setClickable(true);
+        mBackButton.setOnClickListener(
+                v -> getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new WorkshopsFragment()).commit());
 
         return root;
     }
 
-    public void refresh(){
-        getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new ShoppingCartFragment()).commit();
-    }
 }
