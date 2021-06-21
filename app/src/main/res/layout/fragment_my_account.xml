@@ -85,7 +85,7 @@
             app:layout_constraintTop_toBottomOf="@+id/button_my_account_reservations"
             android:background="@drawable/bottom_background_login">
             <TextView
-                android:id="@+id/button_my_account_log_out"
+                android:id="@+id/tv_my_account_log_out"
                 android:textColor="@color/white"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
