@@ -7,6 +7,11 @@
         android:title="@string/navigation_shopping_cart" />
 
     <item
+        android:id="@+id/information"
+        android:icon="@drawable/ic_baseline_description_24"
+        android:title="@string/information" />
+
+    <item
         android:id="@+id/navigation_quiz"
         android:icon="@drawable/ic_baseline_question_answer_24"
         android:title="@string/quiz" />

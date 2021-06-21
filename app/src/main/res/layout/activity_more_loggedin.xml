@@ -19,6 +19,6 @@
         app:labelVisibilityMode="labeled"
         app:layout_constraintBottom_toBottomOf="@+id/nav_host_fragment"
         app:layout_constraintEnd_toEndOf="@+id/nav_host_fragment"
-        app:menu="@menu/more_nav_menu" />
+        app:menu="@menu/more_nav_menu_loggedin" />
 
 </androidx.core.widget.NestedScrollView>

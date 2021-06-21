@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="match_parent">
     <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="50sp"
-        android:background="@drawable/top_background_login"/>
+        android:layout_height="match_parent"
+        android:background="@drawable/top_background_login"
+        >
     <TextView
         android:layout_marginStart="20sp"
         android:layout_marginTop="20sp"
@@ -13,23 +15,24 @@
         android:layout_height="wrap_content"
         android:text="Mijn reserveringen"
         android:textSize="20sp"/>
-    <LinearLayout
-        android:layout_marginStart="20sp"
-        android:layout_height="match_parent"
-        android:layout_width="350sp"
-        android:orientation="vertical"
-        android:layout_gravity="center_horizontal">
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/my_reservation_recycler01"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:nestedScrollingEnabled="false">
-        </androidx.recyclerview.widget.RecyclerView>
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/my_reservation_recycler02"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:nestedScrollingEnabled="false">
-        </androidx.recyclerview.widget.RecyclerView>
+        <LinearLayout
+            android:layout_marginStart="20sp"
+            android:layout_height="match_parent"
+            android:layout_width="350sp"
+            android:orientation="vertical"
+            android:layout_gravity="center_horizontal">
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/my_reservation_recycler01"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:nestedScrollingEnabled="false">
+            </androidx.recyclerview.widget.RecyclerView>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/my_reservation_recycler02"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:nestedScrollingEnabled="false">
+            </androidx.recyclerview.widget.RecyclerView>
+        </LinearLayout>
     </LinearLayout>
 </ScrollView>

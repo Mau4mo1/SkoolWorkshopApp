@@ -18,7 +18,7 @@ public class MyInvoiceFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.fragment_cultureday_form, container, false);
+        View root = inflater.inflate(R.layout.fragment_my_invoice, container, false);
         tv_invoice_edit = root.findViewById(R.id.tv_my_invoice_edit_invoice_data);
         tv_workshop_edit = root.findViewById(R.id.tv_my_invoice_edit_workshopinfo_data);
 
