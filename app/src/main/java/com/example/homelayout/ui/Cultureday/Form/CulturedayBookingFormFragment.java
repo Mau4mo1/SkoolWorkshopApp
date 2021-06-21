@@ -27,21 +27,21 @@ import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 
 import com.example.homelayout.R;
-import com.example.homelayout.domain.CultureDayBooking;
-import com.example.homelayout.domain.WorkshopBooking;
 import com.example.homelayout.domain.Workshops;
 import com.example.homelayout.logic.CalculatePrices;
 import com.example.homelayout.logic.CulturedayBookingInfo;
 import com.example.homelayout.repositories.TinyDB;
-import com.example.homelayout.ui.home.HomeFragment;
 import com.example.homelayout.ui.shoppingcart.ShoppingCartFragment;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
 public class CulturedayBookingFormFragment extends Fragment {
+    private String dateString;
     private ArrayList<Object> bookings;
     private TinyDB tinyDB;
     private Date date;
@@ -56,7 +56,7 @@ public class CulturedayBookingFormFragment extends Fragment {
     private EditText round_minutes;
     private Spinner dropdown_categories;
     private TextView extra_price_participants_amount_description;
-    public Context con;
+    public  Context con;
     private GridLayout workshop_check_dance;
     private GridLayout workshop_check_sport;
     private GridLayout workshop_check_media;
@@ -65,12 +65,12 @@ public class CulturedayBookingFormFragment extends Fragment {
     private GridLayout workshop_check_theater;
     private EditText workshop_per_round;
     private EditText workshop_rounds;
-    private TextView prijs_summery;
+    private TextView price_summery;
     private DatePicker date_cultureday;
     private CalculatePrices calculatePrices = new CalculatePrices();
     private CulturedayBookingInfo culturedayBookingInfo = new CulturedayBookingInfo();
     private CheckBox cultureday_registration_box;
-    private EditText workshop_particepents;
+    private EditText workshop_participants;
     private CheckBox workshop_graffiti;
     private CheckBox workshop_lightgraffiti;
     private CheckBox workshop_stopmotion;
@@ -222,9 +222,24 @@ public class CulturedayBookingFormFragment extends Fragment {
         round_minutes = root.findViewById(R.id.edn_cultureday_form_time_per_round_field);
         workshop_per_round = root.findViewById(R.id.edn_cultureday_form_workshops_per_round_field);
         workshop_rounds = root.findViewById(R.id.edn_cultureday_form_rounds_field);
-        prijs_summery = root.findViewById(R.id.tv_cultureday_form_kost);
-        workshop_particepents = root.findViewById(R.id.edn_cultureday_form_participants_field);
+        price_summery = root.findViewById(R.id.tv_cultureday_form_kost);
+        workshop_participants = root.findViewById(R.id.edn_cultureday_form_participants_field);
         extra_price_participants_amount_description = root.findViewById(R.id.tv_cultureday_form_participants_shirt_and_drums_description);
+        date_cultureday = (DatePicker)root.findViewById(R.id.tv_cultureday_form_date);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            this.date_cultureday.setOnDateChangedListener(new DatePicker.OnDateChangedListener() {
+                @Override
+                public void onDateChanged(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                    Log.d("onDateChanged", "Nieuwe datum gekozen");
+                    date = new Date(year, monthOfYear, dayOfMonth);
+                    DateFormat dateFormat = new SimpleDateFormat("dd/MM/"+20+"YY");
+                    dateString = dateFormat.format(date);
+                    Log.d("WErktdit", dateString);
+                }
+            });
+        }
+
+
 
         workshop_per_round.addTextChangedListener(new TextWatcher() {
             @Override
@@ -298,7 +313,7 @@ public class CulturedayBookingFormFragment extends Fragment {
         workshop_graffiti.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked == true){
+                if (isChecked){
                     workshops.add(Workshops.Graffiti);
                     updateSubtotal();
                     extra_price_participants_amount.setVisibility(View.VISIBLE);
@@ -318,7 +333,7 @@ public class CulturedayBookingFormFragment extends Fragment {
         workshop_bootcamp.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked == true){
+                if (isChecked){
                     workshops.add(Workshops.Bootcamp);
                 } else {
                     for(Workshops i : workshops){
@@ -333,7 +348,7 @@ public class CulturedayBookingFormFragment extends Fragment {
         workshop_breakdance.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked == true){
+                if (isChecked){
                     workshops.add(Workshops.Breakdance);
                 } else {
                     for(Workshops i : workshops){
@@ -363,7 +378,7 @@ public class CulturedayBookingFormFragment extends Fragment {
         workshop_caribbeandrums.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked == true){
+                if (isChecked){
                     workshops.add(Workshops.CaribbeanDrums);
                 } else {
                     for(Workshops i : workshops){
@@ -378,7 +393,7 @@ public class CulturedayBookingFormFragment extends Fragment {
         workshop_dancefit.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked == true){
+                if (isChecked){
                     workshops.add(Workshops.DanceFit);
                 } else {
                     for(Workshops i : workshops){
@@ -393,7 +408,7 @@ public class CulturedayBookingFormFragment extends Fragment {
         workshop_flashmob.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked == true){
+                if (isChecked){
                     workshops.add(Workshops.Flashmob);
                 } else {
                     for(Workshops i : workshops){
@@ -408,7 +423,7 @@ public class CulturedayBookingFormFragment extends Fragment {
         workshop_freerunning.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked == true){
+                if (isChecked){
                     workshops.add(Workshops.Freeruning);
                 } else {
                     for(Workshops i : workshops){
@@ -423,7 +438,7 @@ public class CulturedayBookingFormFragment extends Fragment {
         workshop_ghettodrums.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked == true){
+                if (isChecked){
                     workshops.add(Workshops.GhettoDrums);
                 } else {
                     for(Workshops i : workshops){
@@ -438,7 +453,7 @@ public class CulturedayBookingFormFragment extends Fragment {
         workshop_hiphop.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked == true){
+                if (isChecked){
                     workshops.add(Workshops.Hiphop);
                 } else {
                     for(Workshops i : workshops){
@@ -453,7 +468,7 @@ public class CulturedayBookingFormFragment extends Fragment {
         workshop_kickboxing.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked == true){
+                if (isChecked){
                     workshops.add(Workshops.Kickboksen);
                 } else {
                     for(Workshops i : workshops){
@@ -468,7 +483,7 @@ public class CulturedayBookingFormFragment extends Fragment {
         workshop_lightgraffiti.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked == true){
+                if (isChecked){
                     workshops.add(Workshops.LightGraffiti);
                 } else {
                     for(Workshops i : workshops){
@@ -483,7 +498,7 @@ public class CulturedayBookingFormFragment extends Fragment {
         workshop_livelooping.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked == true){
+                if (isChecked){
                     workshops.add(Workshops.LiveLooping);
                 } else {
                     for(Workshops i : workshops){
@@ -498,7 +513,7 @@ public class CulturedayBookingFormFragment extends Fragment {
         workshop_moderndance.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked == true){
+                if (isChecked){
                     workshops.add(Workshops.ModerneDans);
                 } else {
                     for(Workshops i : workshops){
@@ -513,7 +528,7 @@ public class CulturedayBookingFormFragment extends Fragment {
         workshop_pannafootbal.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked == true){
+                if (isChecked){
                     workshops.add(Workshops.Pannavoetbal);
                 } else {
                     for(Workshops i : workshops){
@@ -528,7 +543,7 @@ public class CulturedayBookingFormFragment extends Fragment {
         workshop_percussie.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked == true){
+                if (isChecked){
                     workshops.add(Workshops.Percurssie);
                 } else {
                     for(Workshops i : workshops){
@@ -543,7 +558,7 @@ public class CulturedayBookingFormFragment extends Fragment {
         workshop_photoshop.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked == true){
+                if (isChecked){
                     workshops.add(Workshops.Photoshop);
                 } else {
                     for(Workshops i : workshops){
@@ -558,7 +573,7 @@ public class CulturedayBookingFormFragment extends Fragment {
         workshop_popstar.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked == true){
+                if (isChecked){
                     workshops.add(Workshops.Popstar);
                 } else {
                     for(Workshops i : workshops){
@@ -573,7 +588,7 @@ public class CulturedayBookingFormFragment extends Fragment {
         workshop_rap.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked == true){
+                if (isChecked){
                     workshops.add(Workshops.Rap);
                 } else {
                     for(Workshops i : workshops){
@@ -588,7 +603,7 @@ public class CulturedayBookingFormFragment extends Fragment {
         workshop_selfdefence.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked == true){
+                if (isChecked){
                     workshops.add(Workshops.Zelfverdedeging);
                 } else {
                     for(Workshops i : workshops){
@@ -603,7 +618,7 @@ public class CulturedayBookingFormFragment extends Fragment {
         workshop_smartphonefoto.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked == true){
+                if (isChecked){
                     workshops.add(Workshops.Fotografie);
                 } else {
                     for(Workshops i : workshops){
@@ -618,7 +633,7 @@ public class CulturedayBookingFormFragment extends Fragment {
         workshop_soap.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked == true){
+                if (isChecked){
                     workshops.add(Workshops.SoapActeren);
                 } else {
                     for(Workshops i : workshops){
@@ -633,7 +648,7 @@ public class CulturedayBookingFormFragment extends Fragment {
         workshop_stagefight.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked == true){
+                if (isChecked){
                     workshops.add(Workshops.StageFighting);
                 } else {
                     for(Workshops i : workshops){
@@ -648,7 +663,7 @@ public class CulturedayBookingFormFragment extends Fragment {
         workshop_stepping.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked == true){
+                if (isChecked){
                     workshops.add(Workshops.Stepping);
                 } else {
                     for(Workshops i : workshops){
@@ -663,7 +678,7 @@ public class CulturedayBookingFormFragment extends Fragment {
         workshop_stopmotion.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked == true){
+                if (isChecked){
                     workshops.add(Workshops.StopMotion);
                 } else {
                     for(Workshops i : workshops){
@@ -678,7 +693,7 @@ public class CulturedayBookingFormFragment extends Fragment {
         workshop_street.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked == true){
+                if (isChecked){
                     workshops.add(Workshops.Streetdance);
                 } else {
                     for(Workshops i : workshops){
@@ -693,7 +708,7 @@ public class CulturedayBookingFormFragment extends Fragment {
         workshop_theatersport.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked == true){
+                if (isChecked){
                     workshops.add(Workshops.Theatersport);
                 } else {
                     for(Workshops i : workshops){
@@ -708,7 +723,7 @@ public class CulturedayBookingFormFragment extends Fragment {
         workshop_tshirt.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked == true){
+                if (isChecked){
                     workshops.add(Workshops.TshirtOntwerpen);
                     updateSubtotal();
                     extra_price_participants_amount.setVisibility(View.VISIBLE);
@@ -728,7 +743,7 @@ public class CulturedayBookingFormFragment extends Fragment {
         workshop_videoclip.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked == true){
+                if (isChecked){
                     workshops.add(Workshops.Videoclip);
                 }
             }
@@ -736,13 +751,13 @@ public class CulturedayBookingFormFragment extends Fragment {
         workshop_vlog.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked == true){
+                if (isChecked){
                     workshops.add(Workshops.Vloggen);
                 }
             }
         });
 
-        date_cultureday = root.findViewById(R.id.tv_cultureday_form_date);
+
         cultureday_registration_box = root.findViewById(R.id.sv_cultureday_form_registration_box);
         btn_book_now_cdf = root.findViewById(R.id.button_book_now_cdf);
         btn_book_now_cdf.setClickable(true);
@@ -765,7 +780,7 @@ public class CulturedayBookingFormFragment extends Fragment {
                             }
                         });
                         subpopup.show();
-                    }else if (Integer.valueOf(round_minutes.getText().toString())<60) {
+                    }else if (Integer.parseInt(round_minutes.getText().toString())<60) {
                         AlertDialog.Builder minpopup = new AlertDialog.Builder(con);
                         minpopup.setCancelable(true);
                         minpopup.setTitle("Workshops te kort");
@@ -779,16 +794,10 @@ public class CulturedayBookingFormFragment extends Fragment {
                         minpopup.show();
                     }else{
                         try {
-                            date_cultureday.setOnDateChangedListener(new DatePicker.OnDateChangedListener() {
-                                @Override
-                                public void onDateChanged(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                                    Log.d("onDateChanged", "Nieuwe datum gekozen");
-                                    date = new Date(year, monthOfYear, dayOfMonth);
-                                }
-                            });
-                            culturedayBookingInfo.setDate(date);
+
+
                             System.out.println(date);
-                            if (cultureday_registration_box.isChecked() == true){
+                            if (cultureday_registration_box.isChecked()){
                                 culturedayBookingInfo.setRegistration(true);
                                 System.out.println("Registration true");
                             } else {
@@ -796,18 +805,21 @@ public class CulturedayBookingFormFragment extends Fragment {
                                 System.out.println("Registration false");
                             }
                             culturedayBookingInfo.setLearninglevel(learning_level.getText().toString());
-                            culturedayBookingInfo.setTimescheme(workshop_particepents.getText().toString());
-                            culturedayBookingInfo.setParticepants(Integer.parseInt(workshop_particepents.getText().toString()));
+                            culturedayBookingInfo.setTimescheme(time_scheme.getText().toString());
+                            culturedayBookingInfo.setParticepants(Integer.parseInt(workshop_participants.getText().toString()));
                             culturedayBookingInfo.setRounds(Integer.parseInt(workshop_rounds.getText().toString()));
                             culturedayBookingInfo.setWorkshop_minutes(Integer.parseInt(round_minutes.getText().toString()));
                             culturedayBookingInfo.setWorkshops(workshops);
                             culturedayBookingInfo.setWorkshops_per_round(Integer.parseInt(workshop_per_round.getText().toString()));
+                            culturedayBookingInfo.setPrice(calculatePrices.calculateCultureday(values, workshops));
+                            culturedayBookingInfo.setDate(dateString);
 
 
                             // send to TinyDB
                             bookings.add(culturedayBookingInfo);
                             tinyDB.putListObject("CultureItems", bookings);
 //                            Link to shopingcart
+                            assert getFragmentManager() != null;
                             getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new ShoppingCartFragment()).commit();
                         }catch (Exception e){
                             System.out.println("Booking info invalet or incompelte");AlertDialog.Builder infopopup = new AlertDialog.Builder(con);

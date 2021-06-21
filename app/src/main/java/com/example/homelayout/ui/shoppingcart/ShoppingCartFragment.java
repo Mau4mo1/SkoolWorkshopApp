@@ -40,10 +40,10 @@ public class ShoppingCartFragment extends Fragment {
     private ShoppingCartCultureDayAdapter shoppingCartCultureDayAdapter;
     private ShoppingCartWorkshopAdapter shoppingCartWorkshopAdapter;
     private ArrayList<Object> workshopBookings;
-    private ArrayList<Object> cultureDayBookings = new ArrayList<>();
+    private ArrayList<Object> cultureDayBookings;
     private ArrayList<String> workshops = new ArrayList<>();
     private WorkshopBooking workshopDummyData = new WorkshopBooking("workshop rap", 2, 75, "voorbeeld", "voorbeeld", "3 Juni 2021", 300.00);
-    private CultureDayBooking cultureDayDummyData = new CultureDayBooking(3,3,60,75, workshops, "voorbeeld", "HBO", "26 Juni 2022",1500.00);
+    private CultureDayBooking cultureDayDummyData = new CultureDayBooking(3, 3, 60, 75, workshops, "voorbeeld", "HBO", "26 Juni 2022", 1500.00);
 
 
     @Override
@@ -61,7 +61,7 @@ public class ShoppingCartFragment extends Fragment {
         workshopRecyclerView.setLayoutManager(workshopLayoutManager);
         workshopRecyclerView.setHasFixedSize(true);
 
-    workshopBookings = tinyDB.getListObject("Carditems",WorkshopBooking.class);
+        workshopBookings = tinyDB.getListObject("Carditems", WorkshopBooking.class);
         shoppingCartWorkshopAdapter = new ShoppingCartWorkshopAdapter(workshopBookings);
 
         workshopRecyclerView.setAdapter(shoppingCartWorkshopAdapter);
@@ -69,7 +69,7 @@ public class ShoppingCartFragment extends Fragment {
         cultureDayRecyclerView = root.findViewById(R.id.shopping_cart_culture_day_recycler);
         cultureDayRecyclerView.setLayoutManager(cultureDayLayoutManager);
         cultureDayRecyclerView.setHasFixedSize(true);
-        cultureDayBookings.add(cultureDayDummyData);
+        cultureDayBookings = tinyDB.getListObject("CultureItems", CulturedayBookingInfo.class);
 
         shoppingCartCultureDayAdapter = new ShoppingCartCultureDayAdapter(cultureDayBookings);
         cultureDayRecyclerView.setAdapter(shoppingCartCultureDayAdapter);
@@ -86,13 +86,10 @@ public class ShoppingCartFragment extends Fragment {
         });
 
 
-
-
-
         return root;
     }
 
-   public void refresh(){
-       getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new ShoppingCartFragment()).commit();
+    public void refresh() {
+        getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new ShoppingCartFragment()).commit();
     }
 }

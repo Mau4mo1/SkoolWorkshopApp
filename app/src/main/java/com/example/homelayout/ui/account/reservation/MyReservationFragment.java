@@ -29,10 +29,10 @@ public class MyReservationFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.fragment_cultureday_form, container, false);
+        View root = inflater.inflate(R.layout.fragment_my_reservation_detail, container, false);
 
         con = container.getContext();
-        layoutManager = new LinearLayoutManager(thisContext);
+        layoutManager = new LinearLayoutManager(this.getContext());
         recyclerView = root.findViewById(R.id.rv_message_box_recyclerview);
         recyclerView.setLayoutManager(layoutManager);
         tinydb = new TinyDB(con);

@@ -1,204 +1,203 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:tools="http://schemas.android.com/tools"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_height="wrap_content">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingStart="10sp"
+        android:paddingEnd="10sp"
+        android:orientation="vertical"
         tools:context=".ui.workshops.WorkshopsForm">
 
         <TextView
             android:id="@+id/tv_workshops_form_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            android:text="@string/txt_book_workshop"
-            android:textSize="32sp"
-            android:textAlignment="center"
             android:layout_marginTop="20sp"
-            android:layout_marginBottom="20sp"/>
+            android:layout_marginBottom="20sp"
+            android:text="@string/txt_book_workshop"
+            android:textAlignment="center"
+            android:textSize="32sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-        <!--<TextView
-            android:id="@+id/tv_workshops_form_info"
+        <Button
+            android:id="@+id/button_more_info_workshop"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@+id/tv_workshops_form_title"
-            app:layout_constraintLeft_toLeftOf="parent"
-            android:text="@string/lorem_ipsum_long"
-            android:textSize="20sp"
-            android:textAlignment="center"
-            android:layout_marginTop="20dp"
-            android:layout_marginLeft="25dp"
-            android:layout_marginRight="25dp"
-            android:layout_marginBottom="20dp"
-            android:padding="8dp"
-            android:ellipsize="end"
-            android:maxLines="4"/>-->
+            android:backgroundTint="@color/orange"
+            android:text="Meer Informatie"
+            android:textColor="@color/white"
+            android:textSize="20sp"/>
 
         <DatePicker
             android:id="@+id/dp_workshop_form"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/tv_workshops_form_title"
+            android:layout_gravity="center"
+            android:layout_marginTop="20sp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            android:layout_marginTop="20sp"/>
+            app:layout_constraintTop_toBottomOf="@id/tv_workshops_form_title" />
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <LinearLayout
             android:id="@+id/cl_workshop_form_stripe"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@+id/dp_workshop_form"
-            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_marginStart="10dp"
             android:background="@drawable/contact_background"
+            android:orientation="vertical"
             android:paddingLeft="20dp"
             android:paddingTop="5dp"
             android:paddingBottom="5dp"
-            android:layout_marginStart="10dp">
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/dp_workshop_form">
 
             <TextView
                 android:id="@+id/tv_workshops_participants"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toTopOf="@id/cl_workshop_form_stripe"
                 android:text="@string/title_participants"
-                android:textSize="16sp"/>
+                android:textSize="16sp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="@id/cl_workshop_form_stripe" />
 
             <EditText
-                android:inputType="number"
                 android:id="@+id/et_workshop_participants"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@+id/tv_workshops_participants"
-                app:layout_constraintLeft_toLeftOf="parent"
                 android:layout_marginTop="8sp"
                 android:layout_marginEnd="20sp"
-                android:background="@drawable/form_background_rounded"/>
+                android:background="@drawable/form_background_rounded"
+                android:inputType="number"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_workshops_participants" />
 
             <TextView
                 android:id="@+id/tv_workshops_rounds"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/et_workshop_participants"
-                android:text="@string/title_rounds"
                 android:layout_marginTop="10sp"
-                android:textSize="16sp"/>
+                android:text="@string/title_rounds"
+                android:textSize="16sp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/et_workshop_participants" />
 
             <EditText
                 android:id="@+id/et_workshop_rounds"
-                android:inputType="number"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@+id/tv_workshops_rounds"
-                app:layout_constraintLeft_toLeftOf="parent"
                 android:layout_marginTop="8sp"
                 android:layout_marginEnd="20sp"
-                android:background="@drawable/form_background_rounded"/>
+                android:background="@drawable/form_background_rounded"
+                android:inputType="number"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_workshops_rounds" />
 
             <TextView
                 android:id="@+id/tv_workshops_minutes"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/et_workshop_rounds"
-                android:text="@string/title_minutes"
                 android:layout_marginTop="10sp"
-                android:textSize="16sp"/>
+                android:text="@string/title_minutes"
+                android:textSize="16sp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/et_workshop_rounds" />
 
             <EditText
                 android:id="@+id/et_workshop_minutes"
-                android:inputType="number"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@+id/tv_workshops_minutes"
-                app:layout_constraintLeft_toLeftOf="parent"
                 android:layout_marginTop="8sp"
                 android:layout_marginEnd="20sp"
-                android:background="@drawable/form_background_rounded"/>
+                android:background="@drawable/form_background_rounded"
+                android:inputType="number"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_workshops_minutes" />
 
             <TextView
                 android:id="@+id/tv_workshops_timetable"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/et_workshop_minutes"
-                android:text="@string/title_timetable"
                 android:layout_marginTop="10sp"
-                android:textSize="16sp"/>
+                android:text="@string/title_timetable"
+                android:textSize="16sp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/et_workshop_minutes" />
 
             <EditText
                 android:id="@+id/et_workshop_timetable"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@+id/tv_workshops_timetable"
-                app:layout_constraintLeft_toLeftOf="parent"
                 android:layout_marginTop="8sp"
                 android:layout_marginEnd="20sp"
-                android:background="@drawable/form_background_rounded"/>
+                android:background="@drawable/form_background_rounded"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_workshops_timetable" />
 
             <TextView
                 android:id="@+id/tv_workshops_learning_level"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/et_workshop_timetable"
-                android:text="@string/title_learning_level"
                 android:layout_marginTop="10sp"
-                android:textSize="16sp"/>
+                android:text="@string/title_learning_level"
+                android:textSize="16sp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/et_workshop_timetable" />
 
             <EditText
                 android:id="@+id/et_workshop_learning_level"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@+id/tv_workshops_learning_level"
-                app:layout_constraintLeft_toLeftOf="parent"
                 android:layout_marginTop="8sp"
                 android:layout_marginEnd="20sp"
-                android:background="@drawable/form_background_rounded"/>
+                android:background="@drawable/form_background_rounded"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_workshops_learning_level" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
-        
+        </LinearLayout>
+
         <TextView
             android:id="@+id/tv_total_minutes"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/cl_workshop_form_stripe"
-            android:text="@string/text_minutes"
+            android:layout_gravity="end"
             android:layout_marginStart="50sp"
             android:layout_marginTop="20sp"
-            android:textSize="20sp"/>
+            android:layout_marginEnd="20sp"
+            android:text="@string/text_minutes"
+            android:textSize="20sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cl_workshop_form_stripe" />
 
         <TextView
             android:id="@+id/tv_subtotal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_total_minutes"
+            android:layout_gravity="end"
             android:layout_marginTop="20sp"
             android:layout_marginEnd="50sp"
             android:text="@string/subtotal"
-            android:textSize="20sp"/>
+            android:textSize="20sp"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_total_minutes" />
 
         <Button
             android:id="@+id/btn_workshop_form_book"
             android:layout_width="350sp"
             android:layout_height="60sp"
-            app:layout_constraintTop_toBottomOf="@id/tv_subtotal"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
             android:layout_marginTop="20sp"
             android:backgroundTint="@color/orange"
-            android:text="@string/book_now"/>
+            android:layout_gravity="center"
+            android:text="@string/book_now"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_subtotal" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
 
 </ScrollView>

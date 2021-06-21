@@ -25,7 +25,7 @@ public class MyDataFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.fragment_cultureday_form, container, false);
+        View root = inflater.inflate(R.layout.fragment_my_data, container, false);
         btn_change_data = root.findViewById(R.id.button_change_my_data);
         ed_first_name = root.findViewById(R.id.edn_my_data_firsname_field);
         ed_last_name = root.findViewById(R.id.edn_my_data_lastname_field);

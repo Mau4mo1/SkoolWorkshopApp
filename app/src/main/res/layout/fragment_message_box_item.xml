@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -7,15 +7,22 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/message_box_item_border"
-    android:layout_marginStart="10dp"
-    android:layout_marginEnd="10dp"
+    android:layout_marginStart="12dp"
+    android:layout_marginEnd="12dp"
     android:layout_marginTop="5dp"
     android:orientation="horizontal">
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_message_box_item_text"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:paddingLeft="8dp"
+        android:paddingRight="10dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp">
 
         <TextView
             android:id="@+id/tv_message_box_title"
@@ -23,8 +30,8 @@
             android:layout_height="wrap_content"
             android:text="@string/lorem_ipsum"
             android:textSize="22sp"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintLeft_toLeftOf="@+id/cl_message_box_item_text"
+            app:layout_constraintTop_toTopOf="@+id/cl_message_box_item_text"/>
 
         <TextView
             android:id="@+id/tv_message_box_description"
@@ -32,18 +39,20 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:ellipsize="end"
-            android:maxLines="3"
+            android:maxLines="2"
             android:text="@string/lorem_ipsum_long"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_message_box_title" />
-    </LinearLayout>
+            android:paddingRight="40dp"
+            app:layout_constraintLeft_toLeftOf="@+id/cl_message_box_item_text"
+            app:layout_constraintTop_toBottomOf="@+id/tv_message_box_title"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
         <ImageButton
             android:id="@+id/ib_delete_message"
-            android:layout_marginLeft="180sp"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="30sp"
+            android:layout_height="0dp"
             android:background="@color/orange"
-            android:layout_gravity="right"
-            android:src="@drawable/ic_baseline_close_24" />
+            android:src="@drawable/ic_baseline_close_24"
+            app:layout_constraintRight_toRightOf="@id/cl_message_box_item"
+            app:layout_constraintBottom_toBottomOf="@+id/cl_message_box_item"
+            app:layout_constraintTop_toTopOf="@+id/cl_message_box_item"/>
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

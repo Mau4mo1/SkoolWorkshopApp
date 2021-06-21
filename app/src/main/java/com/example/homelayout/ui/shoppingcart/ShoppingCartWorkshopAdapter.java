@@ -1,28 +1,22 @@
 package com.example.homelayout.ui.shoppingcart;
 
-import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.homelayout.R;
 import com.example.homelayout.domain.WorkshopBooking;
 import com.example.homelayout.repositories.TinyDB;
-import com.example.homelayout.ui.workshops.WorkshopsFragment;
 
 import java.io.Serializable;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
-import java.util.List;
 
 public class ShoppingCartWorkshopAdapter extends RecyclerView.Adapter<ShoppingCartWorkshopAdapter.WorkshopViewHolder> implements Serializable {
     private ArrayList<Object> workshopData = new ArrayList<>();
@@ -47,17 +41,17 @@ public class ShoppingCartWorkshopAdapter extends RecyclerView.Adapter<ShoppingCa
 
     @Override
     public void onBindViewHolder(@NonNull WorkshopViewHolder holder, int position) {
-        DecimalFormat decimalFormat = new DecimalFormat("#.00");
         WorkshopBooking workshopBooking = (WorkshopBooking) workshopData.get(position);
-        String prijs = decimalFormat.format(workshopBooking.getPrijs());
-        holder.mDienst.setText(String.valueOf(workshopBooking.getDienst()));
-        holder.mRondes.setText(String.valueOf(workshopBooking.getRondes()));
-        holder.mMinuten.setText(String.valueOf(workshopBooking.getMinuten()));
-        holder.mTotaleMinuten.setText(String.valueOf(workshopBooking.getTotaleMinuten()));
-        holder.mTijdschema.setText(String.valueOf(workshopBooking.getTijdschema()));
-        holder.mLeerniveau.setText(String.valueOf(workshopBooking.getLeerniveau()));
-        holder.mDatum.setText(String.valueOf(workshopBooking.getDatum()));
-        holder.mPrijs.setText("€" + prijs);
+        DecimalFormat decimalFormat = new DecimalFormat("#,##0.00");
+        String prijs = decimalFormat.format(workshopBooking.getPrice());
+        holder.mService.setText(String.valueOf(workshopBooking.getService()));
+        holder.mRounds.setText(String.valueOf(workshopBooking.getRounds()));
+        holder.mMinutes.setText(String.valueOf(workshopBooking.getMinutes()));
+        holder.mTotalMinutes.setText(String.valueOf(workshopBooking.getTotalMinutes()));
+        holder.mTimeTable.setText(String.valueOf(workshopBooking.getTimeTable()));
+        holder.mLearningLevel.setText(String.valueOf(workshopBooking.getLearningLevel()));
+        holder.mDate.setText(String.valueOf(workshopBooking.getDate()));
+        holder.mPrice.setText("€" + prijs);
         holder.mButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -70,25 +64,25 @@ public class ShoppingCartWorkshopAdapter extends RecyclerView.Adapter<ShoppingCa
     }
 
     public class WorkshopViewHolder extends RecyclerView.ViewHolder {
-        private TextView mDienst;
-        private TextView mRondes;
-        private TextView mMinuten;
-        private TextView mTotaleMinuten;
-        private TextView mTijdschema;
-        private TextView mLeerniveau;
-        private TextView mDatum;
-        private TextView mPrijs;
+        private TextView mService;
+        private TextView mRounds;
+        private TextView mMinutes;
+        private TextView mTotalMinutes;
+        private TextView mTimeTable;
+        private TextView mLearningLevel;
+        private TextView mDate;
+        private TextView mPrice;
         private ImageButton mButton;
         public WorkshopViewHolder(@NonNull View view) {
             super(view);
-            mDienst = (TextView) itemView.findViewById(R.id.shopping_cart_dienst);
-            mRondes = (TextView) itemView.findViewById(R.id.shopping_cart_rondes);
-            mMinuten = (TextView) itemView.findViewById(R.id.shopping_cart_minuten);
-            mTotaleMinuten = (TextView) itemView.findViewById(R.id.shopping_cart_totale_minuten);
-            mTijdschema = (TextView) itemView.findViewById(R.id.shopping_cart_tijdschema);
-            mLeerniveau = (TextView) itemView.findViewById(R.id.shopping_cart_leerniveau);
-            mDatum = (TextView) itemView.findViewById(R.id.shopping_cart_datum);
-            mPrijs = (TextView) itemView.findViewById(R.id.shopping_cart_prijs);
+            mService = (TextView) itemView.findViewById(R.id.shopping_cart_service);
+            mRounds = (TextView) itemView.findViewById(R.id.shopping_cart_rounds);
+            mMinutes = (TextView) itemView.findViewById(R.id.shopping_cart_minutes);
+            mTotalMinutes = (TextView) itemView.findViewById(R.id.shopping_cart_total_minutes);
+            mTimeTable = (TextView) itemView.findViewById(R.id.shopping_cart_timetable);
+            mLearningLevel = (TextView) itemView.findViewById(R.id.shopping_cart_learninglevel);
+            mDate = (TextView) itemView.findViewById(R.id.shopping_cart_date);
+            mPrice = (TextView) itemView.findViewById(R.id.shopping_cart_price);
             mButton = (ImageButton) itemView.findViewById(R.id.btn_delete_workshop);
         }
     }

@@ -7,10 +7,6 @@
         android:title="@string/navigation_shopping_cart" />
 
     <item
-        android:id="@+id/navigation_about_us"
-        android:icon="@drawable/ic_baseline_emoji_people_24"
-        android:title="@string/navigation_about_us" />
-    <item
         android:id="@+id/navigation_quiz"
         android:icon="@drawable/ic_baseline_question_answer_24"
         android:title="@string/quiz" />

@@ -33,9 +33,9 @@
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintRight_toLeftOf="@id/register_button"
                         android:layout_margin="5sp"
-                        android:textSize="12sp"
+                        android:textSize="11sp"
                         android:text="@string/title_login"
-                        android:visibility="gone"/>
+                        android:visibility="visible"/>
 
                     <Button
                         android:id="@+id/register_button"
@@ -43,12 +43,12 @@
                         android:layout_height="wrap_content"
                         android:backgroundTint="@color/orange"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintRight_toRightOf="@+id/logout_button"
                         android:layout_marginTop="5sp"
                         android:layout_marginStart="5sp"
                         android:text="@string/title_register"
-                        android:textSize="12sp"
-                        android:visibility="gone"
+                        android:textSize="11sp"
+                        android:visibility="visible"
                         android:layout_marginEnd="15sp"/>
 
                     <Button
@@ -61,7 +61,7 @@
                         android:layout_margin="5sp"
                         android:text="@string/title_logout"
                         android:textSize="12sp"
-                        android:visibility="visible"/>
+                        android:visibility="gone"/>
 
                     <ImageView
                         android:id="@+id/iv_home_bell"
@@ -80,14 +80,15 @@
 
                 <TextView
                     android:id="@+id/text_view_greeting"
-                    app:layout_constraintTop_toBottomOf="@+id/logout_button"
-                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintRight_toLeftOf="@+id/login_button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginRight="30sp"
                     android:text="@string/greeting"
-                    android:layout_marginTop="5sp"
+                    android:layout_marginTop="11sp"
                     android:layout_marginStart="12dp"
-                    android:textSize="25sp"
+                    android:textSize="18sp"
                     android:textColor="@color/white"
                     android:background="@drawable/greeting_background"/>
 
@@ -124,7 +125,9 @@
             app:layout_constraintTop_toBottomOf="@+id/cl_home_background"
             android:layout_marginTop="25dp"
             android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp">
+            android:layout_marginRight="15dp"
+            android:visibility="gone"
+            >
 
             <ImageView
                 android:contentDescription="@string/iv_loyalty_points_content"
@@ -133,7 +136,8 @@
                 app:layout_constraintLeft_toLeftOf="parent"
                 android:layout_width="115dp"
                 android:layout_height="115dp"
-                android:background="@drawable/home_image_border"/>
+                android:src="@drawable/loyaltypoints"
+                />
 
             <TextView
                 android:id="@+id/home_item_loyalty_points_head"
@@ -151,7 +155,7 @@
                 android:layout_height="wrap_content"
                 app:layout_constraintLeft_toRightOf="@+id/home_item_loyalty_points_image"
                 app:layout_constraintTop_toBottomOf="@+id/home_item_loyalty_points_head"
-                android:text="@string/lorem_ipsum_long"
+                android:text="@string/loyaltypointsText"
                 android:layout_margin="10dp"
                 android:textSize="18sp"
                 android:ellipsize="end"
@@ -177,7 +181,7 @@
                 app:layout_constraintLeft_toLeftOf="parent"
                 android:layout_width="115dp"
                 android:layout_height="115dp"
-                android:background="@drawable/home_image_border"/>
+                android:src="@drawable/kunst"/>
 
             <TextView
                 android:id="@+id/home_item_popular_workshops_head"
@@ -195,7 +199,7 @@
                 android:layout_height="wrap_content"
                 app:layout_constraintLeft_toRightOf="@+id/home_item_popular_workshops_image"
                 app:layout_constraintTop_toBottomOf="@+id/home_item_popular_workshops_head"
-                android:text="@string/lorem_ipsum_long"
+                android:text="@string/populaireworkshopstext"
                 android:layout_margin="10dp"
                 android:textSize="18sp"
                 android:ellipsize="end"
@@ -222,7 +226,7 @@
                 app:layout_constraintLeft_toLeftOf="parent"
                 android:layout_width="115dp"
                 android:layout_height="115dp"
-                android:background="@drawable/home_image_border"/>
+                android:src="@drawable/imageedit_3_6513785217" />
 
             <TextView
                 android:id="@+id/home_item_newsletter_head"
@@ -240,7 +244,7 @@
                 android:layout_height="wrap_content"
                 app:layout_constraintLeft_toRightOf="@+id/home_item_newsletter_image"
                 app:layout_constraintTop_toBottomOf="@+id/home_item_newsletter_head"
-                android:text="@string/lorem_ipsum_long"
+                android:text="@string/newsletterText"
                 android:layout_margin="10dp"
                 android:textSize="18sp"
                 android:ellipsize="end"

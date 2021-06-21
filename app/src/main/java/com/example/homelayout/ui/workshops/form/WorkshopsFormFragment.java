@@ -11,9 +11,8 @@ import androidx.fragment.app.Fragment;
 import com.example.homelayout.R;
 
 public class WorkshopsFormFragment extends Fragment {
-        public View onCreateView(@NonNull LayoutInflater inflater,
-                ViewGroup container, Bundle savedInstanceState) {
-            return inflater.inflate(R.layout.fragment_workshops, container, false);
-
-        }
+    public View onCreateView(@NonNull LayoutInflater inflater,
+                             ViewGroup container, Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.fragment_workshops, container, false);
     }
+}

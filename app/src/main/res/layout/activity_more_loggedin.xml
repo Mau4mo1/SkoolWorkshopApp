@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container_sideView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_grey"
+    android:orientation="vertical">
+
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/nav_side_view"
+        android:layout_width="170sp"
+        android:layout_height="wrap_content"
+        android:background="?android:attr/windowBackground"
+        android:nestedScrollingEnabled="false"
+        app:itemIconTint="@color/menu_color"
+        app:itemTextColor="@color/menu_color"
+        app:labelVisibilityMode="labeled"
+        app:layout_constraintBottom_toBottomOf="@+id/nav_host_fragment"
+        app:layout_constraintEnd_toEndOf="@+id/nav_host_fragment"
+        app:menu="@menu/more_nav_menu_loggedin" />
+
+</androidx.core.widget.NestedScrollView>
