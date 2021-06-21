@@ -35,6 +35,7 @@ public class WorkshopsFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_category_workshops, container, false);
 
+        //Transformation method to create round corners and set scaleType to CENTER_CROP.
         Transformation transformation = new RoundedTransformationBuilder()
                 .borderColor(Color.BLACK)
                 .borderWidthDp(0)
