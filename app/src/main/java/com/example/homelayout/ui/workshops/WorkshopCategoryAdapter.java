@@ -1,8 +1,10 @@
 package com.example.homelayout.ui.workshops;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Parcelable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,26 +14,27 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.homelayout.R;
 import com.example.homelayout.domain.TranslationsObject;
 import com.example.homelayout.domain.WorkshopPictureObject;
-import com.example.homelayout.domain.Workshops;
-import com.example.homelayout.domain.WorkshopsObject;
-import com.example.homelayout.repositories.TinyDB;
-import com.example.homelayout.ui.shoppingcart.ShoppingCartWorkshopAdapter;
 
-import org.jetbrains.annotations.NotNull;
+import com.example.homelayout.domain.WorkshopsObject;
 
 import java.io.Serializable;
-import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Pattern;
 
-public class WorkshopCategoryAdapter extends RecyclerView.Adapter<WorkshopCategoryAdapter.WorkshopCategoryHolder> implements Serializable {
+public class WorkshopCategoryAdapter extends
+        RecyclerView.Adapter<WorkshopCategoryAdapter.WorkshopCategoryHolder> implements Serializable {
     private List<WorkshopsObject> workshopsObjectList;
     private Context context;
+    private WorkshopsObject workshopsObject;
 
     public WorkshopCategoryAdapter(List<WorkshopsObject> workshopsObjectList, Context context) {
         this.workshopsObjectList = workshopsObjectList;
@@ -49,7 +52,7 @@ public class WorkshopCategoryAdapter extends RecyclerView.Adapter<WorkshopCatego
 
     @Override
     public void onBindViewHolder(WorkshopCategoryHolder holder, int position) {
-        WorkshopsObject workshopsObject = workshopsObjectList.get(position);
+        workshopsObject = workshopsObjectList.get(position);
         List<TranslationsObject> translationsObjects = workshopsObject.getTranslationsObjects();
         WorkshopPictureObject[] workshopPictureObject = workshopsObject.getPictureObject();
             try {
@@ -60,20 +63,11 @@ public class WorkshopCategoryAdapter extends RecyclerView.Adapter<WorkshopCatego
                             .convertBlobIntoImage());
                 }
                 if (workshopsObject.getCodeName() != null) {
-                    holder.mTitleWorkshop.setText(workshopsObject.getCodeName().split("Skool")[1]);
+                    holder.mTitleWorkshop.setText("Workshop " + workshopsObject.getFormattedName());
                 }
                 if (translationsObjects.get(1).getTranslation() != null) {
                     holder.mDescriptionWorkshop.setText((translationsObjects.get(1).getTranslation()));
                 }
-                holder.mInfoImageButton.setClickable(true);
-                holder.mInfoImageButton.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Uri uri = Uri.parse("https://skoolworkshop.nl/workshops/workshop-" + workshopsObject.getCodeName().split("Skool")[1]);
-                        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-                        context.startActivity(intent);
-                    }
-                });
             } catch (Exception e) {
                 e.printStackTrace();
         }
@@ -95,10 +89,17 @@ public class WorkshopCategoryAdapter extends RecyclerView.Adapter<WorkshopCatego
 
         public WorkshopCategoryHolder(@NonNull View view) {
             super(view);
+            view.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    AppCompatActivity activity = (AppCompatActivity) view.getContext();
+                    WorkshopsForm fragment = new WorkshopsForm(workshopsObject);
+                    activity.getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, fragment).addToBackStack(null).commit();
+                }
+            });
             mImageWorkshop = view.findViewById(R.id.iv_workshop_image_workshop);
             mTitleWorkshop = view.findViewById(R.id.tv_workshop_title_workshop);
             mDescriptionWorkshop = view.findViewById(R.id.tv_workhop_description);
-            mInfoImageButton = view.findViewById(R.id.iv_workshop_info);
         }
     }
 

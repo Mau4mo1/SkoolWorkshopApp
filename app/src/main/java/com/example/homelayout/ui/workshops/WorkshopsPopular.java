@@ -1,11 +1,14 @@
 package com.example.homelayout.ui.workshops;
 
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,63 +16,63 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
 import com.example.homelayout.R;
+import com.example.homelayout.controller.TranslationsController;
+import com.example.homelayout.controller.WorkshopController;
+import com.example.homelayout.domain.TranslationsObject;
 import com.example.homelayout.domain.Workshops;
+import com.example.homelayout.domain.WorkshopsObject;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.zip.CheckedOutputStream;
 
-public class WorkshopsPopular extends Fragment implements View.OnClickListener{
+public class WorkshopsPopular extends Fragment implements WorkshopController.WorkshopsControllerListener , TranslationsController.TranslationsControllerListener {
+    private LinearLayoutManager workshopLayoutManager;
+    private List<WorkshopsObject> workshopsObjectList;
+    private List<TranslationsObject> translationsObjectsList;
+    private RecyclerView workshopRecyclerView;
+    private List<WorkshopsObject> workshopsObjectListWithTranslations = new ArrayList<>();
+    private Context context;
+    private String category;
+    private View root;
+    private TranslationsController.TranslationsControllerListener translationsListener;
 
-    private ConstraintLayout clGraffiti;
-    private ConstraintLayout clRap;
-    private ConstraintLayout clVloggen;
-    private ConstraintLayout clHiphop;
-    private ConstraintLayout clGhettoDrums;
+    public WorkshopsPopular() {
+        this.category = category;
+    }
 
-    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        View root = inflater.inflate(R.layout.fragment_workshops_popular, container, false);
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater,
+                             ViewGroup container, Bundle savedInstanceState) {
 
-        clGraffiti = root.findViewById(R.id.cl_popular_workshop_graffiti);
-        clRap = root.findViewById(R.id.cl_popular_workshop_rap);
-        clVloggen = root.findViewById(R.id.cl_popular_workshop_vlogging);
-        clHiphop = root.findViewById(R.id.cl_popular_workshop_hiphop);
-        clGhettoDrums = root.findViewById(R.id.cl_popular_workshop_ghetto_drums);
+        root = inflater.inflate(R.layout.workshops_recycler_view, container, false);
+        context = container.getContext();
+        translationsListener = this::onTranslationsAvailable;
 
-        clGraffiti.setOnClickListener(this);
-        clRap.setOnClickListener(this);
-        clVloggen.setOnClickListener(this);
-        clHiphop.setOnClickListener(this);
-        clGhettoDrums.setOnClickListener(this);
+        new WorkshopController(this).loadWorkshopsByCategory("Dans");
 
         return root;
     }
 
     @Override
-    public void onClick(View v) {
-        switch (v.getId()){
-            case R.id.cl_popular_workshop_graffiti:
-                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new WorkshopsForm(Workshops.Graffiti)).addToBackStack(null).commit();
-                break;
-            case R.id.cl_popular_workshop_rap:
-                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new WorkshopsForm(Workshops.Rap)).addToBackStack(null).commit();
-                break;
-            case R.id.cl_popular_workshop_vlogging:
-                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new WorkshopsForm(Workshops.Vloggen)).addToBackStack(null).commit();
-                break;
-            case R.id.cl_popular_workshop_hiphop:
-                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new WorkshopsForm(Workshops.Hiphop)).addToBackStack(null).commit();
-                break;
-            case R.id.cl_popular_workshop_ghetto_drums:
-                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new WorkshopsForm(Workshops.GhettoDrums)).addToBackStack(null).commit();
-                break;
+    public void onWorkshopsAvailable(List<WorkshopsObject> workshopsObjectList) throws SQLException {
+        this.workshopsObjectList = workshopsObjectList;
+        for (WorkshopsObject i : workshopsObjectList) {
+            new TranslationsController(translationsListener).loadTranslations(i.getId(), i);
         }
     }
 
     @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        BottomNavigationView navigation = (BottomNavigationView) getActivity().findViewById(R.id.nav_view);
-        navigation.getMenu().getItem(1).setChecked(true);
+    public void onTranslationsAvailable(WorkshopsObject workshopsObject) throws SQLException {
+        workshopsObjectListWithTranslations.add(workshopsObject);
+        if (workshopsObjectListWithTranslations.size() == workshopsObjectList.size()) {
+            workshopLayoutManager = new LinearLayoutManager(context);
+            workshopRecyclerView = root.findViewById(R.id.rv_workshops_recycler_view);
+            workshopRecyclerView.setLayoutManager(workshopLayoutManager);
+            workshopRecyclerView.setHasFixedSize(true);
+            workshopRecyclerView.setAdapter(new WorkshopCategoryAdapter(workshopsObjectListWithTranslations, context));
+        }
     }
 }

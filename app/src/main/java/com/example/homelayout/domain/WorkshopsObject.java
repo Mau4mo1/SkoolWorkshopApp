@@ -2,9 +2,10 @@ package com.example.homelayout.domain;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class WorkshopsObject {
+public class WorkshopsObject implements Serializable {
     @SerializedName("Id")
     private int id;
     @SerializedName("Category")
@@ -18,6 +19,8 @@ public class WorkshopsObject {
     @SerializedName("__Pictures__")
     private WorkshopPictureObject[] pictureObject;
     private List<TranslationsObject> translationsObjects;
+    private Workshops workshops;
+    private String formattedName;
 
     public WorkshopsObject(int id, String category, String codeName, String shortDesc, boolean needsApp, WorkshopPictureObject[] pictureObject) {
         this.id = id;
@@ -26,6 +29,14 @@ public class WorkshopsObject {
         this.shortDesc = shortDesc;
         this.needsApp = needsApp;
         this.pictureObject = pictureObject;
+    }
+
+    public Workshops getWorkshops() {
+        return workshops;
+    }
+
+    public void setWorkshops(Workshops workshops) {
+        this.workshops = workshops;
     }
 
     public int getId() {
@@ -58,6 +69,14 @@ public class WorkshopsObject {
 
     public WorkshopPictureObject[] getPictureObject() {
         return pictureObject;
+    }
+
+    public String getFormattedName() {
+        return formattedName;
+    }
+
+    public void setFormattedName(String formattedName) {
+        this.formattedName = formattedName;
     }
 
     public void setPictureObject(WorkshopPictureObject[] pictureObject) {

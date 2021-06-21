@@ -8,6 +8,7 @@ import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface WorkshopAPI {
+    String standardUrl = "https://dev.virtualearth.net/REST/v1/Routes/DistanceMatrix";
 
     @GET("workshop")
     Call<WorkshopsAPIResponse> loadAllWorkshops();
@@ -18,4 +19,6 @@ public interface WorkshopAPI {
     @GET("workshop/{workshopId}/translations")
     Call<TranslationsAPIResponse> loadTranslations(@Path("workshopId") int workshopId);
 
+    @GET("")
+    Call<WorkshopsAPIResponse> loadPopularWorkshops();
 }

@@ -8,10 +8,11 @@ import android.widget.ImageView;
 import com.google.gson.annotations.SerializedName;
 
 import java.io.ByteArrayOutputStream;
+import java.io.Serializable;
 import java.sql.SQLException;
 import java.util.Base64;
 
-public class BlobObject {
+public class BlobObject  implements Serializable {
     @SerializedName("type")
     private String type;
     @SerializedName("data")
