@@ -1,6 +1,7 @@
 package com.example.homelayout.ui.workshops;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -18,6 +19,8 @@ import com.example.homelayout.controller.WorkshopController;
 import com.example.homelayout.domain.WorkshopPictureObject;
 import com.example.homelayout.domain.Workshops;
 import com.example.homelayout.domain.WorkshopsObject;
+import com.makeramen.roundedimageview.RoundedTransformationBuilder;
+import com.squareup.picasso.Transformation;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -195,7 +198,6 @@ public class WorkshopDanceFragment extends Fragment implements View.OnClickListe
                         .setImageBitmap(workshopPictureObject[0]
                                 .getBlob()
                                 .convertBlobIntoImage());
-
             case "SkoolModerneDans":
                 mImageViewModernDance
                         .setImageBitmap(workshopPictureObject[0]

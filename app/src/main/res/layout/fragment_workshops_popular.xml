@@ -37,13 +37,23 @@
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp">
 
-            <ImageView
+            <com.makeramen.roundedimageview.RoundedImageView
+                xmlns:app="http://schemas.android.com/apk/res-auto"
                 android:id="@+id/iv_popular_workshop_graffiti_image"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
                 android:layout_width="115dp"
                 android:layout_height="115dp"
-                android:background="@drawable/home_image_border"/>
+                android:layout_marginTop="3sp"
+                android:scaleType="centerCrop"
+                app:riv_corner_radius_bottom_left="10dp"
+                app:riv_corner_radius_top_left="10dp"
+                app:riv_border_width="0dip"
+                app:riv_border_color="@color/white"
+                app:riv_mutate_background="true"
+                app:riv_tile_mode="clamp"
+                app:riv_oval="false"
+                android:src="@drawable/skool_home_background"/>
 
             <TextView
                 android:id="@+id/iv_popular_workshop_graffiti_head"
@@ -80,13 +90,23 @@
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp">
 
-            <ImageView
+            <com.makeramen.roundedimageview.RoundedImageView
+                xmlns:app="http://schemas.android.com/apk/res-auto"
                 android:id="@+id/iv_popular_workshop_rap_image"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
                 android:layout_width="115dp"
                 android:layout_height="115dp"
-                android:background="@drawable/home_image_border"/>
+                android:layout_marginTop="3sp"
+                android:scaleType="centerCrop"
+                app:riv_corner_radius_bottom_left="10dp"
+                app:riv_corner_radius_top_left="10dp"
+                app:riv_border_width="0dip"
+                app:riv_border_color="@color/white"
+                app:riv_mutate_background="true"
+                app:riv_tile_mode="clamp"
+                app:riv_oval="false"
+                android:src="@drawable/skool_home_background"/>
 
             <TextView
                 android:id="@+id/iv_popular_workshop_rap_head"
@@ -123,13 +143,23 @@
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp">
 
-            <ImageView
+            <com.makeramen.roundedimageview.RoundedImageView
+                xmlns:app="http://schemas.android.com/apk/res-auto"
                 android:id="@+id/iv_popular_workshop_vlogging_image"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
                 android:layout_width="115dp"
                 android:layout_height="115dp"
-                android:background="@drawable/home_image_border"/>
+                android:layout_marginTop="3sp"
+                android:scaleType="centerCrop"
+                app:riv_corner_radius_bottom_left="10dp"
+                app:riv_corner_radius_top_left="10dp"
+                app:riv_border_width="0dip"
+                app:riv_border_color="@color/white"
+                app:riv_mutate_background="true"
+                app:riv_tile_mode="clamp"
+                app:riv_oval="false"
+                android:src="@drawable/skool_home_background"/>
 
             <TextView
                 android:id="@+id/iv_popular_workshop_vlogging_head"
@@ -166,13 +196,23 @@
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp">
 
-            <ImageView
+            <com.makeramen.roundedimageview.RoundedImageView
+                xmlns:app="http://schemas.android.com/apk/res-auto"
                 android:id="@+id/iv_popular_workshop_hiphop_image"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
                 android:layout_width="115dp"
                 android:layout_height="115dp"
-                android:background="@drawable/home_image_border"/>
+                android:layout_marginTop="3sp"
+                android:scaleType="centerCrop"
+                app:riv_corner_radius_bottom_left="10dp"
+                app:riv_corner_radius_top_left="10dp"
+                app:riv_border_width="0dip"
+                app:riv_border_color="@color/white"
+                app:riv_mutate_background="true"
+                app:riv_tile_mode="clamp"
+                app:riv_oval="false"
+                android:src="@drawable/skool_home_background"/>
 
             <TextView
                 android:id="@+id/iv_popular_workshop_hiphop_head"
@@ -210,13 +250,23 @@
             android:layout_marginRight="15dp"
             android:layout_marginBottom="30dp">
 
-            <ImageView
+            <com.makeramen.roundedimageview.RoundedImageView
+                xmlns:app="http://schemas.android.com/apk/res-auto"
                 android:id="@+id/iv_popular_workshop_ghetto_drums_image"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
                 android:layout_width="115dp"
                 android:layout_height="115dp"
-                android:background="@drawable/home_image_border"/>
+                android:layout_marginTop="3sp"
+                android:scaleType="centerCrop"
+                app:riv_corner_radius_bottom_left="10dp"
+                app:riv_corner_radius_top_left="10dp"
+                app:riv_border_width="0dip"
+                app:riv_border_color="@color/white"
+                app:riv_mutate_background="true"
+                app:riv_tile_mode="clamp"
+                app:riv_oval="false"
+                android:src="@drawable/skool_home_background"/>
 
             <TextView
                 android:id="@+id/iv_popular_workshop_ghetto_drums_head"

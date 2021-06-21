@@ -65,6 +65,7 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
                 messageObjList.addAll(messageList);
                 tinyDB.clear();
                 tinyDB.putListObject("MessageBox", messageObjList);
+                messageObjList.clear();
                 notifyDataSetChanged();
             }
         });
