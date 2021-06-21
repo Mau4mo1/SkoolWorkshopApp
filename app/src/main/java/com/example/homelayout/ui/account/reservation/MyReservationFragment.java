@@ -31,12 +31,12 @@ public class MyReservationFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_my_reservation_detail, container, false);
 
-        con = container.getContext();
-        layoutManager = new LinearLayoutManager(this.getContext());
-        recyclerView = root.findViewById(R.id.rv_message_box_recyclerview);
-        recyclerView.setLayoutManager(layoutManager);
-        tinydb = new TinyDB(con);
-        loadData();
+//        con = container.getContext();
+//        layoutManager = new LinearLayoutManager(getContext());
+//        recyclerView = root.findViewById(R.id.my_reservation_recycler01);
+//        recyclerView.setLayoutManager(layoutManager);
+//        tinydb = new TinyDB(con);
+//        loadData();
 
         return root;
     }

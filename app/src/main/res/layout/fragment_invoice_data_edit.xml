@@ -46,9 +46,9 @@
                 android:id="@+id/edn_invoice_edit_firsname_field"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@+id/tv_booked_workshop_edit_firstname_description"
+                app:layout_constraintTop_toBottomOf="@+id/tv_invoice_edit_firstname_description"
                 app:layout_constraintLeft_toLeftOf="parent"
-                android:layout_marginTop="8sp"
+                android:layout_marginTop="10sp"
                 android:text="Voornaam"
                 android:layout_marginStart="20sp"
                 android:layout_marginEnd="20sp"/>
@@ -104,7 +104,6 @@
                 android:layout_marginStart="20sp"
                 android:layout_marginEnd="16sp"/>
             <EditText
-                android:inputType="textPassword"
                 android:id="@+id/edn_invoice_edit_land_field"
                 android:text="Nederland"
                 android:layout_width="match_parent"
@@ -226,6 +225,7 @@
                 android:textSize="16sp"/>
             <EditText
                 android:id="@+id/edm_invoice_edit_email_field"
+                android:text="E-mailadres"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toBottomOf="@+id/tv_invoice_edit_email_description"

@@ -14,7 +14,7 @@ public class BookedWorkshopDataEditFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.fragment_cultureday_form, container, false);
+        View root = inflater.inflate(R.layout.fragment_booked_workshop_data_edit, container, false);
 
         return root;
     }

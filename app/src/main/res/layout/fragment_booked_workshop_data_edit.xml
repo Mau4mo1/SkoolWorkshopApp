@@ -104,7 +104,6 @@
                 android:layout_marginStart="20sp"
                 android:layout_marginEnd="16sp"/>
             <EditText
-                android:inputType="textPassword"
                 android:id="@+id/edn_booked_workshop_edit_land_field"
                 android:text="Nederland"
                 android:layout_width="match_parent"

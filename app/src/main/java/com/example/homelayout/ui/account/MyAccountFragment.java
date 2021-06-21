@@ -36,6 +36,7 @@ public class MyAccountFragment extends Fragment {
         btn_my_credits = root.findViewById(R.id.button_my_account_credits);
         btn_my_reservations = root.findViewById(R.id.button_my_account_reservations);
         tv_log_out = root.findViewById(R.id.tv_my_account_log_out);
+        con = getContext();
 
         btn_my_data.setClickable(true);
         btn_my_data.setOnClickListener(new View.OnClickListener() {
@@ -76,8 +77,8 @@ public class MyAccountFragment extends Fragment {
             public void onClick(View v) {
                 AlertDialog.Builder logpopup = new AlertDialog.Builder(con);
                 logpopup.setCancelable(true);
-                logpopup.setTitle("Workshops te kort");
-                logpopup.setMessage("De workshops moeten 60 minuten of langer duren");
+                logpopup.setTitle("Uitloggen");
+                logpopup.setMessage("Weet je zeker dat je wilt uitloggen?");
                 logpopup.setPositiveButton("ja", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {

@@ -26,8 +26,7 @@ public class MyInvoiceFragment extends Fragment {
         tv_invoice_edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                PLACEHOLDER NEEDS TO CHANGE DATA
-                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new InvoiceDataEditFragment());
+                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new InvoiceDataEditFragment()).commit();
             }
         });
 
@@ -35,8 +34,7 @@ public class MyInvoiceFragment extends Fragment {
         tv_workshop_edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                PLACEHOLDER NEEDS TO CHANGE DATA
-                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new BookedWorkshopDataEditFragment());
+                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new BookedWorkshopDataEditFragment()).commit();
             }
         });
 
