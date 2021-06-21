@@ -36,6 +36,7 @@ import com.example.homelayout.controller.WorkshopController;
 import com.example.homelayout.domain.WorkshopPictureObject;
 import com.example.homelayout.domain.WorkshopsObject;
 import com.example.homelayout.ui.Cultureday.MainPage.CulturedayMainFragment;
+import com.example.homelayout.ui.account.MyAccountFragment;
 import com.example.homelayout.ui.home.HomeFragment;
 import com.example.homelayout.ui.contact.ContactFragment;
 import com.example.homelayout.ui.shoppingcart.ShoppingCartFragment;
@@ -53,6 +54,7 @@ import com.google.firebase.messaging.FirebaseMessagingService;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
+import androidx.appcompat.view.menu.ShowableListMenu;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
@@ -81,14 +83,11 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
-        // voor de verandering
-
         bottomNav = findViewById(R.id.nav_view);
         bottomNav.setOnNavigationItemSelectedListener(navListener);
         aTestForTim = new ArrayList<>();
@@ -113,10 +112,6 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
 
-//        workshopController = new WorkshopController(this);
-//        workshopPictureController = new WorkshopPictureController(this);
-//        workshopPictureController.loadPictureWorkshops(2);
-        //TODO SHAREDPREFERENCES TOEVOEGEN ALS INLOGGEN WERKT
         this.istheuserloggedin = false;
         getSupportFragmentManager()
                 .beginTransaction()
@@ -200,13 +195,14 @@ public class MainActivity extends AppCompatActivity {
                         case R.id.navigation_shopping_cart:
                             selectedFragment = new ShoppingCartFragment();
                             break;
-                        case R.id.navigation_about_us:
+                        case R.id.information:
+                            selectedFragment = new MyAccountFragment();
                             break;
                         case R.id.navigation_quiz:
-                            Log.d("test", "hallo");
                             Uri uri = Uri.parse("https://www.tryinteract.com/share/quiz/60bf53f3749e3400170c19df");
                             Intent intent = new Intent(Intent.ACTION_VIEW, uri);
                             startActivity(intent);
+                            selectedFragment = new HomeFragment();
                             break;
                     }
                     getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, selectedFragment).addToBackStack(null).commit();
@@ -215,12 +211,18 @@ public class MainActivity extends AppCompatActivity {
             };
 
     private void showStatusPopup(final Activity context) {
-
-
         // Inflate the popup_layout.xml
         ConstraintLayout viewGroup = (ConstraintLayout) context.findViewById(R.id.container_sideView);
         LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View layout = layoutInflater.inflate(R.layout.activity_more, null);
+        View layout = null;
+        int OFFSET_Y = 0;
+        if(istheuserloggedin){
+             layout = layoutInflater.inflate(R.layout.activity_more_loggedin, null);
+             OFFSET_Y = -400;
+        }else{
+             layout = layoutInflater.inflate(R.layout.activity_more, null);
+             OFFSET_Y = -277;
+        }
         PopupWindow changeStatusPopUp = new PopupWindow(context);
         changeStatusPopUp.setContentView(layout);
         changeStatusPopUp.setWidth(ConstraintLayout.LayoutParams.WRAP_CONTENT);
@@ -228,7 +230,6 @@ public class MainActivity extends AppCompatActivity {
         changeStatusPopUp.setFocusable(true);
 
         int OFFSET_X = 0;
-        int OFFSET_Y = -400;
         int[] location = new int[2];
         findViewById(R.id.navigation_more).getLocationOnScreen(location);
         OFFSET_X = OFFSET_X + location[0];

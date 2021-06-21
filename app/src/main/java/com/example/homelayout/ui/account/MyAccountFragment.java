@@ -17,6 +17,7 @@ import com.example.homelayout.R;
 import com.example.homelayout.ui.account.data.MyDataFragment;
 import com.example.homelayout.ui.account.invoice.MyInvoiceFragment;
 import com.example.homelayout.ui.account.reservation.MyReservationFragment;
+import com.example.homelayout.ui.accountdetails.LoyaltyPointsFragment;
 import com.example.homelayout.ui.home.HomeFragment;
 
 public class MyAccountFragment extends Fragment {
@@ -29,7 +30,7 @@ public class MyAccountFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.fragment_cultureday_form, container, false);
+        View root = inflater.inflate(R.layout.fragment_my_account, container, false);
         btn_my_data = root.findViewById(R.id.button_my_account_my_data);
         btn_my_invoice = root.findViewById(R.id.button_my_account_invoice_data);
         btn_my_credits = root.findViewById(R.id.button_my_account_credits);
@@ -57,7 +58,7 @@ public class MyAccountFragment extends Fragment {
             @Override
             public void onClick(View v) {
 //                PLACE HOLDER NEEDS TO BE CREDIT SCHREEN
-                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new MyDataFragment()).commit();
+                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new LoyaltyPointsFragment()).commit();
             }
         });
 
