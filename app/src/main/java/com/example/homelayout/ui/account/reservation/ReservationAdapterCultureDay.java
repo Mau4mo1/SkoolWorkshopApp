@@ -45,7 +45,7 @@ public class ReservationAdapterCultureDay extends RecyclerView.Adapter<Reservati
         final int pos = position;
         DecimalFormat decimalFormat = new DecimalFormat("#.00");
         CultureDayBooking cultureDayBooking = (CultureDayBooking) cultureDayData.get(pos);
-        String prijs = decimalFormat.format(cultureDayBooking.getPrijs());
+        String prijs = decimalFormat.format(cultureDayBooking.getPrice());
         List<String> workshoplist = cultureDayBooking.getWorkshops();
         String workshops = "";
         for (int i = 0; i < workshoplist.size(); i++) {
@@ -57,9 +57,9 @@ public class ReservationAdapterCultureDay extends RecyclerView.Adapter<Reservati
         }
 
         holder.id.setText(String.valueOf(cultureDayBooking.getRondes()));
-        holder.date.setText(String.valueOf(cultureDayBooking.getMinutenPerRonde()));
-        holder.status.setText(String.valueOf(cultureDayBooking.getTotaleMinuten()));
-        holder.kost.setText(String.valueOf(cultureDayBooking.getDeelnemers()));
+        holder.date.setText(String.valueOf(cultureDayBooking.getMinutesPerRound()));
+        holder.status.setText(String.valueOf(cultureDayBooking.getTotalMinutes()));
+        holder.kost.setText(String.valueOf(cultureDayBooking.getParticipants()));
         holder.detail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
