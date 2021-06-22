@@ -74,7 +74,6 @@ import java.lang.reflect.Type;
 import java.util.List;
 import java.util.Objects;
 
-
 public class MainActivity extends AppCompatActivity {
     private TextView shoppingCartNumber;
     private RoundedImageView redCircle;
@@ -91,14 +90,17 @@ public class MainActivity extends AppCompatActivity {
     private List<TranslationsObject> translationsObjectsList;
     private TinyDB tinyDB;
     private String shoppingCartCounterNumber;
+    private HomeFragment homeFragment;
+    private Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        context = this;
         tinyDB = new TinyDB(this);
+        homeFragment = new HomeFragment();
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
 
@@ -148,6 +150,7 @@ public class MainActivity extends AppCompatActivity {
             Message m = new Message(countdown, intent.getExtras().getString("title"), intent.getExtras().getString("body"));
             aTestForTim.add(m);
             Log.d("TAG", m.toString());
+            homeFragment.updateNotificationCounter(context);
         }
     };
 
@@ -185,10 +188,7 @@ public class MainActivity extends AppCompatActivity {
         });
         redCircle = (RoundedImageView) rootView.findViewById(R.id.shopping_cart_counter_red_circle);
         shoppingCartNumber = (TextView) rootView.findViewById(R.id.shopping_cart_counter_number);
-        workshopBookings = tinyDB.getListObject("Carditems", WorkshopBooking.class);
-        cultureDayBookings = tinyDB.getListObject("CultureItems", CulturedayBookingInfo.class);
-        shoppingCartCounterNumber = String.valueOf(workshopBookings.size() + cultureDayBookings.size());
-        shoppingCartNumber.setText(shoppingCartCounterNumber);
+        updateShoppingCartCounter();
         return true;
     }
 
@@ -296,4 +296,10 @@ public class MainActivity extends AppCompatActivity {
         return this.istheuserloggedin;
     }
 
+    public void updateShoppingCartCounter(){
+        workshopBookings = tinyDB.getListObject("Carditems", WorkshopBooking.class);
+        cultureDayBookings = tinyDB.getListObject("CultureItems", CulturedayBookingInfo.class);
+        shoppingCartCounterNumber = String.valueOf(workshopBookings.size() + cultureDayBookings.size());
+        shoppingCartNumber.setText(shoppingCartCounterNumber);
+    }
 }

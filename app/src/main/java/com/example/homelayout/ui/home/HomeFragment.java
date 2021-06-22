@@ -39,10 +39,15 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.io.ByteArrayOutputStream;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class HomeFragment extends Fragment implements View.OnClickListener {
+    private static Context thisContext;
+    private static TinyDB tinyDB;
+    private static ArrayList<Object> messageList;
+    private static TextView ivBellCounter;
     private Button btnBookWorkshop;
     private Button btnBookCultureDay;
     private Button btnRegister;
@@ -54,26 +59,13 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     private ImageView ivBell;
     private ConstraintLayout loyaltyPoints;
     private TextView greetings;
-    private TextView ivBellCounter;
-    private ConstraintLayout contraintLayoutCounter;
-    private CardView counterCardView;
-    private TinyDB tinyDB;
-    private Context thisContext;
-
-    private ArrayList<Object> messageList;
+    private View root;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
+        root = inflater.inflate(R.layout.fragment_home, container, false);
         thisContext = container.getContext();
-        tinyDB = new TinyDB(thisContext);
-        this.messageList = tinyDB.getListObject("MessageBox", Message.class);
-        if (messageList == null){
-            this.messageList = new ArrayList<>();
-        }
-
-        View root = inflater.inflate(R.layout.fragment_home, container, false);
-
         btnRegister = root.findViewById(R.id.register_button);
         btnRegister.setClickable(true);
         btnLogin = root.findViewById(R.id.login_button);
@@ -94,9 +86,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                 getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new MessageBoxFragment()).addToBackStack(null).commit();
             }
         });
-        ivBellCounter = root.findViewById(R.id.notification_counter_number);
-        ivBellCounter.setVisibility(View.VISIBLE);
-        ivBellCounter.setText(String.valueOf(messageList.size()));
+
         mImageViewSpaarPunten = root.findViewById(R.id.home_item_loyalty_points_image);
         loyaltyPoints = root.findViewById(R.id.home_item_loyalty_points);
         loyaltyPoints.setClickable(true);
@@ -132,8 +122,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
           //constraintSet.connect(greetings.getId(), ConstraintSet.RIGHT, ConstraintSet.PARENT_ID, ConstraintSet.LEFT);
           constraintSet.applyTo(cons);
         }
-
-
+        updateNotificationCounter(thisContext);
         return root;
     }
 
@@ -167,5 +156,16 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         super.onViewCreated(view, savedInstanceState);
         BottomNavigationView navigation = (BottomNavigationView) getActivity().findViewById(R.id.nav_view);
         navigation.getMenu().getItem(0).setChecked(true);
+    }
+
+    public void updateNotificationCounter(Context context){
+        TinyDB tinyDB = new TinyDB(context);
+        ivBellCounter = root.findViewById(R.id.notification_counter_number);
+        ivBellCounter.setVisibility(View.VISIBLE);
+        messageList = tinyDB.getListObject("MessageBox", Message.class);
+        if (messageList == null){
+            messageList = new ArrayList<>();
+        }
+        ivBellCounter.setText(String.valueOf(messageList.size()));
     }
 }
