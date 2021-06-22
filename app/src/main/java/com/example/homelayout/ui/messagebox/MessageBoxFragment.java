@@ -62,14 +62,12 @@ public class MessageBoxFragment extends Fragment implements MessageAdapter.Recyc
         MainActivity active = (MainActivity) getActivity();
         if(active.getMessage() != null){
             for(Message m : active.getMessage()){
-                if(!fullList.contains(m)){
-                    toAddList.add(m);
-                    fullList.add(m);
-                }
+                messageList.add(m);
+                active.deleteMessage(m);
             }
         }
-        messageList.addAll(toAddList);
-        toAddList.clear();
+        //messageList.addAll(toAddList);
+        //toAddList.clear();
         saveData();
 
         messageAdapter = new MessageAdapter(this,messageList, tinyDB);

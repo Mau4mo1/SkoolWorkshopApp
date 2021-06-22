@@ -243,6 +243,14 @@ public class MainActivity extends AppCompatActivity {
         return this.aTestForTim;
     }
 
+    public void deleteMessage(Message m){
+        for(Message d : this.aTestForTim){
+            if(d.getTitle().equals(m.getTitle()) && d.getMessageText().equals(m.getMessageText())){
+                this.aTestForTim.remove(d);
+            }
+        }
+    }
+
     public void setLoggedIn(boolean bool){
         this.istheuserloggedin = bool;
     }
