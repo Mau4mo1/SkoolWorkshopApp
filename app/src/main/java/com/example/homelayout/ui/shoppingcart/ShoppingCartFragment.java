@@ -30,6 +30,7 @@ import java.util.ArrayList;
 public class ShoppingCartFragment extends Fragment {
     private WorkshopsForm mainActivity = new WorkshopsForm(Workshops.Flashmob);
     private Button mExtraWorkshopButton;
+    private Button mGoToPaymentScreen;
     private ImageButton mDeleteButton;
     private Context thisContext;
     private TinyDB tinyDB;
@@ -42,8 +43,8 @@ public class ShoppingCartFragment extends Fragment {
     private ArrayList<Object> workshopBookings;
     private ArrayList<Object> cultureDayBookings;
     private ArrayList<String> workshops = new ArrayList<>();
-    private WorkshopBooking workshopDummyData = new WorkshopBooking("workshop rap", 2, 75, "voorbeeld", "voorbeeld", "3 Juni 2021", 300.00);
-    private CultureDayBooking cultureDayDummyData = new CultureDayBooking(3, 3, 60, 75, workshops, "voorbeeld", "HBO", "26 Juni 2022", 1500.00);
+    //private WorkshopBooking workshopDummyData = new WorkshopBooking("workshop rap", 2, 75, "voorbeeld", "voorbeeld", "3 Juni 2021", 300.00);
+    //private CultureDayBooking cultureDayDummyData = new CultureDayBooking(3, 3, 60, 75, workshops, "voorbeeld", "HBO", "26 Juni 2022", 1500.00);
 
 
     @Override
@@ -74,6 +75,13 @@ public class ShoppingCartFragment extends Fragment {
         shoppingCartCultureDayAdapter = new ShoppingCartCultureDayAdapter(cultureDayBookings);
         cultureDayRecyclerView.setAdapter(shoppingCartCultureDayAdapter);
 
+        mGoToPaymentScreen = root.findViewById(R.id.btn_checkout);
+        mGoToPaymentScreen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new PaymentFragment()).commit();
+            }
+        });
 
         mExtraWorkshopButton = root.findViewById(R.id.btn_cart_extra_workshop);
         mExtraWorkshopButton.setClickable(true);
@@ -84,8 +92,6 @@ public class ShoppingCartFragment extends Fragment {
 
             }
         });
-
-
         return root;
     }
 

@@ -83,6 +83,26 @@
         Excepteur sint occaecat cupidatat non proident,
         sunt in culpa qui officia deserunt mollit anim id est laborum.</string>
 
+    <string name="payment">Afrekenen</string>
+    <string name="title_invoice_details">Factuur Gegevens</string>
+    <string name="firstname">Voornaam</string>
+    <string name="lastname">Achternaam</string>
+    <string name="adres">Straat en huisnummer</string>
+    <string name="company_name">Bedrijfsnaam (optioneel)</string>
+    <string name="place">Plaats </string>
+    <string name="postalcode">Postcode</string>
+    <string name="phonenumber">Telefoonnummer</string>
+    <string name="email">E-mailadres</string>
+    <string name="cjp">CJP nummer (optioneel)</string>
+    <string name="place_order">Bestelling plaatsen</string>
+    <string name="use_online_registration_system">Wil je gebruik van ons online inschrijfsysteem? (optioneel)</string>
+    <string name="yes">Ja</string>
+    <string name="no">Nee</string>
+    <string name="read_about_it">Lees meer hierover</string>
+    <string name="privacy">Je persoonlijke gegevens zullen worden gebruikt om je bestelling te verwerken, om je beleving op deze website te optimaliseren en voor andere doeleinden zoals beschreven in onze privacybeleid.</string>
+    <string name="ideal">iDEAL</string>
+    <string name="direct_payment">Directe bankoverschrijving</string>
+
     <string name="newsletterText">De nieuwste nieuwsbrief van Skoolworkshop! Lees meer hier!</string>
     <string name="loyaltypointsText">U heeft 1000 spaarpunten</string>
     <string name="populaireworkshopstext">Alle populaire workshops</string>

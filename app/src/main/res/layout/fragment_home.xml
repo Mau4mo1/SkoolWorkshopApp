@@ -24,7 +24,6 @@
                 android:background="@drawable/skool_home_background"
                 android:paddingBottom="15dp">
 
-
                     <Button
                         android:id="@+id/login_button"
                         android:layout_width="wrap_content"
@@ -35,7 +34,7 @@
                         android:layout_margin="5sp"
                         android:textSize="11sp"
                         android:text="@string/title_login"
-                        android:visibility="gone"/>
+                        android:visibility="visible"/>
 
                     <Button
                         android:id="@+id/register_button"
@@ -47,13 +46,8 @@
                         android:layout_marginTop="5sp"
                         android:layout_marginStart="5sp"
                         android:text="@string/title_register"
-<<<<<<< HEAD
-                        android:textSize="11sp"
-                        android:visibility="visible"
-=======
                         android:textSize="12sp"
                         android:visibility="gone"
->>>>>>> feature-layout-SK-296
                         android:layout_marginEnd="15sp"/>
 
                     <Button
