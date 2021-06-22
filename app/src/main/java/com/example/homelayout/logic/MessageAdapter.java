@@ -17,18 +17,23 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.homelayout.R;
 import com.example.homelayout.domain.Message;
+import com.example.homelayout.repositories.TinyDB;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageViewHolder> implements Serializable {
     private final String TAG = getClass().getSimpleName();
     public List<Message> messageList;
+    public ArrayList<Object> messageObjList = new ArrayList<>();
     private RecyclerviewOnClickListener listener;
+    private TinyDB tinyDB;
 
-    public MessageAdapter(RecyclerviewOnClickListener listener, List messageList) {
+    public MessageAdapter(RecyclerviewOnClickListener listener, List messageList, TinyDB tinyDB) {
         this.listener = listener;
         this.messageList = messageList;
+        this.tinyDB = tinyDB;
     }
 
     @NonNull
@@ -57,6 +62,10 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
             @Override
             public void onClick(View v) {
                 messageList.remove(position);
+                messageObjList.addAll(messageList);
+                tinyDB.clear();
+                tinyDB.putListObject("MessageBox", messageObjList);
+                messageObjList.clear();
                 notifyDataSetChanged();
             }
         });
