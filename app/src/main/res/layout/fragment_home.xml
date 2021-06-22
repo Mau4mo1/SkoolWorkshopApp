@@ -63,19 +63,18 @@
                         android:textSize="12sp"
                         android:visibility="gone"/>
 
-                    <ImageView
-                        android:id="@+id/iv_home_bell"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        app:layout_constraintRight_toRightOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        android:visibility="visible"
-                        android:layout_marginEnd="15sp"
-                        android:src="@drawable/ic_bell"
-                        android:background="@drawable/bell_background"
-                        android:padding="5dp"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginRight="5dp"/>
+                <include
+                    android:id="@+id/iv_home_bell"
+                    layout="@layout/notification_bell"
+                    android:fillColor="@android:color/background_dark"
+                    android:layout_width="62dp"
+                    android:layout_height="62dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="5dp"
+                    android:padding="5dp"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    />
 
 
                 <TextView

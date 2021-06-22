@@ -35,6 +35,7 @@ import com.example.homelayout.domain.WorkshopBooking;
 import com.example.homelayout.controller.WorkshopController;
 import com.example.homelayout.domain.WorkshopPictureObject;
 import com.example.homelayout.domain.WorkshopsObject;
+import com.example.homelayout.repositories.TinyDB;
 import com.example.homelayout.ui.Cultureday.MainPage.CulturedayMainFragment;
 import com.example.homelayout.ui.account.MyAccountFragment;
 import com.example.homelayout.ui.home.HomeFragment;
@@ -79,7 +80,8 @@ public class MainActivity extends AppCompatActivity {
     private WorkshopsObject workshopObject;
     public boolean istheuserloggedin;
     private List<TranslationsObject> translationsObjectsList;
-
+    private TinyDB tinyDB;
+    private ArrayList<Object> messageList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,6 +90,12 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
+        tinyDB = new TinyDB(this);
+        this.messageList = tinyDB.getListObject("MessageBox",Message.class);
+        if (messageList == null){
+            this.messageList = new ArrayList<>();
+        }
+
         bottomNav = findViewById(R.id.nav_view);
         bottomNav.setOnNavigationItemSelectedListener(navListener);
         aTestForTim = new ArrayList<>();
@@ -123,6 +131,7 @@ public class MainActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater menuInflater = getMenuInflater();
         menuInflater.inflate(R.menu.actionbar, menu);
+//        findViewById(R.id.)
         return super.onCreateOptionsMenu(menu);
     }
 

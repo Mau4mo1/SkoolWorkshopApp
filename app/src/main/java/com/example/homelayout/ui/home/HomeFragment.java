@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.constraintlayout.widget.ConstraintSet;
 import androidx.fragment.app.Fragment;
@@ -43,11 +44,20 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     private ImageView ivBell;
     private ConstraintLayout loyaltyPoints;
     private TextView greetings;
+    private TextView ivBellCounter;
+    private ConstraintLayout contraintLayoutCounter;
+    private CardView counterCardView;
+
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
         View root = inflater.inflate(R.layout.fragment_home, container, false);
+        View notificationBell = inflater.inflate(R.layout.notification_bell, container, false);
+        contraintLayoutCounter = notificationBell.findViewById(R.id.counter_contraint_layout);
+        contraintLayoutCounter.setVisibility(View.VISIBLE);
+        counterCardView = notificationBell.findViewById(R.id.notification_counter);
+        counterCardView.setVisibility(View.VISIBLE);
         btnRegister = root.findViewById(R.id.register_button);
         btnRegister.setClickable(true);
         btnLogin = root.findViewById(R.id.login_button);
@@ -60,8 +70,11 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         btnBookCultureDay.setClickable(true);
         clPopularWorkshops = root.findViewById(R.id.home_item_popular_workshops);
         clPopularWorkshops.setClickable(true);
-        ivBell = root.findViewById(R.id.iv_home_bell);
+        ivBell = notificationBell.findViewById(R.id.notificationIcon);
         ivBell.setClickable(true);
+        ivBellCounter = notificationBell.findViewById(R.id.notification_counter_number);
+        ivBellCounter.setVisibility(View.VISIBLE);
+        ivBellCounter.setText("2");
         mImageViewSpaarPunten = root.findViewById(R.id.home_item_loyalty_points_image);
         loyaltyPoints = root.findViewById(R.id.home_item_loyalty_points);
         loyaltyPoints.setClickable(true);

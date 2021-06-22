@@ -68,7 +68,7 @@ public class MessageBoxFragment extends Fragment implements MessageAdapter.Recyc
 //        messageList.add(testMessage1);
 
 
-        messageAdapter = new MessageAdapter(this,messageList);
+        messageAdapter = new MessageAdapter(this, messageList);
         recyclerView.setAdapter(messageAdapter);
         return root;
     }
@@ -78,7 +78,7 @@ public class MessageBoxFragment extends Fragment implements MessageAdapter.Recyc
         tinyDB.putListObject("MessageBox", messageList);
     }
     public void loadData(){
-        messageList= tinyDB.getListObject("MessageBox",Message.class);
+        messageList = tinyDB.getListObject("MessageBox",Message.class);
         if (messageList == null){
             messageList = new ArrayList<>();
         }
