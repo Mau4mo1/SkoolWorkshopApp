@@ -35,7 +35,7 @@
                         android:layout_margin="5sp"
                         android:textSize="11sp"
                         android:text="@string/title_login"
-                        android:visibility="visible"/>
+                        android:visibility="gone"/>
 
                     <Button
                         android:id="@+id/register_button"
@@ -61,7 +61,7 @@
                         android:layout_margin="5sp"
                         android:text="@string/title_logout"
                         android:textSize="12sp"
-                        android:visibility="gone"/>
+                        android:visibility="visible"/>
 
                 <ImageView
                     android:id="@+id/notificationIcon"
@@ -106,7 +106,7 @@
                 <TextView
                     android:id="@+id/text_view_greeting"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintRight_toLeftOf="@+id/login_button"
+                    app:layout_constraintLeft_toLeftOf="parent"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="30sp"
@@ -199,14 +199,22 @@
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp">
 
-            <ImageView
-                android:contentDescription="@string/iv_popular_workshops_content"
+            <com.makeramen.roundedimageview.RoundedImageView
+                xmlns:app="http://schemas.android.com/apk/res-auto"
                 android:id="@+id/home_item_popular_workshops_image"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
                 android:layout_width="115dp"
                 android:layout_height="115dp"
-                android:src="@drawable/kunst"/>
+                android:src="@drawable/kunst"
+                android:scaleType="centerCrop"
+                app:riv_corner_radius_top_left="10dp"
+                app:riv_corner_radius_bottom_left="10dp"
+                app:riv_border_width="0dip"
+                app:riv_border_color="@color/white"
+                app:riv_mutate_background="true"
+                app:riv_tile_mode="clamp"
+                app:riv_oval="false" />
 
             <TextView
                 android:id="@+id/home_item_popular_workshops_head"
@@ -244,14 +252,22 @@
             android:layout_marginRight="15dp"
             android:layout_marginBottom="30dp">
 
-            <ImageView
-                android:contentDescription="@string/iv_newsletter_content"
+            <com.makeramen.roundedimageview.RoundedImageView
+                xmlns:app="http://schemas.android.com/apk/res-auto"
                 android:id="@+id/home_item_newsletter_image"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
                 android:layout_width="115dp"
                 android:layout_height="115dp"
-                android:src="@drawable/imageedit_3_6513785217" />
+                android:src="@drawable/imageedit_3_6513785217"
+                android:scaleType="centerCrop"
+                app:riv_corner_radius_top_left="10dp"
+                app:riv_corner_radius_bottom_left="10dp"
+                app:riv_border_width="0dip"
+                app:riv_border_color="@color/white"
+                app:riv_mutate_background="true"
+                app:riv_tile_mode="clamp"
+                app:riv_oval="false" />
 
             <TextView
                 android:id="@+id/home_item_newsletter_head"

@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,6 +32,7 @@ public class MessageBoxFragment extends Fragment implements MessageAdapter.Recyc
     private RecyclerView.LayoutManager layoutManager;
     private Context thisContext;
     private TinyDB tinyDB;
+    private final String TAG = getClass().getSimpleName();
 
 
     //These are test messages to fill the message list and test the recyclerview.
@@ -45,6 +47,7 @@ public class MessageBoxFragment extends Fragment implements MessageAdapter.Recyc
         thisContext = container.getContext();
         tinyDB = new TinyDB(thisContext);
         loadData();
+
         layoutManager = new LinearLayoutManager(thisContext);
         recyclerView = root.findViewById(R.id.rv_message_box_recyclerview);
         recyclerView.setLayoutManager(layoutManager);
@@ -52,16 +55,19 @@ public class MessageBoxFragment extends Fragment implements MessageAdapter.Recyc
         if(messageList.isEmpty()){
             messageList.add(testMessage1);
             messageList.add(testMessage2);
-
-            MainActivity active = (MainActivity) getActivity();
-            if(active.getMessage() != null){
-                for(Message m : active.getMessage()){
-                    messageList.add(m);
-                }
-            }
-            saveData();
         }
 
+        MainActivity active = (MainActivity) getActivity();
+        if(active.getMessage() != null){
+            for(Message m : active.getMessage()){
+                messageList.add(m);
+                active.deleteMessage(m);
+            }
+        }
+        saveData();
+
+        messageAdapter = new MessageAdapter(this,messageList, tinyDB);
+        recyclerView.setAdapter(messageAdapter);
 
         //tinyDB.clear();
         //Here the message list gets filled with test messages
@@ -77,6 +83,7 @@ public class MessageBoxFragment extends Fragment implements MessageAdapter.Recyc
     public void saveData(){
         tinyDB.putListObject("MessageBox", messageList);
     }
+
     public void loadData(){
         messageList = tinyDB.getListObject("MessageBox",Message.class);
         if (messageList == null){
@@ -87,6 +94,7 @@ public class MessageBoxFragment extends Fragment implements MessageAdapter.Recyc
     @Override
     public void recyclerviewClick(Message message) {
         getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new MessageScreen(message)).addToBackStack(null).commit();
-
     }
+
+    
 }
