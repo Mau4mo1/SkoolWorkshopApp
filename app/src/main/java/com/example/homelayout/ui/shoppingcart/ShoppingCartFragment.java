@@ -35,6 +35,7 @@ import com.example.homelayout.ui.workshops.WorkshopsFragment;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.concurrent.ExecutionException;
 
 public class ShoppingCartFragment extends Fragment implements ShoppingCartController.DistanceListener {
     private WorkshopsForm mainActivity = new WorkshopsForm(Workshops.Flashmob);
