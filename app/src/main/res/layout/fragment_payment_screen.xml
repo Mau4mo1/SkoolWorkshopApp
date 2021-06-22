@@ -300,7 +300,7 @@
             android:textSize="16sp" />
 
         <Button
-            android:id="@+id/btn_workshop_form_book"
+            android:id="@+id/btn_payment"
             android:layout_width="250sp"
             android:layout_height="60sp"
             android:layout_marginTop="20sp"

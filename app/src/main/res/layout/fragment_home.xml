@@ -60,7 +60,7 @@
                         android:layout_margin="5sp"
                         android:text="@string/title_logout"
                         android:textSize="12sp"
-                        android:visibility="visible"/>
+                        android:visibility="gone"/>
 
                 <ImageView
                     android:id="@+id/notificationIcon"

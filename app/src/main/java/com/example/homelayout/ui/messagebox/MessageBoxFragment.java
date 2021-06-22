@@ -69,13 +69,6 @@ public class MessageBoxFragment extends Fragment implements MessageAdapter.Recyc
         messageAdapter = new MessageAdapter(this,messageList, tinyDB);
         recyclerView.setAdapter(messageAdapter);
 
-        //tinyDB.clear();
-        //Here the message list gets filled with test messages
-//        messageList.add(testMessage1);
-
-
-        messageAdapter = new MessageAdapter(this, messageList);
-        recyclerView.setAdapter(messageAdapter);
         return root;
     }
 
