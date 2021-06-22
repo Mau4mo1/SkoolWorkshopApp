@@ -27,8 +27,6 @@ import java.util.List;
 
 public class MessageBoxFragment extends Fragment implements MessageAdapter.RecyclerviewOnClickListener {
     private ArrayList<Object> messageList;
-    private ArrayList<Object> toAddList = new ArrayList<>();
-    private ArrayList<Object> fullList = new ArrayList<>();
     private MessageAdapter messageAdapter;
     private RecyclerView recyclerView;
     private RecyclerView.LayoutManager layoutManager;
@@ -66,8 +64,6 @@ public class MessageBoxFragment extends Fragment implements MessageAdapter.Recyc
                 active.deleteMessage(m);
             }
         }
-        //messageList.addAll(toAddList);
-        //toAddList.clear();
         saveData();
 
         messageAdapter = new MessageAdapter(this,messageList, tinyDB);
