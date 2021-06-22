@@ -1,8 +1,11 @@
 package com.example.homelayout.ui.home;
 
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -19,7 +22,11 @@ import androidx.fragment.app.Fragment;
 
 import com.example.homelayout.MainActivity;
 import com.example.homelayout.R;
+import com.example.homelayout.domain.Message;
+import com.example.homelayout.domain.WorkshopBooking;
 import com.example.homelayout.domain.WorkshopPictureObject;
+import com.example.homelayout.logic.CulturedayBookingInfo;
+import com.example.homelayout.repositories.TinyDB;
 import com.example.homelayout.ui.Cultureday.Form.CulturedayBookingFormFragment;
 import com.example.homelayout.ui.accountdetails.LoyaltyPointsFragment;
 import com.example.homelayout.ui.login.LoginFragment;
@@ -30,7 +37,10 @@ import com.example.homelayout.ui.workshops.WorkshopsFragment;
 import com.example.homelayout.ui.workshops.WorkshopsPopular;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class HomeFragment extends Fragment implements View.OnClickListener {
     private Button btnBookWorkshop;
@@ -47,17 +57,23 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     private TextView ivBellCounter;
     private ConstraintLayout contraintLayoutCounter;
     private CardView counterCardView;
+    private TinyDB tinyDB;
+    private Context thisContext;
 
+    private ArrayList<Object> messageList;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
+        thisContext = container.getContext();
+        tinyDB = new TinyDB(thisContext);
+        this.messageList = tinyDB.getListObject("MessageBox", Message.class);
+        if (messageList == null){
+            this.messageList = new ArrayList<>();
+        }
+
         View root = inflater.inflate(R.layout.fragment_home, container, false);
-        View notificationBell = inflater.inflate(R.layout.notification_bell, container, false);
-        contraintLayoutCounter = notificationBell.findViewById(R.id.counter_contraint_layout);
-        contraintLayoutCounter.setVisibility(View.VISIBLE);
-        counterCardView = notificationBell.findViewById(R.id.notification_counter);
-        counterCardView.setVisibility(View.VISIBLE);
+
         btnRegister = root.findViewById(R.id.register_button);
         btnRegister.setClickable(true);
         btnLogin = root.findViewById(R.id.login_button);
@@ -70,11 +86,17 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         btnBookCultureDay.setClickable(true);
         clPopularWorkshops = root.findViewById(R.id.home_item_popular_workshops);
         clPopularWorkshops.setClickable(true);
-        ivBell = notificationBell.findViewById(R.id.notificationIcon);
+        ivBell = root.findViewById(R.id.notificationIcon);
         ivBell.setClickable(true);
-        ivBellCounter = notificationBell.findViewById(R.id.notification_counter_number);
+        ivBell.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new MessageBoxFragment()).addToBackStack(null).commit();
+            }
+        });
+        ivBellCounter = root.findViewById(R.id.notification_counter_number);
         ivBellCounter.setVisibility(View.VISIBLE);
-        ivBellCounter.setText("2");
+        ivBellCounter.setText(String.valueOf(messageList.size()));
         mImageViewSpaarPunten = root.findViewById(R.id.home_item_loyalty_points_image);
         loyaltyPoints = root.findViewById(R.id.home_item_loyalty_points);
         loyaltyPoints.setClickable(true);
@@ -85,8 +107,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         loyaltyPoints.setOnClickListener(this);
         btnRegister.setOnClickListener(this);
         btnLogin.setOnClickListener(this);
-        ivBell.setOnClickListener(this);
-
 
         if(((MainActivity) getActivity()).getIsTheUserLoggedIn() == true){
 
@@ -117,6 +137,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         return root;
     }
 
+
     @Override
     public void onClick(View v) {
         switch (v.getId()){
@@ -137,9 +158,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                 break;
             case R.id.login_button:
                 getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new LoginFragment()).addToBackStack(null).commit();
-                break;
-            case R.id.iv_home_bell:
-                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new MessageBoxFragment()).addToBackStack(null).commit();
                 break;
         }
     }

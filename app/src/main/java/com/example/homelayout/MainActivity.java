@@ -9,6 +9,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
@@ -26,6 +27,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.PopupMenu;
 import android.widget.PopupWindow;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.homelayout.controller.TranslationsController;
@@ -35,6 +37,7 @@ import com.example.homelayout.domain.WorkshopBooking;
 import com.example.homelayout.controller.WorkshopController;
 import com.example.homelayout.domain.WorkshopPictureObject;
 import com.example.homelayout.domain.WorkshopsObject;
+import com.example.homelayout.logic.CulturedayBookingInfo;
 import com.example.homelayout.repositories.TinyDB;
 import com.example.homelayout.ui.Cultureday.MainPage.CulturedayMainFragment;
 import com.example.homelayout.ui.account.MyAccountFragment;
@@ -51,6 +54,7 @@ import com.google.gson.reflect.TypeToken;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.messaging.FirebaseMessaging;
 import com.google.firebase.messaging.FirebaseMessagingService;
+import com.makeramen.roundedimageview.RoundedImageView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -68,9 +72,12 @@ import java.util.ArrayList;
 import java.lang.reflect.Type;
 
 import java.util.List;
+import java.util.Objects;
 
 
 public class MainActivity extends AppCompatActivity {
+    private TextView shoppingCartNumber;
+    private RoundedImageView redCircle;
     private BottomNavigationView bottomNav;
     private Message m = null;
     private ArrayList<Message> aTestForTim;
@@ -79,22 +86,21 @@ public class MainActivity extends AppCompatActivity {
     private List<WorkshopsObject> workshopsObjectList;
     private WorkshopsObject workshopObject;
     public boolean istheuserloggedin;
+    private ArrayList<Object> cultureDayBookings;
+    private ArrayList<Object> workshopBookings;
     private List<TranslationsObject> translationsObjectsList;
     private TinyDB tinyDB;
-    private ArrayList<Object> messageList;
+    private String shoppingCartCounterNumber;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        tinyDB = new TinyDB(this);
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
-        tinyDB = new TinyDB(this);
-        this.messageList = tinyDB.getListObject("MessageBox",Message.class);
-        if (messageList == null){
-            this.messageList = new ArrayList<>();
-        }
 
         bottomNav = findViewById(R.id.nav_view);
         bottomNav.setOnNavigationItemSelectedListener(navListener);
@@ -131,7 +137,7 @@ public class MainActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater menuInflater = getMenuInflater();
         menuInflater.inflate(R.menu.actionbar, menu);
-//        findViewById(R.id.)
+        //menu.findItem(R.id.bt_shopping_cart).getActionView();
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -164,6 +170,26 @@ public class MainActivity extends AppCompatActivity {
             getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, selectedFragment).addToBackStack(null).commit();
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        final MenuItem shoppingCartCounter = menu.findItem(R.id.bt_shopping_cart);
+        ConstraintLayout rootView = (ConstraintLayout) shoppingCartCounter.getActionView();
+        rootView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Fragment selectedFragment = new ShoppingCartFragment();
+                getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, selectedFragment).addToBackStack(null).commit();
+            }
+        });
+        redCircle = (RoundedImageView) rootView.findViewById(R.id.shopping_cart_counter_red_circle);
+        shoppingCartNumber = (TextView) rootView.findViewById(R.id.shopping_cart_counter_number);
+        workshopBookings = tinyDB.getListObject("Carditems", WorkshopBooking.class);
+        cultureDayBookings = tinyDB.getListObject("CultureItems", CulturedayBookingInfo.class);
+        shoppingCartCounterNumber = String.valueOf(workshopBookings.size() + cultureDayBookings.size());
+        shoppingCartNumber.setText(shoppingCartCounterNumber);
+        return true;
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener navListener =

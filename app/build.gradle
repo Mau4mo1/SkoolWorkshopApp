@@ -49,6 +49,7 @@ dependencies {
     implementation files('libs/additionnal.jar')
     implementation files('libs/mail.jar')
     implementation platform('com.google.firebase:firebase-bom:28.1.0')
+    implementation 'com.makeramen:roundedimageview:2.3.0'
 
     implementation 'com.google.firebase:firebase-messaging'
     implementation 'com.google.firebase:firebase-analytics'
