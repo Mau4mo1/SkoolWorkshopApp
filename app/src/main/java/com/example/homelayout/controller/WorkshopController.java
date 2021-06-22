@@ -98,7 +98,7 @@ public class WorkshopController implements Callback<WorkshopsAPIResponse> {
     private void setWorkshopEnumAndSetRightName(ArrayList<WorkshopsObject> workshopsObjectList){
         for(WorkshopsObject i : workshopsObjectList){
             switch (i.getCodeName()){
-                case "SkoolHipHop":
+                case "SkoolHiphop":
                     i.setWorkshops(Workshops.Hiphop);
                     i.setFormattedName("Hiphop");
                     break;
