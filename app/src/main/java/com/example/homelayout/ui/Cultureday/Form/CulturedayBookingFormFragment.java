@@ -26,6 +26,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 
+import com.example.homelayout.MainActivity;
 import com.example.homelayout.R;
 import com.example.homelayout.domain.Workshops;
 import com.example.homelayout.logic.CalculatePrices;
@@ -818,6 +819,7 @@ public class CulturedayBookingFormFragment extends Fragment {
                             // send to TinyDB
                             bookings.add(culturedayBookingInfo);
                             tinyDB.putListObject("CultureItems", bookings);
+                            ((MainActivity) getActivity()).updateShoppingCartCounter();
 //                            Link to shopingcart
                             assert getFragmentManager() != null;
                             getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new ShoppingCartFragment()).commit();

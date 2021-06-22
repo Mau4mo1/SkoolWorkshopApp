@@ -212,14 +212,14 @@ public class WorkshopsForm extends Fragment implements Serializable {
         this.mButtonWorkshopsBook.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                double price = calculatePrices.getWorkshopCalc(workshop, values);
+                double price = calculatePrices.getWorkshopCalc(workshopsObject.getWorkshops(), values);
                 boolean checkPrice;
                 boolean checkParticipants = false;
                 int participants = Integer.parseInt(String.valueOf(mEditTextWorkshopParticipants.getText()));
                 if (participants <= 25) {
                     checkParticipants = true;
                 }
-                switch (workshop) {
+                switch (workshopsObject.getWorkshops()) {
                     case Photoshop:
                     case Videoclip:
                     case Vloggen:
@@ -251,6 +251,7 @@ public class WorkshopsForm extends Fragment implements Serializable {
                     workshopCardList.add(workshops);
                     tinydb.putListObject("Carditems", workshopCardList);
                     getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new ShoppingCartFragment()).commit();
+                    ((MainActivity) getActivity()).updateShoppingCartCounter();
 
                     //s.addWorkshops(workshops);
                     Log.d("Boeken", "Boeking is gelukt hier");
@@ -261,15 +262,10 @@ public class WorkshopsForm extends Fragment implements Serializable {
     }
 
     public void updateSubtotal() {
-        String subtotal = "Subtotaal: €" + calculatePrices.getWorkshopCalc(workshop, values) + "0";
+        String subtotal = "Subtotaal: €" + calculatePrices.getWorkshopCalc(workshopsObject.getWorkshops(), values) + "0";
         mTextViewWorkshopSubtotal.setText(subtotal);
     }
 
-    //        private void saveData(){
-//            Gson gson = new Gson();
-//            String json = gson.toJson(workshopCardList);
-//            requireActivity().getSharedPreferences("shopping_card", Context.MODE_PRIVATE).edit().putString("card_item_title", json).apply();
-//        }
     private void loadData() {
 
         workshopCardList = tinydb.getListObject("Carditems", WorkshopBooking.class);
@@ -280,7 +276,7 @@ public class WorkshopsForm extends Fragment implements Serializable {
 
     private void showPricePopup() {
         AlertDialog.Builder subpopup = new AlertDialog.Builder(thisContext);
-        switch (workshop) {
+        switch (workshopsObject.getWorkshops()) {
             case Photoshop:
             case Videoclip:
             case Vloggen:
@@ -409,5 +405,4 @@ public class WorkshopsForm extends Fragment implements Serializable {
         }
         return Url;
     }
-
 }

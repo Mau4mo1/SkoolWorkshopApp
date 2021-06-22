@@ -9,7 +9,9 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
+import com.example.homelayout.MainActivity;
 import com.example.homelayout.R;
+import com.example.homelayout.ui.home.HomeFragment;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 
@@ -28,8 +30,6 @@ public class FireBaseLogic extends FirebaseMessagingService {
         if(remoteMessage.getData().size() > 0){
             handleMessage(remoteMessage);
         }
-
-
     }
     @Override
     public void onCreate() {
