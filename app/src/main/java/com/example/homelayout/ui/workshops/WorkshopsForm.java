@@ -80,6 +80,7 @@ public class WorkshopsForm extends Fragment implements Serializable {
 
     public WorkshopsForm(WorkshopsObject workshopsObject) {
         this.workshopsObject = workshopsObject;
+        this.workshop = workshopsObject.getWorkshops();
     }
 
 

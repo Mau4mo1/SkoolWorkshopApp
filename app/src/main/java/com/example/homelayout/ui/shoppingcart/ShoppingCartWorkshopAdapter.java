@@ -8,11 +8,14 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.homelayout.R;
 import com.example.homelayout.domain.WorkshopBooking;
 import com.example.homelayout.repositories.TinyDB;
+import com.example.homelayout.ui.workshops.WorkshopsFragment;
 
 import java.io.Serializable;
 import java.text.DecimalFormat;
@@ -21,9 +24,12 @@ import java.util.ArrayList;
 public class ShoppingCartWorkshopAdapter extends RecyclerView.Adapter<ShoppingCartWorkshopAdapter.WorkshopViewHolder> implements Serializable {
     private ArrayList<Object> workshopData = new ArrayList<>();
     private TinyDB tinyDB;
+    private ShoppingCartFragment shoppingCartFragment = new ShoppingCartFragment();
+    private FragmentManager fragmentManager;
 
-    public ShoppingCartWorkshopAdapter(ArrayList<Object> workshopData) {
+    public ShoppingCartWorkshopAdapter(ArrayList<Object> workshopData, FragmentManager fragmentManager) {
         this.workshopData = workshopData;
+        this.fragmentManager = fragmentManager;
 
     }
 
@@ -58,6 +64,8 @@ public class ShoppingCartWorkshopAdapter extends RecyclerView.Adapter<ShoppingCa
                 workshopData.remove(workshopData.get(position));
                 tinyDB.putListObject("Carditems", workshopData);
                 notifyDataSetChanged();
+                fragmentManager.beginTransaction().replace(R.id.nav_host_fragment, new ShoppingCartFragment()).commit();
+
 
             }
         });
@@ -72,6 +80,7 @@ public class ShoppingCartWorkshopAdapter extends RecyclerView.Adapter<ShoppingCa
         private TextView mLearningLevel;
         private TextView mDate;
         private TextView mPrice;
+        private TextView mSubtotal;
         private ImageButton mButton;
         public WorkshopViewHolder(@NonNull View view) {
             super(view);
@@ -83,6 +92,7 @@ public class ShoppingCartWorkshopAdapter extends RecyclerView.Adapter<ShoppingCa
             mLearningLevel = (TextView) itemView.findViewById(R.id.shopping_cart_learninglevel);
             mDate = (TextView) itemView.findViewById(R.id.shopping_cart_date);
             mPrice = (TextView) itemView.findViewById(R.id.shopping_cart_price);
+            mSubtotal = (TextView) itemView.findViewById(R.id.shopping_cart_subtotal);
             mButton = (ImageButton) itemView.findViewById(R.id.btn_delete_workshop);
         }
     }

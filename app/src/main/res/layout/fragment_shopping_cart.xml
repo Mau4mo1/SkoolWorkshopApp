@@ -55,6 +55,7 @@
                     android:textSize="20sp"
                     android:layout_gravity="left"/>
                 <TextView
+                    android:id="@+id/shopping_cart_subtotal"
                     android:layout_gravity="right"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
