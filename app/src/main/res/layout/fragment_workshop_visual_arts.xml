@@ -48,7 +48,7 @@
                 <ImageView
                     android:id="@+id/iv_workshop_graffiti"
                     android:layout_width="110sp"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:background="@drawable/home_image_border"/>
                 <LinearLayout
                     android:layout_width="wrap_content"

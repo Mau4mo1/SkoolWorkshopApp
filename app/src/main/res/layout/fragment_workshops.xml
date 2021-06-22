@@ -33,7 +33,7 @@
             android:layout_height="130dp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:background="@drawable/home_image_border"/>
+            android:foreground="@drawable/home_image_border" />
 
         <TextView
             android:id="@+id/tv_visual_arts"
