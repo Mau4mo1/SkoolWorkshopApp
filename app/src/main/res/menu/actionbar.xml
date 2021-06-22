@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.homelayout.MainActivity">
 
     <item
         android:id="@+id/bt_shopping_cart"
-        android:icon="@drawable/ic_shopping_cart_foreground"
+        app:actionLayout="@layout/shopping_cart_counter"
         android:title="@string/title_shopping_cart"
         app:showAsAction="always" />
+
 </menu>

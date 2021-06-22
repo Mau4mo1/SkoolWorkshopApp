@@ -57,25 +57,50 @@
                         android:layout_height="wrap_content"
                         android:backgroundTint="@color/orange"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintRight_toLeftOf="@id/iv_home_bell"
+                        app:layout_constraintRight_toLeftOf="@id/notificationIcon"
                         android:layout_margin="5sp"
                         android:text="@string/title_logout"
                         android:textSize="12sp"
                         android:visibility="visible"/>
 
-                    <ImageView
-                        android:id="@+id/iv_home_bell"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        app:layout_constraintRight_toRightOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        android:visibility="visible"
-                        android:layout_marginEnd="15sp"
-                        android:src="@drawable/ic_bell"
-                        android:background="@drawable/bell_background"
-                        android:padding="5dp"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginRight="5dp"/>
+                <ImageView
+                    android:id="@+id/notificationIcon"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/ic_notifications_black_24dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/ic_bell" />
+
+
+                <com.makeramen.roundedimageview.RoundedImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+                    android:id="@+id/notification_counter"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:background="@color/red"
+                    android:scaleType="fitCenter"
+                    app:layout_constraintEnd_toEndOf="@+id/notificationIcon"
+                    app:layout_constraintTop_toTopOf="@+id/notificationIcon"
+                    app:riv_border_color="@color/red"
+                    app:riv_border_width="2dip"
+                    app:riv_corner_radius="30dip"
+                    app:riv_mutate_background="true"
+                    app:riv_oval="true"
+                    app:riv_tile_mode="repeat" />
+
+                <TextView
+                    android:id="@+id/notification_counter_number"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/red"
+                    android:text="1"
+                    android:textColor="@color/white"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:visibility="visible"
+                    app:layout_constraintEnd_toEndOf="@+id/notificationIcon"
+                    app:layout_constraintStart_toStartOf="@+id/notification_counter"
+                    app:layout_constraintTop_toTopOf="@+id/notificationIcon" />
 
 
                 <TextView
