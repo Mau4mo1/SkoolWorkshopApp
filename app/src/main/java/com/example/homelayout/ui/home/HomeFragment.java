@@ -4,28 +4,22 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.constraintlayout.widget.ConstraintSet;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.example.homelayout.MainActivity;
 import com.example.homelayout.R;
 import com.example.homelayout.domain.Message;
-import com.example.homelayout.domain.WorkshopBooking;
-import com.example.homelayout.domain.WorkshopPictureObject;
-import com.example.homelayout.logic.CulturedayBookingInfo;
 import com.example.homelayout.repositories.TinyDB;
 import com.example.homelayout.ui.Cultureday.Form.CulturedayBookingFormFragment;
 import com.example.homelayout.ui.accountdetails.LoyaltyPointsFragment;
@@ -34,13 +28,8 @@ import com.example.homelayout.ui.register.RegisterFragment;
 import com.example.homelayout.ui.messagebox.MessageBoxFragment;
 import com.example.homelayout.ui.workshops.WorkshopCategoryRecyclerView;
 import com.example.homelayout.ui.workshops.WorkshopsFragment;
-import com.example.homelayout.ui.workshops.WorkshopsPopular;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-import org.jetbrains.annotations.NotNull;
-
-import java.io.ByteArrayOutputStream;
-import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class HomeFragment extends Fragment implements View.OnClickListener {
@@ -83,7 +72,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         ivBell.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new MessageBoxFragment()).addToBackStack(null).commit();
+                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new MessageBoxFragment()).addToBackStack(null).commit();
             }
         });
 
@@ -163,9 +152,13 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         ivBellCounter = root.findViewById(R.id.notification_counter_number);
         ivBellCounter.setVisibility(View.VISIBLE);
         messageList = tinyDB.getListObject("MessageBox", Message.class);
+
         if (messageList == null){
             messageList = new ArrayList<>();
         }
         ivBellCounter.setText(String.valueOf(messageList.size()));
+        FragmentTransaction ft = this.getFragmentManager()
+                .beginTransaction();
+        ft.replace(R.id.nav_host_fragment, new HomeFragment()).commit();
     }
 }
