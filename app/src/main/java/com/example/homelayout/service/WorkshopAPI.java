@@ -16,6 +16,6 @@ public interface WorkshopAPI {
     @GET("workshop/{workshopId}/translations")
     Call<TranslationsAPIResponse> loadTranslations(@Path("workshopId") int workshopId);
 
-    @GET("")
+    @GET("workshop/popular")
     Call<WorkshopsAPIResponse> loadPopularWorkshops();
 }

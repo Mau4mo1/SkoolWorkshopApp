@@ -1,6 +1,7 @@
 package com.example.homelayout;
 
 import android.annotation.SuppressLint;
+import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.app.ActionBar;
@@ -62,6 +63,7 @@ import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.view.menu.ShowableListMenu;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 import org.jetbrains.annotations.NotNull;
@@ -92,9 +94,11 @@ public class MainActivity extends AppCompatActivity {
     private String shoppingCartCounterNumber;
     private HomeFragment homeFragment;
     private Context context;
+    private Bundle bundle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        this.bundle = savedInstanceState;
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -109,7 +113,7 @@ public class MainActivity extends AppCompatActivity {
         aTestForTim = new ArrayList<>();
         countdown = 2;
 
-        getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new HomeFragment()).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, homeFragment).commit();
         FirebaseMessaging.getInstance().getToken()
                 .addOnCompleteListener(new OnCompleteListener<String>() {
                     @Override
@@ -131,7 +135,7 @@ public class MainActivity extends AppCompatActivity {
         this.istheuserloggedin = false;
         getSupportFragmentManager()
                 .beginTransaction()
-                .replace(R.id.nav_host_fragment, new HomeFragment())
+                .replace(R.id.nav_host_fragment, homeFragment)
                 .commit();
     }
 
@@ -150,6 +154,7 @@ public class MainActivity extends AppCompatActivity {
             Message m = new Message(countdown, intent.getExtras().getString("title"), intent.getExtras().getString("body"));
             aTestForTim.add(m);
             Log.d("TAG", m.toString());
+            homeFragment.setArguments(bundle);
             homeFragment.updateNotificationCounter(context);
         }
     };
@@ -200,7 +205,7 @@ public class MainActivity extends AppCompatActivity {
                     Fragment selectedFragment = null;
                     switch (item.getItemId()) {
                         case R.id.navigation_home:
-                            selectedFragment = new HomeFragment();
+                            selectedFragment = homeFragment;
                             break;
                         case R.id.navigation_workshops:
                             selectedFragment = new WorkshopsFragment();
@@ -277,6 +282,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public ArrayList<Message> getMessage() {
+        getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new HomeFragment() ).addToBackStack(null).commit();
         return this.aTestForTim;
     }
 
@@ -302,4 +308,32 @@ public class MainActivity extends AppCompatActivity {
         shoppingCartCounterNumber = String.valueOf(workshopBookings.size() + cultureDayBookings.size());
         shoppingCartNumber.setText(shoppingCartCounterNumber);
     }
+
+//    private void switchFragment() {
+//        Fragment fragmentDisplayed = getCurrentFragmentDisplayed();
+//        Fragment fragmentToSwitch = null;
+//        if (fragmentDisplayed == null)
+//            fragmentToSwitch = HomeFragment.class.get.getInstance();
+//        else if(fragmentDisplayed instanceof SameInstanceFragment)
+//            fragmentToSwitch = NewInstanceFragment.getInstance();
+//        else
+//            fragmentToSwitch = SameInstanceFragment.getInstance();
+//        setFragment(fragmentToSwitch);
+//    }
+//
+//    private void setFragment(Fragment fragment) {
+//        FragmentManager fragmentManager = getSupportFragmentManager();
+//        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+//        fragmentTransaction.replace(R.id.fragment_home, fragment);
+//        fragmentTransaction.commit();
+//    }
+//
+//    public Fragment getCurrentFragmentDisplayed(){
+//        List<Fragment> fragments = getSupportFragmentManager().getFragments();
+//        if(fragments == null) return null;
+//        for (Fragment fragment : fragments) {
+//            if(fragment.isVisible()) return fragment;
+//        }
+//        return null;
+//    }
 }
