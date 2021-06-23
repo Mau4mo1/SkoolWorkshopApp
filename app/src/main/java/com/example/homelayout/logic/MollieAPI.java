@@ -34,14 +34,25 @@ public class MollieAPI extends AsyncTask<String, Void, String> {
 
     public String activateAPI(){
         OkHttpClient client = new OkHttpClient();
-        Request request = new Request.Builder().url("https://skool-workshop.herokuapp.com/api/v1/payment/create").post(RequestBody.create(JSON, getJsonString(price,description))).build();
+
+        Request request = new Request.Builder()
+                .url("https://skool-workshop.herokuapp.com/api/v1/payment/create")
+                .post(RequestBody.create(JSON, getJsonString(price,description)))
+                .build();
+
         try(Response response = client.newCall(request).execute()){
-            if(!response.isSuccessful()) throw new IOException("Unexpected code " + response);
+            if(!response.isSuccessful()) {
+                throw new IOException("Unexpected code " + response);
+            }
+
             Headers responseHeaders = response.headers();
+
             for(int i = 0; i < responseHeaders.size(); i++){
                 Log.d("tag",  responseHeaders.name(i) + ": " + responseHeaders.value(i));
             }
+
             return response.body().string();
+
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -65,7 +76,9 @@ public class MollieAPI extends AsyncTask<String, Void, String> {
         try{
             JSONObject jsonObject = new JSONObject(response);
             String link = jsonObject.getJSONObject("message").getString("href");
+
             return link;
+
         }catch(Exception e){
             e.printStackTrace();
         }

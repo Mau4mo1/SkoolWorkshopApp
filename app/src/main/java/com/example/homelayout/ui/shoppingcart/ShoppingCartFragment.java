@@ -91,7 +91,7 @@ public class ShoppingCartFragment extends Fragment implements ShoppingCartContro
         mGoToPaymentScreen.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new PaymentFragment(getSubTotal())).commit();
+                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new PaymentFragment(getSubTotal())).addToBackStack(null).commit();
             }
         });
         mSubtotal = root.findViewById(R.id.shopping_cart_subtotal);
@@ -102,7 +102,7 @@ public class ShoppingCartFragment extends Fragment implements ShoppingCartContro
         mExtraWorkshopButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new WorkshopsFragment()).commit();
+                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new WorkshopsFragment()).addToBackStack(null).commit();
 
             }
         });

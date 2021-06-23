@@ -824,7 +824,8 @@ public class CulturedayBookingFormFragment extends Fragment {
                             assert getFragmentManager() != null;
                             getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new ShoppingCartFragment()).commit();
                         }catch (Exception e){
-                            System.out.println("Booking info invalet or incompelte");AlertDialog.Builder infopopup = new AlertDialog.Builder(con);
+                            System.out.println("Booking info invalet or incompelte");
+                            AlertDialog.Builder infopopup = new AlertDialog.Builder(con);
                             infopopup.setCancelable(true);
                             infopopup.setTitle("Niet alles ingevuld");
                             infopopup.setMessage("Niet alle velden ingevuld (Aantal deelnemers, Aantal rondes, Aantal workshops per ronde, Aantal minuten per workshop)");
