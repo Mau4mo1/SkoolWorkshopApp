@@ -21,9 +21,7 @@ public class CalculatePrices {
     private int amountOfWorkshops = 0;
     private int participantsGraffitiOrTshirtDesign = 0;
 
-    public CalculatePrices() {
-
-    }
+    public CalculatePrices() {}
 
     public double getWorkshopCalc(Workshops workshop, HashMap<String, Integer> values) {
         switch (workshop) {

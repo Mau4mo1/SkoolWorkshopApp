@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="10sp"
+        android:paddingEnd="10sp"
+        android:orientation="vertical"
+        tools:context=".ui.workshops.WorkshopsForm">
+
+        <TextView
+            android:id="@+id/tv_workshops_form_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20sp"
+            android:layout_marginBottom="26sp"
+            android:text="@string/payment"
+            android:textAlignment="center"
+            android:textSize="32sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/title_invoice_details"
+            android:paddingBottom="10sp"
+            android:textSize="28sp"/>
+
+        <LinearLayout
+            android:id="@+id/cl_workshop_form_stripe"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:background="@drawable/contact_background"
+            android:orientation="vertical"
+            android:paddingLeft="20dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/dp_workshop_form">
+
+            <TextView
+                android:id="@+id/tv_payment_firstname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/firstname"
+                android:textSize="16sp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="@id/cl_workshop_form_stripe" />
+
+            <EditText
+                android:id="@+id/et_payment_firstname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8sp"
+                android:layout_marginEnd="20sp"
+                android:background="@drawable/form_background_rounded"
+                android:inputType="number"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_payment_firstname" />
+
+            <TextView
+                android:id="@+id/tv_payment_lastname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10sp"
+                android:text="@string/lastname"
+                android:textSize="16sp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/et_payment_firstname" />
+
+            <EditText
+                android:id="@+id/et_payment_lastname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8sp"
+                android:layout_marginEnd="20sp"
+                android:background="@drawable/form_background_rounded"
+                android:inputType="number"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_payment_lastname" />
+
+            <TextView
+                android:id="@+id/tv_payment_company_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10sp"
+                android:text="@string/company_name"
+                android:textSize="16sp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/et_payment_lastname" />
+
+            <EditText
+                android:id="@+id/et_payment_company_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8sp"
+                android:layout_marginEnd="20sp"
+                android:background="@drawable/form_background_rounded"
+                android:inputType="number"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_payment_company_name" />
+
+            <TextView
+                android:id="@+id/tv_payment_adres"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10sp"
+                android:text="@string/adres"
+                android:textSize="16sp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/et_payment_company_name" />
+
+            <EditText
+                android:id="@+id/et_payment_adres"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8sp"
+                android:layout_marginEnd="20sp"
+                android:background="@drawable/form_background_rounded"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_payment_adres" />
+
+            <TextView
+                android:id="@+id/tv_payment_place"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10sp"
+                android:text="@string/place"
+                android:textSize="16sp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/et_payment_adres" />
+
+            <EditText
+                android:id="@+id/et_payment_place"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8sp"
+                android:layout_marginEnd="20sp"
+                android:background="@drawable/form_background_rounded"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_payment_place" />
+
+            <TextView
+                android:id="@+id/tv_payment_postalcode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10sp"
+                android:text="@string/postalcode"
+                android:textSize="16sp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/et_payment_place" />
+
+            <EditText
+                android:id="@+id/et_payment_postalcode"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8sp"
+                android:layout_marginEnd="20sp"
+                android:background="@drawable/form_background_rounded"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_payment_postalcode" />
+
+            <TextView
+                android:id="@+id/tv_payment_phone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10sp"
+                android:text="@string/phonenumber"
+                android:textSize="16sp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/et_payment_postalcode" />
+
+            <EditText
+                android:id="@+id/et_payment_phone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8sp"
+                android:layout_marginEnd="20sp"
+                android:background="@drawable/form_background_rounded"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_payment_phone" />
+
+            <TextView
+                android:id="@+id/tv_payment_email"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10sp"
+                android:text="@string/email"
+                android:textSize="16sp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/et_payment_phone" />
+
+            <EditText
+                android:id="@+id/et_payment_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8sp"
+                android:layout_marginEnd="20sp"
+                android:background="@drawable/form_background_rounded"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_payment_email" />
+
+            <TextView
+                android:id="@+id/tv_payment_cjp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10sp"
+                android:text="@string/cjp"
+                android:textSize="16sp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/et_payment_email" />
+
+            <EditText
+                android:id="@+id/et_payment_cjp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8sp"
+                android:layout_marginEnd="20sp"
+                android:background="@drawable/form_background_rounded"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_payment_cjp" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_total_minutes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="20sp"
+            android:layout_marginEnd="20sp"
+            android:text="@string/use_online_registration_system"
+            android:textSize="16sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cl_workshop_form_stripe" />
+
+        <RadioGroup
+            android:id="@+id/rg_online_registration"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginStart="10dp">
+            <RadioButton
+                android:id="@+id/rb_online_registration_yes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/yes"/>
+            <RadioButton
+                android:id="@+id/rb_online_registration_no"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25sp"
+                android:text="@string/no"/>
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/tv_payment_read_more_about"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/read_about_it"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="20sp"
+            android:textSize="16sp"
+            android:textColor="@color/orange" />
+
+        <RadioGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10sp"
+            android:layout_marginStart="10dp">
+            <RadioButton
+                android:id="@+id/rb_payment_ideal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/ideal"
+                android:checked="true"
+                />
+            <RadioButton
+                android:id="@+id/rb_payment_direct_payment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/direct_payment"
+                />
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/tv_privacy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/privacy"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="20sp"
+            android:layout_marginTop="25sp"
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/btn_payment"
+            android:layout_width="250sp"
+            android:layout_height="60sp"
+            android:layout_marginTop="20sp"
+            android:backgroundTint="@color/orange"
+            android:layout_gravity="center"
+            android:text="@string/place_order"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_subtotal" />
+
+    </LinearLayout>
+
+</ScrollView>

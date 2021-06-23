@@ -1,6 +1,8 @@
 package com.example.homelayout.ui.shoppingcart;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,12 +10,15 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.fragment.app.Fragment;
 
 import com.example.homelayout.R;
 import com.example.homelayout.domain.Workshops;
 import com.example.homelayout.logic.CulturedayBookingInfo;
 import com.example.homelayout.repositories.TinyDB;
+import com.example.homelayout.ui.workshops.WorkshopsFragment;
 
 import java.io.Serializable;
 import java.text.DecimalFormat;
@@ -22,8 +27,12 @@ import java.util.ArrayList;
 public class ShoppingCartCultureDayAdapter extends RecyclerView.Adapter<ShoppingCartCultureDayAdapter.CultureDayViewHolder> implements Serializable {
     private ArrayList<Object> cultureDayData;
     private TinyDB tinyDB;
-    public ShoppingCartCultureDayAdapter(ArrayList cultureDayData) {
+    private ShoppingCartFragment shoppingCartFragment = new ShoppingCartFragment();
+    private FragmentManager fragmentManager;
+
+    public ShoppingCartCultureDayAdapter(ArrayList cultureDayData, FragmentManager fragmentManager) {
         this.cultureDayData = cultureDayData;
+        this.fragmentManager = fragmentManager;
     }
 
     @Override
@@ -69,7 +78,7 @@ public class ShoppingCartCultureDayAdapter extends RecyclerView.Adapter<Shopping
                 cultureDayData.remove(cultureDayData.get(position));
                 tinyDB.putListObject("CultureItems", cultureDayData);
                 notifyDataSetChanged();
-
+                fragmentManager.beginTransaction().replace(R.id.nav_host_fragment, new ShoppingCartFragment()).commit();
             }
         });
     }
@@ -84,6 +93,7 @@ public class ShoppingCartCultureDayAdapter extends RecyclerView.Adapter<Shopping
         private TextView mLearningLevel;
         private TextView mDate;
         private TextView mPrice;
+        private TextView mSubtotal;
         private ImageButton mButton;
 
         public CultureDayViewHolder(@NonNull View view) {
@@ -97,6 +107,7 @@ public class ShoppingCartCultureDayAdapter extends RecyclerView.Adapter<Shopping
             mLearningLevel = (TextView) itemView.findViewById(R.id.shopping_cart_learninglevel);
             mDate = (TextView) itemView.findViewById(R.id.shopping_cart_date);
             mPrice = (TextView) itemView.findViewById(R.id.shopping_cart_price);
+            mSubtotal = (TextView) itemView.findViewById(R.id.shopping_cart_subtotal);
             mButton = (ImageButton) itemView.findViewById(R.id.btn_delete_cultureday);
         }
     }
