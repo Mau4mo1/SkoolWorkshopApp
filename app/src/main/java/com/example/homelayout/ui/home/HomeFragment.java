@@ -19,6 +19,8 @@ import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.constraintlayout.widget.ConstraintSet;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.example.homelayout.MainActivity;
 import com.example.homelayout.R;
@@ -167,5 +169,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
             messageList = new ArrayList<>();
         }
         ivBellCounter.setText(String.valueOf(messageList.size()));
+        if(context.getClass() != MainActivity.class) {
+//            context.beginTransaction().replace(R.id.nav_host_fragment,new HomeFragment()).addToBackStack(null).commit();
+        }
     }
 }

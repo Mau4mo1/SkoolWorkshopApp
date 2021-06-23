@@ -62,6 +62,7 @@ import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.view.menu.ShowableListMenu;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 import org.jetbrains.annotations.NotNull;
@@ -109,7 +110,7 @@ public class MainActivity extends AppCompatActivity {
         aTestForTim = new ArrayList<>();
         countdown = 2;
 
-        getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new HomeFragment()).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, homeFragment).commit();
         FirebaseMessaging.getInstance().getToken()
                 .addOnCompleteListener(new OnCompleteListener<String>() {
                     @Override
