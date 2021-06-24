@@ -83,7 +83,6 @@ public class WorkshopsForm extends Fragment implements Serializable {
         this.workshop = workshopsObject.getWorkshops();
     }
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -165,6 +164,7 @@ public class WorkshopsForm extends Fragment implements Serializable {
                                       int before, int count) {
                 if (s.length() != 0) {
                     rounds = Integer.parseInt(String.valueOf(mEditTextWorkshopRounds.getText()));
+                    mTextViewWorkshopTotalMinutes.setText("Totaal aantal minuten: " + rounds * minutes);
                     values.put("rounds", rounds);
                     updateSubtotal();
                 }
@@ -211,10 +211,12 @@ public class WorkshopsForm extends Fragment implements Serializable {
                 double price = calculatePrices.getWorkshopCalc(workshopsObject.getWorkshops(), values);
                 boolean checkPrice;
                 boolean checkParticipants = false;
-                int participants = Integer.parseInt(String.valueOf(mEditTextWorkshopParticipants.getText()));
+                int participants = 0;
+
                 if (participants <= 25) {
                     checkParticipants = true;
                 }
+
                 switch (workshopsObject.getWorkshops()) {
                     case Photoshop:
                     case Videoclip:
