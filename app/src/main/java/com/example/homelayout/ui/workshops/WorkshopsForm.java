@@ -87,11 +87,7 @@ public class WorkshopsForm extends Fragment implements Serializable {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
-//
-        // Inflate the layout for this fragment
         // pls werk
-
         View root = inflater.inflate(R.layout.fragment_workshops_form, container, false);
         mButtonMoreInfoWorkshop = root.findViewById(R.id.button_more_info_workshop);
         mButtonWorkshopInfo = root.findViewById(R.id.button_more_info_workshop);
@@ -250,7 +246,7 @@ public class WorkshopsForm extends Fragment implements Serializable {
 
                     workshopCardList.add(workshops);
                     tinydb.putListObject("Carditems", workshopCardList);
-                    getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new ShoppingCartFragment()).commit();
+                    getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new ShoppingCartFragment()).addToBackStack(null).commit();
                     ((MainActivity) getActivity()).updateShoppingCartCounter();
 
                     //s.addWorkshops(workshops);

@@ -1,4 +1,4 @@
-package com.example.homelayout.logic;
+package com.example.homelayout.service;
 
 import android.os.AsyncTask;
 import android.util.Log;

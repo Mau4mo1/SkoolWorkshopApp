@@ -13,6 +13,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import com.example.homelayout.MainActivity;
 import com.example.homelayout.R;
 import com.example.homelayout.ui.account.data.MyDataFragment;
 import com.example.homelayout.ui.account.invoice.MyInvoiceFragment;
@@ -82,8 +83,9 @@ public class MyAccountFragment extends Fragment {
                 logpopup.setPositiveButton("ja", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
+                        ((MainActivity) getActivity()).setLoggedIn(false);
                         dialogInterface.cancel();
-                        getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new HomeFragment()).commit();
+                        getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new HomeFragment()).addToBackStack(null).commit();
                     }
                 });
                 logpopup.setNegativeButton("Nee", new DialogInterface.OnClickListener() {
