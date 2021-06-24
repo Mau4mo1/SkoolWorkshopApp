@@ -75,7 +75,10 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         ivBell.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new MessageBoxFragment()).addToBackStack(null).commit();
+                getFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.nav_host_fragment, new MessageBoxFragment())
+                        .commit();
             }
         });
 
@@ -111,7 +114,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                       public void onClick(DialogInterface dialogInterface, int i) {
                           ((MainActivity) getActivity()).setLoggedIn(false);
                           dialogInterface.cancel();
-                          getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new HomeFragment()).addToBackStack(null).commit();
+                          getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new HomeFragment()).addToBackStack(null).commit();
                       }
                   });
                   logpopup.setNegativeButton("Nee", new DialogInterface.OnClickListener() {

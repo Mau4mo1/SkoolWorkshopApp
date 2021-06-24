@@ -18,7 +18,6 @@ import com.example.homelayout.controller.WorkshopController;
 import com.example.homelayout.domain.TranslationsObject;
 
 import com.example.homelayout.domain.WorkshopsObject;
-import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
 import java.sql.SQLException;

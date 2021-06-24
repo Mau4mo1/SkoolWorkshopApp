@@ -59,6 +59,7 @@ public class MainActivity extends AppCompatActivity {
     private Message m = null;
     private ArrayList<Message> aTestForTim;
     private int countdown;
+    public int counter;
     public boolean istheuserloggedin;
     private ArrayList<Object> cultureDayBookings;
     private ArrayList<Object> workshopBookings;
@@ -76,6 +77,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         context = this;
         tinyDB = new TinyDB(this);
+        homeFragment = new HomeFragment();
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
 
@@ -102,10 +104,11 @@ public class MainActivity extends AppCompatActivity {
                         Toast.makeText(MainActivity.this, msg, Toast.LENGTH_SHORT).show();
                     }
                 });
+
         this.istheuserloggedin = false;
         getSupportFragmentManager()
                 .beginTransaction()
-                .replace(R.id.nav_host_fragment, homeFragment)
+                .replace(R.id.nav_host_fragment, new HomeFragment())
                 .commit();
     }
 
@@ -118,10 +121,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private BroadcastReceiver messageReceiver = new BroadcastReceiver() {
+
         @Override
         public void onReceive(Context context, Intent intent) {
             countdown += 1;
-            counter +=1;
+            counter += 1;
             Message m = new Message(countdown, intent.getExtras().getString("title"), intent.getExtras().getString("body"));
             aTestForTim.add(m);
             Log.d("TAG", m.toString());
@@ -178,7 +182,7 @@ public class MainActivity extends AppCompatActivity {
                     Fragment selectedFragment = null;
                     switch (item.getItemId()) {
                         case R.id.navigation_home:
-                            selectedFragment = homeFragment;
+                            selectedFragment = new HomeFragment();
                             break;
                         case R.id.navigation_workshops:
                             selectedFragment = new WorkshopsFragment();
@@ -255,16 +259,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public ArrayList<Message> getMessage() {
-        getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new HomeFragment() ).addToBackStack(null).commit();
         return this.aTestForTim;
     }
 
     public void deleteMessage(){
-//        for(Message d : this.aTestForTim){
-//            if(d.getTitle().equals(m.getTitle()) && d.getMessageText().equals(m.getMessageText())){
-//                this.aTestForTim.remove(d);
-//            }
-//        }
         this.aTestForTim.clear();
     }
 
@@ -282,32 +280,4 @@ public class MainActivity extends AppCompatActivity {
         shoppingCartCounterNumber = String.valueOf(workshopBookings.size() + cultureDayBookings.size());
         shoppingCartNumber.setText(shoppingCartCounterNumber);
     }
-
-//    private void switchFragment() {
-//        Fragment fragmentDisplayed = getCurrentFragmentDisplayed();
-//        Fragment fragmentToSwitch = null;
-//        if (fragmentDisplayed == null)
-//            fragmentToSwitch = HomeFragment.class.get.getInstance();
-//        else if(fragmentDisplayed instanceof SameInstanceFragment)
-//            fragmentToSwitch = NewInstanceFragment.getInstance();
-//        else
-//            fragmentToSwitch = SameInstanceFragment.getInstance();
-//        setFragment(fragmentToSwitch);
-//    }
-//
-//    private void setFragment(Fragment fragment) {
-//        FragmentManager fragmentManager = getSupportFragmentManager();
-//        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-//        fragmentTransaction.replace(R.id.fragment_home, fragment);
-//        fragmentTransaction.commit();
-//    }
-//
-//    public Fragment getCurrentFragmentDisplayed(){
-//        List<Fragment> fragments = getSupportFragmentManager().getFragments();
-//        if(fragments == null) return null;
-//        for (Fragment fragment : fragments) {
-//            if(fragment.isVisible()) return fragment;
-//        }
-//        return null;
-//    }
 }

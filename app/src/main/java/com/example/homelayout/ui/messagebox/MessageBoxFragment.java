@@ -35,9 +35,6 @@ public class MessageBoxFragment extends Fragment implements MessageAdapter.Recyc
     private TinyDB tinyDB;
     private final String TAG = getClass().getSimpleName();
 
-
-    //These are test messages to fill the message list and test the recyclerview.
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -50,6 +47,7 @@ public class MessageBoxFragment extends Fragment implements MessageAdapter.Recyc
         layoutManager = new LinearLayoutManager(thisContext);
         recyclerView = root.findViewById(R.id.rv_message_box_recyclerview);
         recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setHasFixedSize(true);
 
         MainActivity active = (MainActivity) getActivity();
         if(active.getMessage() != null){
@@ -61,7 +59,7 @@ public class MessageBoxFragment extends Fragment implements MessageAdapter.Recyc
         }
         saveData();
 
-        messageAdapter = new MessageAdapter(this,messageList, tinyDB);
+        messageAdapter = new MessageAdapter(this, messageList, tinyDB);
         recyclerView.setAdapter(messageAdapter);
 
         return root;
@@ -70,7 +68,6 @@ public class MessageBoxFragment extends Fragment implements MessageAdapter.Recyc
 
     public void saveData(){
         tinyDB.putListObject("MessageBox", messageList);
-        getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new HomeFragment()).addToBackStack(null).commit();;
     }
 
     public void loadData(){
@@ -82,7 +79,7 @@ public class MessageBoxFragment extends Fragment implements MessageAdapter.Recyc
 
     @Override
     public void recyclerviewClick(Message message) {
-        getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new MessageScreen(message)).addToBackStack(null).commit();
+        getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new MessageScreen(message)).addToBackStack(null).commit();
     }
 
     
