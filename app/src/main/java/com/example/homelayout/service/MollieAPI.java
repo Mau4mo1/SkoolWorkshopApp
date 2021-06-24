@@ -62,6 +62,9 @@ public class MollieAPI extends AsyncTask<String, Void, String> {
     private String getJsonString(String price, String description){
         String jsonInputString = null;
         try{
+            if(price.length() > 3){
+                price = price.replace(",", "");
+            }
             jsonInputString = new JSONObject()
                     .put("money", price)
                     .put("description", description)
