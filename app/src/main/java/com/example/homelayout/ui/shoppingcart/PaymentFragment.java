@@ -17,12 +17,10 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.homelayout.R;
-import com.example.homelayout.logic.MollieAPI;
+import com.example.homelayout.service.MollieAPI;
 import com.example.homelayout.logic.Validation;
 
 import java.util.concurrent.ExecutionException;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class PaymentFragment extends Fragment {
 

@@ -124,7 +124,7 @@ public class ShoppingCartFragment extends Fragment implements ShoppingCartContro
     }
 
     public void refresh() {
-        getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new ShoppingCartFragment()).commit();
+        getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new ShoppingCartFragment()).addToBackStack(null).commit();
     }
 
     @Override

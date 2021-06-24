@@ -58,13 +58,9 @@ public class MainActivity extends AppCompatActivity {
     private Message m = null;
     private ArrayList<Message> aTestForTim;
     private int countdown;
-    private WorkshopController workshopController;
-    private List<WorkshopsObject> workshopsObjectList;
-    private WorkshopsObject workshopObject;
     public boolean istheuserloggedin;
     private ArrayList<Object> cultureDayBookings;
     private ArrayList<Object> workshopBookings;
-    private List<TranslationsObject> translationsObjectsList;
     private TinyDB tinyDB;
     private String shoppingCartCounterNumber;
     private HomeFragment homeFragment;
@@ -106,7 +102,6 @@ public class MainActivity extends AppCompatActivity {
                         Toast.makeText(MainActivity.this, msg, Toast.LENGTH_SHORT).show();
                     }
                 });
-
         this.istheuserloggedin = false;
         getSupportFragmentManager()
                 .beginTransaction()

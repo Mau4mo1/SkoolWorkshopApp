@@ -1,6 +1,8 @@
 package com.example.homelayout.ui.home;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -98,8 +100,25 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
           btnLogout.setOnClickListener(new View.OnClickListener() {
               @Override
               public void onClick(View v) {
-                  ((MainActivity) getActivity()).setLoggedIn(false);
-                  getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new HomeFragment()).addToBackStack(null).commit();
+                  AlertDialog.Builder logpopup = new AlertDialog.Builder(getContext());
+                  logpopup.setCancelable(true);
+                  logpopup.setTitle("Uitloggen");
+                  logpopup.setMessage("Weet je zeker dat je wilt uitloggen?");
+                  logpopup.setPositiveButton("ja", new DialogInterface.OnClickListener() {
+                      @Override
+                      public void onClick(DialogInterface dialogInterface, int i) {
+                          ((MainActivity) getActivity()).setLoggedIn(false);
+                          dialogInterface.cancel();
+                          getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new HomeFragment()).addToBackStack(null).commit();
+                      }
+                  });
+                  logpopup.setNegativeButton("Nee", new DialogInterface.OnClickListener() {
+                      @Override
+                      public void onClick(DialogInterface dialogInterface, int i) {
+                          dialogInterface.cancel();
+                      }
+                  });
+                  logpopup.show();
               }
           });
 
@@ -156,8 +175,5 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
             messageList = new ArrayList<>();
         }
         ivBellCounter.setText(String.valueOf(messageList.size()));
-//        FragmentTransaction ft = this.getFragmentManager()
-//                .beginTransaction();
-//        ft.replace(R.id.nav_host_fragment, new HomeFragment()).commit();
     }
 }
