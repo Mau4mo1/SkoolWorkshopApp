@@ -45,7 +45,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_my_account_login_name"
                 android:backgroundTint="@color/orange"
-                android:text="Factuur gegvens"/>
+                android:text="Factuur gegevens"/>
             <Button
                 android:layout_marginTop="50sp"
                 android:id="@+id/button_my_account_my_data"

@@ -777,7 +777,9 @@ public class CulturedayBookingFormFragment extends Fragment {
                 @RequiresApi(api = Build.VERSION_CODES.O)
                 @Override
                 public void onClick(View view) {
-                    if(subtotal_amount < 1255.50) {
+                    if(date == null){
+                        showDatePopup();
+                    } else if (subtotal_amount < 1255.50) {
                         AlertDialog.Builder subpopup = new AlertDialog.Builder(con);
                         subpopup.setCancelable(true);
                         subpopup.setTitle("Subtotaal niet genoeg");
@@ -803,8 +805,6 @@ public class CulturedayBookingFormFragment extends Fragment {
                         minpopup.show();
                     }else{
                         try {
-
-
                             System.out.println(date);
                             if (cultureday_registration_box.isChecked()){
                                 culturedayBookingInfo.setRegistration(true);
@@ -850,7 +850,19 @@ public class CulturedayBookingFormFragment extends Fragment {
         });
         return root;
     }
-
+    private void showDatePopup() {
+        AlertDialog.Builder subpopup = new AlertDialog.Builder(getContext());
+        subpopup.setTitle("Geen datum gekozen");
+        subpopup.setMessage("Selecteer een datum om te kunnen boeken");
+        subpopup.setCancelable(true);
+        subpopup.setNegativeButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.cancel();
+            }
+        });
+        subpopup.show();
+    }
     public void updateSubtotal() {
         double subtotal = calculatePrices.calculateCultureday(values, workshops);
         this.subtotal_amount = subtotal;

@@ -227,21 +227,26 @@ public class WorkshopsForm extends Fragment implements Serializable {
                         checkPrice = calculatePrices.checkIfTotalAmountIsAboveMinimalOneHundredSeventyFive(price);
                         break;
                 }
+                DateFormat dateFormat = null;
+                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
+                    dateFormat = new SimpleDateFormat("dd/MM/" + 20 + "YY");
+                }
                 if (!checkParticipants) {
                     showParticipantPopup();
                 } else if (!checkPrice) {
                     showPricePopup();
+                }else if(date == null) {
+                    showDatePopup();
                 } else {
                     String service = mTextViewWorkshopFormTitle.getText().toString();
                     int minutes = WorkshopsForm.this.minutes;
                     int rounds = WorkshopsForm.this.rounds;
                     String timeScheme = mEditTextWorkshopTimetable.getText().toString();
                     String learningLevel = mEditTextWorkshopLearningLevel.getText().toString();
-                    DateFormat dateFormat = null;
-                    if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
-                        dateFormat = new SimpleDateFormat("dd/MM/" + 20 + "YY");
-                    }
+
+                    assert dateFormat != null;
                     String date = dateFormat.format(WorkshopsForm.this.date);
+
                     Log.d("test", date);
 
                     WorkshopBooking workshops = new WorkshopBooking(service, rounds, minutes, timeScheme, learningLevel, date, price);
@@ -265,7 +270,6 @@ public class WorkshopsForm extends Fragment implements Serializable {
     }
 
     private void loadData() {
-
         workshopCardList = tinydb.getListObject("Carditems", WorkshopBooking.class);
         if (workshopCardList == null) {
             workshopCardList = new ArrayList<>();
@@ -284,6 +288,19 @@ public class WorkshopsForm extends Fragment implements Serializable {
         }
         subpopup.setCancelable(true);
         subpopup.setTitle("Subtotaal niet genoeg");
+        subpopup.setNegativeButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.cancel();
+            }
+        });
+        subpopup.show();
+    }
+    private void showDatePopup() {
+        AlertDialog.Builder subpopup = new AlertDialog.Builder(thisContext);
+        subpopup.setTitle("Geen datum gekozen");
+        subpopup.setMessage("Selecteer een datum om te kunnen boeken");
+        subpopup.setCancelable(true);
         subpopup.setNegativeButton("OK", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
