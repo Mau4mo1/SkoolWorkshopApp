@@ -2,20 +2,13 @@ package com.example.homelayout;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.SharedPreferences;
-import android.app.ActionBar;
 import android.app.Activity;
 import android.content.BroadcastReceiver;
-import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
-import android.util.Log;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -23,57 +16,41 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.PopupMenu;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.homelayout.controller.TranslationsController;
 import com.example.homelayout.domain.Message;
 import com.example.homelayout.domain.TranslationsObject;
 import com.example.homelayout.domain.WorkshopBooking;
 import com.example.homelayout.controller.WorkshopController;
-import com.example.homelayout.domain.WorkshopPictureObject;
 import com.example.homelayout.domain.WorkshopsObject;
 import com.example.homelayout.logic.CulturedayBookingInfo;
 import com.example.homelayout.repositories.TinyDB;
-import com.example.homelayout.ui.Cultureday.MainPage.CulturedayMainFragment;
+import com.example.homelayout.ui.cultureday.MainPage.CulturedayMainFragment;
 import com.example.homelayout.ui.account.MyAccountFragment;
 import com.example.homelayout.ui.home.HomeFragment;
 import com.example.homelayout.ui.contact.ContactFragment;
 import com.example.homelayout.ui.shoppingcart.ShoppingCartFragment;
 import com.example.homelayout.ui.workshops.WorkshopsFragment;
-import com.example.homelayout.ui.home.HomeFragment;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.messaging.FirebaseMessaging;
-import com.google.firebase.messaging.FirebaseMessagingService;
 import com.makeramen.roundedimageview.RoundedImageView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
-import androidx.appcompat.view.menu.ShowableListMenu;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
-import org.jetbrains.annotations.NotNull;
-
-import java.sql.SQLException;
 import java.util.ArrayList;
 
-import java.lang.reflect.Type;
-
 import java.util.List;
-import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
     private TextView shoppingCartNumber;
@@ -82,21 +59,18 @@ public class MainActivity extends AppCompatActivity {
     private Message m = null;
     private ArrayList<Message> aTestForTim;
     private int countdown;
-    public int counter;
-    private WorkshopController workshopController;
-    private List<WorkshopsObject> workshopsObjectList;
-    private WorkshopsObject workshopObject;
     public boolean istheuserloggedin;
     private ArrayList<Object> cultureDayBookings;
     private ArrayList<Object> workshopBookings;
-    private List<TranslationsObject> translationsObjectsList;
     private TinyDB tinyDB;
     private String shoppingCartCounterNumber;
     private HomeFragment homeFragment;
     private Context context;
+    private Bundle bundle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        this.bundle = savedInstanceState;
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -128,11 +102,10 @@ public class MainActivity extends AppCompatActivity {
                         Toast.makeText(MainActivity.this, msg, Toast.LENGTH_SHORT).show();
                     }
                 });
-
         this.istheuserloggedin = false;
         getSupportFragmentManager()
                 .beginTransaction()
-                .replace(R.id.nav_host_fragment, new HomeFragment())
+                .replace(R.id.nav_host_fragment, homeFragment)
                 .commit();
     }
 
@@ -205,7 +178,7 @@ public class MainActivity extends AppCompatActivity {
                     Fragment selectedFragment = null;
                     switch (item.getItemId()) {
                         case R.id.navigation_home:
-                            selectedFragment = new HomeFragment();
+                            selectedFragment = homeFragment;
                             break;
                         case R.id.navigation_workshops:
                             selectedFragment = new WorkshopsFragment();
@@ -282,6 +255,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public ArrayList<Message> getMessage() {
+        getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new HomeFragment() ).addToBackStack(null).commit();
         return this.aTestForTim;
     }
 
@@ -308,4 +282,32 @@ public class MainActivity extends AppCompatActivity {
         shoppingCartCounterNumber = String.valueOf(workshopBookings.size() + cultureDayBookings.size());
         shoppingCartNumber.setText(shoppingCartCounterNumber);
     }
+
+//    private void switchFragment() {
+//        Fragment fragmentDisplayed = getCurrentFragmentDisplayed();
+//        Fragment fragmentToSwitch = null;
+//        if (fragmentDisplayed == null)
+//            fragmentToSwitch = HomeFragment.class.get.getInstance();
+//        else if(fragmentDisplayed instanceof SameInstanceFragment)
+//            fragmentToSwitch = NewInstanceFragment.getInstance();
+//        else
+//            fragmentToSwitch = SameInstanceFragment.getInstance();
+//        setFragment(fragmentToSwitch);
+//    }
+//
+//    private void setFragment(Fragment fragment) {
+//        FragmentManager fragmentManager = getSupportFragmentManager();
+//        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+//        fragmentTransaction.replace(R.id.fragment_home, fragment);
+//        fragmentTransaction.commit();
+//    }
+//
+//    public Fragment getCurrentFragmentDisplayed(){
+//        List<Fragment> fragments = getSupportFragmentManager().getFragments();
+//        if(fragments == null) return null;
+//        for (Fragment fragment : fragments) {
+//            if(fragment.isVisible()) return fragment;
+//        }
+//        return null;
+//    }
 }

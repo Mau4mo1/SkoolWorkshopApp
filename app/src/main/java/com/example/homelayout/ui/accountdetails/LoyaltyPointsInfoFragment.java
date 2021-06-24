@@ -22,7 +22,7 @@ public class LoyaltyPointsInfoFragment extends Fragment {
         mBackButton = root.findViewById(R.id.btn_loyalty_points_info_back);
         mBackButton.setClickable(true);
         mBackButton.setOnClickListener(
-                v -> getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new LoyaltyPointsFragment()).commit());
+                v -> getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new LoyaltyPointsFragment()).addToBackStack(null).commit());
         return root;
     }
 }

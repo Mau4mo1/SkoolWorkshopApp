@@ -1,4 +1,4 @@
-package com.example.homelayout.ui.Cultureday.Form;
+package com.example.homelayout.ui.cultureday.Form;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -323,10 +323,13 @@ public class CulturedayBookingFormFragment extends Fragment {
                     for(Workshops i : workshops){
                         if(i.equals(Workshops.Graffiti)){
                             workshops.remove(Workshops.Graffiti);
+                            break;
                         }
                     }
-                    extra_price_participants_amount.setVisibility(View.GONE);
-                    extra_price_participants_amount_description.setVisibility(View.GONE);
+                    if(!workshop_tshirt.isChecked()){
+                        extra_price_participants_amount.setVisibility(View.GONE);
+                        extra_price_participants_amount_description.setVisibility(View.GONE);
+                    }
                     updateSubtotal();
                 }
             }
@@ -727,17 +730,22 @@ public class CulturedayBookingFormFragment extends Fragment {
                 if (isChecked){
                     workshops.add(Workshops.TshirtOntwerpen);
                     updateSubtotal();
-                    extra_price_participants_amount.setVisibility(View.VISIBLE);
-                    extra_price_participants_amount_description.setVisibility(View.VISIBLE);
+                    if(extra_price_participants_amount.getVisibility() != View.VISIBLE){
+                        extra_price_participants_amount.setVisibility(View.VISIBLE);
+                        extra_price_participants_amount_description.setVisibility(View.VISIBLE);
+                    }
                 } else {
                     for(Workshops i : workshops){
                         if(i.equals(Workshops.TshirtOntwerpen)){
                             workshops.remove(Workshops.TshirtOntwerpen);
+                            break;
                         }
                     }
                     updateSubtotal();
-                    extra_price_participants_amount.setVisibility(View.GONE);
-                    extra_price_participants_amount_description.setVisibility(View.GONE);
+                    if(!workshop_graffiti.isChecked()){
+                        extra_price_participants_amount.setVisibility(View.GONE);
+                        extra_price_participants_amount_description.setVisibility(View.GONE);
+                    }
                 }
             }
         });
@@ -822,9 +830,10 @@ public class CulturedayBookingFormFragment extends Fragment {
                             ((MainActivity) getActivity()).updateShoppingCartCounter();
 //                            Link to shopingcart
                             assert getFragmentManager() != null;
-                            getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new ShoppingCartFragment()).commit();
+                            getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new ShoppingCartFragment()).addToBackStack(null).commit();
                         }catch (Exception e){
-                            System.out.println("Booking info invalet or incompelte");AlertDialog.Builder infopopup = new AlertDialog.Builder(con);
+                            System.out.println("Booking info invalet or incompelte");
+                            AlertDialog.Builder infopopup = new AlertDialog.Builder(con);
                             infopopup.setCancelable(true);
                             infopopup.setTitle("Niet alles ingevuld");
                             infopopup.setMessage("Niet alle velden ingevuld (Aantal deelnemers, Aantal rondes, Aantal workshops per ronde, Aantal minuten per workshop)");

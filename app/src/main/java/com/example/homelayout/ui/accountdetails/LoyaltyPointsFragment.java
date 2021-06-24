@@ -51,12 +51,12 @@ public class LoyaltyPointsFragment extends Fragment {
         mBackButton = root.findViewById(R.id.btn_loyalty_points_back);
         mBackButton.setClickable(true);
         mBackButton.setOnClickListener(
-                v -> getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new HomeFragment()).commit());
+                v -> getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new HomeFragment()).addToBackStack(null).commit());
 
         mInfoButton = root.findViewById(R.id.btn_loyalty_points_info);
         mInfoButton.setClickable(true);
         mInfoButton.setOnClickListener(
-                v -> getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new LoyaltyPointsInfoFragment()).commit());
+                v -> getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new LoyaltyPointsInfoFragment()).addToBackStack(null).commit());
 
         return root;
     }

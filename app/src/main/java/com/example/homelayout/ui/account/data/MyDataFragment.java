@@ -40,7 +40,7 @@ public class MyDataFragment extends Fragment {
             @Override
             public void onClick(View v) {
 //                PLACEHOLDER NEEDS TO CHANGE DATA
-                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new HomeFragment());
+                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new HomeFragment()).addToBackStack(null).commit();
             }
         });
 

@@ -21,7 +21,7 @@
 
     <fragment
         android:id="@+id/navigation_notifications"
-        android:name="com.example.homelayout.ui.Cultureday.MainPage.CulturedayMainFragment"
+        android:name="com.example.homelayout.ui.cultureday.MainPage.CulturedayMainFragment"
         android:label="@string/title_culture_day"
         tools:layout="@layout/fragment_notifications" />
     <fragment

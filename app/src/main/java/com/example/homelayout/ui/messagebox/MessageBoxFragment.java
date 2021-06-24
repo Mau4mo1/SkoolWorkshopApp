@@ -20,6 +20,7 @@ import com.example.homelayout.domain.Message;
 import com.example.homelayout.domain.Workshops;
 import com.example.homelayout.logic.MessageAdapter;
 import com.example.homelayout.repositories.TinyDB;
+import com.example.homelayout.ui.home.HomeFragment;
 import com.example.homelayout.ui.workshops.WorkshopsForm;
 
 import java.util.ArrayList;
@@ -63,15 +64,13 @@ public class MessageBoxFragment extends Fragment implements MessageAdapter.Recyc
         messageAdapter = new MessageAdapter(this,messageList, tinyDB);
         recyclerView.setAdapter(messageAdapter);
 
-        //tinyDB.clear();
-        //Here the message list gets filled with test messages
-//        messageList.add(testMessage1);
         return root;
     }
 
 
     public void saveData(){
         tinyDB.putListObject("MessageBox", messageList);
+        getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new HomeFragment()).addToBackStack(null).commit();;
     }
 
     public void loadData(){

@@ -1,4 +1,4 @@
-package com.example.homelayout.ui.Cultureday.MainPage;
+package com.example.homelayout.ui.cultureday.MainPage;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -13,7 +13,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.homelayout.R;
-import com.example.homelayout.ui.Cultureday.Form.CulturedayBookingFormFragment;
+import com.example.homelayout.ui.cultureday.Form.CulturedayBookingFormFragment;
 
 
 public class CulturedayMainFragment extends Fragment {
@@ -38,7 +38,7 @@ public class CulturedayMainFragment extends Fragment {
         btn_book_now_cd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new CulturedayBookingFormFragment()).commit();
+                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new CulturedayBookingFormFragment()).addToBackStack(null).commit();
             }
         });
 
