@@ -3,7 +3,9 @@ package com.example.homelayout.ui.home;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -46,6 +48,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     private Button btnLogin;
     private Button btnLogout;
     private ConstraintLayout clPopularWorkshops;
+    private ConstraintLayout mHomeItem;
     private Bitmap bmp;
     private ImageView mImageViewSpaarPunten;
     private ImageView ivBell;
@@ -79,6 +82,16 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                         .beginTransaction()
                         .replace(R.id.nav_host_fragment, new MessageBoxFragment())
                         .commit();
+            }
+        });
+        mHomeItem = root.findViewById(R.id.home_item_newsletter);
+        mHomeItem.setClickable(true);
+        mHomeItem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Uri uri = Uri.parse("https://preview.mailerlite.com/e6p1b6");
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                startActivity(intent);
             }
         });
 
