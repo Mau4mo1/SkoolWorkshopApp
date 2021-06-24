@@ -121,7 +121,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
           ConstraintSet constraintSet = new ConstraintSet();
           constraintSet.clone(cons);
           constraintSet.connect(greetings.getId(), ConstraintSet.RIGHT, btnLogout.getId(), ConstraintSet.LEFT, 0);
-          //constraintSet.connect(greetings.getId(), ConstraintSet.RIGHT, ConstraintSet.PARENT_ID, ConstraintSet.LEFT);
           constraintSet.applyTo(cons);
         }
         updateNotificationCounter(thisContext);
@@ -168,9 +167,10 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         if (messageList == null){
             messageList = new ArrayList<>();
         }
-        ivBellCounter.setText(String.valueOf(messageList.size()));
-        if(context.getClass() != MainActivity.class) {
-//            context.beginTransaction().replace(R.id.nav_host_fragment,new HomeFragment()).addToBackStack(null).commit();
-        }
+
+        MainActivity activity = (MainActivity) getActivity();
+
+        ivBellCounter.setText(String.valueOf(messageList.size() + activity.counter));
+        getActivity().getSupportFragmentManager().beginTransaction().detach(this).attach(this).commit();
     }
 }
