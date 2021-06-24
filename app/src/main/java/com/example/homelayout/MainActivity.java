@@ -45,6 +45,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 import java.util.ArrayList;
@@ -75,16 +76,15 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         context = this;
         tinyDB = new TinyDB(this);
-        homeFragment = new HomeFragment();
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
 
         bottomNav = findViewById(R.id.nav_view);
         bottomNav.setOnNavigationItemSelectedListener(navListener);
         aTestForTim = new ArrayList<>();
-        countdown = 2;
-
-        getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, homeFragment).commit();
+        countdown = 0;
+        counter = 0;
+        getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new HomeFragment()).commit();
         FirebaseMessaging.getInstance().getToken()
                 .addOnCompleteListener(new OnCompleteListener<String>() {
                     @Override
@@ -121,11 +121,14 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onReceive(Context context, Intent intent) {
             countdown += 1;
+            counter +=1;
             Message m = new Message(countdown, intent.getExtras().getString("title"), intent.getExtras().getString("body"));
             aTestForTim.add(m);
             Log.d("TAG", m.toString());
-            homeFragment.setArguments(bundle);
-            homeFragment.updateNotificationCounter(context);
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.nav_host_fragment, new HomeFragment())
+                    .commit();
         }
     };
 
@@ -256,12 +259,13 @@ public class MainActivity extends AppCompatActivity {
         return this.aTestForTim;
     }
 
-    public void deleteMessage(Message m){
-        for(Message d : this.aTestForTim){
-            if(d.getTitle().equals(m.getTitle()) && d.getMessageText().equals(m.getMessageText())){
-                this.aTestForTim.remove(d);
-            }
-        }
+    public void deleteMessage(){
+//        for(Message d : this.aTestForTim){
+//            if(d.getTitle().equals(m.getTitle()) && d.getMessageText().equals(m.getMessageText())){
+//                this.aTestForTim.remove(d);
+//            }
+//        }
+        this.aTestForTim.clear();
     }
 
     public void setLoggedIn(boolean bool){

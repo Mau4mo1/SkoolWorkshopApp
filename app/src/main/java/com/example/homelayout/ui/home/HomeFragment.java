@@ -17,6 +17,8 @@ import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.constraintlayout.widget.ConstraintSet;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.example.homelayout.MainActivity;
 import com.example.homelayout.R;
@@ -126,7 +128,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
           ConstraintSet constraintSet = new ConstraintSet();
           constraintSet.clone(cons);
           constraintSet.connect(greetings.getId(), ConstraintSet.RIGHT, btnLogout.getId(), ConstraintSet.LEFT, 0);
-          //constraintSet.connect(greetings.getId(), ConstraintSet.RIGHT, ConstraintSet.PARENT_ID, ConstraintSet.LEFT);
           constraintSet.applyTo(cons);
         }
         updateNotificationCounter(thisContext);
@@ -174,6 +175,10 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         if (messageList == null){
             messageList = new ArrayList<>();
         }
-        ivBellCounter.setText(String.valueOf(messageList.size()));
+
+        MainActivity activity = (MainActivity) getActivity();
+
+        ivBellCounter.setText(String.valueOf(messageList.size() + activity.counter));
+        getActivity().getSupportFragmentManager().beginTransaction().detach(this).attach(this).commit();
     }
 }

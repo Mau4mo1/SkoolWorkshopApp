@@ -35,6 +35,9 @@ public class MessageBoxFragment extends Fragment implements MessageAdapter.Recyc
     private TinyDB tinyDB;
     private final String TAG = getClass().getSimpleName();
 
+
+    //These are test messages to fill the message list and test the recyclerview.
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -48,13 +51,13 @@ public class MessageBoxFragment extends Fragment implements MessageAdapter.Recyc
         recyclerView = root.findViewById(R.id.rv_message_box_recyclerview);
         recyclerView.setLayoutManager(layoutManager);
 
-
         MainActivity active = (MainActivity) getActivity();
         if(active.getMessage() != null){
             for(Message m : active.getMessage()){
                 messageList.add(m);
-                active.deleteMessage(m);
             }
+            active.deleteMessage();
+            active.counter = 0;
         }
         saveData();
 
