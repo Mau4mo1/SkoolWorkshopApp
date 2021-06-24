@@ -42,7 +42,7 @@ public class MyAccountFragment extends Fragment {
         btn_my_data.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new MyDataFragment()).commit();
+                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new MyDataFragment()).addToBackStack(null).commit();
             }
         });
 
@@ -50,7 +50,7 @@ public class MyAccountFragment extends Fragment {
         btn_my_invoice.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new MyInvoiceFragment()).commit();
+                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new MyInvoiceFragment()).addToBackStack(null).commit();
             }
         });
 
@@ -59,7 +59,7 @@ public class MyAccountFragment extends Fragment {
             @Override
             public void onClick(View v) {
 //                PLACE HOLDER NEEDS TO BE CREDIT SCHREEN
-                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new LoyaltyPointsFragment()).commit();
+                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new LoyaltyPointsFragment()).addToBackStack(null).commit();
             }
         });
 
@@ -67,7 +67,7 @@ public class MyAccountFragment extends Fragment {
         btn_my_reservations.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new MyReservationFragment()).commit();
+                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new MyReservationFragment()).addToBackStack(null).commit();
             }
         });
 

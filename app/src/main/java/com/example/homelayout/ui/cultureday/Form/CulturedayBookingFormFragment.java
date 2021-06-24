@@ -1,4 +1,4 @@
-package com.example.homelayout.ui.Cultureday.Form;
+package com.example.homelayout.ui.cultureday.Form;
 
 import android.app.AlertDialog;
 import android.content.Context;

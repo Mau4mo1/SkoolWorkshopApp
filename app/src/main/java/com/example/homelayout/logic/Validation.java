@@ -5,7 +5,7 @@ import java.util.regex.Pattern;
 
 public class Validation {
     public static final String VALID_EMAIL_ADDRESS_REGEX = "^([_a-zA-Z0-9-]+(\\.[_a-zA-Z0-9-]+)*@[a-zA-Z0-9-]+(\\.[a-zA-Z0-9-]+)*(\\.[a-zA-Z]{1,6}))?$";
-    public static final String VALID_PASSWORD_REGEX = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#&()–[{}]:;',?/*~$^+=<>]).{12,24}$";
+    public static final String VALID_PASSWORD_REGEX = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#&()–[{}]:;',?/*~$^+=<>]).{8,}$";
     public static final String VALID_NAME_REGEX = "^[a-zA-Z]+$";
     public static final String VALID_POSTAL_REGEX = "^[1-9][0-9]{3} ?(?!sa|sd|ss)[a-zA-Z]{2}$";
     public static final String VALID_PHONENUMBER_REGEX = "^[0][0-9]{9}$";

@@ -15,13 +15,12 @@ import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.constraintlayout.widget.ConstraintSet;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 
 import com.example.homelayout.MainActivity;
 import com.example.homelayout.R;
 import com.example.homelayout.domain.Message;
 import com.example.homelayout.repositories.TinyDB;
-import com.example.homelayout.ui.Cultureday.Form.CulturedayBookingFormFragment;
+import com.example.homelayout.ui.cultureday.Form.CulturedayBookingFormFragment;
 import com.example.homelayout.ui.accountdetails.LoyaltyPointsFragment;
 import com.example.homelayout.ui.login.LoginFragment;
 import com.example.homelayout.ui.register.RegisterFragment;
@@ -157,8 +156,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
             messageList = new ArrayList<>();
         }
         ivBellCounter.setText(String.valueOf(messageList.size()));
-        FragmentTransaction ft = this.getFragmentManager()
-                .beginTransaction();
-        ft.replace(R.id.nav_host_fragment, new HomeFragment()).commit();
+//        FragmentTransaction ft = this.getFragmentManager()
+//                .beginTransaction();
+//        ft.replace(R.id.nav_host_fragment, new HomeFragment()).commit();
     }
 }

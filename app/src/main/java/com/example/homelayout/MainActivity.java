@@ -1,22 +1,14 @@
 package com.example.homelayout;
 
 import android.annotation.SuppressLint;
-import android.app.FragmentTransaction;
 import android.content.Context;
-import android.content.SharedPreferences;
-import android.app.ActionBar;
 import android.app.Activity;
 import android.content.BroadcastReceiver;
-import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
-import android.util.Log;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -24,57 +16,40 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.PopupMenu;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.homelayout.controller.TranslationsController;
 import com.example.homelayout.domain.Message;
 import com.example.homelayout.domain.TranslationsObject;
 import com.example.homelayout.domain.WorkshopBooking;
 import com.example.homelayout.controller.WorkshopController;
-import com.example.homelayout.domain.WorkshopPictureObject;
 import com.example.homelayout.domain.WorkshopsObject;
 import com.example.homelayout.logic.CulturedayBookingInfo;
 import com.example.homelayout.repositories.TinyDB;
-import com.example.homelayout.ui.Cultureday.MainPage.CulturedayMainFragment;
+import com.example.homelayout.ui.cultureday.MainPage.CulturedayMainFragment;
 import com.example.homelayout.ui.account.MyAccountFragment;
 import com.example.homelayout.ui.home.HomeFragment;
 import com.example.homelayout.ui.contact.ContactFragment;
 import com.example.homelayout.ui.shoppingcart.ShoppingCartFragment;
 import com.example.homelayout.ui.workshops.WorkshopsFragment;
-import com.example.homelayout.ui.home.HomeFragment;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.messaging.FirebaseMessaging;
-import com.google.firebase.messaging.FirebaseMessagingService;
 import com.makeramen.roundedimageview.RoundedImageView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
-import androidx.appcompat.view.menu.ShowableListMenu;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
-import org.jetbrains.annotations.NotNull;
-
-import java.sql.SQLException;
 import java.util.ArrayList;
 
-import java.lang.reflect.Type;
-
 import java.util.List;
-import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
     private TextView shoppingCartNumber;
