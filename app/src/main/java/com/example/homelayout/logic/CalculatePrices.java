@@ -15,6 +15,7 @@ public class CalculatePrices {
     private static final double COST_PER_MINUTE_WORKSHOPS = 2.5;
     private static final double COST_PER_MINUTE_CULTUREDAY = 2.325;
     private static final double MATERIAL_COST = 7.5;
+    private Workshops workshop;
     private int participants = 0;
     private int rounds = 0;
     private int minutes = 0;
@@ -24,6 +25,8 @@ public class CalculatePrices {
     public CalculatePrices() {}
 
     public double getWorkshopCalc(Workshops workshop, HashMap<String, Integer> values) {
+        this.workshop = workshop;
+
         switch (workshop) {
             case Graffiti:
             case TshirtOntwerpen:
@@ -87,7 +90,8 @@ public class CalculatePrices {
                 minutes = (int) pair.getValue();
             }
         }
-        totalAmount = START_FEE + rounds * (minutes * COST_PER_MINUTE_WORKSHOPS);
+
+        totalAmount = START_FEE + rounds * (minutes * COST_PER_MINUTE_WORKSHOPS) + (participants * MATERIAL_COST);
         System.out.println(totalAmount);
         return totalAmount;
     }
