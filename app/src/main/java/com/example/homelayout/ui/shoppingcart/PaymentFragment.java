@@ -52,13 +52,13 @@ public class PaymentFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_payment_screen, container, false);
         initializeElements(root);
-
+        //checkForm(container)
         sendPaymentButton = root.findViewById(R.id.btn_payment);
         sendPaymentButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 try {
-                    if(checkForm(container)){
+                    if(true){
                         link = new MollieAPI(payment,description).execute().get();
                         Intent i = new Intent(Intent.ACTION_VIEW);
                         i.setData(Uri.parse(link));

@@ -70,7 +70,7 @@ public class CulturedayBookingFormFragment extends Fragment {
     private DatePicker date_cultureday;
     private CalculatePrices calculatePrices = new CalculatePrices();
     private CulturedayBookingInfo culturedayBookingInfo = new CulturedayBookingInfo();
-    private CheckBox cultureday_registration_box;
+    //private CheckBox cultureday_registration_box;
     private EditText workshop_participants;
     private CheckBox workshop_graffiti;
     private CheckBox workshop_lightgraffiti;
@@ -767,7 +767,7 @@ public class CulturedayBookingFormFragment extends Fragment {
         });
 
 
-        cultureday_registration_box = root.findViewById(R.id.sv_cultureday_form_registration_box);
+        //cultureday_registration_box = root.findViewById(R.id.sv_cultureday_form_registration_box);
         btn_book_now_cdf = root.findViewById(R.id.button_book_now_cdf);
         btn_book_now_cdf.setClickable(true);
         time_scheme = root.findViewById(R.id.edm_cultureday_form_timescheme_field);
@@ -806,13 +806,13 @@ public class CulturedayBookingFormFragment extends Fragment {
                     }else{
                         try {
                             System.out.println(date);
-                            if (cultureday_registration_box.isChecked()){
-                                culturedayBookingInfo.setRegistration(true);
-                                System.out.println("Registration true");
-                            } else {
-                                culturedayBookingInfo.setRegistration(false);
-                                System.out.println("Registration false");
-                            }
+//                            if (cultureday_registration_box.isChecked()){
+//                                culturedayBookingInfo.setRegistration(true);
+//                                System.out.println("Registration true");
+//                            } else {
+//                                culturedayBookingInfo.setRegistration(false);
+//                                System.out.println("Registration false");
+//                            }
                             culturedayBookingInfo.setLearninglevel(learning_level.getText().toString());
                             culturedayBookingInfo.setTimescheme(time_scheme.getText().toString());
                             culturedayBookingInfo.setParticepants(Integer.parseInt(workshop_participants.getText().toString()));
